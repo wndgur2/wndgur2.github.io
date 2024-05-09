@@ -3,14 +3,29 @@ if [ "$#" -ne 1 ]; then
     exit 1
 fi
 
-# Get the compressed file name from the user input
+# Get file name from the user input
 problem_name="$1"
 
-# Create the zip file excluding the __MACOSX folder
-mkdir -p "$problem_name"
-cp "./_solve.py" "$problem_name/$problem_name.py"
+current_time=$(date +"%Y-%m-%d %H:%M:%S")
+
+# Create a temporary file
+code_setup=$(mktemp)
+echo "\"\"\"\n" > "$code_setup"
+echo "\t$problem_name $current_time" >> "$code_setup"
+echo "\n\"\"\"\n" >> "$code_setup"
+cat "_solve.py" >> "$code_setup"
+
+readme_setup=$(mktemp)
+echo "## $problem_name $current_time" > "$readme_setup"
+cat "_README.md" >> "$readme_setup"
+
+if [ ! -f "$problem_name/$problem_name.py" ]; then
+    mkdir "$problem_name"
+    cp "$code_setup" "$problem_name/$problem_name.py"
+else
+    echo "$problem_name/$problem_name.py already exists."
+fi
+cp "$readme_setup" "$problem_name/README.md"
 cd "$problem_name"
 touch "input.txt"
-
-# Display a message indicating the compression is complete
 echo "Generation complete!"
