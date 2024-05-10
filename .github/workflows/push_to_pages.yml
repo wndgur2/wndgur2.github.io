@@ -1,6 +1,4 @@
 name: Push to Pages
-permissions:
-  contents: write
 
 on:
   push:
@@ -22,7 +20,8 @@ jobs:
     - name: Push changes to wndgur2.github.io
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.ACCESS_TOKEN }}
+        github_token: "${{ secrets.ACCESS_TOKEN }}"
         branch: main 
         repository: wndgur2/wndgur2.github.io
-        
+      permissions:
+        contents: write
