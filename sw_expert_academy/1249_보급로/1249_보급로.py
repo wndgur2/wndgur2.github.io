@@ -12,9 +12,7 @@
 
 import sys
 sys.stdin = open("input.txt", "r")
-sys.setrecursionlimit(2000)
 
-from collections import deque
 T = int(input())
 for test_case in range(1, T + 1):
     size = int(input())
