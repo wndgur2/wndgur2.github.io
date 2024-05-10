@@ -5,6 +5,10 @@ on:
     branches:
       - main  # Change this to match your branch name
 
+permissions:
+  contents: write
+  pages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,5 +27,3 @@ jobs:
         github_token: "${{ secrets.ACCESS_TOKEN }}"
         branch: main 
         repository: wndgur2/wndgur2.github.io
-      permissions:
-        contents: write
