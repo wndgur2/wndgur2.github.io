@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lee Junghyeok</title>
     <script src="index.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -66,18 +66,21 @@ alt="img" /> 그 증가량은, 껍질이 코너를 돌 때 1씩 2번 증가한�
 <p>이러한 규칙을 통해 일직선상 구슬들의 인덱스를 알아낼 수 있다.</p>
 <h2 id="상세-구현">상세 구현</h2>
 <p>블리자드는 네 가지 함수로 구현했다.<br />
-코드는 <a href="./21611.cpp">21611.cpp</a> 파일을 참조하시면 됩니다.</p>
-<pre><code>// D방향으로 S만큼 구슬을 파괴하고, 그 자리를 0으로 대체한다.
-void 구슬파괴(marbles, D, S)
-
-// 배열 중간에 빈자리인 0을 제거하고 다음 칸의 구슬을 앞으로 당긴다. 당길 수 없을 때까지 반복한다.
-void 구슬당기기(marbles)
-
-// 4개 이상 연속된 구슬을 0으로 대체하고 당기기를 폭발이 없을 때까지 반복한다. 그 점수를 리턴한다.
-int 구슬폭발(marbles)
-
-// 문제의 규칙에 따라 구슬을 재조합한다.
-vector&lt;vector&lt;int&gt;&gt; 구슬변화(marbles)</code></pre>
+코드는 <a
+href="/cpp/21611_마법사_상어와_블리자드/21611.cpp">21611.cpp</a> 파일을
+참조하시면 됩니다.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">// D방향으로 S만큼 구슬을 파괴하고, 그 자리를 0으로 대체한다.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> 구슬파괴<span class="op">(</span>marbles<span class="op">,</span> D<span class="op">,</span> S<span class="op">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 배열 중간에 빈자리인 0을 제거하고 다음 칸의 구슬을 앞으로 당긴다. 당길 수 없을 때까지 반복한다.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> 구슬당기기<span class="op">(</span>marbles<span class="op">)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 4개 이상 연속된 구슬을 0으로 대체하고 당기기를 폭발이 없을 때까지 반복한다. 그 점수를 리턴한다.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">int</span> 구슬폭발<span class="op">(</span>marbles<span class="op">)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 문제의 규칙에 따라 구슬을 재조합한다.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> 구슬변화<span class="op">(</span>marbles<span class="op">)</span></span></code></pre></div>
 <p>이 함수들을 사용하기 전에, input으로 주어지는 테이블을, 중앙에서부터
 달팽이 껍질 모양으로 따라나가면서<br />
 1차원 벡터로 바꾸어주는 작업을 했다.</p>
@@ -313,62 +316,6 @@ created at 2024-05-10 13:43:06</h2>
 <p>빈 칸이 맨 오른쪽이 아니라 맨 왼쪽에서 시작한다고 하면 코드가 한결
 간결해진다.<br />
 다만, 로그를 출력할 때, 0 대신 마지막 index를 출력해야했다.</p>
-</div>
-<div class="md">
-<h3 id="문제-링크"><a href="">문제 링크</a></h3>
-<h3 id="문제-요약">문제 요약</h3>
-<pre><code>.</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th>입력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2</td>
-</tr>
-<tr class="even">
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>1 2 3</td>
-</tr>
-<tr class="even">
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>5 6 7 2 3 4 1 8</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>출력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-</tr>
-<tr class="even">
-<td>3 2 1 4 5</td>
-</tr>
-</tbody>
-</table>
-<h3 id="첫인상">첫인상</h3>
-<h3 id="실패">실패</h3>
-<h3 id="풀이">풀이</h3>
-<h3 id="시간-복잡도">시간 복잡도</h3>
-<p><span class="math inline">∴<em>O</em>()</span></p>
-<h3 id="회고">회고</h3>
 </div>
 <div class="md">
 <h2 id="최대-상금-2024-05-09-202256">1244_최대 상금 2024-05-09
