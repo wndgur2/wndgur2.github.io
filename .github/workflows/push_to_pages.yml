@@ -1,0 +1,24 @@
+name: Push to Pages
+
+on:
+  push:
+    branches:
+      - main  # Change this to match your branch name
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Copy Markdown files
+      run: |
+        cp -r ./*.md ../wndgur2.github.io
+      working-directory: algorithms
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.ACCESS_TOKEN }}
