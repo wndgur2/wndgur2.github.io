@@ -1,5 +1,5 @@
 // get all .md files
-
+console.log("WTF");
 const fs = require('fs');
 const path = require('path');
 
