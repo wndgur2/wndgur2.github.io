@@ -23,4 +23,4 @@ jobs:
         github_token: ${{ secrets.ACCESS_TOKEN }}
         branch: main  # Specify the branch of wndgur2.github.io repository
         repository: wndgur2/wndgur2.github.io
-        directory: ../temp
+        
