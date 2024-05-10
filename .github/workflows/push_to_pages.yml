@@ -16,7 +16,6 @@ jobs:
     - name: Copy Markdown files
       run: |
         ls -R
-      working-directory: algorithms
 
     - name: Push changes
       uses: ad-m/github-push-action@master
