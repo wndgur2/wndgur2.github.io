@@ -16,7 +16,7 @@ jobs:
     - name: Copy Markdown files
       run: |
         cp -r ./*.md ../wndgur2.github.io
-      working-directory: algorithms
+      working-directory: ${{ github.workspace }}/algorithms
 
     - name: Push changes
       uses: ad-m/github-push-action@master
