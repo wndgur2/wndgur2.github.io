@@ -11,12 +11,12 @@ current_time=$(date +"%Y-%m-%d %H:%M:%S")
 # Create a temporary file
 code_setup=$(mktemp)
 echo "\"\"\"\n" > "$code_setup"
-echo "\t$problem_name $current_time" >> "$code_setup"
+echo "\t$problem_name created at $current_time" >> "$code_setup"
 echo "\n\"\"\"\n" >> "$code_setup"
 cat "_solve.py" >> "$code_setup"
 
 readme_setup=$(mktemp)
-echo "## $problem_name $current_time" > "$readme_setup"
+echo "## $problem_name created at $current_time" > "$readme_setup"
 cat "_README.md" >> "$readme_setup"
 
 if [ ! -f "$problem_name/$problem_name.py" ]; then
