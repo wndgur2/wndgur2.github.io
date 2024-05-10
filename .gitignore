@@ -5,3 +5,4 @@
 .vscode
 *.out
 .DS_Store
+push.sh
