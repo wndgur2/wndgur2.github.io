@@ -1,4 +1,6 @@
 name: Push to Pages
+permissions:
+  contents: write
 
 on:
   push:
@@ -8,8 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
     - name: Checkout code
