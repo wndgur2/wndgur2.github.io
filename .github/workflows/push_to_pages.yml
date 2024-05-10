@@ -15,7 +15,7 @@ jobs:
 
     - name: Copy Markdown files
       run: |
-        ls | cp -r ./*.md ../wndgur2.github.io
+        ls -R
       working-directory: algorithms
 
     - name: Push changes
