@@ -17,31 +17,32 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-def getIndexToSort(li):
-    index = 1
+def getNotSortedIndex(li):
+    index = 0
     for n in li:
         if n!= index:
-            return index - 1
+            return index
         index += 1
+    return -1
 
 T = int(input())
 for test_case in range(1, T + 1):
     n = int(input())
     log = []
-    baskets = list(map(int, input().split()))
-    baskets.append(0) # 맨 오른쪽 빈 칸
-    indexToSort = getIndexToSort(baskets) # 앞에서부터 정렬되지 않은 인덱스 탐색. 정렬 되어있다면 맨 뒤 인덱스 리턴.
-    while((baskets[-1] != 0) or (indexToSort != len(baskets)-1)): # 대부분 앞 조건이 True일 것임.
-        if baskets[-1] == 0:
-            baskets[-1] = baskets[indexToSort]
-            baskets[indexToSort] = 0
-            log.append(indexToSort + 1)
+    baskets = [0]
+    baskets.extend(list(map(int, input().split())))
+    indexNotSorted = getNotSortedIndex(baskets) # 앞에서부터 정렬되지 않은 인덱스 탐색.
+    while(indexNotSorted != -1): # 정렬되어있으면 -1 리턴
+        if baskets[0] == 0:
+            baskets[0] = baskets[indexNotSorted]
+            baskets[indexNotSorted] = 0
+            log.append(indexNotSorted if indexNotSorted!=0 else len(baskets))
         else:
             indexBlank = baskets.index(0)
-            indexToMove = baskets.index(indexBlank+1)
+            indexToMove = baskets.index(indexBlank)
             baskets[indexBlank] = baskets[indexToMove]
             baskets[indexToMove] = 0
-            log.append(indexToMove + 1)
-        indexToSort = getIndexToSort(baskets)
+            log.append(indexToMove  if indexToMove!=0 else len(baskets))
+        indexNotSorted = getNotSortedIndex(baskets)
     print(len(log))
     print(*log)
