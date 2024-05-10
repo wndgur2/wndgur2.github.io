@@ -7,7 +7,10 @@ body{
 
     padding: 0px;
     margin: 0px;
-    background-color: #666;
+    color:#e6edf3;
+    background-color: #0d1117;
+
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
 }
 img{
     max-width: 100%;
@@ -15,11 +18,10 @@ img{
 div.sourceCode{
     padding: 4px;
     overflow-x: scroll;
-    background-color: #212121;
+    background-color: #161b22;
     color: #eee;
 }
 .md{
-    background-color: #f6f6f4;
     display: flex;
     flex-direction: column;
     width: 96%;
@@ -28,19 +30,33 @@ div.sourceCode{
     margin: 2% 0px;
     padding: 1%;
 
+    border: 1px solid #30363D;
+    border-radius: 6px;
+
     overflow-x: scroll;
 }
 
 pre{
     text-wrap:pretty;
 }
-
-td{
-    background-color: #e0e0e0;
+table {
+    border-collapse: collapse;
+}
+tr{
+    border: 1px solid #30363D;
+    box-sizing: border-box;
 }
 
-table{
-    background-color: #e6e6e6;
+th{
+    padding: 12px;
+}
+td{
+    padding: 8px;
+}
+
+
+tr:nth-child(even){
+    background-color: #161b22;
 }
 
 a{
