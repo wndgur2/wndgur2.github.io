@@ -1,0 +1,10 @@
+img{
+    width: 100%;
+}
+.sourceCode{
+    background-color: #212121;
+    color: #eee;
+}
+div.sourceCode{
+    padding: 4px;
+}
