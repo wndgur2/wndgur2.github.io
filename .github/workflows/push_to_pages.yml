@@ -23,6 +23,6 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.ACCESS_TOKEN }}
-        branch: main  # Specify the branch of wndgur2.github.io repository
+        branch: main 
         repository: wndgur2/wndgur2.github.io
         
