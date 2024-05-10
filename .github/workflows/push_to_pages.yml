@@ -15,7 +15,7 @@ jobs:
 
     - name: Copy Markdown files
       run: |
-        ls -R
+        cp -r ./*.md ../wndgur2.github.io
 
     - name: Push changes
       uses: ad-m/github-push-action@master
