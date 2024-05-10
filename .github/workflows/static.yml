@@ -31,6 +31,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Install xmllint
+        run: sudo apt-get install -y pandoc
       - name: Make the script file executable
         run: chmod +x script.sh
       - name: Run a script
