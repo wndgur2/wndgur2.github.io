@@ -11,7 +11,7 @@ done < <(find . -name '*.md' -print)
 # convert each file to html
 for file in "${files[@]}"; do
     echo "Converting $file"
-    echo "<div class='md'>" >> "$html"
+    echo "<div class='md $extension'>" >> "$html"
     pandoc -f markdown -t html "$file" >> "$html"
     echo "</div>" >> "$html"
 done
