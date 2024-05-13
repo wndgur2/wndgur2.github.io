@@ -13,30 +13,26 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-T = int(input())
-for test_case in range(1, T + 1):
+directions = [(-1, 0), (0, -1), (1, 0), (0, 1)]
+
+for test_case in range(1, int(input()) + 1):
     size = int(input())
     cost_map = [list(map(int, list(input()))) for _ in range(size)]
-    dp = [[-1 for __ in range(size)] for _ in range(size)]
-
-    branches = [[0, 0, 0]]
+    dp = [[1e9]*size for _ in range(size)]
+    dp[0][0] = 0
+    branches = [[0, 0]]
     while branches:
-        y, x, cost = branches.pop() # O(1)
-        if (cost < dp[y][x]) or (dp[y][x]==-1):
-            dp[y][x] = cost
-        else:
-            continue
-        if (dp[size-1][size-1]!=-1) and (cost > dp[size-1][size-1]):
-            continue
-        if (y==size-1) and (x==size-1):
-            continue
-        if y>0:
-            branches.append([y-1, x, cost+cost_map[y-1][x]])
-        if x>0:
-            branches.append([y, x-1, cost+cost_map[y][x-1]])
-        if y<size-1:
-            branches.append([y+1, x, cost+cost_map[y+1][x]])
-        if x<size-1:
-            branches.append([y, x+1, cost+cost_map[y][x+1]])
+        y, x = branches.pop() # O(1)
 
-    print('#'+str(test_case), dp[size-1][size-1])
+        if dp[y][x] > dp[size-1][size-1]:
+            continue
+        
+        for dy, dx in directions:
+            ny, nx = y+dy, x+dx
+            if (0<=ny<size) and (0<=nx<size):
+                if (dp[ny][nx] > dp[y][x]+cost_map[ny][nx]):
+                    dp[ny][nx] = dp[y][x]+cost_map[ny][nx]
+                    branches.append([ny, nx])
+
+    print(f'#{test_case} {dp[size-1][size-1]}')
+
