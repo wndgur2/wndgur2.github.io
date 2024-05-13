@@ -2,7 +2,7 @@
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15QRX6APsCFAYD)
 
 ### 문제 요약
-    가중치가 있는 지도가 주어진다. 4방으로 1칸 씩 이동하여 0, 0에서 N-1, N-1까지 가는 최소 비용을 출력하라.
+가중치가 있는 지도가 주어진다. 4방으로 1칸 씩 이동하여 0, 0에서 N-1, N-1까지 가는 최소 비용을 출력하라.
     
 
 | 입력 예 |

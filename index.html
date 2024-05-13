@@ -9,91 +9,245 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body><div class='md ext-md'>
-<h1 id="이중혁-알고리즘-연습장"><a
-href="https://wndgur2.github.io">이중혁 알고리즘 연습장</a></h1>
-<h3 id="깃허브"><a href="https://github.com/wndgur2">깃허브</a></h3>
-<h3 id="백준"><a
-href="https://www.acmicpc.net/user/wndgur2">백준</a></h3>
-<h3 id="swexpertacademy"><a
-href="https://swexpertacademy.com/main/userpage/home/userHome.do?userId=AY9bT9Ma97cDFAS1">SWExpertAcademy</a></h3>
+<body>
+    <div class="title block">
+        <a href="https://github.com/wndgur2/wndgur2.github.io">
+            <h1>이중혁 알고리즘 풀이노트 </h1>
+        </a>
+    </div><div class='block '>
+<h2 id="수영장-created-at-2024-05-13-162249">1952_수영장 created at
+2024-05-13 16:22:49</h2>
+<h3 id="문제-링크"><a
+href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq">문제
+링크</a></h3>
+<h3 id="문제-요약">문제 요약</h3>
+<p>테스트케이스 수가 주어진다. 내년에 다니려는 수영장의 가격이 주어진다.
+1일권, 1개월권, 3개월권, 1년권이 있다.<br />
+내년에 다니려는 계획이 월별 일수로 주어진다. 내년에 수영장을 계획대로
+다닐 수 있는 최소 가격을 출력하라.</p>
+<table>
+<thead>
+<tr class="header">
+<th>입력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>7</td>
+</tr>
+<tr class="even">
+<td>10 40 100 300</td>
+</tr>
+<tr class="odd">
+<td>0 0 2 9 1 5 0 0 0 0 0 0</td>
+</tr>
+<tr class="even">
+<td>10 100 50 300</td>
+</tr>
+<tr class="odd">
+<td>0 0 0 0 0 0 0 0 6 2 7 8</td>
+</tr>
+<tr class="even">
+<td>10 70 180 400</td>
+</tr>
+<tr class="odd">
+<td>6 9 7 7 7 5 5 0 0 0 0 0</td>
+</tr>
+<tr class="even">
+<td>10 70 200 550</td>
+</tr>
+<tr class="odd">
+<td>0 0 0 0 8 9 6 9 6 9 8 6</td>
+</tr>
+<tr class="even">
+<td>10 80 200 550</td>
+</tr>
+<tr class="odd">
+<td>0 8 9 15 1 13 2 4 9 0 0 0</td>
+</tr>
+<tr class="even">
+<td>10 130 360 1200</td>
+</tr>
+<tr class="odd">
+<td>0 0 0 15 14 11 15 13 12 15 10 15</td>
+</tr>
+<tr class="even">
+<td>10 180 520 1900</td>
+</tr>
+<tr class="odd">
+<td>0 18 16 16 19 19 18 18 15 16 17 16</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>출력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>#1 110</td>
+</tr>
+<tr class="even">
+<td>#2 100</td>
+</tr>
+<tr class="odd">
+<td>#3 400</td>
+</tr>
+<tr class="even">
+<td>#4 530</td>
+</tr>
+<tr class="odd">
+<td>#5 430</td>
+</tr>
+<tr class="even">
+<td>#6 1080</td>
+</tr>
+<tr class="odd">
+<td>#7 1840</td>
+</tr>
+</tbody>
+</table>
+<h3 id="풀이">풀이</h3>
+<p>[DP] dp[i]에 i월까지 다닐 수 있는 최소 비용을 담는다.</p>
+<p><span class="math inline">∴<em>O</em>(<em>n</em>)</span> ( <span
+class="math inline"><em>n</em></span>=다닐 개월 수 )</p>
+<p>약 30분 소요했다.</p>
 </div>
-<div class='md ext-md'>
-<h2 id="백준-21611-마법사-상어와-블리자드"><a
-href="https://www.acmicpc.net/problem/21611">백준 21611: 마법사 상어와
-블리자드</a></h2>
-<h3 id="카테고리-구현">카테고리 : 구현</h3>
-<h2 id="문제-설명">문제 설명</h2>
-<p>마법사 상어가 블리자드라는 스킬을 써서 구슬을 파괴하고,<br />
-같은 번호 구슬이 4개 이상 연속으로 있으면 애니팡처럼 폭발하는
-게임이다.</p>
-<p>아래와 같은 달팽이 껍질 모양 맵에 구슬 1, 2, 3 이 차있다. (i: 칸
-번호) <img src="/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png"
-alt="img" /></p>
-<p>블리자드(방향, 거리)를 써서 일직선 상의 구슬을 파괴한다. (i: 구슬
-번호) ~ <img src="/cpp/21611_마법사_상어와_블리자드/img/구슬_파괴.png"
-alt="img" /></p>
-<p>구슬이 또르르 굴러와 빈자리를 채운다. 연속된 구슬이 4개 이상이면
-폭발한다. <img src="/cpp/21611_마법사_상어와_블리자드/img/구슬_폭발.png"
-alt="img" /></p>
-<p>구슬이 다시 굴러 빈자리를 채운다. 폭발하는 구슬이 없을 때까지
-반복한다.</p>
-<p>각 연속된 구슬 그룹은 2개의 구슬(연속된 구슬의 개수, 그 그룹의 구슬
-번호)로 변화한다. <img
-src="/cpp/21611_마법사_상어와_블리자드/img/구슬_변화.png"
-alt="img" /></p>
-<p>위 과정을 M번 반복한다.</p>
-<p>1×(폭발한 1번 구슬의 개수) + 2×(폭발한 2번 구슬의 개수) + 3×(폭발한
-3번 구슬의 개수) 출력</p>
-<h2 id="블리자드를-맞는-구슬의-인덱스-구하는-법">블리자드를 맞는 구슬의
-인덱스 구하는 법</h2>
-<p>달팽이 껍질 모양의 테이블 안쪽 칸에서 바깥쪽 칸으로 가기 위한 인덱스
-차이는, 껍질이 커질 수록 커진다.</p>
-<p><img src="/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png"
-alt="img" /> 그 증가량은, 껍질이 코너를 돌 때 1씩 2번 증가한다.</p>
-<p>7 7 8 9 9 10 11 11 11 12 13 13 13 14 15 15 15 15 16 16 16 16 17 17 17
-17 17</p>
-<p>새로운 인덱스 차이를 구했으면, 해당 껍데기의 길이동안 유지된다. (꺾기
-전까지 유지된다.)</p>
-<p>껍데기의 길이는 (북, 서), (남, 동)이 동일하다.</p>
-<p>↑방향으로 사거리 3인 블리자드는<br />
-7 22 45번 구슬을 파괴한다.<br />
-인덱스 증가값은 0에서부터 시작하므로 7, 15, 23이다.</p>
-<p>7: 초기값<br />
-15: 7 + 2 + 2 + 2 + 2 : 코너를 4번 돌아야 한다.<br />
-23: 15 + 2 + 2 + 2 + 2 : 코너를 4번</p>
-<p>=&gt; 증가값은 항상 8이다.</p>
-<p>이러한 규칙을 통해 일직선상 구슬들의 인덱스를 알아낼 수 있다.</p>
-<h2 id="상세-구현">상세 구현</h2>
-<p>블리자드는 네 가지 함수로 구현했다.<br />
-코드는 <a
-href="/cpp/21611_마법사_상어와_블리자드/21611.cpp">21611.cpp</a> 파일을
-참조하시면 됩니다.</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// D방향으로 S만큼 구슬을 파괴하고, 그 자리를 0으로 대체한다.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> 구슬파괴<span class="op">(</span>marbles<span class="op">,</span> D<span class="op">,</span> S<span class="op">)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 배열 중간에 빈자리인 0을 제거하고 다음 칸의 구슬을 앞으로 당긴다. 당길 수 없을 때까지 반복한다.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> 구슬당기기<span class="op">(</span>marbles<span class="op">)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 4개 이상 연속된 구슬을 0으로 대체하고 당기기를 폭발이 없을 때까지 반복한다. 그 점수를 리턴한다.</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> 구슬폭발<span class="op">(</span>marbles<span class="op">)</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 문제의 규칙에 따라 구슬을 재조합한다.</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> 구슬변화<span class="op">(</span>marbles<span class="op">)</span></span></code></pre></div>
-<p>이 함수들을 사용하기 전에, input으로 주어지는 테이블을, 중앙에서부터
-달팽이 껍질 모양으로 따라나가면서<br />
-1차원 벡터로 바꾸어주는 작업을 했다.</p>
-<p>이후에는 위 네 함수를 적절히 사용해 해결했다.</p>
+<div class='block '>
+<h2 id="상자-정렬하기-created-at-2024-05-10-134306">20936_상자 정렬하기
+created at 2024-05-10 13:43:06</h2>
+<h3 id="문제-링크"><a href="">문제 링크</a></h3>
+<h3 id="문제-요약">문제 요약</h3>
+<p>1부터 N까지 번호가 붙은 N(1&lt;=N&lt;=500)개의 상자가 N+1개의 칸에
+임의의 순서로 나열되어 있다. 하나의 빈칸을 이용해 상자를 하나씩 이동하여
+정렬하라.</p>
+<table>
+<thead>
+<tr class="header">
+<th>입력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>1 2 3</td>
+</tr>
+<tr class="even">
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>5 6 7 2 3 4 1 8</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>출력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+</tr>
+<tr class="even">
+<td>3 2 1 4 5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="첫인상">첫인상</h3>
+<p>정렬 구현인 듯 하다. 규칙을 찾아보자.</p>
+<h3 id="실패">실패</h3>
+<h3 id="풀이">풀이</h3>
+<p>해당 칸에 들어가야 할 상자를 찾아서 넣으면,<br />
+찾는 데에 N, 이걸 N번, N^2 &lt;= 250000이므로 3초에 가능할 듯하다.</p>
+<p>맨 오른쪽 칸이 비었을 때에는, 앞에서부터 칸에 맞지 않는 상자를 찾으면
+그걸 옮긴다. 그 외에는, 해당 칸에 들어가야 할 상자를 찾아 옮긴다.</p>
+<h3 id="시간-복잡도">시간 복잡도</h3>
+<p>이동시킬 칸을 <span class="math inline"><em>N</em></span>번
+찾는다.<br />
+<span class="math inline">∴<em>O</em>(<em>N</em><sup>2</sup>)</span></p>
+<h3 id="회고">회고</h3>
+<p>변수의 의미가 미세하게 다를 때 변수명 짓는게 어렵다. 나중에 보면
+이해하기 어려울 것 같으니, 문제 해결 후 조금 더 고민해서 지어보기.</p>
+<h3 id="해결-이후-개선">해결 이후 개선</h3>
+<p>빈 칸이 맨 오른쪽이 아니라 맨 왼쪽에서 시작한다고 하면 코드가 한결
+간결해진다.<br />
+다만, 로그를 출력할 때, 0 대신 마지막 index를 출력해야했다.</p>
 </div>
-<div class='md ext-md'>
+<div class='block '>
+<h2 id="방울-마술-2024-05-09-152341">20934_방울 마술 2024-05-09
+15:23:41</h2>
+<h3 id="문제-링크"><a
+href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AY9QTGqqcckDFAVF">문제
+링크</a></h3>
+<h3 id="문제-요약">문제 요약</h3>
+<p>세 개의 컵과 하나의 공으로 야바위를 한다. 처음 공의 위치와 공이
+이동한 횟수가 주어졌을 때, 공이 있을 확률이 가장 높은 컵을 출력하라.
+(여러개면 왼쪽)</p>
+<table>
+<thead>
+<tr class="header">
+<th>입력 예</th>
+<th>출력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.o. 1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>o.. 1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>..o 0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="첫인상">첫인상</h3>
+<p>익숙한 유형은 아니어서 규칙을 찾아보려고 했다.</p>
+<h3 id="풀이">풀이</h3>
+<p>공이 1번 이동할 때 각 컵 안에 있을 확률</p>
+<pre><code>o.. =&gt; 0% 100% 0%
+.o. =&gt; 50% 0% 50%
+..o =&gt; 0% 100% 0%</code></pre>
+<p>공이 이동할 때,<br />
+가운데에서 이동하면 확률은 좌우로 반반씩 나뉜다.<br />
+좌우에서 이동하면 확률은 가운데로 모인다.<br />
+이 두 가지를 독립적으로 동시에 작동하도록 해서 해결했다.</p>
+<h3 id="시간-복잡도">시간 복잡도</h3>
+<p>연산 횟수는 공이 이동하는 횟수 <span
+class="math inline"><em>k</em></span>에 비례한다.<br />
+<span class="math inline">∴<em>O</em>(<em>k</em>)</span></p>
+<h3 id="회고">회고</h3>
+<p>난이도가 쉬워서 재밌는 문제였다. 응용하면 복잡해질 수 있을 것
+같다.</p>
+</div>
+<div class='block '>
 <h2 id="보급로-created-at-2024-05-10-144159">1249_보급로 created at
 2024-05-10 14:41:59</h2>
 <h3 id="문제-링크"><a
 href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15QRX6APsCFAYD">문제
 링크</a></h3>
 <h3 id="문제-요약">문제 요약</h3>
-<pre><code>가중치가 있는 지도가 주어진다. 4방으로 1칸 씩 이동하여 0, 0에서 N-1, N-1까지 가는 최소 비용을 출력하라.</code></pre>
+<p>가중치가 있는 지도가 주어진다. 4방으로 1칸 씩 이동하여 0, 0에서 N-1,
+N-1까지 가는 최소 비용을 출력하라.</p>
 <table>
 <thead>
 <tr class="header">
@@ -193,52 +347,60 @@ href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProb
 <p>재귀호출로 인한 메모리 초과, 탐색 방향으로 인한 시간 초과를
 겪었다.</p>
 <h3 id="풀이">풀이</h3>
-<p>[반복문 백트래킹 DFS]<br />
+<p>[반복문 메모이제이션 DFS]<br />
 DFS를 반복문으로 구현해 메모리 초과를 해결했다.<br />
 시간 초과 원인에 대해 고민하다 시간 복잡도를 줄이기보다는 디테일한
 문제라고 판단해서, 효율을 최대한 높이려고 했다. 그러다 눈에 밟힌
 것이</p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 증가하는 경우</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> y<span class="op">&lt;</span>size<span class="op">-</span><span class="dv">1</span>:</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    branches.append([y<span class="op">+</span><span class="dv">1</span>, x, cost<span class="op">+</span>cost_map[y<span class="op">+</span><span class="dv">1</span>][x]])</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x<span class="op">&lt;</span>size<span class="op">-</span><span class="dv">1</span>:</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    branches.append([y, x<span class="op">+</span><span class="dv">1</span>, cost<span class="op">+</span>cost_map[y][x<span class="op">+</span><span class="dv">1</span>]])</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 감소하는 경우</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> y<span class="op">&gt;</span><span class="dv">0</span>:</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    branches.append([y<span class="op">-</span><span class="dv">1</span>, x, cost<span class="op">+</span>cost_map[y<span class="op">-</span><span class="dv">1</span>][x]])</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x<span class="op">&gt;</span><span class="dv">0</span>:</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    branches.append([y, x<span class="op">-</span><span class="dv">1</span>, cost<span class="op">+</span>cost_map[y][x<span class="op">-</span><span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 증가하는 경우</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> y<span class="op">&lt;</span>size<span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    branches.append([y<span class="op">+</span><span class="dv">1</span>, x, cost<span class="op">+</span>cost_map[y<span class="op">+</span><span class="dv">1</span>][x]])</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x<span class="op">&lt;</span>size<span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    branches.append([y, x<span class="op">+</span><span class="dv">1</span>, cost<span class="op">+</span>cost_map[y][x<span class="op">+</span><span class="dv">1</span>]])</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 감소하는 경우</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> y<span class="op">&gt;</span><span class="dv">0</span>:</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    branches.append([y<span class="op">-</span><span class="dv">1</span>, x, cost<span class="op">+</span>cost_map[y<span class="op">-</span><span class="dv">1</span>][x]])</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x<span class="op">&gt;</span><span class="dv">0</span>:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    branches.append([y, x<span class="op">-</span><span class="dv">1</span>, cost<span class="op">+</span>cost_map[y][x<span class="op">-</span><span class="dv">1</span>]])</span></code></pre></div>
 <p>DFS의 가지를 뻗는 부분이다. 잘 보면, y와 x가 증가하는 경우를
 추가하고, 감소하는 부분을 추가한다.<br />
 여기서 문제는 branches.pop()은 리스트의 마지막 원소를 가져온다는 것.</p>
-<div class="sourceCode" id="cb3"><pre
-class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> branches:</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    y, x, cost <span class="op">=</span> branches.pop() <span class="co"># O(1)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (cost <span class="op">&lt;</span> min_stacked_cost_map[y][x]) <span class="kw">or</span> (min_stacked_cost_map[y][x]<span class="op">==-</span><span class="dv">1</span>):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        min_stacked_cost_map[y][x] <span class="op">=</span> cost</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (min_stacked_cost_map[size<span class="op">-</span><span class="dv">1</span>][size<span class="op">-</span><span class="dv">1</span>]<span class="op">!=-</span><span class="dv">1</span>) <span class="kw">and</span> (cost <span class="op">&gt;</span> min_stacked_cost_map[size<span class="op">-</span><span class="dv">1</span>][size<span class="op">-</span><span class="dv">1</span>]):</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (y<span class="op">==</span>size<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> (x<span class="op">==</span>size<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y<span class="op">&lt;</span>size<span class="op">-</span><span class="dv">1</span>:</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>        branches.append([y<span class="op">+</span><span class="dv">1</span>, x, cost<span class="op">+</span>cost_map[y<span class="op">+</span><span class="dv">1</span>][x]])</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&lt;</span>size<span class="op">-</span><span class="dv">1</span>:</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>        branches.append([y, x<span class="op">+</span><span class="dv">1</span>, cost<span class="op">+</span>cost_map[y][x<span class="op">+</span><span class="dv">1</span>]])</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y<span class="op">&gt;</span><span class="dv">0</span>:</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>        branches.append([y<span class="op">-</span><span class="dv">1</span>, x, cost<span class="op">+</span>cost_map[y<span class="op">-</span><span class="dv">1</span>][x]])</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&gt;</span><span class="dv">0</span>:</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>        branches.append([y, x<span class="op">-</span><span class="dv">1</span>, cost<span class="op">+</span>cost_map[y][x<span class="op">-</span><span class="dv">1</span>]])</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> branches:</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    y, x, cost <span class="op">=</span> branches.pop() <span class="co"># O(1)</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (cost <span class="op">&lt;</span> min_stacked_cost_map[y][x]) <span class="kw">or</span> (min_stacked_cost_map[y][x]<span class="op">==-</span><span class="dv">1</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        min_stacked_cost_map[y][x] <span class="op">=</span> cost</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (min_stacked_cost_map[size<span class="op">-</span><span class="dv">1</span>][size<span class="op">-</span><span class="dv">1</span>]<span class="op">!=-</span><span class="dv">1</span>) <span class="kw">and</span> (cost <span class="op">&gt;</span> min_stacked_cost_map[size<span class="op">-</span><span class="dv">1</span>][size<span class="op">-</span><span class="dv">1</span>]):</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (y<span class="op">==</span>size<span class="op">-</span><span class="dv">1</span>) <span class="kw">and</span> (x<span class="op">==</span>size<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y<span class="op">&lt;</span>size<span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        branches.append([y<span class="op">+</span><span class="dv">1</span>, x, cost<span class="op">+</span>cost_map[y<span class="op">+</span><span class="dv">1</span>][x]])</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&lt;</span>size<span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        branches.append([y, x<span class="op">+</span><span class="dv">1</span>, cost<span class="op">+</span>cost_map[y][x<span class="op">+</span><span class="dv">1</span>]])</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> y<span class="op">&gt;</span><span class="dv">0</span>:</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        branches.append([y<span class="op">-</span><span class="dv">1</span>, x, cost<span class="op">+</span>cost_map[y<span class="op">-</span><span class="dv">1</span>][x]])</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&gt;</span><span class="dv">0</span>:</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        branches.append([y, x<span class="op">-</span><span class="dv">1</span>, cost<span class="op">+</span>cost_map[y][x<span class="op">-</span><span class="dv">1</span>]])</span></code></pre></div>
 <p>따라서 나는 마지막으로 추가된 x가 감소하는 방향을 먼저 탐색하고, y가
 감소하는 방향, x가 증가하는 방향, y가 증가하는 방향 순서로 탐색하고
 있었다.</p>
 <p>이 append문 순서를 바꿔 시간 초과 문제를 해결했다.</p>
+<p>[BFS] 2024-05-13 16:10</p>
+<p>친구와 시간복잡도 계산을 하다가 다른 사람들이 제출한 코드의 실행
+시간이, 내가 제출한 시간보다 10배 이상 빠른 것을 보고, 풀이를
+찾아보았다. 결론은 BFS가 DFS보다 빠르다는 것.</p>
+<p>우리가 결론낸 그 원인은 이렇다. - 문제에 탐색 방향성이 있다.
+([0,0]-&gt;[n-1,n-1]) - 비용 맵을 그래프로 봤을 때 그래프의 엣지가 주변
+노드로 정해져있다. (4방향) - 따라서 가까운 노드를 먼저 탐색하는 것이
+유리하다.</p>
 <h3 id="시간-복잡도">시간 복잡도</h3>
 <p>기본적으로는 각 칸에서 발생하는 가지가 4개이므로 <span
 class="math inline"><em>O</em>(4<sup><em>n</em> * <em>n</em></sup>)</span>이다.<br />
-하지만 백트래킹으로 비용이 최소가 되는 경로만 유지하기 때문에 그보다
+하지만 메모이제이션으로 비용이 최소가 되는 경로만 유지하기 때문에 그보다
 현저히 낮아진다.</p>
 <h3 id="회고">회고</h3>
 <p>생각지 못한 메모리 초과와 시간 초과를 맞아 한 시간을 겨우 안
@@ -249,85 +411,15 @@ DFS나 BFS나 한 방식으로만 구현해왔던 게 조금 시간을 잡아먹
 알아야겠다.<br />
 (유연한 구현?)</p>
 </div>
-<div class='md ext-md'>
-<h2 id="상자-정렬하기-created-at-2024-05-10-134306">20936_상자 정렬하기
-created at 2024-05-10 13:43:06</h2>
-<h3 id="문제-링크"><a href="">문제 링크</a></h3>
-<h3 id="문제-요약">문제 요약</h3>
-<pre><code>1부터 N까지 번호가 붙은 N(1&lt;=N&lt;=500)개의 상자가 N+1개의 칸에 임의의 순서로 나열되어 있다. 하나의 빈칸을 이용해 상자를 하나씩 이동하여 정렬하라.</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th>입력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2</td>
-</tr>
-<tr class="even">
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>1 2 3</td>
-</tr>
-<tr class="even">
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>5 6 7 2 3 4 1 8</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>출력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-</tr>
-<tr class="even">
-<td>3 2 1 4 5</td>
-</tr>
-</tbody>
-</table>
-<h3 id="첫인상">첫인상</h3>
-<p>정렬 구현인 듯 하다. 규칙을 찾아보자.</p>
-<h3 id="실패">실패</h3>
-<h3 id="풀이">풀이</h3>
-<p>해당 칸에 들어가야 할 상자를 찾아서 넣으면,<br />
-찾는 데에 N, 이걸 N번, N^2 &lt;= 250000이므로 3초에 가능할 듯하다.</p>
-<p>맨 오른쪽 칸이 비었을 때에는, 앞에서부터 칸에 맞지 않는 상자를 찾으면
-그걸 옮긴다. 그 외에는, 해당 칸에 들어가야 할 상자를 찾아 옮긴다.</p>
-<h3 id="시간-복잡도">시간 복잡도</h3>
-<p>이동시킬 칸을 <span class="math inline"><em>N</em></span>번
-찾는다.<br />
-<span class="math inline">∴<em>O</em>(<em>N</em><sup>2</sup>)</span></p>
-<h3 id="회고">회고</h3>
-<p>변수의 의미가 미세하게 다를 때 변수명 짓는게 어렵다. 나중에 보면
-이해하기 어려울 것 같으니, 문제 해결 후 조금 더 고민해서 지어보기.</p>
-<h3 id="해결-이후-개선">해결 이후 개선</h3>
-<p>빈 칸이 맨 오른쪽이 아니라 맨 왼쪽에서 시작한다고 하면 코드가 한결
-간결해진다.<br />
-다만, 로그를 출력할 때, 0 대신 마지막 index를 출력해야했다.</p>
-</div>
-<div class='md ext-md'>
+<div class='block '>
 <h2 id="최대-상금-2024-05-09-202256">1244_최대 상금 2024-05-09
 20:22:56</h2>
 <h3 id="문제-링크"><a
 href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15Khn6AN0CFAYD">문제
 링크</a></h3>
 <h3 id="문제-요약">문제 요약</h3>
-<pre><code>최대 6자리 수 중 두개의 자리를 최대 10번 교환하여 만들 수 있는 가장 큰 수를 구하시오.</code></pre>
+<p>최대 6자리 수 중 두개의 자리를 최대 10번 교환하여 만들 수 있는 가장
+큰 수를 구하시오.</p>
 <table>
 <thead>
 <tr class="header">
@@ -367,7 +459,8 @@ href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProb
 <p><em>dfs</em>하며 각 depth(교환 횟수)마다 따로 중복 검사를 하여
 통과했다. python의 set를 활용해 중복 검사를 상수 시간에 해결했다.</p>
 <h3 id="시간-복잡도">시간 복잡도</h3>
-<p>$최대 자릿수: l, 교환 횟수:k $</p>
+<p><span
+class="math inline"><em>최</em><em>대</em><em>자</em><em>릿</em><em>수</em> : <em>l</em>, <em>교</em><em>환</em><em>횟</em><em>수</em> : <em>k</em></span></p>
 <p><span class="math inline"><em>l</em></span>자리 수에서 나올 수 있는
 조합은 최대 <span class="math inline">10<sup><em>l</em></sup></span>개
 (십진수이므로)<br />
@@ -382,13 +475,14 @@ class="math inline">∴<em>O</em>(<em>m</em><em>i</em><em>n</em>(10<sup><em>l</e
 오래 기억하도록 정리하는 습관 들이기.<br />
 문제 꾸준히 풀기.</p>
 </div>
-<div class='md ext-md'>
+<div class='block '>
 <h2 id="view-2024-05-10-114236">1206_view 2024-05-10 11:42:36</h2>
 <h3 id="문제-링크"><a
 href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV134DPqAA8CFAYh">문제
 링크</a></h3>
 <h3 id="문제-요약">문제 요약</h3>
-<pre><code>빌딩의 개수와 높이가 주어진다. 가로로 2칸 이상 다른 빌딩이 없을 때, 조망권이 확보되었다고 하자. 조망권이 확보된 세대 수를 구하시오.</code></pre>
+<p>빌딩의 개수와 높이가 주어진다. 가로로 2칸 이상 다른 빌딩이 없을 때,
+조망권이 확보되었다고 하자. 조망권이 확보된 세대 수를 구하시오.</p>
 <table>
 <thead>
 <tr class="header">
@@ -446,53 +540,81 @@ href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProb
 <h3 id="회고">회고</h3>
 <p>단순 구현이어서 빠르게 풀었다. 실수를 하지 않은 것은 다행이었다.</p>
 </div>
-<div class='md ext-md'>
-<h2 id="방울-마술-2024-05-09-152341">20934_방울 마술 2024-05-09
-15:23:41</h2>
-<h3 id="문제-링크"><a
-href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AY9QTGqqcckDFAVF">문제
-링크</a></h3>
-<h3 id="문제-요약">문제 요약</h3>
-<pre><code>세 개의 컵과 하나의 공으로 야바위를 한다. 처음 공의 위치와 공이 이동한 횟수가 주어졌을 때, 공이 있을 확률이 가장 높은 컵을 출력하라. (여러개면 왼쪽)</code></pre>
-<table>
-<thead>
-<tr class="header">
-<th>입력 예</th>
-<th>출력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>.o. 1</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>o.. 1</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>..o 0</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-<h3 id="첫인상">첫인상</h3>
-<p>익숙한 유형은 아니어서 규칙을 찾아보려고 했다.</p>
-<h3 id="풀이">풀이</h3>
-<p>공이 1번 이동할 때 각 컵 안에 있을 확률</p>
-<pre><code>o.. =&gt; 0% 100% 0%
-.o. =&gt; 50% 0% 50%
-..o =&gt; 0% 100% 0%</code></pre>
-<p>공이 이동할 때,<br />
-가운데에서 이동하면 확률은 좌우로 반반씩 나뉜다.<br />
-좌우에서 이동하면 확률은 가운데로 모인다.<br />
-이 두 가지를 독립적으로 동시에 작동하도록 해서 해결했다.</p>
-<h3 id="시간-복잡도">시간 복잡도</h3>
-<p>연산 횟수는 공이 이동하는 횟수 <span
-class="math inline"><em>k</em></span>에 비례한다.<br />
-<span class="math inline">∴<em>O</em>(<em>k</em>)</span></p>
-<h3 id="회고">회고</h3>
-<p>난이도가 쉬워서 재밌는 문제였다. 응용하면 복잡해질 수 있을 것
-같다.</p>
+<div class='block '>
+<h2 id="백준-21611-마법사-상어와-블리자드"><a
+href="https://www.acmicpc.net/problem/21611">백준 21611: 마법사 상어와
+블리자드</a></h2>
+<h3 id="카테고리-구현">카테고리 : 구현</h3>
+<h2 id="문제-설명">문제 설명</h2>
+<p>마법사 상어가 블리자드라는 스킬을 써서 구슬을 파괴하고,<br />
+같은 번호 구슬이 4개 이상 연속으로 있으면 애니팡처럼 폭발하는
+게임이다.</p>
+<p>아래와 같은 달팽이 껍질 모양 맵에 구슬 1, 2, 3 이 차있다. (i: 칸
+번호) <img src="/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png"
+alt="img" /></p>
+<p>블리자드(방향, 거리)를 써서 일직선 상의 구슬을 파괴한다. (i: 구슬
+번호) ~ <img src="/cpp/21611_마법사_상어와_블리자드/img/구슬_파괴.png"
+alt="img" /></p>
+<p>구슬이 또르르 굴러와 빈자리를 채운다. 연속된 구슬이 4개 이상이면
+폭발한다. <img src="/cpp/21611_마법사_상어와_블리자드/img/구슬_폭발.png"
+alt="img" /></p>
+<p>구슬이 다시 굴러 빈자리를 채운다. 폭발하는 구슬이 없을 때까지
+반복한다.</p>
+<p>각 연속된 구슬 그룹은 2개의 구슬(연속된 구슬의 개수, 그 그룹의 구슬
+번호)로 변화한다. <img
+src="/cpp/21611_마법사_상어와_블리자드/img/구슬_변화.png"
+alt="img" /></p>
+<p>위 과정을 M번 반복한다.</p>
+<p>1×(폭발한 1번 구슬의 개수) + 2×(폭발한 2번 구슬의 개수) + 3×(폭발한
+3번 구슬의 개수) 출력</p>
+<h2 id="블리자드를-맞는-구슬의-인덱스-구하는-법">블리자드를 맞는 구슬의
+인덱스 구하는 법</h2>
+<p>달팽이 껍질 모양의 테이블 안쪽 칸에서 바깥쪽 칸으로 가기 위한 인덱스
+차이는, 껍질이 커질 수록 커진다.</p>
+<p><img src="/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png"
+alt="img" /> 그 증가량은, 껍질이 코너를 돌 때 1씩 2번 증가한다.</p>
+<p>7 7 8 9 9 10 11 11 11 12 13 13 13 14 15 15 15 15 16 16 16 16 17 17 17
+17 17</p>
+<p>새로운 인덱스 차이를 구했으면, 해당 껍데기의 길이동안 유지된다. (꺾기
+전까지 유지된다.)</p>
+<p>껍데기의 길이는 (북, 서), (남, 동)이 동일하다.</p>
+<p>↑방향으로 사거리 3인 블리자드는<br />
+7 22 45번 구슬을 파괴한다.<br />
+인덱스 증가값은 0에서부터 시작하므로 7, 15, 23이다.</p>
+<p>7: 초기값<br />
+15: 7 + 2 + 2 + 2 + 2 : 코너를 4번 돌아야 한다.<br />
+23: 15 + 2 + 2 + 2 + 2 : 코너를 4번</p>
+<p>=&gt; 증가값은 항상 8이다.</p>
+<p>이러한 규칙을 통해 일직선상 구슬들의 인덱스를 알아낼 수 있다.</p>
+<h2 id="상세-구현">상세 구현</h2>
+<p>블리자드는 네 가지 함수로 구현했다.<br />
+코드는 <a
+href="/cpp/21611_마법사_상어와_블리자드/21611.cpp">21611.cpp</a> 파일을
+참조하시면 됩니다.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// D방향으로 S만큼 구슬을 파괴하고, 그 자리를 0으로 대체한다.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> 구슬파괴<span class="op">(</span>marbles<span class="op">,</span> D<span class="op">,</span> S<span class="op">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 배열 중간에 빈자리인 0을 제거하고 다음 칸의 구슬을 앞으로 당긴다. 당길 수 없을 때까지 반복한다.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> 구슬당기기<span class="op">(</span>marbles<span class="op">)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 4개 이상 연속된 구슬을 0으로 대체하고 당기기를 폭발이 없을 때까지 반복한다. 그 점수를 리턴한다.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> 구슬폭발<span class="op">(</span>marbles<span class="op">)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 문제의 규칙에 따라 구슬을 재조합한다.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> 구슬변화<span class="op">(</span>marbles<span class="op">)</span></span></code></pre></div>
+<p>이 함수들을 사용하기 전에, input으로 주어지는 테이블을, 중앙에서부터
+달팽이 껍질 모양으로 따라나가면서<br />
+1차원 벡터로 바꾸어주는 작업을 했다.</p>
+<p>이후에는 위 네 함수를 적절히 사용해 해결했다.</p>
+</div>
+<div class='block '>
+<h1 id="이중혁-알고리즘-연습장"><a
+href="https://wndgur2.github.io">이중혁 알고리즘 연습장</a></h1>
+<h3 id="깃허브"><a href="https://github.com/wndgur2">깃허브</a></h3>
+<h3 id="백준"><a
+href="https://www.acmicpc.net/user/wndgur2">백준</a></h3>
+<h3 id="swexpertacademy"><a
+href="https://swexpertacademy.com/main/userpage/home/userHome.do?userId=AY9bT9Ma97cDFAS1">SWExpertAcademy</a></h3>
 </div>
 </body></html>

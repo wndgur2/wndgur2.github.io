@@ -2,7 +2,7 @@
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV134DPqAA8CFAYh)
 
 ### 문제 요약
-    빌딩의 개수와 높이가 주어진다. 가로로 2칸 이상 다른 빌딩이 없을 때, 조망권이 확보되었다고 하자. 조망권이 확보된 세대 수를 구하시오.
+빌딩의 개수와 높이가 주어진다. 가로로 2칸 이상 다른 빌딩이 없을 때, 조망권이 확보되었다고 하자. 조망권이 확보된 세대 수를 구하시오.
     
 | 입력 예 | 
 | --- | 

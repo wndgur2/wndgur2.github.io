@@ -13,6 +13,13 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
+.title {
+    margin: 20px 0px;
+    padding: 0px;
+    color: #060d13;
+    text-align: center;
+}
+
 img {
     margin: 8px 0px;
     max-width: 100%;
@@ -42,7 +49,7 @@ div.sourceCode {
     color: #d19a66;
 }
 
-.md {
+.block {
     display: flex;
     flex-direction: column;
     width: 96%;
