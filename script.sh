@@ -13,7 +13,10 @@ done < <(find . -name '*.md' -print)
 dates_files=()
 for file in "${files[@]}"; do
     echo $(basename $file)
-    date=$((stat --format=%y $file | cut -d ' ' -f 1) || (stat -t '%F' $file | cut -d ' ' -f 12))
+    date=$(stat --format=%W $file | cut -d ' ' -f 1)
+    if [ -z $date ]; then
+        date=$(stat -f '%c' $file)
+    fi
     dates_files+=("$date:$file")
     echo "Detected $date:$file"
 done
