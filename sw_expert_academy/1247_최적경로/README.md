@@ -1,4 +1,4 @@
-## 1247_최적경로 created at 2024-05-16 13:50:09
+## 1247_최적경로 2024-05-16 13:50:09
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD)
 
 ### #완전탐색 #DFS #순열

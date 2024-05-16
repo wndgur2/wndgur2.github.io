@@ -1,4 +1,4 @@
-## 1249_보급로 created at 2024-05-10 14:41:59
+## 1249_보급로 2024-05-10 14:41:59
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15QRX6APsCFAYD)
 
 ### #BFS
