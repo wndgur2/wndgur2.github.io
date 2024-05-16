@@ -1,6 +1,8 @@
 ## 20934_방울 마술 2024-05-09 15:23:41
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AY9QTGqqcckDFAVF)
 
+### #구현
+
 ### 문제 요약
 세 개의 컵과 하나의 공으로 야바위를 한다. 처음 공의 위치와 공이 이동한 횟수가 주어졌을 때, 공이 있을 확률이 가장 높은 컵을 출력하라. (여러개면 왼쪽)
     

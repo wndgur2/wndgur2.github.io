@@ -15,105 +15,72 @@
             <h1>이중혁 알고리즘 풀이노트 </h1>
         </a>
     </div><div class='block '>
-<h2 id="수영장-created-at-2024-05-13-162249">1952_수영장 created at
-2024-05-13 16:22:49</h2>
-<h3 id="문제-링크"><a
-href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq">문제
-링크</a></h3>
-<h3 id="문제-요약">문제 요약</h3>
-<p>테스트케이스 수가 주어진다. 내년에 다니려는 수영장의 가격이 주어진다.
-1일권, 1개월권, 3개월권, 1년권이 있다.<br />
-내년에 다니려는 계획이 월별 일수로 주어진다. 내년에 수영장을 계획대로
-다닐 수 있는 최소 가격을 출력하라.</p>
-<table>
-<thead>
-<tr class="header">
-<th>입력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>7</td>
-</tr>
-<tr class="even">
-<td>10 40 100 300</td>
-</tr>
-<tr class="odd">
-<td>0 0 2 9 1 5 0 0 0 0 0 0</td>
-</tr>
-<tr class="even">
-<td>10 100 50 300</td>
-</tr>
-<tr class="odd">
-<td>0 0 0 0 0 0 0 0 6 2 7 8</td>
-</tr>
-<tr class="even">
-<td>10 70 180 400</td>
-</tr>
-<tr class="odd">
-<td>6 9 7 7 7 5 5 0 0 0 0 0</td>
-</tr>
-<tr class="even">
-<td>10 70 200 550</td>
-</tr>
-<tr class="odd">
-<td>0 0 0 0 8 9 6 9 6 9 8 6</td>
-</tr>
-<tr class="even">
-<td>10 80 200 550</td>
-</tr>
-<tr class="odd">
-<td>0 8 9 15 1 13 2 4 9 0 0 0</td>
-</tr>
-<tr class="even">
-<td>10 130 360 1200</td>
-</tr>
-<tr class="odd">
-<td>0 0 0 15 14 11 15 13 12 15 10 15</td>
-</tr>
-<tr class="even">
-<td>10 180 520 1900</td>
-</tr>
-<tr class="odd">
-<td>0 18 16 16 19 19 18 18 15 16 17 16</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>출력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>#1 110</td>
-</tr>
-<tr class="even">
-<td>#2 100</td>
-</tr>
-<tr class="odd">
-<td>#3 400</td>
-</tr>
-<tr class="even">
-<td>#4 530</td>
-</tr>
-<tr class="odd">
-<td>#5 430</td>
-</tr>
-<tr class="even">
-<td>#6 1080</td>
-</tr>
-<tr class="odd">
-<td>#7 1840</td>
-</tr>
-</tbody>
-</table>
-<h3 id="풀이">풀이</h3>
-<p>[DP] dp[i]에 i월까지 다닐 수 있는 최소 비용을 담는다.</p>
-<p><span class="math inline">∴<em>O</em>(<em>n</em>)</span> ( <span
-class="math inline"><em>n</em></span>=다닐 개월 수 )</p>
-<p>약 30분 소요했다.</p>
+<h2 id="백준-21611-마법사-상어와-블리자드"><a
+href="https://www.acmicpc.net/problem/21611">백준 21611: 마법사 상어와
+블리자드</a></h2>
+<h3 id="카테고리-구현">카테고리 : 구현</h3>
+<h2 id="문제-설명">문제 설명</h2>
+<p>마법사 상어가 블리자드라는 스킬을 써서 구슬을 파괴하고,<br />
+같은 번호 구슬이 4개 이상 연속으로 있으면 애니팡처럼 폭발하는
+게임이다.</p>
+<p>아래와 같은 달팽이 껍질 모양 맵에 구슬 1, 2, 3 이 차있다. (i: 칸
+번호) <img src="/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png"
+alt="img" /></p>
+<p>블리자드(방향, 거리)를 써서 일직선 상의 구슬을 파괴한다. (i: 구슬
+번호) ~ <img src="/cpp/21611_마법사_상어와_블리자드/img/구슬_파괴.png"
+alt="img" /></p>
+<p>구슬이 또르르 굴러와 빈자리를 채운다. 연속된 구슬이 4개 이상이면
+폭발한다. <img src="/cpp/21611_마법사_상어와_블리자드/img/구슬_폭발.png"
+alt="img" /></p>
+<p>구슬이 다시 굴러 빈자리를 채운다. 폭발하는 구슬이 없을 때까지
+반복한다.</p>
+<p>각 연속된 구슬 그룹은 2개의 구슬(연속된 구슬의 개수, 그 그룹의 구슬
+번호)로 변화한다. <img
+src="/cpp/21611_마법사_상어와_블리자드/img/구슬_변화.png"
+alt="img" /></p>
+<p>위 과정을 M번 반복한다.</p>
+<p>1×(폭발한 1번 구슬의 개수) + 2×(폭발한 2번 구슬의 개수) + 3×(폭발한
+3번 구슬의 개수) 출력</p>
+<h2 id="블리자드를-맞는-구슬의-인덱스-구하는-법">블리자드를 맞는 구슬의
+인덱스 구하는 법</h2>
+<p>달팽이 껍질 모양의 테이블 안쪽 칸에서 바깥쪽 칸으로 가기 위한 인덱스
+차이는, 껍질이 커질 수록 커진다.</p>
+<p><img src="/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png"
+alt="img" /> 그 증가량은, 껍질이 코너를 돌 때 1씩 2번 증가한다.</p>
+<p>7 7 8 9 9 10 11 11 11 12 13 13 13 14 15 15 15 15 16 16 16 16 17 17 17
+17 17</p>
+<p>새로운 인덱스 차이를 구했으면, 해당 껍데기의 길이동안 유지된다. (꺾기
+전까지 유지된다.)</p>
+<p>껍데기의 길이는 (북, 서), (남, 동)이 동일하다.</p>
+<p>↑방향으로 사거리 3인 블리자드는<br />
+7 22 45번 구슬을 파괴한다.<br />
+인덱스 증가값은 0에서부터 시작하므로 7, 15, 23이다.</p>
+<p>7: 초기값<br />
+15: 7 + 2 + 2 + 2 + 2 : 코너를 4번 돌아야 한다.<br />
+23: 15 + 2 + 2 + 2 + 2 : 코너를 4번</p>
+<p>=&gt; 증가값은 항상 8이다.</p>
+<p>이러한 규칙을 통해 일직선상 구슬들의 인덱스를 알아낼 수 있다.</p>
+<h2 id="상세-구현">상세 구현</h2>
+<p>블리자드는 네 가지 함수로 구현했다.<br />
+코드는 <a
+href="/cpp/21611_마법사_상어와_블리자드/21611.cpp">21611.cpp</a> 파일을
+참조하시면 됩니다.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// D방향으로 S만큼 구슬을 파괴하고, 그 자리를 0으로 대체한다.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> 구슬파괴<span class="op">(</span>marbles<span class="op">,</span> D<span class="op">,</span> S<span class="op">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 배열 중간에 빈자리인 0을 제거하고 다음 칸의 구슬을 앞으로 당긴다. 당길 수 없을 때까지 반복한다.</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> 구슬당기기<span class="op">(</span>marbles<span class="op">)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 4개 이상 연속된 구슬을 0으로 대체하고 당기기를 폭발이 없을 때까지 반복한다. 그 점수를 리턴한다.</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> 구슬폭발<span class="op">(</span>marbles<span class="op">)</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 문제의 규칙에 따라 구슬을 재조합한다.</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> 구슬변화<span class="op">(</span>marbles<span class="op">)</span></span></code></pre></div>
+<p>이 함수들을 사용하기 전에, input으로 주어지는 테이블을, 중앙에서부터
+달팽이 껍질 모양으로 따라나가면서<br />
+1차원 벡터로 바꾸어주는 작업을 했다.</p>
+<p>이후에는 위 네 함수를 적절히 사용해 해결했다.</p>
 </div>
 <div class='block '>
 <h2 id="상자-정렬하기-created-at-2024-05-10-134306">20936_상자 정렬하기
@@ -238,6 +205,107 @@ class="math inline"><em>k</em></span>에 비례한다.<br />
 <h3 id="회고">회고</h3>
 <p>난이도가 쉬워서 재밌는 문제였다. 응용하면 복잡해질 수 있을 것
 같다.</p>
+</div>
+<div class='block '>
+<h2 id="수영장-created-at-2024-05-13-162249">1952_수영장 created at
+2024-05-13 16:22:49</h2>
+<h3 id="문제-링크"><a
+href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq">문제
+링크</a></h3>
+<h3 id="문제-요약">문제 요약</h3>
+<p>테스트케이스 수가 주어진다. 내년에 다니려는 수영장의 가격이 주어진다.
+1일권, 1개월권, 3개월권, 1년권이 있다.<br />
+내년에 다니려는 계획이 월별 일수로 주어진다. 내년에 수영장을 계획대로
+다닐 수 있는 최소 가격을 출력하라.</p>
+<table>
+<thead>
+<tr class="header">
+<th>입력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>7</td>
+</tr>
+<tr class="even">
+<td>10 40 100 300</td>
+</tr>
+<tr class="odd">
+<td>0 0 2 9 1 5 0 0 0 0 0 0</td>
+</tr>
+<tr class="even">
+<td>10 100 50 300</td>
+</tr>
+<tr class="odd">
+<td>0 0 0 0 0 0 0 0 6 2 7 8</td>
+</tr>
+<tr class="even">
+<td>10 70 180 400</td>
+</tr>
+<tr class="odd">
+<td>6 9 7 7 7 5 5 0 0 0 0 0</td>
+</tr>
+<tr class="even">
+<td>10 70 200 550</td>
+</tr>
+<tr class="odd">
+<td>0 0 0 0 8 9 6 9 6 9 8 6</td>
+</tr>
+<tr class="even">
+<td>10 80 200 550</td>
+</tr>
+<tr class="odd">
+<td>0 8 9 15 1 13 2 4 9 0 0 0</td>
+</tr>
+<tr class="even">
+<td>10 130 360 1200</td>
+</tr>
+<tr class="odd">
+<td>0 0 0 15 14 11 15 13 12 15 10 15</td>
+</tr>
+<tr class="even">
+<td>10 180 520 1900</td>
+</tr>
+<tr class="odd">
+<td>0 18 16 16 19 19 18 18 15 16 17 16</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>출력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>#1 110</td>
+</tr>
+<tr class="even">
+<td>#2 100</td>
+</tr>
+<tr class="odd">
+<td>#3 400</td>
+</tr>
+<tr class="even">
+<td>#4 530</td>
+</tr>
+<tr class="odd">
+<td>#5 430</td>
+</tr>
+<tr class="even">
+<td>#6 1080</td>
+</tr>
+<tr class="odd">
+<td>#7 1840</td>
+</tr>
+</tbody>
+</table>
+<h3 id="풀이">풀이</h3>
+<p>[DP] dp[i]에 i월까지 다닐 수 있는 최소 비용을 담는다.</p>
+<p><span class="math inline">∴<em>O</em>(<em>n</em>)</span> ( <span
+class="math inline"><em>n</em></span>=다닐 개월 수 )</p>
+<p>약 30분 소요했다.</p>
 </div>
 <div class='block '>
 <h2 id="보급로-created-at-2024-05-10-144159">1249_보급로 created at
@@ -539,74 +607,6 @@ href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProb
 <span class="math inline">∴<em>O</em>(<em>N</em>)</span></p>
 <h3 id="회고">회고</h3>
 <p>단순 구현이어서 빠르게 풀었다. 실수를 하지 않은 것은 다행이었다.</p>
-</div>
-<div class='block '>
-<h2 id="백준-21611-마법사-상어와-블리자드"><a
-href="https://www.acmicpc.net/problem/21611">백준 21611: 마법사 상어와
-블리자드</a></h2>
-<h3 id="카테고리-구현">카테고리 : 구현</h3>
-<h2 id="문제-설명">문제 설명</h2>
-<p>마법사 상어가 블리자드라는 스킬을 써서 구슬을 파괴하고,<br />
-같은 번호 구슬이 4개 이상 연속으로 있으면 애니팡처럼 폭발하는
-게임이다.</p>
-<p>아래와 같은 달팽이 껍질 모양 맵에 구슬 1, 2, 3 이 차있다. (i: 칸
-번호) <img src="/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png"
-alt="img" /></p>
-<p>블리자드(방향, 거리)를 써서 일직선 상의 구슬을 파괴한다. (i: 구슬
-번호) ~ <img src="/cpp/21611_마법사_상어와_블리자드/img/구슬_파괴.png"
-alt="img" /></p>
-<p>구슬이 또르르 굴러와 빈자리를 채운다. 연속된 구슬이 4개 이상이면
-폭발한다. <img src="/cpp/21611_마법사_상어와_블리자드/img/구슬_폭발.png"
-alt="img" /></p>
-<p>구슬이 다시 굴러 빈자리를 채운다. 폭발하는 구슬이 없을 때까지
-반복한다.</p>
-<p>각 연속된 구슬 그룹은 2개의 구슬(연속된 구슬의 개수, 그 그룹의 구슬
-번호)로 변화한다. <img
-src="/cpp/21611_마법사_상어와_블리자드/img/구슬_변화.png"
-alt="img" /></p>
-<p>위 과정을 M번 반복한다.</p>
-<p>1×(폭발한 1번 구슬의 개수) + 2×(폭발한 2번 구슬의 개수) + 3×(폭발한
-3번 구슬의 개수) 출력</p>
-<h2 id="블리자드를-맞는-구슬의-인덱스-구하는-법">블리자드를 맞는 구슬의
-인덱스 구하는 법</h2>
-<p>달팽이 껍질 모양의 테이블 안쪽 칸에서 바깥쪽 칸으로 가기 위한 인덱스
-차이는, 껍질이 커질 수록 커진다.</p>
-<p><img src="/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png"
-alt="img" /> 그 증가량은, 껍질이 코너를 돌 때 1씩 2번 증가한다.</p>
-<p>7 7 8 9 9 10 11 11 11 12 13 13 13 14 15 15 15 15 16 16 16 16 17 17 17
-17 17</p>
-<p>새로운 인덱스 차이를 구했으면, 해당 껍데기의 길이동안 유지된다. (꺾기
-전까지 유지된다.)</p>
-<p>껍데기의 길이는 (북, 서), (남, 동)이 동일하다.</p>
-<p>↑방향으로 사거리 3인 블리자드는<br />
-7 22 45번 구슬을 파괴한다.<br />
-인덱스 증가값은 0에서부터 시작하므로 7, 15, 23이다.</p>
-<p>7: 초기값<br />
-15: 7 + 2 + 2 + 2 + 2 : 코너를 4번 돌아야 한다.<br />
-23: 15 + 2 + 2 + 2 + 2 : 코너를 4번</p>
-<p>=&gt; 증가값은 항상 8이다.</p>
-<p>이러한 규칙을 통해 일직선상 구슬들의 인덱스를 알아낼 수 있다.</p>
-<h2 id="상세-구현">상세 구현</h2>
-<p>블리자드는 네 가지 함수로 구현했다.<br />
-코드는 <a
-href="/cpp/21611_마법사_상어와_블리자드/21611.cpp">21611.cpp</a> 파일을
-참조하시면 됩니다.</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">// D방향으로 S만큼 구슬을 파괴하고, 그 자리를 0으로 대체한다.</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> 구슬파괴<span class="op">(</span>marbles<span class="op">,</span> D<span class="op">,</span> S<span class="op">)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">// 배열 중간에 빈자리인 0을 제거하고 다음 칸의 구슬을 앞으로 당긴다. 당길 수 없을 때까지 반복한다.</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> 구슬당기기<span class="op">(</span>marbles<span class="op">)</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 4개 이상 연속된 구슬을 0으로 대체하고 당기기를 폭발이 없을 때까지 반복한다. 그 점수를 리턴한다.</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> 구슬폭발<span class="op">(</span>marbles<span class="op">)</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 문제의 규칙에 따라 구슬을 재조합한다.</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>vector<span class="op">&lt;</span>vector<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span> 구슬변화<span class="op">(</span>marbles<span class="op">)</span></span></code></pre></div>
-<p>이 함수들을 사용하기 전에, input으로 주어지는 테이블을, 중앙에서부터
-달팽이 껍질 모양으로 따라나가면서<br />
-1차원 벡터로 바꾸어주는 작업을 했다.</p>
-<p>이후에는 위 네 함수를 적절히 사용해 해결했다.</p>
 </div>
 <div class='block '>
 <h1 id="이중혁-알고리즘-연습장"><a

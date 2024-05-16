@@ -1,6 +1,8 @@
 ## 1952_수영장 created at 2024-05-13 16:22:49
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq)
 
+### #DP
+
 ### 문제 요약
 테스트케이스 수가 주어진다.
 내년에 다니려는 수영장의 가격이 주어진다. 1일권, 1개월권, 3개월권, 1년권이 있다.  

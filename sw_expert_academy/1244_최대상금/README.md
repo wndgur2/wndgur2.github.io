@@ -2,6 +2,8 @@
 
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15Khn6AN0CFAYD)
 
+### #DFS
+
 ### 문제 요약
 
 최대 6자리 수 중 두개의 자리를 최대 10번 교환하여 만들 수 있는 가장 큰 수를 구하시오.

@@ -25,7 +25,7 @@ if [ ! -f "$problem_name/$problem_name.py" ]; then
 else
     echo "$problem_name/$problem_name.py already exists."
 fi
-cp "$readme_setup" "$problem_name/$current_time.md"
+cp "$readme_setup" "$problem_name/$README.md"
 cd "$problem_name"
 touch "input.txt"
 echo "Generation complete!"
