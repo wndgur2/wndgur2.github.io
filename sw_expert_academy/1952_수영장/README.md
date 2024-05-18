@@ -1,4 +1,4 @@
-## 1952_수영장 2024-05-13 16:22:49
+## 1952_수영장 2024-05-13-16:22:49
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq)
 
 ### #DP

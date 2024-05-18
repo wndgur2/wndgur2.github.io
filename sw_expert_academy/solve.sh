@@ -6,7 +6,7 @@ fi
 # Get file name from the user input
 problem_name="$1"
 
-current_time=$(date +"%Y-%m-%d %H:%M:%S")
+current_time=$(date +"%Y-%m-%d-%H:%M:%S")
 
 # Create a temporary file
 code_setup=$(mktemp)

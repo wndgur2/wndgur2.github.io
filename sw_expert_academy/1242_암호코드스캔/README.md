@@ -1,4 +1,4 @@
-## 1242_암호코드스캔 2024-05-17 15:00:07
+## 1242_암호코드스캔 2024-05-17-15:00:07
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15JEKKAM8CFAYD)
 
 ### #구현 #문자열 #해시

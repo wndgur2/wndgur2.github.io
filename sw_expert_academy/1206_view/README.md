@@ -1,4 +1,4 @@
-## 1206_view 2024-05-10 11:42:36
+## 1206_view 2024-05-10-11:42:36
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV134DPqAA8CFAYh)
 
 ### #구현

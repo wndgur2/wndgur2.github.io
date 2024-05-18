@@ -1,4 +1,4 @@
-## 20934_방울마술 2024-05-09 15:23:41
+## 20934_방울마술 2024-05-09-15:23:41
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AY9QTGqqcckDFAVF)
 
 ### #구현
