@@ -15,24 +15,17 @@
             <h1>이중혁 알고리즘 풀이노트 </h1>
         </a>
     </div><div class='block '>
-<h1 id="이중혁-알고리즘-연습장"><a
-href="https://wndgur2.github.io">이중혁 알고리즘 연습장</a></h1>
-<h3 id="깃허브"><a href="https://github.com/wndgur2">깃허브</a></h3>
-<h3 id="백준"><a
-href="https://www.acmicpc.net/user/wndgur2">백준</a></h3>
-<h3 id="swexpertacademy"><a
-href="https://swexpertacademy.com/main/userpage/home/userHome.do?userId=AY9bT9Ma97cDFAS1">SWExpertAcademy</a></h3>
-</div>
-<div class='block '>
-<h2 id="공통조상-2024-05-16-130638">1248_공통조상 2024-05-16
-13:06:38</h2>
+<h2 id="등산로조성-2024-05-18-163731">1949_등산로조성
+2024-05-18-16:37:31</h2>
 <h3 id="문제-링크"><a
-href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15PTkqAPYCFAYD">문제
+href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PoOKKAPIDFAUq">문제
 링크</a></h3>
-<h3 id="트리">#트리</h3>
+<h3 id="dfs-완전탐색">#DFS #완전탐색</h3>
 <h3 id="문제-요약">문제 요약</h3>
-<p>이진 트리가 주어진다. 주어진 두 정점의 가장 가까운 공통 조상을
-구하고, 공통 조상을 루트로 하는 서브트리의 크기를 구하라.</p>
+<p>땅의 높이가 2차원 배열로 주어진다. 여기에 등산로를 만들기 위해, 가장
+높은 곳부터, 주변 낮은 땅으로만 길을 만든다고 하자. 한 좌표의 높이를
+최대 K만큼 깎는 공사를 할 수 있다. 이 때 만들 수 있는 가장 긴 등산로를
+구하시오</p>
 <table>
 <thead>
 <tr class="header">
@@ -41,13 +34,25 @@ href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProb
 </thead>
 <tbody>
 <tr class="odd">
-<td>10</td>
+<td>11</td>
 </tr>
 <tr class="even">
-<td>13 12 8 13</td>
+<td>5 1</td>
 </tr>
 <tr class="odd">
-<td>1 2 1 3 2 4 3 5 3 6 4 7 7 12 5 9 5 8 6 11 6 10 11 13</td>
+<td>9 3 2 3 2</td>
+</tr>
+<tr class="even">
+<td>6 3 1 7 5</td>
+</tr>
+<tr class="odd">
+<td>3 4 8 9 9</td>
+</tr>
+<tr class="even">
+<td>2 3 7 7 7</td>
+</tr>
+<tr class="odd">
+<td>7 6 5 5 8</td>
 </tr>
 </tbody>
 </table>
@@ -59,27 +64,186 @@ href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProb
 </thead>
 <tbody>
 <tr class="odd">
-<td>#1 3 8</td>
-</tr>
-<tr class="even">
-<td>#2 1 10</td>
+<td>1 6</td>
 </tr>
 </tbody>
 </table>
 <h3 id="풀이">풀이</h3>
-<p>트리를 dictionary를 이용해 구현했다. parent 노드는 하나, children은
-여럿이므로 각각 다른 dictionary에서 관리했다.</p>
-<p>a, b의 공통 조상은 a의 부모를 따라가며 a의 모든 조상을 구하고 이를
-set에 보관했다.(set의 find 시간 복잡도 O(1)이므로) 그다음 b의 조상을
-따라가며 set에 있는지 확인했다.</p>
-<p>그렇게 찾은 공통 조상을 루트로 하는 서브트리 크기는, children
-dictionary를 따라가며 DFS 완전탐색했다.</p>
-<p><span class="math inline">∴<em>O</em>(<em>V</em>)</span> (<span
-class="math inline"><em>V</em></span>=amount of vertexes)</p>
+<p>map 크기 N과 최대 공사 깊이 K가 작아 완전탐색했다.<br />
+visited 변수를 set로 만들기 위해 좌표를 문자열로 보관했다. [1,1] -&gt;
+“11”<br />
+문제 해석 과정에서, 출발 위치의 좌표가 산을 깎기 전, 가장 높은 곳으로
+선정된다는 것을 모르고,<br />
+산을 깎고 나서 가장 높은 곳부터 출발할 수 있다고 오인해 51개 test 중
+계속 50개만 맞았다.</p>
+<p><span
+class="math inline">∴<em>O</em>(<em>K</em> * <em>N</em><sup>4</sup>)</span></p>
 </div>
 <div class='block '>
-<h2 id="최적경로-2024-05-16-135009">1247_최적경로 2024-05-16
-13:50:09</h2>
+<h2 id="암호코드스캔-2024-05-17-150007">1242_암호코드스캔
+2024-05-17-15:00:07</h2>
+<h3 id="문제-링크"><a
+href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15JEKKAM8CFAYD">문제
+링크</a></h3>
+<h3 id="구현-문자열-해시">#구현 #문자열 #해시</h3>
+<h3 id="문제-요약">문제 요약</h3>
+<p>문제가 매우 기므로 링크를 참조하시길 바랍니다. (복제는
+금지되어있습니다.)</p>
+<table>
+<thead>
+<tr class="header">
+<th>입력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+</tr>
+<tr class="even">
+<td>16 26</td>
+</tr>
+<tr class="odd">
+<td>00000000000000000000000000</td>
+</tr>
+<tr class="even">
+<td>00000000000000000000000000</td>
+</tr>
+<tr class="odd">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="even">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="odd">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="even">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="odd">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="even">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="odd">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="even">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="odd">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="even">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="odd">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="even">
+<td>000000001DB176C588D26EC000</td>
+</tr>
+<tr class="odd">
+<td>00000000000000000000000000</td>
+</tr>
+<tr class="even">
+<td>00000000000000000000000000</td>
+</tr>
+<tr class="odd">
+<td>18 50</td>
+</tr>
+<tr class="even">
+<td>00000000000000000000000000000000000000000000000000</td>
+</tr>
+<tr class="odd">
+<td>00000000000000000000000000000000000000000000000000</td>
+</tr>
+<tr class="even">
+<td>000000000000000000000000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="odd">
+<td>000000000000000000000000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="even">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="odd">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="even">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="odd">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="even">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="odd">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="even">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="odd">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="even">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="odd">
+<td>000000328D1AF6E4C9BB0000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="even">
+<td>000000000000000000000000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="odd">
+<td>000000000000000000000000000196EBC5A316C57800000000</td>
+</tr>
+<tr class="even">
+<td>00000000000000000000000000000000000000000000000000</td>
+</tr>
+<tr class="odd">
+<td>00000000000000000000000000000000000000000000000000</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>출력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>#1 38</td>
+</tr>
+<tr class="even">
+<td>#2 48</td>
+</tr>
+</tbody>
+</table>
+<h3 id="풀이">풀이</h3>
+<p>문자열 처리와 해싱을 통한 구현 문제이다. 시간이 상당히
+오래걸렸다.<br />
+원인은 아래 문제였던 것 같다.<br />
+- 이런 문제 난이도일 것이라고 생각을 못했다.<br />
+- 복잡한 구현을 오랜만에 해서, 최적화할 방법(쉽게 코드로 바꿀 방법)을 잘
+떠올리지 못했다.</p>
+<p>이진수로 쉽게 변환하는 방법을 배웠다.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>    binary <span class="op">=</span> <span class="st">&quot;</span><span class="sc">{:04b}</span><span class="st">&quot;</span>.<span class="bu">format</span>(<span class="bu">int</span>(hexChar, <span class="dv">16</span>))</span></code></pre></div>
+<p>시간 복잡도는 들어오는 입력 크기에 비례한다.<br />
+<span class="math inline">∴<em>O</em>(<em>H</em> * <em>W</em>)</span>
+(<span class="math inline"><em>H</em></span> = 입력 줄 개수, <span
+class="math inline"><em>W</em></span> = 입력 줄 길이)</p>
+<p>최악의 경우에는 이렇지만, 입력줄을 set으로 받아 중복을 제거했기에
+웬만하면 훨씬 빨리 수행할 것이다.</p>
+</div>
+<div class='block '>
+<h2 id="최적경로-2024-05-16-135009">1247_최적경로
+2024-05-16-13:50:09</h2>
 <h3 id="문제-링크"><a
 href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD">문제
 링크</a></h3>
@@ -146,7 +310,61 @@ href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProb
 했더니 메모리 초과가 났다. dfs로 수정해서 해결했다.</p>
 </div>
 <div class='block '>
-<h2 id="수영장-2024-05-13-162249">1952_수영장 2024-05-13 16:22:49</h2>
+<h2 id="공통조상-2024-05-16-130638">1248_공통조상
+2024-05-16-13:06:38</h2>
+<h3 id="문제-링크"><a
+href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15PTkqAPYCFAYD">문제
+링크</a></h3>
+<h3 id="트리">#트리</h3>
+<h3 id="문제-요약">문제 요약</h3>
+<p>이진 트리가 주어진다. 주어진 두 정점의 가장 가까운 공통 조상을
+구하고, 공통 조상을 루트로 하는 서브트리의 크기를 구하라.</p>
+<table>
+<thead>
+<tr class="header">
+<th>입력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10</td>
+</tr>
+<tr class="even">
+<td>13 12 8 13</td>
+</tr>
+<tr class="odd">
+<td>1 2 1 3 2 4 3 5 3 6 4 7 7 12 5 9 5 8 6 11 6 10 11 13</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>출력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>#1 3 8</td>
+</tr>
+<tr class="even">
+<td>#2 1 10</td>
+</tr>
+</tbody>
+</table>
+<h3 id="풀이">풀이</h3>
+<p>트리를 dictionary를 이용해 구현했다. parent 노드는 하나, children은
+여럿이므로 각각 다른 dictionary에서 관리했다.</p>
+<p>a, b의 공통 조상은 a의 부모를 따라가며 a의 모든 조상을 구하고 이를
+set에 보관했다.(set의 find 시간 복잡도 O(1)이므로) 그다음 b의 조상을
+따라가며 set에 있는지 확인했다.</p>
+<p>그렇게 찾은 공통 조상을 루트로 하는 서브트리 크기는, children
+dictionary를 따라가며 DFS 완전탐색했다.</p>
+<p><span class="math inline">∴<em>O</em>(<em>V</em>)</span> (<span
+class="math inline"><em>V</em></span>=amount of vertexes)</p>
+</div>
+<div class='block '>
+<h2 id="수영장-2024-05-13-162249">1952_수영장 2024-05-13-16:22:49</h2>
 <h3 id="문제-링크"><a
 href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq">문제
 링크</a></h3>
@@ -247,81 +465,7 @@ class="math inline"><em>n</em></span>=다닐 개월 수 )</p>
 <p>약 30분 소요했다.</p>
 </div>
 <div class='block '>
-<h2 id="상자정렬하기-2024-05-10-134306">20936_상자정렬하기 2024-05-10
-13:43:06</h2>
-<h3 id="문제-링크"><a href="">문제 링크</a></h3>
-<h3 id="정렬">#정렬</h3>
-<h3 id="문제-요약">문제 요약</h3>
-<p>1부터 N까지 번호가 붙은 N(1&lt;=N&lt;=500)개의 상자가 N+1개의 칸에
-임의의 순서로 나열되어 있다. 하나의 빈칸을 이용해 상자를 하나씩 이동하여
-정렬하라.</p>
-<table>
-<thead>
-<tr class="header">
-<th>입력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2</td>
-</tr>
-<tr class="even">
-<td>3</td>
-</tr>
-<tr class="odd">
-<td>1 2 3</td>
-</tr>
-<tr class="even">
-<td>8</td>
-</tr>
-<tr class="odd">
-<td>5 6 7 2 3 4 1 8</td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr class="header">
-<th>출력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-</tr>
-<tr class="even">
-<td></td>
-</tr>
-<tr class="odd">
-<td>5</td>
-</tr>
-<tr class="even">
-<td>3 2 1 4 5</td>
-</tr>
-</tbody>
-</table>
-<h3 id="첫인상">첫인상</h3>
-<p>정렬 구현인 듯 하다. 규칙을 찾아보자.</p>
-<h3 id="실패">실패</h3>
-<h3 id="풀이">풀이</h3>
-<p>해당 칸에 들어가야 할 상자를 찾아서 넣으면,<br />
-찾는 데에 N, 이걸 N번, N^2 &lt;= 250000이므로 3초에 가능할 듯하다.</p>
-<p>맨 오른쪽 칸이 비었을 때에는, 앞에서부터 칸에 맞지 않는 상자를 찾으면
-그걸 옮긴다. 그 외에는, 해당 칸에 들어가야 할 상자를 찾아 옮긴다.</p>
-<h3 id="시간-복잡도">시간 복잡도</h3>
-<p>이동시킬 칸을 <span class="math inline"><em>N</em></span>번
-찾는다.<br />
-<span class="math inline">∴<em>O</em>(<em>N</em><sup>2</sup>)</span></p>
-<h3 id="회고">회고</h3>
-<p>변수의 의미가 미세하게 다를 때 변수명 짓는게 어렵다. 나중에 보면
-이해하기 어려울 것 같으니, 문제 해결 후 조금 더 고민해서 지어보기.</p>
-<h3 id="해결-이후-개선">해결 이후 개선</h3>
-<p>빈 칸이 맨 오른쪽이 아니라 맨 왼쪽에서 시작한다고 하면 코드가 한결
-간결해진다.<br />
-다만, 로그를 출력할 때, 0 대신 마지막 index를 출력해야했다.</p>
-</div>
-<div class='block '>
-<h2 id="보급로-2024-05-10-144159">1249_보급로 2024-05-10 14:41:59</h2>
+<h2 id="보급로-2024-05-10-144159">1249_보급로 2024-05-10-14:41:59</h2>
 <h3 id="문제-링크"><a
 href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15QRX6APsCFAYD">문제
 링크</a></h3>
@@ -493,7 +637,80 @@ DFS나 BFS나 한 방식으로만 구현해왔던 게 조금 시간을 잡아먹
 (유연한 구현?)</p>
 </div>
 <div class='block '>
-<h2 id="view-2024-05-10-114236">1206_view 2024-05-10 11:42:36</h2>
+<h2 id="상자정렬하기-2024-05-10-134306">20936_상자정렬하기
+2024-05-10-13:43:06</h2>
+<h3 id="문제-링크"><a href="">문제 링크</a></h3>
+<h3 id="정렬">#정렬</h3>
+<h3 id="문제-요약">문제 요약</h3>
+<p>1부터 N까지 번호가 붙은 N(1&lt;=N&lt;=500)개의 상자가 N+1개의 칸에
+임의의 순서로 나열되어 있다. 하나의 빈칸을 이용해 상자를 하나씩 이동하여
+정렬하라.</p>
+<table>
+<thead>
+<tr class="header">
+<th>입력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+</tr>
+<tr class="even">
+<td>3</td>
+</tr>
+<tr class="odd">
+<td>1 2 3</td>
+</tr>
+<tr class="even">
+<td>8</td>
+</tr>
+<tr class="odd">
+<td>5 6 7 2 3 4 1 8</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr class="header">
+<th>출력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+</tr>
+<tr class="even">
+<td></td>
+</tr>
+<tr class="odd">
+<td>5</td>
+</tr>
+<tr class="even">
+<td>3 2 1 4 5</td>
+</tr>
+</tbody>
+</table>
+<h3 id="첫인상">첫인상</h3>
+<p>정렬 구현인 듯 하다. 규칙을 찾아보자.</p>
+<h3 id="풀이">풀이</h3>
+<p>해당 칸에 들어가야 할 상자를 찾아서 넣으면,<br />
+찾는 데에 N, 이걸 N번, N^2 &lt;= 250000이므로 3초에 가능할 듯하다.</p>
+<p>맨 오른쪽 칸이 비었을 때에는, 앞에서부터 칸에 맞지 않는 상자를 찾으면
+그걸 옮긴다. 그 외에는, 해당 칸에 들어가야 할 상자를 찾아 옮긴다.</p>
+<h3 id="시간-복잡도">시간 복잡도</h3>
+<p>이동시킬 칸을 <span class="math inline"><em>N</em></span>번
+찾는다.<br />
+<span class="math inline">∴<em>O</em>(<em>N</em><sup>2</sup>)</span></p>
+<h3 id="회고">회고</h3>
+<p>변수의 의미가 미세하게 다를 때 변수명 짓는게 어렵다. 나중에 보면
+이해하기 어려울 것 같으니, 문제 해결 후 조금 더 고민해서 지어보기.</p>
+<h3 id="해결-이후-개선">해결 이후 개선</h3>
+<p>빈 칸이 맨 오른쪽이 아니라 맨 왼쪽에서 시작한다고 하면 코드가 한결
+간결해진다.<br />
+다만, 로그를 출력할 때, 0 대신 마지막 index를 출력해야했다.</p>
+</div>
+<div class='block '>
+<h2 id="view-2024-05-10-114236">1206_view 2024-05-10-11:42:36</h2>
 <h3 id="문제-링크"><a
 href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV134DPqAA8CFAYh">문제
 링크</a></h3>
@@ -559,60 +776,8 @@ href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProb
 <p>단순 구현이어서 빠르게 풀었다. 실수를 하지 않은 것은 다행이었다.</p>
 </div>
 <div class='block '>
-<h2 id="방울마술-2024-05-09-152341">20934_방울마술 2024-05-09
-15:23:41</h2>
-<h3 id="문제-링크"><a
-href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AY9QTGqqcckDFAVF">문제
-링크</a></h3>
-<h3 id="구현">#구현</h3>
-<h3 id="문제-요약">문제 요약</h3>
-<p>세 개의 컵과 하나의 공으로 야바위를 한다. 처음 공의 위치와 공이
-이동한 횟수가 주어졌을 때, 공이 있을 확률이 가장 높은 컵을 출력하라.
-(여러개면 왼쪽)</p>
-<table>
-<thead>
-<tr class="header">
-<th>입력 예</th>
-<th>출력 예</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>.o. 1</td>
-<td>0</td>
-</tr>
-<tr class="even">
-<td>o.. 1</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td>..o 0</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
-<h3 id="첫인상">첫인상</h3>
-<p>익숙한 유형은 아니어서 규칙을 찾아보려고 했다.</p>
-<h3 id="풀이">풀이</h3>
-<p>공이 1번 이동할 때 각 컵 안에 있을 확률</p>
-<pre><code>o.. =&gt; 0% 100% 0%
-.o. =&gt; 50% 0% 50%
-..o =&gt; 0% 100% 0%</code></pre>
-<p>공이 이동할 때,<br />
-가운데에서 이동하면 확률은 좌우로 반반씩 나뉜다.<br />
-좌우에서 이동하면 확률은 가운데로 모인다.<br />
-이 두 가지를 독립적으로 동시에 작동하도록 해서 해결했다.</p>
-<h3 id="시간-복잡도">시간 복잡도</h3>
-<p>연산 횟수는 공이 이동하는 횟수 <span
-class="math inline"><em>k</em></span>에 비례한다.<br />
-<span class="math inline">∴<em>O</em>(<em>k</em>)</span></p>
-<h3 id="회고">회고</h3>
-<p>난이도가 쉬워서 재밌는 문제였다. 응용하면 복잡해질 수 있을 것
-같다.</p>
-</div>
-<div class='block '>
-<h2 id="최대상금-2024-05-09-202256">1244_최대상금 2024-05-09
-20:22:56</h2>
+<h2 id="최대상금-2024-05-09-202256">1244_최대상금
+2024-05-09-20:22:56</h2>
 <h3 id="문제-링크"><a
 href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15Khn6AN0CFAYD">문제
 링크</a></h3>
@@ -674,6 +839,58 @@ class="math inline">∴<em>O</em>(<em>m</em><em>i</em><em>n</em>(10<sup><em>l</e
 않았다.<br />
 오래 기억하도록 정리하는 습관 들이기.<br />
 문제 꾸준히 풀기.</p>
+</div>
+<div class='block '>
+<h2 id="방울마술-2024-05-09-152341">20934_방울마술
+2024-05-09-15:23:41</h2>
+<h3 id="문제-링크"><a
+href="https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AY9QTGqqcckDFAVF">문제
+링크</a></h3>
+<h3 id="구현">#구현</h3>
+<h3 id="문제-요약">문제 요약</h3>
+<p>세 개의 컵과 하나의 공으로 야바위를 한다. 처음 공의 위치와 공이
+이동한 횟수가 주어졌을 때, 공이 있을 확률이 가장 높은 컵을 출력하라.
+(여러개면 왼쪽)</p>
+<table>
+<thead>
+<tr class="header">
+<th>입력 예</th>
+<th>출력 예</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>.o. 1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>o.. 1</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>..o 0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h3 id="첫인상">첫인상</h3>
+<p>익숙한 유형은 아니어서 규칙을 찾아보려고 했다.</p>
+<h3 id="풀이">풀이</h3>
+<p>공이 1번 이동할 때 각 컵 안에 있을 확률</p>
+<pre><code>o.. =&gt; 0% 100% 0%
+.o. =&gt; 50% 0% 50%
+..o =&gt; 0% 100% 0%</code></pre>
+<p>공이 이동할 때,<br />
+가운데에서 이동하면 확률은 좌우로 반반씩 나뉜다.<br />
+좌우에서 이동하면 확률은 가운데로 모인다.<br />
+이 두 가지를 독립적으로 동시에 작동하도록 해서 해결했다.</p>
+<h3 id="시간-복잡도">시간 복잡도</h3>
+<p>연산 횟수는 공이 이동하는 횟수 <span
+class="math inline"><em>k</em></span>에 비례한다.<br />
+<span class="math inline">∴<em>O</em>(<em>k</em>)</span></p>
+<h3 id="회고">회고</h3>
+<p>난이도가 쉬워서 재밌는 문제였다. 응용하면 복잡해질 수 있을 것
+같다.</p>
 </div>
 <div class='block '>
 <h2 id="백준_21611_마법사_상어와_블리자드-2024-05-05"><a
@@ -743,4 +960,16 @@ class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#c
 1차원 벡터로 바꾸어주는 작업을 했다.</p>
 <p>이후에는 위 네 함수를 적절히 사용해 해결했다.</p>
 </div>
-</body></html>
+<div class='block '>
+<h2 id="이중혁_알고리즘_연습장-2024-05-04"><a
+href="https://wndgur2.github.io">이중혁_알고리즘_연습장</a>
+2024-05-04~</h2>
+<h3 id="깃허브"><a href="https://github.com/wndgur2">깃허브</a></h3>
+<h3 id="백준"><a
+href="https://www.acmicpc.net/user/wndgur2">백준</a></h3>
+<h3 id="swexpertacademy"><a
+href="https://swexpertacademy.com/main/userpage/home/userHome.do?userId=AY9bT9Ma97cDFAS1">SWExpertAcademy</a></h3>
+</div>
+</body>
+
+</html>
