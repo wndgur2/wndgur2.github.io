@@ -7,9 +7,8 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-directions = [[0,1], [1,0], [0,-1], [-1,0]]
-
 decode_map = {"211": 0, "221": 1,"122": 2,"411": 3,"132": 4,"231": 5,"114": 6,"312": 7,"213": 8,"112": 9,}
+visited_code = set()
 
 def decode(arr):
     # arr[0], arr[1], arr[2]의 ratio 구하기 (1~4)
@@ -20,76 +19,70 @@ def decode(arr):
             return -1
         arr[i] = arr[i]/min_value
         key += str(int(arr[i]))
-    print(key)
     if key not in decode_map:
         return -1
     return str(decode_map[key])
     
-
+def validateCode(code):
+    if code in visited_code:
+        return False
+    visited_code.add(code)
+    oddSum = 0
+    evenSum = 0
+    isOdd = True
+    for i in range(len(code)-1):
+        if isOdd:
+            oddSum += int(code[i])
+        else:
+            evenSum += int(code[i])
+        isOdd = not isOdd
+    auth = (10-(oddSum*3 + evenSum)%10)%10
+    return auth==int(code[-1])
 
 for test_case in range(1, int(input()) + 1):
-    H, W = map(int, input().split())
-    visited = [[False]*W for _ in range(H)]
-    data = []
+    H, W = map(int, input().strip().split())
+    hexData = set()
     for i in range(H):
-        data.append(list(input()))
+        hexData.add(input().strip())
     
-    suspects = []
+    binaryData = []
+    for hexString in hexData:
+        binaryString = ""
+        for hexChar in hexString:
+            binaryString += "{:04b}".format(int(hexChar, 16))
+        binaryString = binaryString.rstrip("0")
+        if binaryString:
+            binaryString += '0'
+            binaryData.append(binaryString)
+    
+    code_suspects = []
+    for binaryString in binaryData:
+        code_suspect = ""
+        
+        before = '0'
+        amount = 0
+        amounts = []
+        for binaryChar in binaryString:
+            if binaryChar != before:
+                if before!='0' or len(amounts)!=0:
+                    amounts.append(amount)
+                amount = 0
+                before = binaryChar
 
-    for row in range(H):
-        for col in range(W):
-            if data[row][col] != '0' and not visited[row][col]: 
-                code = ""
-                tmp_col = col
-                while tmp_col < W and data[row][tmp_col] != '0':
-                    code += data[row][tmp_col]
-                    tmp_col += 1
-                suspects.append(code)
-
-                branches = [[row, col]]
-                while branches:
-                    y, x = branches.pop()
-                    visited[y][x] = True
-                    for dy, dx in directions:
-                        nextY = y + dy
-                        nextX = x + dx
-                        if 0 <= nextY < H and 0 <= nextX < W:
-                            if data[nextY][nextX] == '0':
-                                continue
-                            if visited[nextY][nextX]:
-                                continue
-                            branches.append([nextY, nextX])
+                if len(amounts) == 3:
+                    decode_result = decode(amounts)
+                    if decode_result == -1:
+                        code_suspect = ""
+                    else:
+                        code_suspect += decode_result
+                    if len(code_suspect) == 8:
+                        code_suspects.append(code_suspect)
+                        code_suspect = ""
+                    amounts = []
+                    before = '0' # 다음 암호 찾기 위함
+            amount += 1
     result = 0
-    for code in suspects:
-        binaryCode = format(int(code, 16),'0>'+str(len(code)*4)+'b')
-        
-        blue_tmp = 0
-        white_tmp = 0
-        continuous_amounts = []
-        secret_code = ""
-        for i in range(len(binaryCode)-1, -1, -1):
-            if blue_tmp==0 and binaryCode[i]==0 and continuous_amounts==[]:
-                continue
-            if binaryCode[i]=='1':
-                blue_tmp += 1
-                if white_tmp > 0:
-                    continuous_amounts.append(white_tmp)
-                    white_tmp = 0
-            else:
-                white_tmp += 1
-                if blue_tmp > 0:
-                    continuous_amounts.append(blue_tmp)
-                    blue_tmp = 0
-            if len(continuous_amounts) == 3:
-                decoded = decode(continuous_amounts)
-                if decoded == -1:
-                    break
-                secret_code = decoded + secret_code
-                continuous_amounts = []
-                white_tmp = 0
-        print("code: ", secret_code)
-        
-        # authenticate secret_code
-            
-        
-    print(f'#{test_case}')
+    for code in code_suspects:
+        if validateCode(code):
+            result += sum(map(int, list(code)))
+    print(f'#{test_case} {result}')

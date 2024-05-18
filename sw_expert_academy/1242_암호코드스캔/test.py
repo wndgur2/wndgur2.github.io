@@ -1,3 +1,2 @@
-rom = '1'
-binary = format(int(rom, 16), '0>4b')
-print(binary)
+hexChar = 'F'
+print("{:04b}".format(int(hexChar, 16)))
