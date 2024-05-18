@@ -113,5 +113,6 @@ h3 {
 }
 
 p {
-    font-size: medium
+    font-size: medium;
+    margin: 8px 0px;
 }
