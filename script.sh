@@ -2,7 +2,7 @@
 
 # generate temp file
 html=$(mktemp)
-cp _header.html "$html"
+cp layout/_header.html "$html"
 files=()
 
 # get all .md files
@@ -29,5 +29,5 @@ for f in "${sorted_dates_files[@]}"; do
     echo "</div>" >> "$html"
 done
 
-cat _footer.html >> "$html"
+cat layout/_footer.html >> "$html"
 cp "$html" index.html
