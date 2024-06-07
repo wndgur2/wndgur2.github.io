@@ -7,8 +7,6 @@
 import sys
 sys.stdin = open("input.txt", "r")
 
-from collections import deque
-
 for test_case in range(1, int(input()) + 1):
     N = int(input())
     xys = list(map(int, input().split()))
