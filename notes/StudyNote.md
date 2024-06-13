@@ -4,12 +4,22 @@ To learn
 - Html(MDN)  
 - Vue.js  
 
+# WEB
+- The browser parses the HTML file first, and that leads to the browser recognizing any `<link>`-element references to external CSS stylesheets and any `<script>`-element references to scripts.
+- As the browser parses the HTML, it sends requests back to the server for any CSS files it has found from `<link>`elements, and any JavaScript files it has found from `<script>` elements, and from those, then parses the CSS and JavaScript.
+- The browser generates an in-memory [DOM(Document Object Model)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) tree from the parsed HTML, generates an in-memory CSSOM structure from the parsed CSS, and compiles and executes the parsed JavaScript.
+As the browser builds the DOM tree and applies the styles from the CSSOM tree and executes the JavaScript, a visual representation of the page is painted to the screen, and the user sees the page content and can begin to interact with it.
+
+
 # HTML: HyperText Markup Language
 
 HTML (HyperText Markup Language) is the most basic building block of the Web. It defines the meaning and **structure of web content**. Other technologies besides HTML are generally used to describe a web page's appearance/presentation (CSS) or functionality/behavior (JavaScript).
 
 "Hypertext" refers to links that connect web pages to one another, either within a single website or between websites. Links are a fundamental aspect of the Web. By uploading content to the Internet and linking it to pages created by other people, you become an active participant in the World Wide Web. - MDN
 
+HTML에는 별도의 기능이 없는 엘리먼트가 꽤 있다. (article, section, div, etc.) 이런 엘리먼트는 왜 존재할까?  
+Semantic 프로그래밍은, 코드를 보고 그 의미를 이해하기 쉽도록 만든다. 특히나 Html 코드는, 사람 뿐만 아니라 검색 엔진이 레이팅할 때에도 사용되기 때문에 의미가 명확해질 수록 좋다.  
+Semantics is about whether or not the sentence has a valid meaning -Sazonov Nikita
 - `<header>`
 - `<body>`
 - `<footer>`
@@ -35,8 +45,11 @@ HTML (HyperText Markup Language) is the most basic building block of the Web. It
 # CSS
 
 ## Property
+- `flex`
+- `flex-shrink`
 - `flex-grow`
-- `flex-flow`: flex-direction, flex-grow
+- `flex-basis`
+- `flex-flow`: `flex-direction`, `flex-grow`
 - `color: var(--variable-name)`: custom variable
 
 ## 단위
