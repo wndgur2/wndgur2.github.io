@@ -39,8 +39,75 @@ Semantics is about whether or not the sentence has a valid meaning -Sazonov Niki
 - `concat()`
 - `reduce()`
 
-### async function
-### Promise
+### Promise & async
+async function은 말 그대로 비동기로 수행하는 함수를 의미한다.  
+시간이 많이 걸리는 작업(ex: data fetching)은 비동기로 처리하여 페이지 로딩 시간을 단축시킨다. 아마 이런 코드일 것이다.   
+```javascript
+async function fetchData(){
+    try{
+        const res = await fetch("https://raw.githubusercontent.com/wndgur2/CatChess/main/server/modules/constants/cats.json");
+        return await res.json();
+    } catch(err){
+        console.error(err);
+    }
+}
+
+fetchData()
+.then(data=>{
+        console.log(data.royalBellyRubber);
+});
+
+console.log("Do something without data.");
+```
+
+가져온 데이터를 보여주고 싶으면, `data`를 가져왔을 때 `data`를 출력하면 될 것이다.
+### .then()
+.then()을 ***비동기 함수에 붙혀서*** 사용하면, ***리턴값***을 받아 콜백함수를 실행한다.
+
+우리가 알던 일반적인 함수는, `return` 다음의 값을 `return`한다. 그런데 `async function`은 그렇지 않다.
+
+```js
+async function fetchData(){
+    try{
+        const res = await fetch("https://raw.githubusercontent.com/wndgur2/CatChess/main/server/modules/constants/cats.json");
+        return await res.json();
+    } catch(err){
+        console.error(err);
+    }
+}
+
+console.log(fetchData()); // 출력: Promise { <pending> }
+```
+
+모든 `async function`은 `Promise` 객체를 리턴한다.  
+
+[Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)는 비동기 작업의 **상태**(완료 또는 실패)와 그 **결과값**을 나타내는 자바스크립트 오브젝트이다.  
+
+위 예에서는 고양이 정보를 다 가져왔는지(상태)와, 가져왔다면 그 결과값을 담고 있다.  
+
+그래서 `fetchData()`를 실행하자마자 출력하면 `pending`(미완료) 상태의 `Promise` 객체가 출력된다.  
+
+`Promise`의 메서드 `then()`은 이를 `fulfilled` 상태가 될 때까지 기다리고, 그 결과값을 가져온다.  
+
+React에선 이렇게 사용될 수 있다.
+
+```jsx
+
+function App() {
+    const [data, setData] = useState();
+
+    useEffect(() => {
+        async function fetchData() {
+            const res = await fetch("https://fetching.url");
+            const json = await res.json();
+            setData(json);
+        }
+        fetchData();
+    }, []);
+
+    // ...
+}
+```
 
 # CSS
 
@@ -118,3 +185,6 @@ console.log("hello world!");
 
 ## SSR (vs CSR)
 
+# Mindset
+
+개척자 정신? 예전에 Linchpin이라는 책에서 들은 적이 있다. 개발이라는 세상은 너무나 방대하다. 웹 프론트엔드 개발자라고 해서 자신을 React, HTML, CSS 같은 것에 한정짓는 것은 바보다. 기술은 흘러간다. 가치를 높이는 것은, 기술을 빠르게 익히는 능력과, 사람들과 같이 일하는 능력, 큰 틀에서 바라볼 줄 아는 능력, 양보할 줄 아는 여유, 다시 일어설 수 있는 투지, 도전을 즐기고 투자할 줄 아는 배짱. 이런 것들이 아닐까?
