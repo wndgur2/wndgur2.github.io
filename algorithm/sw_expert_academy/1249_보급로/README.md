@@ -47,7 +47,8 @@
 ### 풀이   
 [반복문 메모이제이션 DFS]  
 DFS를 반복문으로 구현해 메모리 초과를 해결했다.  
-시간 초과 원인에 대해 고민하다 시간 복잡도를 줄이기보다는 디테일한 문제라고 판단해서, 효율을 최대한 높이려고 했다. 그러다 눈에 밟힌 것이
+시간 초과 원인에 대해 고민하다 시간 복잡도를 줄이기보다는 디테일한 문제라고 판단해서, 효율을 최대한 높이려고 했다. 그러다 눈에 밟힌 것이  
+
 ``` python
 # 증가하는 경우
 if y<size-1:
@@ -59,10 +60,12 @@ if y>0:
     branches.append([y-1, x, cost+cost_map[y-1][x]])
 if x>0:
     branches.append([y, x-1, cost+cost_map[y][x-1]])
-```
+```  
+
 DFS의 가지를 뻗는 부분이다. 잘 보면, y와 x가 증가하는 경우를 추가하고, 감소하는 부분을 추가한다.  
-여기서 문제는 branches.pop()은 리스트의 마지막 원소를 가져온다는 것.  
-```python
+여기서 문제는 branches.pop()은 리스트의 마지막 원소를 가져온다는 것.
+
+```python  
 while branches:
     y, x, cost = branches.pop() # O(1)
     if (cost < min_stacked_cost_map[y][x]) or (min_stacked_cost_map[y][x]==-1):
@@ -81,7 +84,7 @@ while branches:
         branches.append([y-1, x, cost+cost_map[y-1][x]])
     if x>0:
         branches.append([y, x-1, cost+cost_map[y][x-1]])
-```
+```  
 
 따라서 나는 마지막으로 추가된 x가 감소하는 방향을 먼저 탐색하고, y가 감소하는 방향, x가 증가하는 방향, y가 증가하는 방향 순서로 탐색하고 있었다.
 
