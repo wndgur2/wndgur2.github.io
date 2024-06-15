@@ -78,3 +78,28 @@ function App() {
     // ...
 }
 ```
+
+## Event
+
+### e.preventDefault()
+엘리멘트별 기본 행동을 제거함. ex) 체크박스를 클릭해도 체크가 안 되도록  
+이를 이용해 중첩 click event를 처리할 수 있다.  
+중첩된 엘리먼트가 있으면, 기본 설정이 둘 다 발생하게 되어있다.  
+이는 e.stopPropagation()으로 방지할 수 있다.
+그러나 부모가 a태그일 경우엔 stopPropagation으로도 방지할 수 없는데,
+이는 preventDefault로 방지할 수 있다.
+
+```html
+<a id="parent" href="https://naver.com">
+    <button id="child">
+        Click Me!
+    </button>
+</a>
+<script>
+    const handleClick = (e) => {
+        e.preventDefault();
+        console.log('Button Clicked');
+    }
+    document.getElementById('child').addEventListener('click', handleClick);
+</script>
+```
