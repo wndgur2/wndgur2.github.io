@@ -1,3 +1,12 @@
+---
+category: Algorithm
+title: 보급로
+site: Baekjoon
+number: 1249
+date_started: 2024.05.10
+tags: BFS
+---
+
 ## 1249_보급로 2024-05-10-14:41:59
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15QRX6APsCFAYD)
 
