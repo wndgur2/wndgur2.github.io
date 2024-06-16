@@ -6,14 +6,14 @@ tags: Markdown
 ---
 # Markdown
 
-- ` `` `: code snippet
-- ` ```  ``` `: code block
+- ` `` `: `code snippet`
+- ` ```  ``` `: code block  
 ```javascript
 console.log("hello world!");
 ```
 - `---`: 분리선  
-- 상단에 `---` `---`: 주석(헤더)
-- `~~ xx ~~`: ~~strike~~
+- 상단에 `---` `---`: 주석(헤더)  
+- `~~ xx ~~`: ~~strike~~  
 
 ---  
   
