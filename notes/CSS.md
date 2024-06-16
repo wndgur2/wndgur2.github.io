@@ -1,5 +1,5 @@
 ---
-category: Theory
+category: Study
 title: CSS
 date_started: 2024.06.14
 tags: CSS
