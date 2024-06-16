@@ -1,0 +1,68 @@
+{
+    "이진트리": {
+        "category": "theory",
+        "title": "이진트리",
+        "tags": [
+            "BinaryTree",
+            "자료구조"
+        ],
+        "date_started": "2023.11.23"
+    },
+    "스택": {
+        "category": "theory",
+        "title": "스택",
+        "tags": [
+            "Stack",
+            "자료구조"
+        ],
+        "date_started": "2023.11.23"
+    },
+    "위상정렬": {
+        "category": "theory",
+        "title": "위상정렬",
+        "tags": [
+            "TopologicalSorting",
+            "자료구조"
+        ],
+        "date_started": "2023.11.23"
+    },
+    "1012-유기농배추": {
+        "category": "algorithm",
+        "title": "1012-유기농배추",
+        "tags": [
+            "DFS",
+            "BFS",
+            "백준",
+            "Python"
+        ],
+        "date_started": "2023.11.23"
+    },
+    "1242-암호코드스캔": {
+        "category": "algorithm",
+        "title": "1242-암호코드스캔",
+        "tags": [
+            "SWExpertAcademy",
+            "Python",
+            "Hashing"
+        ],
+        "date_started": "2023.11.23"
+    },
+    "1247-최적경로": {
+        "category": "algorithm",
+        "title": "1247-최적경로",
+        "tags": [
+            "SWExpertAcademy",
+            "Python",
+            "DFS"
+        ],
+        "date_started": "2023.11.23"
+    },
+    "한경대학교": {
+        "category": "career",
+        "title": "한경대학교",
+        "description": "컴퓨터공학과",
+        "tags": [],
+        "date_started": "2018.03.02",
+        "date_finished": "2024.02.22"
+    }
+}
