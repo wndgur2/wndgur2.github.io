@@ -1,24 +1,32 @@
-## 백준_21611_마법사_상어와_블리자드 2024-05-05
+---
+category: Algorithm
+title: 마법사 상어와 블리자드
+site: 백준
+number: 21611
+date_started: 2023.07.07
+tags: 구현
+---
+## 백준_21611_마법사_상어와_블리자드 2024-07-07
 ### 카테고리 : 구현  
 ## [문제 설명](https://www.acmicpc.net/problem/21611)
 마법사 상어가 블리자드라는 스킬을 써서 구슬을 파괴하고,  
 같은 번호 구슬이 4개 이상 연속으로 있으면 애니팡처럼 폭발하는 게임이다.
 
 아래와 같은 달팽이 껍질 모양 맵에 구슬 1, 2, 3 이 차있다. (i: 칸 번호)
-![img](/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png)
+<img width="566" alt="칸_번호" src="https://github.com/wndgur2/whosleejunghyeok/assets/65120311/b568b056-c779-4598-82ba-c72ea64ca30d">
 
 블리자드(방향, 거리)를 써서 일직선 상의 구슬을 파괴한다. (i: 구슬 번호) ~
-![img](/cpp/21611_마법사_상어와_블리자드/img/구슬_파괴.png)
+<img width="838" alt="구슬_파괴" src="https://github.com/wndgur2/whosleejunghyeok/assets/65120311/27daeb50-f63c-40e4-9895-d6e4a10da201">
 
 구슬이 또르르 굴러와 빈자리를 채운다.
 연속된 구슬이 4개 이상이면 폭발한다.
-![img](/cpp/21611_마법사_상어와_블리자드/img/구슬_폭발.png)
+<img width="848" alt="구슬_폭발" src="https://github.com/wndgur2/whosleejunghyeok/assets/65120311/800b5382-591a-4366-8627-38c370ca22b5">
 
 구슬이 다시 굴러 빈자리를 채운다.
 폭발하는 구슬이 없을 때까지 반복한다.
 
 각 연속된 구슬 그룹은 2개의 구슬(연속된 구슬의 개수, 그 그룹의 구슬 번호)로 변화한다.
-![img](/cpp/21611_마법사_상어와_블리자드/img/구슬_변화.png)
+<img width="1463" alt="구슬_변화" src="https://github.com/wndgur2/whosleejunghyeok/assets/65120311/fdb0c48f-8b7e-4c23-a391-6576dd62e865">
 
 위 과정을 M번 반복한다.
 
@@ -30,7 +38,7 @@
 안쪽 칸에서 바깥쪽 칸으로 가기 위한 인덱스 차이는,
 껍질이 커질 수록 커진다.
 
-![img](/cpp/21611_마법사_상어와_블리자드/img/칸_번호.png)
+<img width="566" alt="칸_번호" src="https://github.com/wndgur2/whosleejunghyeok/assets/65120311/b568b056-c779-4598-82ba-c72ea64ca30d">
 그 증가량은, 껍질이 코너를 돌 때 1씩 2번 증가한다.
 
 7 7 8 9 9 10 11 11 11 12 13 13 13 14 15 15 15 15 16 16 16 16 17 17 17 17 17
@@ -54,7 +62,7 @@
 ## 상세 구현
 
 블리자드는 네 가지 함수로 구현했다.  
-코드는 [21611.cpp](/cpp/21611_마법사_상어와_블리자드/21611.cpp) 파일을 참조하시면 됩니다.
+코드는 [21611.cpp](https://github.com/wndgur2/wndgur2.github.io/tree/main/algorithm/cpp/21611_%EB%A7%88%EB%B2%95%EC%82%AC_%EC%83%81%EC%96%B4%EC%99%80_%EB%B8%94%EB%A6%AC%EC%9E%90%EB%93%9C/21611.cpp) 파일을 참조하시면 됩니다.
 
 ``` cpp
 // D방향으로 S만큼 구슬을 파괴하고, 그 자리를 0으로 대체한다.
