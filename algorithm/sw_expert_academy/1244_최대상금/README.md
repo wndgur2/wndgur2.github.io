@@ -1,3 +1,11 @@
+---
+category: Algorithm
+title: 최대 상금
+site: SWEA
+number: 1244
+date_started: 2024.06.16
+tags: DFS
+---
 ## 1244_최대상금 2024-05-09-20:22:56
 
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15Khn6AN0CFAYD)

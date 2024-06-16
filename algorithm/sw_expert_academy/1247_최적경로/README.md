@@ -1,3 +1,11 @@
+---
+category: Algorithm
+title: 최적 경로
+site: SWEA
+number: 1247
+date_started: 2024..
+tags: DFS, 순열
+---
 ## 1247_최적경로 2024-05-16-13:50:09
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15OZ4qAPICFAYD)
 

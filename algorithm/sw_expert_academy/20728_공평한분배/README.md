@@ -1,3 +1,11 @@
+---
+category: Algorithm
+title: 공평한 분배2
+site: SWEA
+number: 20728
+date_started: 2024.05.19
+tags: 정렬
+---
 ## 20728_공평한분배2 2024-05-19-00:46:40
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AY6cg0MKeVkDFAXt)
 

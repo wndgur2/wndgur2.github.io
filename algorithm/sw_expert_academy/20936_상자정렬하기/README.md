@@ -1,3 +1,11 @@
+---
+category: Algorithm
+title: 상자 정렬하기
+site: SWEA
+number: 20936
+date_started: 2024.05.10
+tags: 정렬
+---
 ## 20936_상자정렬하기 2024-05-10-13:43:06
 ### [문제 링크]()
 

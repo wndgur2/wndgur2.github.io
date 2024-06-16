@@ -1,3 +1,11 @@
+---
+category: Algorithm
+title: 공통 조상
+site: SWEA
+number: 1248
+date_started: 2024.05.16
+tags: 트리
+---
 ## 1248_공통조상 2024-05-16-13:06:38
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15PTkqAPYCFAYD)
 
