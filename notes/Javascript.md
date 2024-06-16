@@ -1,3 +1,9 @@
+---
+category: Theory
+title: Javascript
+date_started: 2024.06.14
+tags: Javascript
+---
 # Javascript
 
 ## Object

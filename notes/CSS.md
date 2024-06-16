@@ -2,7 +2,7 @@
 category: Theory
 title: CSS
 date_started: 2024.06.14
-tags: Web
+tags: CSS
 ---
 # CSS
 

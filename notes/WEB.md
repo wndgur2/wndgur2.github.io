@@ -1,3 +1,9 @@
+---
+category: Theory
+title: Web
+date_started: 2024.06.14
+tags: Web
+---
 # WEB
 - The browser parses the HTML file first, and that leads to the browser recognizing any `<link>`-element references to external CSS stylesheets and any `<script>`-element references to scripts.
 - As the browser parses the HTML, it sends requests back to the server for any CSS files it has found from `<link>`elements, and any JavaScript files it has found from `<script>` elements, and from those, then parses the CSS and JavaScript.

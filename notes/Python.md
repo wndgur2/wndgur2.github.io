@@ -1,3 +1,9 @@
+---
+category: Theory
+title: Python
+date_started: 2024.06.14
+tags: Python
+---
 # 파이썬 정리 2024-06-07-11:42:36
 ## 리스트
 ### slicing, iterating
