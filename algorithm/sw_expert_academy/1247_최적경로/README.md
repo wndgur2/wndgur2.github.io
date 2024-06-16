@@ -3,7 +3,7 @@ category: Algorithm
 title: 최적 경로
 site: SWEA
 number: 1247
-date_started: 2024..
+date_started: 2024.05.16
 tags: DFS, 순열
 ---
 ## 1247_최적경로 2024-05-16-13:50:09
