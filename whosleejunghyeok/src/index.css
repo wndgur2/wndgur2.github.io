@@ -1,0 +1,116 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    color: var(--content-color);
+    /* border: 1px solid #f00; */
+}
+
+:root {
+    --light-bg-color: #fafafc;
+    --light-faded-bg-color: #f5f5f5;
+    --light-fg-color: #fdfdfd;
+    --light-accent-color: #39f;
+    --light-action-color: #f0f;
+    --light-content-color: #121212;
+    --light-minor-color: #888;
+    --light-semi-minor-color: #424242;
+    --light-icon-color: #39f;
+    --light-border-color: #39f6;
+
+    --dark-bg-color: #121212;
+    --dark-faded-bg-color: #1b1b1c;
+    --dark-fg-color: #212121;
+    --dark-accent-color: #64f;
+    --dark-action-color: #f0f;
+    --dark-content-color: #f0f0f0;
+    --dark-minor-color: #888;
+    --dark-semi-minor-color: #cecece;
+    --dark-icon-color: #dadada;
+    --dark-border-color: #323232;
+
+    --bg-color: var(--light-bg-color);
+    --faded-bg-color: var(--light-faded-bg-color);
+    --fg-color: var(--light-fg-color);
+    --accent-color: var(--light-accent-color);
+    --action-color: var(--light-action-color);
+    --content-color: var(--light-content-color);
+    --minor-color: var(--light-minor-color);
+    --semi-minor-color: var(--light-semi-minor-color);
+    --icon-color: var(--light-icon-color);
+    --border-color: var(--light-border-color);
+}
+
+[data-theme="light"] {
+    --bg-color: var(--light-bg-color);
+    --faded-bg-color: var(--light-faded-bg-color);
+    --fg-color: var(--light-fg-color);
+    --accent-color: var(--light-accent-color);
+    --action-color: var(--light-action-color);
+    --content-color: var(--light-content-color);
+    --minor-color: var(--light-minor-color);
+    --semi-minor-color: var(--light-semi-minor-color);
+    --icon-color: var(--light-icon-color);
+    --border-color: var(--light-border-color);
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--dark-bg-color);
+    --faded-bg-color: var(--dark-faded-bg-color);
+    --fg-color: var(--dark-fg-color);
+    --accent-color: var(--dark-accent-color);
+    --action-color: var(--dark-action-color);
+    --content-color: var(--dark-content-color);
+    --minor-color: var(--dark-minor-color);
+    --semi-minor-color: var(--dark-semi-minor-color);
+    --icon-color: var(--dark-icon-color);
+    --border-color: var(--dark-border-color);
+}
+
+li {
+    list-style-type: none;
+}
+
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--action-color);
+}
+
+small {
+    color: var(--minor-color);
+}
+
+.link {
+    color: var(--content-color);
+    cursor: pointer;
+}
+
+.link:hover {
+    color: var(--action-color);
+    background-color: var(--faded-bg-color);
+}
+
+.link:hover h1,
+.link:hover h2,
+.link:hover h3,
+.link:hover span,
+.link:hover path {
+    color: var(--action-color);
+}
+
+.minor {
+    color: var(--minor-color);
+}
+
+.tags {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 0.3em;
+    align-items: center;
+}

@@ -1,0 +1,70 @@
+.toggle-box {
+    z-index: 2;
+    position: absolute;
+
+    right: calc(0.5em + 2.5vw);
+    height: 2em;
+
+    display: flex;
+    align-items: center;
+}
+
+.toggle {
+    display: none;
+}
+
+.toggle+label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle+label::before {
+    content: '';
+    width: 4.2em;
+    height: 2.2em;
+    border-radius: 2em;
+    background-color: var(--fg-color);
+    border: 1px solid var(--border-color);
+}
+
+.toggle+label::after {
+    content: '';
+    width: 1.9em;
+    height: 1.9em;
+    border-radius: 1em;
+    background-color: var(--accent-color);
+    position: absolute;
+    left: 0.2em;
+    transition: transform 0.3s, background-color 0.5s, color 0.3s;
+}
+
+.icon {
+    position: absolute;
+    background-color: transparent;
+    pointer-events: none;
+    fill: #FFBB33;
+
+    transition: opacity 0.1s;
+}
+
+.moon {
+    right: 0.4em;
+}
+
+.sun {
+    left: 0.4em;
+}
+
+
+.toggle:checked+label::after {
+    transform: translateX(100%);
+}
+
+.toggle:checked~.sun {
+    opacity: 0;
+}
+
+.toggle:not(:checked)~.moon {
+    opacity: 0;
+}

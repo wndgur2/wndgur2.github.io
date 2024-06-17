@@ -1,0 +1,17 @@
+.search-result {
+    width: 88vw;
+    margin: 4vw 6vw;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.search-result>h2 {
+    margin: 1em 0;
+}
+
+.search-result ul {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 1em;
+}

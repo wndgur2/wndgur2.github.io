@@ -1,0 +1,80 @@
+.project {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 0.2;
+    justify-content: flex-start;
+
+    /* width: 13em; */
+    width: fit-content;
+    min-width: 13em;
+    margin: 0.8em;
+    padding: 0.8em;
+    gap: 0.4em;
+
+    border: 1px solid var(--border-color);
+    border-radius: 1em;
+    background-color: var(--fg-color);
+
+    overflow: hidden;
+
+    /* transition: flex-grow 0.2s, width 0.2s; */
+    transition: flex-grow 0.2s;
+}
+
+.project>small {
+    margin: 0.3em 0px 0.2em 0px;
+}
+
+.project:hover {
+    /* width: 13.6em; */
+    flex-grow: 0.25;
+}
+
+.project p {
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.project-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+}
+
+.project-image>img {
+    width: 100%;
+    max-height: 50vh;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 1em;
+}
+
+@media screen and (max-width: 768px) {
+    .project {
+        flex-grow: 1;
+    }
+
+    .project:hover {
+        flex-grow: 1;
+    }
+}
+
+.no-image {
+    width: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--fg-color);
+}
+
+.project-title {
+    margin: 0.6em 0px 0px 0px;
+}
+
+.project.fix-width:hover {
+    /* width: 13em; */
+    flex-grow: 0.2;
+    margin: 0.8em;
+}

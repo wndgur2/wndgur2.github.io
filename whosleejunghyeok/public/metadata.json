@@ -1,0 +1,60 @@
+{
+    "CatChess": {
+        "category": "project",
+        "title": "CatChess",
+        "description": "실시간 3D 웹 대전 게임",
+        "tags": [
+            "ThreeJs",
+            "NodeJs",
+            "Express",
+            "Javascript",
+            "CSS",
+            "Pug"
+        ],
+        "date_started": "2023.12.01",
+        "date_finished": "2024.04.17",
+        "github": "https://github.com/wndgur2/CatChess"
+    },
+    "Memohub": {
+        "category": "project",
+        "title": "Memohub",
+        "description": "자유분방한 웹 메모장",
+        "tags": [
+            "NextJs",
+            "mongoDB",
+            "Javascript"
+        ],
+        "date_started": "2023.11.23",
+        "date_finished": "2024.11.29",
+        "github": "https://github.com/wndgur2/memohub"
+    },
+    "wndgur2.github.io": {
+        "category": "project",
+        "title": "wndgur2.github.io",
+        "description": "이중혁 블로그",
+        "tags": [
+            "ReactJs",
+            "Git",
+            "Markdown",
+            "CSS",
+            "Typescript",
+            "Javascript"
+        ],
+        "date_started": "2024.05.05",
+        "github": "https://github.com/wndgur2/wndgur2.github.io"
+    },
+    "Cheese": {
+        "category": "project",
+        "title": "Cheese",
+        "description": "야외 포토 부스 서비스",
+        "tags": [
+            "NextJs",
+            "CSS",
+            "Javascript",
+            "WebRTC"
+        ],
+        "date_started": "2023.01.01",
+        "date_finished": "2023.11.14",
+        "github": "https://github.com/wndgur2/cheese"
+    }
+}

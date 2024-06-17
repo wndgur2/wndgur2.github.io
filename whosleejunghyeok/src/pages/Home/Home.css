@@ -1,0 +1,21 @@
+#home {
+    width: 88vw;
+    margin: 4vw 6vw;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 768px) {
+    #home {
+        width: 90vw;
+    }
+}
+
+#home main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

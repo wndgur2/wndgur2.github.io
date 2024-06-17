@@ -1,0 +1,98 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2em 0 calc(3em + 3vw) 0;
+
+    width: 100%;
+
+    color: var(--content-color);
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+/* .col:first-child>* {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.col:nth-child(2) {
+    align-items: center;
+    text-align: center;
+}
+
+.col:last-child>* {
+    align-items: flex-end;
+    text-align: right;
+} */
+
+/* .col:first-child>.profile-item:first-child {
+    border-top-left-radius: 3.8em;
+}
+
+.col:first-child>.profile-item:last-child {
+    border-bottom-left-radius: 3.8em;
+}
+
+.col:last-child>.profile-item:first-child {
+    border-top-right-radius: 3.8em;
+}
+
+.col:last-child>.profile-item:last-child {
+    border-bottom-right-radius: 3.8em;
+}
+
+.col:first-child>.profile-item:first-child>*:first-child,
+.col:first-child>.profile-item:last-child>*:last-child>*:last-child {
+    margin-left: 0.4em;
+}
+
+.col:last-child>.profile-item:first-child>*:first-child,
+.col:last-child>.profile-item:last-child>*:last-child>*:last-child {
+    margin-right: 0.4em;
+} */
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 0.5em;
+}
+
+.profile-tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1em;
+    font-size: 1.1em;
+}
+
+.profile-description {
+    color: var(--accent-color);
+}
+
+.recent-posts {
+    margin-top: 1em;
+
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-around;
+    gap: 0.5em;
+}

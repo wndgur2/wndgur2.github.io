@@ -1,0 +1,20 @@
+.tag {
+    padding: 0.2em 0.5em;
+    margin: 5px;
+
+    cursor: pointer;
+
+    color: var(--accent-color);
+    font-size: 0.8em;
+
+    border-radius: 0.7em;
+    box-shadow: 0 0 0 1px var(--accent-color);
+    background-color: var(--fg-color);
+    transition: box-shadow 0.2s, padding 0.2s;
+}
+
+.tag:hover {
+    box-shadow: 0 0 0 2px var(--action-color);
+    padding: 0.3em 0.6em;
+    color: var(--action-color);
+}
