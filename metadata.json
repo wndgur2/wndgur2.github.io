@@ -46,7 +46,7 @@
     "Cheese": {
         "category": "project",
         "title": "Cheese",
-        "description": "모바일 웹을 활용한 야외 포토 부스 서비스",
+        "description": "야외 포토 부스 서비스",
         "tags": [
             "NextJs",
             "CSS",
