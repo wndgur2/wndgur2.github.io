@@ -13,6 +13,7 @@ export default interface _Post {
     site?: string;
     number?: number;
     code?: string;
+    language?: string;
 
     thumbnail?: string;
     description?: string;

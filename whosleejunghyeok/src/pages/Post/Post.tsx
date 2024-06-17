@@ -57,7 +57,11 @@ const Post: FunctionComponent = () => {
                     </header>
                     <main className="post-content">
                         <Markdown options={{ wrapper: 'div', }}>
-                            {post.content + "\n\n" + post.code}
+                            {
+                                post.content +
+                                (post.category === "algorithm" ?
+                                    "\n\n```" + post.language + "\n\n" + post.code + "```" : "")
+                            }
                         </Markdown>
                     </main>
                 </div> :
