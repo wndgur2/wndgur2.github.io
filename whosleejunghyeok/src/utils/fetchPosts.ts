@@ -45,7 +45,8 @@ const getPost = (data:string, url:string):_Post|null => {
     if(header){
         const headerData = header[1].toString().split("\n");
         headerData.forEach((line:string) => {
-            const [key, value] = line.split(": ");
+            let [key, value] = line.split(": ");
+            if(key==="category") value = value.toLowerCase();
             if(key && value)
                 post[key] = key === "tags"? value.split(", "): value;
         });
@@ -58,8 +59,10 @@ const getPost = (data:string, url:string):_Post|null => {
         post.content = content[1].toString();
 
     post.github = "https://github.com/wndgur2/wndgur2.github.io/tree/main/" + url;
-
+    console.log(post.category)
+    
     if(post.category !== "algorithm") return post;
+    
 
     const code_path = url.split("/");
     
