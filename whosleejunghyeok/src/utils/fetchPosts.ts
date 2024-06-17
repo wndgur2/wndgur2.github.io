@@ -16,7 +16,8 @@ const fetchPosts = async (setPosts:React.Dispatch<React.SetStateAction<_Post[]>>
                 if(prevPosts.find((prevPost:_Post) => prevPost.id === post.id)) return prevPosts;
                 return [...prevPosts, post];
             });
-        });
+        })
+        .catch((err) => console.log(err));
     });
 }
 
@@ -58,11 +59,11 @@ const getPost = (data:string, url:string):_Post|null => {
 
     post.github = "https://github.com/wndgur2/wndgur2.github.io/tree/main/" + url;
 
+    if(post.category !== "algorithm") return post;
+
     const code_path = url.split("/");
-    console.log("codepath:", code_path);
     
     code_path.pop();
-    console.log("codepath:", code_path);
 
     post.tags.forEach((tag:string) => {
         switch(tag.toLowerCase()){
@@ -82,8 +83,8 @@ const getPost = (data:string, url:string):_Post|null => {
                 break;
         }
     });
+
     const filename = code_path[code_path.length - 1].replaceAll(" ", "");
-    console.log(filename);
     code_path.push(filename + '.' + post.language);
     fetch("https://raw.githubusercontent.com/wndgur2/wndgur2.github.io/main/" + code_path.join("/"))
     .then((response) => response.text())
