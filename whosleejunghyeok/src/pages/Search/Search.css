@@ -8,6 +8,8 @@
 
 .search-result>h2 {
     margin: 1em 0;
+    padding: 0.2em 0px;
+    border-bottom: 2px solid var(--accent-color);
 }
 
 .search-result ul {

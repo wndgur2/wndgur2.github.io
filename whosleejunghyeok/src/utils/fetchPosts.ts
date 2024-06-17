@@ -16,7 +16,11 @@ const fetchPosts = async (setPosts:React.Dispatch<React.SetStateAction<_Post[]>>
             if(!post) return;
             setPosts((prevPosts:_Post[]):_Post[] => {
                 if(prevPosts.find((prevPost:_Post) => prevPost.id === post.id)) return prevPosts;
-                return [...prevPosts, post];
+                return [...prevPosts, post].sort((a:_Post, b:_Post) => {
+                    if(a.date_started > b.date_started) return -1;
+                    if(a.date_started < b.date_started) return 1;
+                    return 0;
+                });
             });
         })
         .catch((err) => console.log(err));

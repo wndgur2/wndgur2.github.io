@@ -33,10 +33,10 @@ jobs:
         uses: actions/checkout@v4
       # - name: Install pandoc
       #   run: sudo apt-get install -y pandoc
-      - name: Make the script_urls file executable
-        run: chmod +x script_urls.sh
-      - name: Run a script_urls
-        run: ./script_urls.sh
+      # - name: Make the script_urls file executable
+      #   run: chmod +x script_urls.sh
+      # - name: Run a script_urls
+      #   run: ./script_urls.sh
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact

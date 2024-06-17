@@ -21,13 +21,18 @@ const fetchProjects = async (setPosts:React.Dispatch<React.SetStateAction<_Post[
             img.src = "/images/" + post.title.toLowerCase() + ".jpeg";
             
             post.thumbnail = '<img src="' + img.src + '" alt="' + post.title + '" />';
+            // // getting first image from content.
             //     const img = post.content.match(/<img[^>]+src="([^">]+)".*>/);
             // if(img){
             //     post.thumbnail = '<img src="' + img[1] + '" alt="' + post.title + '" />';
             // }
             setPosts((prevPosts:_Post[]):_Post[] => {
                 if(prevPosts.find((prevPost:_Post) => prevPost.id === post.id)) return prevPosts;
-                return [...prevPosts, post];
+                return [...prevPosts, post].sort((a:_Post, b:_Post) => {
+                    if(a.date_started > b.date_started) return -1;
+                    if(a.date_started < b.date_started) return 1;
+                    return 0;
+                });
             });
         })
     });
