@@ -1,7 +1,7 @@
 ---
 category: Algorithm
 title: 보급로
-site: Baekjoon
+site: SWEA
 number: 1249
 date_started: 2024.05.10
 tags: BFS, Python
