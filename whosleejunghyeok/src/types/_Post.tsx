@@ -8,12 +8,13 @@ export default interface _Post {
     content: string;
     tags: string[];
     date_started: string;
+    github: string;
 
     site?: string;
     number?: number;
+    code?: string;
 
     thumbnail?: string;
     description?: string;
     date_finished?: string;
-    github?: string;
 }

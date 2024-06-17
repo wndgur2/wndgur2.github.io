@@ -38,6 +38,7 @@ const getPost = (data:string, url:string):_Post|null => {
         content: "No content found.",
         tags: [],
         date_started: "No date found.",
+        github: "https://github.com/wndgur2",
     };
     const header = data.match(/---\n(.+)\n---/s);
     if(header){
@@ -50,9 +51,48 @@ const getPost = (data:string, url:string):_Post|null => {
     }
     else return null;
 
+
     const content = data.match(/---\n.+\n---\n(.+)/s);
     if(content)
         post.content = content[1].toString();
+
+    post.github = "https://github.com/wndgur2/wndgur2.github.io/tree/main/" + url;
+
+        const code_path = url.split("/");
+        code_path.pop();
+
+        let ext = ".";
+        post.tags.forEach((tag:string) => {
+            switch(tag.toLowerCase()){
+                case "c++":
+                    ext = ".cpp";
+                    break;
+                case "python":
+                    ext = ".py";
+                    break;
+                case "javascript":
+                    ext = ".js";
+                    break;
+                case "c":
+                    ext = ".c";
+                    break;
+                default:
+                    break;
+            }
+        });
+        code_path.push(code_path[-1] + ext);
+        console.log(code_path.join("/"));
+        fetch(code_path.join("/"))
+        .then((response) => response.text())
+        .catch((err) => {
+            console.log(err);
+            return "";
+        })
+        .then((data) => {
+            post.code = data;
+            console.log("code data:", data);
+        })
+
     return post;
 }
 

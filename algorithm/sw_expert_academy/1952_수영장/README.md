@@ -4,7 +4,7 @@ title: 수영장
 site: SWEA
 number: 1952
 date_started: 2024.05.13
-tags: DP
+tags: DP, Python
 ---
 ## 1952_수영장 2024-05-13-16:22:49
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PpFQaAQMDFAUq)

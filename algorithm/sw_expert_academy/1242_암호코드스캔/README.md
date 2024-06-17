@@ -4,7 +4,7 @@ title: 암호코드 스캔
 site: SWEA
 number: 1242
 date_started: 2024.05.17
-tags: 구현, 해시
+tags: 구현, 해시, Python
 ---
 ## 1242_암호코드스캔 2024-05-17-15:00:07
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV15JEKKAM8CFAYD)

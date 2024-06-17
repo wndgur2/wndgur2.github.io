@@ -4,7 +4,7 @@ title: 등산로 조성
 site: SWEA
 number: 1949
 date_started: 2024.06.16
-tags: DFS
+tags: DFS, Python
 ---
 ## 1949_등산로조성 2024-05-18-16:37:31
 ### [문제 링크](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV5PoOKKAPIDFAUq)
