@@ -49,7 +49,7 @@
 }
 
 .profile-description {
-    color: var(--accent-color);
+    color: var(--accent-content-color);
 }
 
 .recent-posts {
