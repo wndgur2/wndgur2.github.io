@@ -13,18 +13,18 @@
 }
 
 .profile-img-wrapper:hover {
-    width: calc(11em + 12%);
+    width: calc(11em + 7vw);
     cursor: pointer;
     border: 0.8em solid var(--accent-color);
 }
 
 .hidden {
-    width: 12em;
+    width: calc(9em + 5vw);
     border: 0.4em solid var(--minor-color);
 }
 
 .hidden:hover {
-    width: 13em;
+    width: calc(9.5em + 5.5vw);
     cursor: default;
     border: 0.4em solid var(--minor-color);
 }

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useContext, useMemo } from "react";
 import { PostsContext } from "../contexts/Posts";
 import _Post from "../types/_Post";
 import { Params } from "react-router-dom";
