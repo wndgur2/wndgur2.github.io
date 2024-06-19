@@ -1,16 +1,18 @@
 .listed-post {
-    margin: 0.5em 0px;
-    margin-left: 0.2em 0px;
-    padding: 0.5em;
-
     height: fit-content;
     max-width: 100%;
+    margin: 0.5em;
+    padding: 0.5em;
 
     border: 1px solid var(--border-color);
     border-radius: 1em;
     background-color: var(--fg-color);
 
     transition: padding 0.2s;
+}
+
+.listed-post:first-child {
+    margin-left: 0;
 }
 
 .listed-post:hover {

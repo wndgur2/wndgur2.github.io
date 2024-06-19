@@ -1,63 +1,44 @@
 .home-category {
-    flex-grow: 1;
-
-    min-width: 15em;
+    width: 100%;
 
     margin: 0px;
     margin-top: calc(2em + 2%);
-    padding-right: 2em;
+    margin-bottom: 1.4em;
 
     transition: flex-grow 0.2s;
 }
 
-@media screen and (max-width: 768px) {
-    .home-category {
-        padding-right: 0em;
-    }
-}
-
-.home-category:hover {
-    flex-grow: 1.25;
-}
-
-.row {
-    width: 100%;
-    margin-bottom: 1.4em;
-}
-
-.home-category-name {
+.home-category>header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
-    margin-bottom: 0.8em;
-    padding: 0.4em 0.1em 0.3em 0.1em;
+    margin-bottom: 0.4em;
+    padding-bottom: 0.2em;
 
     border-bottom: 1.5px solid var(--accent-color);
-    cursor: pointer;
-
-    transition: padding 0.2s, border-radius 0.2s;
 }
 
-.home-category-name:hover {
-    padding: 0.6em 1.2em 0.4em 1.2em;
-    border-radius: 1.5em 1.5em 0px 0px;
-    border-bottom: 1.5px solid var(--action-color);
+.home-category>header>.link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5em;
+
+    padding: 0.4em 0px;
+
+    border-radius: 2em;
+    transition: padding 0.2s;
 }
 
-.home-category-name>h1 {
+.home-category>header>.link:hover {
+    padding: 0.4em 0.8em;
+}
+
+.home-category>header h1 {
     font-size: xx-large;
     color: var(--accent-color);
-}
-
-.arrow-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 100%;
-    aspect-ratio: 1/1;
 }
 
 .arrow-wrapper path {
@@ -66,16 +47,8 @@
 
 .posts {
     display: flex;
-    flex-flow: column wrap;
-}
-
-.posts-wrapper {
+    flex-flow: row nowrap;
     overflow: scroll;
-}
-
-.row .posts {
-    flex-direction: row;
-    align-items: start;
 }
 
 .no-posts {
@@ -84,4 +57,14 @@
     align-items: center;
     height: 100%;
     width: 100%;
+}
+
+.scroll-buttons {
+    display: flex;
+    gap: 1em;
+}
+
+:disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }

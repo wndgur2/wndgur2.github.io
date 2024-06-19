@@ -1,11 +1,10 @@
 .post-container {
     width: 90vw;
-    padding: 2vw;
     margin: 5vw;
 }
 
 .post header {
-    padding: 1em 1.2em;
+    padding: 1.5em;
 
     display: flex;
     justify-content: space-between;
@@ -13,8 +12,8 @@
     gap: 1em;
 
     border: 1px solid var(--border-color);
-    background-color: var(--faded-bg-color);
-    border-radius: 1em;
+    background-color: var(--fg-color);
+    border-radius: 1em 1em 0 0;
 }
 
 .post header h1 {
@@ -24,7 +23,7 @@
 .post header>section {
     display: flex;
     flex-flow: column nowrap;
-    gap: 0.8em;
+    gap: 0.5em;
 }
 
 .post header>section:last-child {
@@ -32,10 +31,11 @@
 }
 
 .post-content {
-    margin-top: 1em;
-    padding: 2em 1em;
-    background-color: var(--faded-bg-color);
-    border-radius: 1em;
+    border: 1px solid var(--border-color);
+    padding: 2em;
+    background-color: var(--fg-color);
+    margin-top: -1px;
+    border-radius: 0em 0em 1em 1em;
 }
 
 .post-content>div>*:first-child {
@@ -95,4 +95,12 @@
 
 .post-content pre {
     margin: 2em 0px;
+}
+
+.post-content code {
+    border-radius: 0.5em;
+}
+
+.hljs-params {
+    color: inherit;
 }

@@ -6,11 +6,26 @@
     flex-direction: column;
 }
 
-.search-result>h2 {
-    margin: 1em 0;
-    padding: 0.2em 0px;
-    border-bottom: 2px solid var(--accent-color);
+.search-result>header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5em;
+
+    width: fit-content;
+
+    margin: 0.5em 0 2em 0;
+    padding: 0.5em 1.5em;
+
+    background-color: var(--dimmed-fg-color);
+    /* border: 1px solid var(--border-color); */
+    border-radius: 2em;
 }
+
+.search-options {
+    padding: 0.8em;
+}
+
 
 .search-result ul {
     display: flex;

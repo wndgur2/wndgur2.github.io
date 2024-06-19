@@ -12,7 +12,7 @@ import _Category from "../../types/_Category";
 
 const Home: FunctionComponent = () => {
     const posts = useContext(PostsContext).posts as _Post[];
-    const categories: _Category[] = ["project", "career", "algorithm", "study"];
+    const categories: _Category[] = ["project", "study", "algorithm", "life"];
 
     const router = useNavigate();
     const searchParams = useSearchParams()[0];
@@ -25,7 +25,7 @@ const Home: FunctionComponent = () => {
     const renderCategory = (category: _Category) => {
         let count = 0;
         return (
-            <HomeCategory key={category} isRow={category === "project"} category={category}>
+            <HomeCategory key={category} category={category}>
                 {
                     posts.map((post: _Post, idx) => {
                         if (post.category.toLowerCase() !== category.toLowerCase() || count >= 5)

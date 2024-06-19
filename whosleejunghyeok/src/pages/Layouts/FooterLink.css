@@ -1,5 +1,5 @@
 .footer-link {
-    padding: 2em 1.5em;
+    padding: 2em;
     margin: 0px 2vw;
 
     display: flex;
@@ -25,7 +25,7 @@
 
     opacity: 0;
 
-    transition: opacity 0.3s;
+    transition: opacity 0.4s;
 }
 
 .footer-link-title {

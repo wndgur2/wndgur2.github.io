@@ -8,62 +8,66 @@
 }
 
 :root {
-    --light-bg-color: #fafafc;
-    --light-faded-bg-color: #f5f5f5;
     --light-fg-color: #fdfdfd;
+    --light-bg-color: #fafafa;
+    --light-hover-bg-color: #f7f7f9;
+    --light-dimmed-fg-color: #f0f0f2;
     --light-accent-color: #39f;
+    --light-dimmed-accent-color: #39f2;
     --light-action-color: #f0f;
     --light-content-color: #121212;
     --light-minor-color: #888;
-    --light-semi-minor-color: #424242;
     --light-icon-color: #39f;
-    --light-border-color: #39f6;
+    --light-border-color: #39f;
 
-    --dark-bg-color: #121212;
-    --dark-faded-bg-color: #1b1b1c;
-    --dark-fg-color: #212121;
+    --dark-fg-color: #181818;
+    --dark-bg-color: #080808;
+    --dark-hover-bg-color: #101010;
+    --dark-dimmed-fg-color: #1b1b1c;
     --dark-accent-color: #64f;
-    --dark-action-color: #f0f;
+    --dark-dimmed-accent-color: #64f2;
+    --dark-action-color: #aff;
     --dark-content-color: #f0f0f0;
     --dark-minor-color: #888;
-    --dark-semi-minor-color: #cecece;
-    --dark-icon-color: #dadada;
+    --dark-icon-color: #64f;
     --dark-border-color: #323232;
 
     --bg-color: var(--light-bg-color);
-    --faded-bg-color: var(--light-faded-bg-color);
     --fg-color: var(--light-fg-color);
+    --dimmed-fg-color: var(--light-dimmed-fg-color);
+    --hover-bg-color: var(--light-hover-bg-color);
     --accent-color: var(--light-accent-color);
     --action-color: var(--light-action-color);
     --content-color: var(--light-content-color);
     --minor-color: var(--light-minor-color);
-    --semi-minor-color: var(--light-semi-minor-color);
     --icon-color: var(--light-icon-color);
     --border-color: var(--light-border-color);
 }
 
 [data-theme="light"] {
     --bg-color: var(--light-bg-color);
-    --faded-bg-color: var(--light-faded-bg-color);
+    --dimmed-fg-color: var(--light-dimmed-fg-color);
     --fg-color: var(--light-fg-color);
+    --hover-bg-color: var(--light-hover-bg-color);
+    --dimmed-accent-color: var(--light-dimmed-accent-color);
     --accent-color: var(--light-accent-color);
     --action-color: var(--light-action-color);
     --content-color: var(--light-content-color);
     --minor-color: var(--light-minor-color);
-    --semi-minor-color: var(--light-semi-minor-color);
     --icon-color: var(--light-icon-color);
     --border-color: var(--light-border-color);
 }
 
 [data-theme="dark"] {
     --bg-color: var(--dark-bg-color);
-    --faded-bg-color: var(--dark-faded-bg-color);
+    --dimmed-fg-color: var(--dark-dimmed-fg-color);
     --fg-color: var(--dark-fg-color);
+    --hover-bg-color: var(--dark-hover-bg-color);
     --accent-color: var(--dark-accent-color);
+    --dimmed-accent-color: var(--dark-dimmed-accent-color);
     --action-color: var(--dark-action-color);
     --content-color: var(--dark-content-color);
     --minor-color: var(--dark-minor-color);
-    --semi-minor-color: var(--dark-semi-minor-color);
     --icon-color: var(--dark-icon-color);
     --border-color: var(--dark-border-color);
 }
@@ -87,18 +91,19 @@ small {
 }
 
 .link {
-    color: var(--content-color);
+    color: var(--accent-color);
     cursor: pointer;
 }
 
 .link:hover {
     color: var(--action-color);
-    background-color: var(--faded-bg-color);
+    background-color: var(--hover-bg-color);
 }
 
 .link:hover h1,
 .link:hover h2,
 .link:hover h3,
+.link:hover p,
 .link:hover span,
 .link:hover path {
     color: var(--action-color);
@@ -113,4 +118,41 @@ small {
     flex-flow: row wrap;
     margin-top: 0.3em;
     align-items: center;
+}
+
+.action {
+    color: var(--accent-color);
+}
+
+.accent {
+    color: var(--accent-color);
+}
+
+.icon * {
+    color: var(--icon-color);
+    fill: var(--icon-color);
+    stroke: var(--icon-color);
+}
+
+button {
+    padding: 0.3em;
+
+    display: flex;
+    font-size: 1.3em;
+
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+button * {
+    color: var(--accent-color);
+    fill: var(--accent-color);
+    stroke: var(--accent-color);
+}
+
+button:hover {
+    background-color: var(--dimmed-accent-color);
 }

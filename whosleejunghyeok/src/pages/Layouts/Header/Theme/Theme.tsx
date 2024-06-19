@@ -11,7 +11,7 @@ interface ThemeProps {
 
 const Theme: FunctionComponent<ThemeProps> = ({ handleChange, isChecked }) => {
     return (
-        <div className="toggle-box">
+        <div className="theme">
             <input
                 type="checkbox"
                 className="toggle"
@@ -21,8 +21,8 @@ const Theme: FunctionComponent<ThemeProps> = ({ handleChange, isChecked }) => {
             />
             <label htmlFor="check">
             </label>
-            <PiSunDimFill className="sun icon" size="26" />
-            <IoMdMoon className="moon icon" size="26" />
+            <PiSunDimFill className="sun theme-icon" />
+            <IoMdMoon className="moon theme-icon" />
         </div>
     );
 }

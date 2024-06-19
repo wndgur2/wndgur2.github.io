@@ -6,6 +6,7 @@
 
 .headModules {
     position: absolute;
+    z-index: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -27,6 +28,21 @@
     border: none;
 
     cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .headModules {
+        position: fixed;
+        top: 0;
+        height: 4em;
+        background-color: var(--bg-color);
+        /* border-bottom: 1px solid var(--border-color); */
+        box-shadow: 0 0 3px var(--border-color);
+    }
+
+    .marquee {
+        top: 5em;
+    }
 }
 
 .marquee:hover button {

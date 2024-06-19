@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { PostsContext } from "../contexts/Posts";
 import _Post from "../types/_Post";
 import { Params } from "react-router-dom";
@@ -6,15 +6,13 @@ import { Params } from "react-router-dom";
 function useSearchPosts(params: Readonly<Params<string>>) {
 
     const posts = useContext(PostsContext).posts as _Post[];
-    const [searchedPosts, setSearchedPosts] = useState<_Post[]>([]);
 
-    useEffect(() => {
-        if (!params.search_text) return;
+    const searchedPosts: _Post[] = useMemo(() => {
+        if (!params.search_text) return [];
         const search_text = params.search_text.toLowerCase() as string;
         const search_words = search_text.split(" ") as string[];
 
         let result = posts;
-
         search_words.forEach((word) => {
             if (word.startsWith("#")) {
                 result = result.filter((post: _Post) =>
@@ -33,7 +31,7 @@ function useSearchPosts(params: Readonly<Params<string>>) {
                 );
             }
         });
-        setSearchedPosts(result);
+        return result;
     }, [params, posts]);
 
     return searchedPosts;

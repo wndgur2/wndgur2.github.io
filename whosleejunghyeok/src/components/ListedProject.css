@@ -1,33 +1,25 @@
 .project {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 0.2;
-    justify-content: flex-start;
-
-    /* width: 13em; */
+    flex-shrink: 0;
+    max-width: 20em;
     width: fit-content;
-    min-width: 13em;
-    margin: 0.8em;
-    padding: 0.8em;
+    height: fit-content;
+
+    margin: 0.6em;
+    padding: 1em;
     gap: 0.4em;
 
     border: 1px solid var(--border-color);
     border-radius: 1em;
     background-color: var(--fg-color);
-
-    overflow: hidden;
-
-    /* transition: flex-grow 0.2s, width 0.2s; */
-    transition: flex-grow 0.2s;
 }
 
-.project>small {
+.project:first-child {
+    margin-left: 0;
+}
+
+
+.pro .project>small {
     margin: 0.3em 0px 0.2em 0px;
-}
-
-.project:hover {
-    /* width: 13.6em; */
-    flex-grow: 0.25;
 }
 
 .project p {
@@ -35,29 +27,26 @@
     word-wrap: break-word;
 }
 
-.project-image {
+.project-date {
+    text-wrap: nowrap;
+}
+
+.project-image-wrapper {
+    width: 100%;
+    height: 14em;
+
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 1em;
 }
 
-.project-image>img {
+.project-image-wrapper>img {
     width: 100%;
-    max-height: 50vh;
+    height: 100%;
     object-fit: cover;
     object-position: top;
     border-radius: 1em;
-}
-
-@media screen and (max-width: 768px) {
-    .project {
-        flex-grow: 1;
-    }
-
-    .project:hover {
-        flex-grow: 1;
-    }
 }
 
 .no-image {
@@ -73,8 +62,6 @@
     margin: 0.6em 0px 0px 0px;
 }
 
-.project.fix-width:hover {
-    /* width: 13em; */
-    flex-grow: 0.2;
-    margin: 0.8em;
+.project .tags {
+    margin-top: 1em;
 }

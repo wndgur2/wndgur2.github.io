@@ -19,7 +19,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
 
     return (
         <search className="search-bar">
-            <FiSearch className="search-icon" size={22} />
+            <FiSearch className="search-icon" />
             <form
                 onSubmit={
                     (e) => {

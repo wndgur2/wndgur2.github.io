@@ -1,3 +1,3 @@
-type _Category = 'algorithm' | 'project' | 'career' | 'study' | 'other';
+type _Category = 'algorithm' | 'project' | 'life' | 'study' | 'other';
 
 export default _Category;
