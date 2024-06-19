@@ -1,4 +1,5 @@
 .profile {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -44,32 +45,4 @@
 
 .profile-description {
     color: var(--accent-content-color);
-}
-
-.marquee>div>div {
-    margin-left: -1em;
-}
-
-.marquee {
-    position: absolute;
-
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-
-    font-size: 3em;
-    font-weight: bold;
-    letter-spacing: 0.1em;
-    color: var(--accent-color);
-
-    text-align: center;
-    background: none;
-    border: none;
-
-    cursor: pointer;
-    overflow: hidden;
-}
-
-.marquee:hover button {
-    color: var(--action-color);
 }

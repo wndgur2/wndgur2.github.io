@@ -9,6 +9,7 @@ import { _Post, _Project } from "../../types/_Post";
 import Loading from "../../components/Loading";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import _Category from "../../types/_Category";
+import Marquee from "react-fast-marquee";
 
 const Home: FunctionComponent = () => {
     const posts = useContext(PostsContext).posts as _Post[];
@@ -51,6 +52,14 @@ const Home: FunctionComponent = () => {
         <div id="home">
 
             <Profile />
+
+            <div className="marquee-container">
+                <Marquee className="marquee">
+                    <span className="in-marquee">
+                        {"whos leejunghyeok ".repeat(5)}
+                    </span>
+                </Marquee>
+            </div>
 
             <main>
                 {
