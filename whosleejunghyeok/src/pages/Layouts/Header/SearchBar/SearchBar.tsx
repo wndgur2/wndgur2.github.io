@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { FiSearch } from "react-icons/fi";
 
 import './SearchBar.css';
@@ -10,6 +10,7 @@ interface SearchBarProps {
 
 const SearchBar: FunctionComponent<SearchBarProps> = () => {
     const navigate = useNavigate();
+    const inputRef = useRef<HTMLInputElement>(null);
     const [search, setSearch] = useState<string>("");
     let { state } = useLocation();
 
@@ -19,7 +20,10 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
 
     return (
         <search className="search-bar">
-            <FiSearch className="search-icon" />
+            <FiSearch className="search-icon" onClick={() => {
+                if (inputRef.current)
+                    inputRef.current.focus();
+            }} />
             <form
                 onSubmit={
                     (e) => {
@@ -34,6 +38,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
                 }
             >
                 <input
+                    ref={inputRef}
                     type="search"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}

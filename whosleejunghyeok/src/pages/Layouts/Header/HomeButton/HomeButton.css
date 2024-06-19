@@ -1,0 +1,31 @@
+.home-button {
+    order: 0;
+    height: 2.8em;
+    width: 2.8em;
+    aspect-ratio: 1/1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    background-color: var(--fg-color);
+    overflow: hidden;
+
+    transition: width 0.2s, height 0.2s;
+}
+
+.home-button:hover {
+    height: 3.2em;
+    width: 3.2em;
+}
+
+.home-button path {
+    fill: var(--accent-color);
+}
+
+.home-button img {
+    aspect-ratio: 1;
+    border-radius: 50%;
+}

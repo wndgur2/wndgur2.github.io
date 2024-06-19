@@ -21,8 +21,10 @@ const Theme: FunctionComponent<ThemeProps> = ({ handleChange, isChecked }) => {
             />
             <label htmlFor="check">
             </label>
-            <PiSunDimFill className="sun theme-icon" />
-            <IoMdMoon className="moon theme-icon" />
+            <div className="icons">
+                <PiSunDimFill className="sun theme-icon" />
+                <IoMdMoon className="moon theme-icon" />
+            </div>
         </div>
     );
 }
