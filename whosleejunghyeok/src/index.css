@@ -30,7 +30,7 @@
     --dark-action-color: #aff;
     --dark-content-color: #f0f0f0;
     --dark-minor-color: #888;
-    --dark-icon-color: #64f;
+    --dark-icon-color: #999;
     --dark-border-color: #323232;
 
     --bg-color: var(--light-bg-color);
@@ -130,12 +130,6 @@ small {
 
 .accent {
     color: var(--accent-color);
-}
-
-.icon * {
-    color: var(--icon-color);
-    fill: var(--icon-color);
-    stroke: var(--icon-color);
 }
 
 button {

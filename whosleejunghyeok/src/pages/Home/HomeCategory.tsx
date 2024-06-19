@@ -1,6 +1,7 @@
 import { FunctionComponent, useEffect, useRef } from "react";
 import './HomeCategory.css';
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "react-icons/ri";
+import { IoIosArrowForward } from "react-icons/io";
 import { Link } from "react-router-dom";
 import _Category from "../../types/_Category";
 interface HomeCategoryProps {
@@ -52,25 +53,24 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({ category, children
 
     useEffect(() => {
         changeScrollButtons();
-    }, [postsRef.current, buttonsRef.current, children]);
+    }, [children]);
+
+    if (!children || children.length === 0) return (<></>);
 
     return (
         <section className="home-category">
             <header>
                 <Link className="link" to={`search/@${category}`} state={{ search_text: '@' + category }}>
                     <h1>{plural(category)}</h1>
-                    <IoIosArrowForward className="arrow-wrapper" size={34} />
+                    <IoIosArrowForward className="arrow-wrapper" size={32} />
                 </Link>
                 <div className="scroll-buttons" ref={buttonsRef}>
-                    <button onClick={() => scrollPosts("backward")}><IoIosArrowBack style={{ marginLeft: "-2px" }} className="icon" size={28} /></button>
-                    <button onClick={() => scrollPosts("forward")}><IoIosArrowForward style={{ marginRight: "-2px" }} className="icon" size={28} /></button>
+                    <button onClick={() => scrollPosts("backward")}><RiArrowLeftSLine style={{ marginLeft: "-2px" }} className="icon" size={28} /></button>
+                    <button onClick={() => scrollPosts("forward")}><RiArrowRightSLine style={{ marginRight: "-2px" }} className="icon" size={28} /></button>
                 </div>
             </header>
             <ul className="posts" ref={postsRef} onScroll={changeScrollButtons}>
-                {
-                    children && children.length ? children
-                        : <div className="no-posts">No posts</div>
-                }
+                {children}
             </ul>
         </section >
     );

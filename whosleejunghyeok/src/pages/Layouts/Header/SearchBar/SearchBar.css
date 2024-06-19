@@ -39,6 +39,7 @@ input:focus {
 }
 
 .search-icon {
+    margin-left: 0.3em;
     stroke: var(--icon-color);
     font-size: 1.2em;
 }
@@ -53,7 +54,6 @@ input:focus {
     }
 
     .search-icon {
-        stroke: var(--icon-color);
         font-size: 1.4em;
     }
 

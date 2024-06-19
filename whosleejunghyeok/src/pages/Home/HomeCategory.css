@@ -16,7 +16,6 @@
     margin-bottom: 0.4em;
     padding-bottom: 0.2em;
 
-    border-bottom: 1.5px solid var(--accent-color);
 }
 
 .home-category>header>.link {
@@ -52,13 +51,10 @@
     overflow: scroll;
 }
 
-.no-posts {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+.posts>*:first-child {
+    margin-left: 0;
 }
+
 
 .scroll-buttons {
     display: flex;
