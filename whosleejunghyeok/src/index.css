@@ -102,7 +102,6 @@ small {
 .link:hover {
     color: var(--action-color);
     background-color: var(--hover-bg-color);
-    border: 1px solid var(--light-only-border-color);
 }
 
 .link:hover h1,
