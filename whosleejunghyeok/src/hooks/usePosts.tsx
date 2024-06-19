@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import _Post from "../types/_Post";
+import { _Post } from "../types/_Post";
 import fetchPosts from "../utils/fetchPosts";
 import fetchProjects from "../utils/fetchProjects";
 

@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import _Post from "../types/_Post";
+import { _Project } from "../types/_Post";
 import Tag from "./Tag";
 import './ListedProject.css';
 import { Link } from "react-router-dom";
@@ -7,7 +7,7 @@ import parse from 'html-react-parser';
 import { CiImageOff } from "react-icons/ci";
 
 interface ListedProjectProps {
-    post: _Post;
+    post: _Project;
 }
 
 const ListedProject: FunctionComponent<ListedProjectProps> = ({ post }) => {

@@ -1,7 +1,7 @@
 import { FunctionComponent, useContext, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Tag from "../../components/Tag";
-import _Post from "../../types/_Post";
+import { _Post } from "../../types/_Post";
 import { PostsContext } from "../../contexts/Posts";
 import Markdown from "markdown-to-jsx";
 import Loading from "../../components/Loading";

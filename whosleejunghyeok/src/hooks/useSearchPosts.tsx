@@ -1,6 +1,6 @@
 import { useContext, useMemo } from "react";
 import { PostsContext } from "../contexts/Posts";
-import _Post from "../types/_Post";
+import { _Post } from "../types/_Post";
 import { Params } from "react-router-dom";
 
 function useSearchPosts(params: Readonly<Params<string>>) {

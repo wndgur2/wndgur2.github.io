@@ -1,6 +1,6 @@
-import _Post from "../types/_Post";
+import { _Project } from "../types/_Post";
 
-const getLocalImg = async (url: string, post: _Post) => {
+const getLocalImg = async (url: string, post: _Project) => {
     const img = localStorage.getItem(url);
     // if(img) {
     //     post.thumbnail = '<img src="'+img+'" alt="'+post.title+'" />';

@@ -1,4 +1,4 @@
-import _Post from "../types/_Post";
+import {_Post} from "../types/_Post";
 import fetchRawData from "./fetchRawData";
 
 const fetchProjects = async (setPosts:React.Dispatch<React.SetStateAction<_Post[]>>) =>{

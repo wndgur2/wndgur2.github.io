@@ -1,4 +1,4 @@
-import _Post from "../types/_Post";
+import {_Post} from "../types/_Post";
 import fetchPostUrls from "./fetchPostsUrls";
 
 const fetchPosts = async (setPosts:React.Dispatch<React.SetStateAction<_Post[]>>
