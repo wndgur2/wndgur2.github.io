@@ -13,9 +13,9 @@ const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProp
         <Link className="listed-post link" to={`/post/${post.title}`}>
             <header>
                 <h3>
-                    {post.site && <small>{post.site} </small>}
-                    {post.number && <small>{post.number} </small>}
                     <span>{post.title}</span>
+                    {post.site && <small>{post.site}</small>}
+                    {post.number && <small>{post.number}</small>}
                 </h3>
                 {post.category === "project" ?
                     <small>{post.date_started}~ {post.date_finished}</small> :

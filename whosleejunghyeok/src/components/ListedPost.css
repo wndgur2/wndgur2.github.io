@@ -8,15 +8,13 @@
     border-radius: 1em;
     background-color: var(--fg-color);
 
-    transition: padding 0.2s;
-}
-
-.listed-post:first-child {
-    margin-left: 0;
+    transition: padding 0.2s, margin 0.2s, flex-grow 0.2s;
 }
 
 .listed-post:hover {
-    padding: 0.7em;
+    padding: 0.6em;
+    margin: 0.4em;
+    flex-grow: 0.1;
 }
 
 .listed-post>header {
@@ -29,11 +27,12 @@
 }
 
 .listed-post>header>h3 {
-    max-width: 45vw;
-    width: fit-content;
-
     color: var(--content-color);
     text-wrap: nowrap;
 
     overflow: hidden;
+}
+
+.listed-post>header>h3>small {
+    margin-left: 0.5em;
 }

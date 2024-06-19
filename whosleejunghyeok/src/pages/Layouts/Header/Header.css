@@ -7,11 +7,14 @@
 .headModules {
     position: absolute;
     z-index: 1;
+    top: 6em;
+
+    width: 100%;
+    padding: 0 1em;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    padding: 0 1em;
     background: none;
 }
 
@@ -41,7 +44,7 @@
     }
 
     .marquee {
-        top: 5em;
+        top: 4.5em;
     }
 }
 

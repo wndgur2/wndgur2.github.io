@@ -10,15 +10,16 @@
 :root {
     --light-fg-color: #fdfdfd;
     --light-bg-color: #fafafa;
-    --light-hover-bg-color: #f7f7f9;
+    --light-hover-bg-color: #fdfdfd;
     --light-dimmed-fg-color: #f0f0f2;
-    --light-accent-color: #39f;
-    --light-dimmed-accent-color: #39f2;
+    --light-accent-color: #13f;
+    --light-dimmed-accent-color: #13f2;
     --light-action-color: #f0f;
     --light-content-color: #121212;
     --light-minor-color: #888;
-    --light-icon-color: #39f;
-    --light-border-color: #39f;
+    --light-icon-color: #13f;
+    --light-border-color: #13f;
+    --light-light-only-border-color: #13f;
 
     --dark-fg-color: #181818;
     --dark-bg-color: #080808;
@@ -42,6 +43,7 @@
     --minor-color: var(--light-minor-color);
     --icon-color: var(--light-icon-color);
     --border-color: var(--light-border-color);
+    --light-only-border-color: var(--light-light-only-border-color);
 }
 
 [data-theme="light"] {
@@ -56,6 +58,7 @@
     --minor-color: var(--light-minor-color);
     --icon-color: var(--light-icon-color);
     --border-color: var(--light-border-color);
+    --light-only-border-color: var(--light-light-only-border-color);
 }
 
 [data-theme="dark"] {
@@ -70,6 +73,7 @@
     --minor-color: var(--dark-minor-color);
     --icon-color: var(--dark-icon-color);
     --border-color: var(--dark-border-color);
+    --light-only-border-color: none;
 }
 
 li {
@@ -98,6 +102,7 @@ small {
 .link:hover {
     color: var(--action-color);
     background-color: var(--hover-bg-color);
+    border: 1px solid var(--light-only-border-color);
 }
 
 .link:hover h1,

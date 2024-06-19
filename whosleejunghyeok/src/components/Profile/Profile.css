@@ -4,11 +4,17 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     align-items: center;
-    margin: 2em 0 calc(3em + 3vw) 0;
+    margin: 3em 0 calc(5em - 5vw) 0;
 
     width: 100%;
 
     color: var(--content-color);
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        margin-top: 4.5em;
+    }
 }
 
 .col {
