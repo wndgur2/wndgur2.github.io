@@ -28,10 +28,10 @@
         "date_finished": "2024.11.29",
         "github": "https://github.com/wndgur2/memohub"
     },
-    "wndgur2.github.io": {
+    "whosleejunghyeok": {
         "category": "project",
-        "title": "wndgur2.github.io",
-        "description": "이중혁 블로그",
+        "title": "whosleejunghyeok",
+        "description": "깃허브 연동 블로그",
         "tags": [
             "ReactJs",
             "Git",
@@ -41,7 +41,7 @@
             "Javascript"
         ],
         "date_started": "2024.05.05",
-        "github": "https://github.com/wndgur2/wndgur2.github.io"
+        "github": "https://github.com/wndgur2/whosleejunghyeok"
     },
     "Cheese": {
         "category": "project",

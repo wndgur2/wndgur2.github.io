@@ -56,7 +56,7 @@ const Home: FunctionComponent = () => {
             <div className="marquee-container">
                 <Marquee className="marquee">
                     <span className="in-marquee">
-                        {"whos leejunghyeok ".repeat(5)}
+                        {"who's leejunghyeok ".repeat(5)}
                     </span>
                 </Marquee>
             </div>
