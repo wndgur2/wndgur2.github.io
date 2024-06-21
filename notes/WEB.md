@@ -9,8 +9,8 @@ tags: Web
 
 ### 클라이언트와 서버  
 페이지를 내 브라우저에 띄울려면, 해당 페이지의 정보를 가지고 있어야 한다. 세상 모든 페이지의 정보를 내 컴퓨터에 안전하게 저장하는 것은 불가능할 것이다. 따라서 우리는, 고객이 페이지 정보를 요청할 때마다 주인장이 고객에게 페이지 정보를 전송하는 방법을 쓴다.  
-여기서 당연히 고객이 Client, 주인장이 Server가 된다.  
-`Client`는 조금 더 Chrome과 같은 웹 엔진이 담긴 프로그램 느낌이 나는 `Browser`라고도 불린다.  
+여기서 당연히 고객이 `Client`, 주인장이 `Server`가 된다.  
+`Browser`는 `Client`측에서 사용하는 Chrome, Edge와 같이 웹 엔진이 담긴 프로그램을 의미한다.  
 
 > Client: 어이 네이버! 맥주 한 잔 주쇼!  
 > Server: 예. 여기 HTML과 CSS와 JS입니다.
@@ -25,11 +25,9 @@ tags: Web
 > CLient: 어이 192.168.0.68! 맥주 한 잔 주쇼!  
 > Server(192.168.0.68): 예. 여기 HTML과 CSS와 JS입니다.  
 
+### TCP/IP  
 
-
-TCP/IP  
-
-## 페이지 파싱 순서
+## Browser 페이지 파싱 순서
 - 브라우저는 먼저 HTML을 읽어들인다. 그러면서 CSS stylesheets를 참조하는 `<link>` 엘리먼트와 스크립트들을 참조하는 `<script>`-엘리먼트를 발견하게 된다.  
 - 브라우저는 HTML을 읽어들이면서, 찾은 `<link>`나 `<script>` 태그에 대하여 서버에 다시 reqeust를 보낸다. 그리고 그 응답으로부터 CSS와 JavaScript를 읽어들인다.  
 - 브라우저는 읽어들인 HTML으로 in-memory [DOM(Document Object Model)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) tree를, CSS로부터 in-memory CSSOM을 생성한다. 그리고 JavaScript를 컴파일하고 실행한다.  
