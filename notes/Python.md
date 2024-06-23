@@ -4,9 +4,13 @@ title: Python
 date_started: 2024.06.14
 tags: Python
 ---
+
 # 파이썬 정리
+
 ## 리스트
+
 ### slicing, iterating
+
 ```python
 temp_list = ['a', 'b', 'c'] # 빈 배열 생성
 print(temp_list[0:2]) # ['a', 'b']
