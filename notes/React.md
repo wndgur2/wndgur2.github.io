@@ -29,6 +29,7 @@ State를 변경하는 방식을 지정한다. Class에서 set property를 지정
 
 한 포스트를 불러올 때마다 `posts` State를 업데이트해주고자 했는데, 이를 날짜순으로 정렬하기 원했다.  
 기존에는 이를 아래와 같은 코드로 구현했다.  
+
 ``` jsx  
 setPosts((prevPosts:_Post[]):_Post[] => {
     if(prevPosts.find((prevPost:_Post) => prevPost.id === post.id)) return prevPosts;
@@ -39,14 +40,17 @@ setPosts((prevPosts:_Post[]):_Post[] => {
     });
 });
 ```  
+
 위 코드는 정렬 자체도 비효율적일 뿐더러(이미 정렬되어있는 것이 활용되지 않음) 같은 코드가 `fetchPosts`와 `fetchProjects`에 중복 작성되어있었다.  
 
 위 코드는 아래처럼 단순해졌다.  
-```jsx
+
+```jsx  
 dispatch({type: "INSERT_POST", payload: post});
-```
+```  
 
 `INSERT_POST`라는 action을 `postsReducer.ts`의 `reducer`에 정의했다.  
+
 ```ts  
 const reducer = (state: _Post[], action: PostAction): _Post[] => {
     switch (action.type) {

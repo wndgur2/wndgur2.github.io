@@ -13,6 +13,7 @@ tags: CSS
 - `flex-basis`: 크기 기본값
 - `flex-flow`: `flex-direction`, `flex-grow`
 - `color: var(--variable-name)`: custom variable
+- `scrollbar-color`: `thumb-color`(bar color) `track-color`(background color)
 
 ## 단위
 - `px`: pixel
