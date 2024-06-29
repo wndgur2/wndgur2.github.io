@@ -1,0 +1,182 @@
+@import url('styles/English.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "English", sans-serif;
+    color: var(--content-color);
+    scrollbar-width: none;
+}
+
+:root {
+    --ko-unicode: U+AC00-D7A3;
+    --en-unicode: U+0041-005A, U+0061-007A;
+
+    --light-fg-color: #fafafa;
+    --light-bg-color: #eee;
+    --light-hover-bg-color: #fff8;
+    --light-dimmed-fg-color: #f0f0f0;
+    --light-accent-color: #13f;
+    --light-dimmed-accent-color: #13f2;
+    --light-accent-content-color: #082df0cc;
+    --light-content-color: #242424;
+    --light-action-color: #f4a;
+    --light-minor-color: #888;
+    --light-icon-color: #444;
+    --light-dimmed-icon-color: #4442;
+    --light-border-color: #13f;
+    --light-light-only-border-color: #f4a;
+
+    --dark-fg-color: #181818;
+    --dark-bg-color: #080808;
+    --dark-hover-bg-color: #101010;
+    --dark-dimmed-fg-color: #242424;
+    --dark-accent-color: #64f;
+    --dark-dimmed-accent-color: #64f2;
+    --dark-accent-content-color: #86fc;
+    --dark-content-color: #eee;
+    --dark-action-color: #aff;
+    --dark-minor-color: #888;
+    --dark-icon-color: #ddd;
+    --dark-dimmed-icon-color: #ddd2;
+    --dark-border-color: #323232;
+
+    --bg-color: var(--light-bg-color);
+    --fg-color: var(--light-fg-color);
+    --dimmed-fg-color: var(--light-dimmed-fg-color);
+    --hover-bg-color: var(--light-hover-bg-color);
+    --action-color: var(--light-action-color);
+    --accent-color: var(--light-accent-color);
+    --dimmed-accent-color: var(--light-dimmed-accent-color);
+    --accent-content-color: var(--light-accent-content-color);
+    --content-color: var(--light-content-color);
+    --minor-color: var(--light-minor-color);
+    --icon-color: var(--light-icon-color);
+    --dimmed-icon-color: var(--light-dimmed-icon-color);
+    --border-color: var(--light-border-color);
+    --light-only-border-color: var(--light-light-only-border-color);
+}
+
+[data-theme="light"] {
+    --bg-color: var(--light-bg-color);
+    --dimmed-fg-color: var(--light-dimmed-fg-color);
+    --fg-color: var(--light-fg-color);
+    --hover-bg-color: var(--light-hover-bg-color);
+    --dimmed-accent-color: var(--light-dimmed-accent-color);
+    --accent-content-color: var(--light-accent-content-color);
+    --accent-color: var(--light-accent-color);
+    --action-color: var(--light-action-color);
+    --content-color: var(--light-content-color);
+    --minor-color: var(--light-minor-color);
+    --icon-color: var(--light-icon-color);
+    --dimmed-icon-color: var(--light-dimmed-icon-color);
+    --border-color: var(--light-border-color);
+    --light-only-border-color: var(--light-light-only-border-color);
+}
+
+[data-theme="dark"] {
+    --bg-color: var(--dark-bg-color);
+    --dimmed-fg-color: var(--dark-dimmed-fg-color);
+    --fg-color: var(--dark-fg-color);
+    --hover-bg-color: var(--dark-hover-bg-color);
+    --action-color: var(--dark-action-color);
+    --accent-color: var(--dark-accent-color);
+    --dimmed-accent-color: var(--dark-dimmed-accent-color);
+    --accent-content-color: var(--dark-accent-content-color);
+    --content-color: var(--dark-content-color);
+    --minor-color: var(--dark-minor-color);
+    --icon-color: var(--dark-icon-color);
+    --dimmed-icon-color: var(--dark-dimmed-icon-color);
+    --border-color: var(--dark-border-color);
+    --light-only-border-color: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--action-color);
+}
+
+small {
+    color: var(--minor-color);
+}
+
+.link {
+    color: var(--accent-color);
+    cursor: pointer;
+}
+
+.link:hover {
+    color: var(--action-color);
+    background-color: var(--hover-bg-color);
+}
+
+.link:hover h1,
+.link:hover h2,
+.link:hover h3,
+.link:hover p,
+.link:hover span,
+.link:hover path {
+    color: var(--action-color);
+}
+
+.minor {
+    color: var(--minor-color);
+}
+
+.tags {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 0.3em;
+    align-items: center;
+}
+
+.action {
+    color: var(--action-color);
+}
+
+.accent {
+    color: var(--accent-color);
+}
+
+button {
+    padding: 0.5em;
+
+    display: flex;
+    font-size: 1.3em;
+
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
+}
+
+button:hover * {
+    color: var(--icon-color);
+    fill: var(--icon-color);
+    stroke: var(--icon-color);
+}
+
+button:hover {
+    background-color: var(--dimmed-icon-color);
+}
+
+button.accent * {
+    color: var(--accent-color);
+    fill: var(--accent-color);
+    stroke: var(--accent-color);
+}
+
+button.accent:hover {
+    background-color: var(--dimmed-accent-color);
+}

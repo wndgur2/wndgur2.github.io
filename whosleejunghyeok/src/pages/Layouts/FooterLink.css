@@ -1,0 +1,48 @@
+.footer-link {
+    padding: 2em;
+    margin: 0px 2vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3em;
+
+    text-wrap: nowrap;
+    text-align: center;
+
+    transition: height 0.4s;
+    background: none;
+}
+
+.footer-link:hover {
+    cursor: pointer;
+}
+
+.footer-link-children {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+
+    opacity: 0;
+
+    transition: opacity 0.4s;
+}
+
+.footer-link-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3em;
+}
+
+.footer-link-title>h3 {
+    font-size: 1.1em;
+}
+
+.hovered {
+    color: var(--action-color);
+}
+
+.footer-link-children>span {
+    font-size: 0.8em;
+}

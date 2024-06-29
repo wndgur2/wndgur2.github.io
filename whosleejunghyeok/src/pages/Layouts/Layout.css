@@ -1,0 +1,23 @@
+#container {
+    width: 100vw;
+    min-height: 100vh;
+    padding-top: 6em;
+
+    overflow: hidden;
+    background-color: var(--bg-color);
+    transition: background-color 0.8s;
+}
+
+#body-container {
+    width: 90vw;
+    margin: 0 5vw;
+    min-height: 60vh;
+    margin-bottom: 2em;
+}
+
+@media screen and (max-width: 768px) {
+    #body-container {
+        margin-bottom: 4em;
+    }
+
+}

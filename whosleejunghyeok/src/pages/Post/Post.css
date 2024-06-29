@@ -1,0 +1,154 @@
+.post header {
+    padding: 4vh 4vw;
+    padding-bottom: 1.2em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--fg-color);
+    border-radius: 1em 1em 0 0;
+}
+
+.post header h1 {
+    margin-left: 4px;
+    font-size: xx-large;
+}
+
+.post-title {
+    max-width: 70%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 0.5em;
+}
+
+.post-meta {
+    height: 100%;
+    padding-bottom: 0.5em;
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    gap: 0.6em;
+}
+
+.post-meta .github {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    padding: 0.5em;
+    border-radius: 50%;
+}
+
+.post-meta .github:hover path {
+    fill: var(--content-color);
+}
+
+.post-meta small {
+    text-align: end;
+}
+
+.post header>section:last-child {
+    align-items: flex-end;
+}
+
+.post-content {
+    margin-top: -1px;
+    padding: 2em 4vw;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--fg-color);
+    border-radius: 0em 0em 1em 1em;
+}
+
+.post-content>div * {
+    scroll-margin-top: 4em;
+}
+
+.post-content>div>*:first-child {
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+.post-content h1,
+.post-content h2 {
+    margin: 1.4em 0px 0.8em 0px;
+}
+
+.post-content h3 {
+    margin: 1em 0px 0.5em 0px;
+}
+
+.post-content p {
+    text-wrap: pretty;
+    margin: 1em 0px;
+    line-height: 1.5em;
+}
+
+.post-content ul {
+    margin: 0.5em 0px 2em 0px;
+    padding-left: 1em;
+}
+
+.post-content li {
+    line-height: 1.5em;
+}
+
+.post-content li::marker {
+    content: '- ';
+    white-space: pre-line;
+}
+
+.post-content img {
+    display: block;
+    object-fit: contain;
+    object-position: top left;
+
+    max-width: 100%;
+
+    margin: 1em 0px;
+    border-radius: 0.5em;
+}
+
+.post-content table {
+    display: inline;
+    margin: 1em;
+}
+
+.post-content td {
+    padding: 0.5em;
+    border: 1px solid var(--border-color);
+    background-color: var(--fg-color);
+}
+
+.post-content mark {
+    background-color: var(--minor-color);
+    border-radius: 0.2em;
+}
+
+.post-content pre {
+    margin: 2em 0px;
+}
+
+.post-content code {
+    border-radius: 0.5em;
+}
+
+.post-content blockquote {
+    border-left: 0.2em solid var(--accent-color);
+    padding: 0px 1em;
+    margin: 0.4em 0px;
+    background-color: var(--dimmed-fg-color);
+}
+
+.post-content blockquote p {
+    padding: 0.6em;
+    margin: 0;
+}
+
+.hljs-params {
+    color: inherit;
+}

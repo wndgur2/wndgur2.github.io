@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.09a4d1b4.css",
+    "main.js": "/static/js/main.3e7521be.js",
+    "static/media/Roboto-BlackItalic.woff": "/static/media/Roboto-BlackItalic.1ed29ceb7fe1cb86ef7c.woff",
+    "static/media/Roboto-LightItalic.woff": "/static/media/Roboto-LightItalic.ec12bb7214b9900dc33b.woff",
+    "static/media/Roboto-MediumItalic.woff": "/static/media/Roboto-MediumItalic.d2db3a8f1b5b453ca4b8.woff",
+    "static/media/Roboto-BoldItalic.woff": "/static/media/Roboto-BoldItalic.62899727f512e28a74a5.woff",
+    "static/media/Roboto-Italic.woff": "/static/media/Roboto-Italic.698b2b4b2182b0f3f526.woff",
+    "static/media/Roboto-ThinItalic.woff": "/static/media/Roboto-ThinItalic.a4d80c296ac434047911.woff",
+    "static/media/Roboto-Medium.woff": "/static/media/Roboto-Medium.8fe3f99a84745a795ef8.woff",
+    "static/media/Roboto-Black.woff": "/static/media/Roboto-Black.5a7e056d1f698cb70da3.woff",
+    "static/media/Roboto-Bold.woff": "/static/media/Roboto-Bold.49946fb03c6eb61475ce.woff",
+    "static/media/Roboto-Light.woff": "/static/media/Roboto-Light.087ca26861ec61b77849.woff",
+    "static/media/Roboto-Thin.woff": "/static/media/Roboto-Thin.219ba880a740987ae7bc.woff",
+    "static/media/Roboto-BlackItalic.woff2": "/static/media/Roboto-BlackItalic.73d30d865c9f66f30157.woff2",
+    "static/media/Roboto-MediumItalic.woff2": "/static/media/Roboto-MediumItalic.4338d4a660661de846f7.woff2",
+    "static/media/Roboto-LightItalic.woff2": "/static/media/Roboto-LightItalic.e41dced3b8cebe9c8d69.woff2",
+    "static/media/Roboto-BoldItalic.woff2": "/static/media/Roboto-BoldItalic.2b893c6467b274549b04.woff2",
+    "static/media/Roboto-Italic.woff2": "/static/media/Roboto-Italic.ad76fdbda553531c3b66.woff2",
+    "static/media/Roboto-ThinItalic.woff2": "/static/media/Roboto-ThinItalic.051718c431ab4d56afa9.woff2",
+    "static/media/Roboto-Medium.woff2": "/static/media/Roboto-Medium.55a1ee68e40eeca8c84e.woff2",
+    "static/media/Roboto-Black.woff2": "/static/media/Roboto-Black.88841621921568e2db10.woff2",
+    "static/media/Roboto-Bold.woff2": "/static/media/Roboto-Bold.0919898f75909abec121.woff2",
+    "static/media/Roboto-Light.woff2": "/static/media/Roboto-Light.fb3d6a9e6f6eb05f93c6.woff2",
+    "static/media/Roboto-Thin.woff2": "/static/media/Roboto-Thin.b121f4adcc3301b0f6d1.woff2",
+    "index.html": "/index.html",
+    "main.09a4d1b4.css.map": "/static/css/main.09a4d1b4.css.map",
+    "main.3e7521be.js.map": "/static/js/main.3e7521be.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.09a4d1b4.css",
+    "static/js/main.3e7521be.js"
+  ]
+}
