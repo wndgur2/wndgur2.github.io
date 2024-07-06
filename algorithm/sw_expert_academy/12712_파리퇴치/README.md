@@ -4,7 +4,7 @@ title: 파리퇴치
 site: SWEA
 number: 12712
 date_started: 2024.07.04
-tags: 구현
+tags: '구현, Python'
 ---
 
 ## 12712_파리퇴치 2024-07-04-18:31:07
