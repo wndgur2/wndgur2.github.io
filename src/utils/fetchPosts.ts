@@ -26,8 +26,7 @@ const fetchPosts = async (
 const fetchPost = async (url: string) => {
     try {
         const response = await fetch(
-            "https://raw.githubusercontent.com/wndgur2/wndgur2.github.io/main/" +
-                url
+            "https://raw.githubusercontent.com/wndgur2/blogDatabase/main/" + url
         );
         const data = await response.text();
         return await getPost(data, url);
