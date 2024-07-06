@@ -50,7 +50,7 @@ const getPost = async (data:string, url:string):Promise<_Post|null> => {
             let [key, value] = line.split(": ");
             if(key==="category") value = value.toLowerCase();
             if(key && value)
-                post[key] = key === "tags"? value.split(", "): value;
+                post[key] = key === "tags"? value.replaceAll("'", "").split(", "): value;
         });
     }
     else return null;

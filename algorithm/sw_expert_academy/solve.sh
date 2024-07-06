@@ -16,8 +16,7 @@ echo "\n\"\"\"\n" >> "$code_setup"
 cat "_solve" >> "$code_setup"
 
 readme_setup=$(mktemp)
-echo "## $problem_name $current_time" > "$readme_setup"
-cat "_README" >> "$readme_setup"
+cat "_README" > "$readme_setup"
 
 if [ ! -f "$problem_name/$problem_name.py" ]; then
     mkdir "$problem_name"
