@@ -36,7 +36,6 @@ footer {
         justify-content: center;
         gap: 0.2em;
 
-        background-color: var(--fg-color);
         border-radius: 50%;
 
     }

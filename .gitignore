@@ -6,3 +6,4 @@
 .env
 private-note.md
 test*
+node_modules
