@@ -57,19 +57,16 @@ const getPost = async (data:string, url:string):Promise<_Post|null> => {
 
 
     const content = data.match(/---\n.+\n---\n(.+)/s);
-    if(content){
-        post.content = content[1].toString();
-    }
+
+    if(content) post.content = content[1].toString();
 
     post.github = "https://github.com/wndgur2/wndgur2.github.io/tree/main/" + url;
     
     if(post.category !== CATEGORIES.ALGORITHM) return post;
-    
 
+    // get code
     const code_path = url.split("/");
-    
     code_path.pop();
-
     post.tags.forEach((tag:string) => {
         switch(tag.toLowerCase()){
             case "c++":
@@ -88,7 +85,6 @@ const getPost = async (data:string, url:string):Promise<_Post|null> => {
                 break;
         }
     });
-
     if(!post.language) return post;
 
     const filename = code_path[code_path.length - 1].replaceAll(" ", "");
