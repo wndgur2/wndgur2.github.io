@@ -16,7 +16,7 @@
     --light-fg-color: #fafafa;
     --light-bg-color: #eee;
     --light-hover-bg-color: #fff8;
-    --light-dimmed-fg-color: #f0f0f0;
+    --light-dimmed-fg-color: #eee;
     --light-accent-color: #13f;
     --light-dimmed-accent-color: #13f2;
     --light-accent-content-color: #082df0cc;
@@ -31,7 +31,7 @@
     --dark-fg-color: #181818;
     --dark-bg-color: #080808;
     --dark-hover-bg-color: #101010;
-    --dark-dimmed-fg-color: #242424;
+    --dark-dimmed-fg-color: #282828;
     --dark-accent-color: #64f;
     --dark-dimmed-accent-color: #64f2;
     --dark-accent-content-color: #86fc;

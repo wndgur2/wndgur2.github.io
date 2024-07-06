@@ -152,3 +152,11 @@
 .hljs-params {
     color: inherit;
 }
+
+.post-content code:not(.hljs) {
+    font-size: 0.9em;
+    padding: 0.2em 0.4em;
+    line-height: 2em;
+    border-radius: 0.2em;
+    background-color: var(--dimmed-fg-color);
+}
