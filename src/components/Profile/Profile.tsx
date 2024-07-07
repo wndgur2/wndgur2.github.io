@@ -8,13 +8,11 @@ const Profile: FunctionComponent = () => {
     const stacks = ["HTML", "CSS", "Typescript", "Javascript", "ReactJs", "NextJs", "Express"];
     return (
         <div className="profile">
-            <ProfileImage >
-                <img className="profile-img" src="/images/profile.jpeg" alt="profile" />
-            </ProfileImage>
+            <ProfileImage />
             <div className="profile-content">
                 <h1 className="profile-name">이중혁</h1>
                 <h2 className="profile-description">
-                    협력, 성장!
+                    기술 블로그
                 </h2>
                 <div className="profile-tags">
                     {stacks.map((stack, index) => (

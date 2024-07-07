@@ -14,9 +14,10 @@
     --en-unicode: U+0041-005A, U+0061-007A;
 
     --light-fg-color: #fafafa;
-    --light-bg-color: #eee;
-    --light-hover-bg-color: #fff8;
     --light-dimmed-fg-color: #eee;
+    --light-bg-color: #eee;
+    --light-dimmed-bg-color: #ddd;
+    --light-hover-bg-color: #fff8;
     --light-accent-color: #13f;
     --light-dimmed-accent-color: #13f2;
     --light-accent-content-color: #082df0cc;
@@ -29,9 +30,10 @@
     --light-light-only-border-color: #f4a;
 
     --dark-fg-color: #181818;
-    --dark-bg-color: #080808;
-    --dark-hover-bg-color: #101010;
     --dark-dimmed-fg-color: #282828;
+    --dark-bg-color: #080808;
+    --dark-dimmed-bg-color: #111;
+    --dark-hover-bg-color: #101010;
     --dark-accent-color: #64f;
     --dark-dimmed-accent-color: #64f2;
     --dark-accent-content-color: #86fc;
@@ -42,7 +44,8 @@
     --dark-dimmed-icon-color: #ddd2;
     --dark-border-color: #323232;
 
-    --bg-color: var(--light-bg-color);
+    /* --bg-color: var(--light-bg-color);
+    --dimmed-bg-color: var(--light-dimmed-bg-color);
     --fg-color: var(--light-fg-color);
     --dimmed-fg-color: var(--light-dimmed-fg-color);
     --hover-bg-color: var(--light-hover-bg-color);
@@ -55,11 +58,12 @@
     --icon-color: var(--light-icon-color);
     --dimmed-icon-color: var(--light-dimmed-icon-color);
     --border-color: var(--light-border-color);
-    --light-only-border-color: var(--light-light-only-border-color);
+    --light-only-border-color: var(--light-light-only-border-color); */
 }
 
 [data-theme="light"] {
     --bg-color: var(--light-bg-color);
+    --dimmed-bg-color: var(--light-dimmed-bg-color);
     --dimmed-fg-color: var(--light-dimmed-fg-color);
     --fg-color: var(--light-fg-color);
     --hover-bg-color: var(--light-hover-bg-color);
@@ -77,6 +81,7 @@
 
 [data-theme="dark"] {
     --bg-color: var(--dark-bg-color);
+    --dimmed-bg-color: var(--dark-dimmed-bg-color);
     --dimmed-fg-color: var(--dark-dimmed-fg-color);
     --fg-color: var(--dark-fg-color);
     --hover-bg-color: var(--dark-hover-bg-color);

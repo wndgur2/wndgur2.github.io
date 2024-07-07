@@ -1,16 +1,17 @@
 .profile-img-wrapper {
     width: calc(10em + 6vw);
+    aspect-ratio: 1/1;
     padding: 0;
     margin-top: 1em;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    aspect-ratio: 1/1;
 
     border-radius: 50%;
     border: 0.4em solid var(--accent-color);
     transition: width 0.3s, border 0.3s, margin 0.3s;
+
 }
 
 .profile-img-wrapper:hover {
@@ -18,6 +19,15 @@
     cursor: pointer;
     border: 0.8em solid var(--action-color);
     margin-top: 0;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+
+    border-radius: 50%;
+    object-fit: contain;
 }
 
 .hidden {

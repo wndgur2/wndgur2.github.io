@@ -51,8 +51,8 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({ category, children
                     <IoIosArrowForward className="arrow-wrapper" size={24} />
                 </Link>
                 <div className="scroll-buttons icon" ref={buttonsRef}>
-                    <button onClick={() => scrollPosts("backward")}><RiArrowLeftSLine style={{ marginLeft: "-2px" }} className="icon" size={28} /></button>
-                    <button onClick={() => scrollPosts("forward")}><RiArrowRightSLine style={{ marginRight: "-2px" }} className="icon" size={28} /></button>
+                    <button className="category-btn" onClick={() => scrollPosts("backward")}><RiArrowLeftSLine style={{ marginLeft: "-2px" }} className="icon" size={28} /></button>
+                    <button className="category-btn" onClick={() => scrollPosts("forward")}><RiArrowRightSLine style={{ marginRight: "-2px" }} className="icon" size={28} /></button>
                 </div>
             </header>
             <ul className="posts" ref={postsRef} onScroll={changeScrollButtons}>

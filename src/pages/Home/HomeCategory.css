@@ -57,7 +57,7 @@
     gap: 1em;
 }
 
-:disabled {
+.category-btn:disabled {
     pointer-events: none;
     opacity: 0.5;
 }
