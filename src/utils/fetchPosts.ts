@@ -59,6 +59,7 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
                               .replaceAll('"', "")
                               .replaceAll("'", "")
                               .split(", ")
+                              .sort()
                         : value;
         });
     } else return null;
