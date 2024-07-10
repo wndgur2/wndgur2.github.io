@@ -14,7 +14,7 @@ const HomeButton: FunctionComponent = () => {
                     </Link>
                     :
                     <Link to="/" className="home-button">
-                        <img src="/images/profile.jpeg" alt="my face" width={"40px"} />
+                        <img src="/images/profile/0.jpeg" alt="my face" width={"40px"} />
                     </Link>
             }
         </>
