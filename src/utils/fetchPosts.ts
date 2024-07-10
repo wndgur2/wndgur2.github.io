@@ -100,7 +100,7 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
     code_path.push(filename + "." + post.language);
 
     post.code = await getCode(
-        "https://raw.githubusercontent.com/wndgur2/wndgur2.github.io/main/" +
+        "https://raw.githubusercontent.com/wndgur2/blogDatabase/main/" +
             code_path.join("/")
     );
     return post;
