@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header/Header";
 import "./Layout.css";
 import { DeviceContext } from "../../contexts/Device";
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 
 interface LayoutProps {
 

@@ -12,7 +12,7 @@
     width: 90vw;
     margin: 0 5vw;
     min-height: 60vh;
-    margin-bottom: 2em;
+    margin-bottom: 10vh;
 }
 
 @media screen and (max-width: 768px) {
