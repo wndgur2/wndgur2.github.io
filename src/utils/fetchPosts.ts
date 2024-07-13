@@ -26,7 +26,7 @@ const fetchPosts = async (
 const fetchPost = async (url: string) => {
     try {
         const response = await fetch(
-            "https://raw.githubusercontent.com/wndgur2/blogDatabase/main/" + url
+            "https://raw.githubusercontent.com/wndgur2/BlogDB/main/" + url
         );
         const data = await response.text();
         return await getPost(data, url);
@@ -100,7 +100,7 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
     code_path.push(filename + "." + post.language);
 
     post.code = await getCode(
-        "https://raw.githubusercontent.com/wndgur2/blogDatabase/main/" +
+        "https://raw.githubusercontent.com/wndgur2/BlogDB/main/" +
             code_path.join("/")
     );
     return post;
