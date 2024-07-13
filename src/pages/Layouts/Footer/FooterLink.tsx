@@ -10,7 +10,6 @@ interface FooterLinkProps {
 }
 
 const FooterLink: FunctionComponent<FooterLinkProps> = ({ icon, url, children }) => {
-    console.log(icon.props);
     return (
         <div>
             <Link className="footer-link" to={url} rel="noreferrer" target="_blank">
