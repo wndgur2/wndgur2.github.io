@@ -1,4 +1,5 @@
 import _Category from "./_Category";
+import TIER_COLOR from "../consts/TIER_COLOR";
 
 interface _Post {
     [index: string]: number | string | _Category | string[] | undefined;
@@ -13,6 +14,7 @@ interface _Post {
 
 interface _Algorithm extends _Post {
     site: string;
+    level: keyof typeof TIER_COLOR;
     number: number;
     code: string;
 }

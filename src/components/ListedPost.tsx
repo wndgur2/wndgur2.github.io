@@ -2,9 +2,10 @@ import { FunctionComponent } from "react";
 import './ListedPost.css';
 import Tag from "./Tag";
 import { Link } from "react-router-dom";
-import { _Post } from "../types/_Post";
+import { _Algorithm, _Post } from "../types/_Post";
 import CATEGORIES from "../consts/CATEGORIES";
 import Markdown from "markdown-to-jsx";
+import TIER_COLOR from "../consts/TIER_COLOR";
 
 interface ListedPostProps {
     post: _Post;
@@ -18,6 +19,7 @@ const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProp
                     <span>{post.title}</span>
                     {post.site && <small>{post.site}</small>}
                     {post.number && <small>{post.number}</small>}
+                    {post.level && <small style={{ color: TIER_COLOR[(post as _Algorithm).level] }}>{post.level}</small>}
                 </h3>
                 {post.category === CATEGORIES.PROJECT ?
                     <small>{post.date_started}~ {post.date_finished}</small> :
