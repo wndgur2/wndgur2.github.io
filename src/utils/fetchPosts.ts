@@ -53,14 +53,36 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
             let [key, value] = line.split(": ");
             if (key === "category") value = value.toLowerCase();
             if (key && value)
-                post[key] =
-                    key === "tags"
-                        ? value
-                              .replaceAll('"', "")
-                              .replaceAll("'", "")
-                              .split(", ")
-                              .sort()
-                        : value;
+                switch (key) {
+                    case "category":
+                        post.category = value.toLowerCase() as CATEGORIES;
+                        break;
+                    case "title":
+                        post.title = value;
+                        break;
+                    case "tags":
+                        post.tags = value
+                            .replaceAll('"', "")
+                            .replaceAll("'", "")
+                            .split(", ")
+                            .sort();
+                        break;
+                    case "date_started":
+                        let dates = value.split(".");
+                        dates = dates.map((date) =>
+                            date.length === 1 ? "0" + date : date
+                        );
+                        value = dates.join(".");
+
+                        post.date_started = value;
+                        break;
+                    case "preview":
+                        post.preview = value;
+                        break;
+                    default:
+                        post[key] = value;
+                        break;
+                }
         });
     } else return null;
 
