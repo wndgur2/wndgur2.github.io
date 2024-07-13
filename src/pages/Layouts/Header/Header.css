@@ -31,3 +31,13 @@
     gap: 1em;
     order: 2;
 }
+
+#header.hide {
+    display: none;
+}
+
+#header.top {
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+}
