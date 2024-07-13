@@ -1,30 +1,20 @@
-import { FunctionComponent, useContext } from "react";
+import { FunctionComponent } from "react";
 import './Footer.css';
-import links from "../../../consts/footerLinks";
-import _Link from "../../../types/_Link";
-import { Link } from "react-router-dom";
+import FooterLink from "./FooterLink";
+import { IoLogoGithub } from "react-icons/io";
+import { HiOutlineMail } from "react-icons/hi";
 
 const Footer: FunctionComponent = () => {
     return (
         <footer>
             <div className="links">
-                {links.map((link: _Link, i) => (
-                    <div className="footer-link" key={i}>
-                        <Link to={link.url}>{link.title}</Link>
-                        {
-                            link.children.map(([element, innerValue]: string[], index) => {
-                                switch (element) {
-                                    case 'span':
-                                        return <span key={index}>{innerValue}</span>
-                                    case 'small':
-                                        return <small key={index}>{innerValue}</small>
-                                    default:
-                                        return <></>;
-                                }
-                            })
-                        }
-                    </div>
-                ))}
+                <FooterLink icon={<IoLogoGithub size={40} />} url={"https://github.com/wndgur2"}>
+                    <small>Github</small>
+                </FooterLink>
+                <FooterLink icon={<HiOutlineMail size={40} />} url={"https://mail.google.com/mail/?view=cm&to=dkandjsl@gmail.com"}>
+                    <small>Email</small>
+                    <small>dkandjsl@gmail.com</small>
+                </FooterLink>
             </div>
         </footer>
     );
