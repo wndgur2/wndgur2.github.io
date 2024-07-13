@@ -81,6 +81,9 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
             case "c++":
                 post.language = "cpp";
                 break;
+            case "java":
+                post.language = "java";
+                break;
             case "python":
                 post.language = "py";
                 break;
@@ -96,7 +99,14 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
     });
     if (!post.language) return post;
 
-    const filename = code_path[code_path.length - 1].replaceAll(" ", "");
+    let filename = code_path[code_path.length - 1].replaceAll(" ", "");
+    if (post.language === "java") {
+        if (post.site === "SWEA") {
+            filename = "Solution";
+        } else if (post.site === "BOJ") {
+            filename = "Main";
+        }
+    }
     code_path.push(filename + "." + post.language);
 
     post.code = await getCode(
