@@ -185,3 +185,34 @@ button.accent * {
 button.accent:hover {
     background-color: var(--dimmed-accent-color);
 }
+
+.clickable {
+    cursor: pointer;
+    transition: scale 0.2s;
+}
+
+.clickable:hover {
+    scale: 1.04;
+}
+
+.clickable:active {
+    scale: 1.02;
+}
+
+.clickable:active:has(.clickable:hover) {
+    scale: 1.04;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.seperator {
+    height: 0.5em;
+    margin-bottom: 0.5em;
+    width: 4em;
+    border-bottom: var(--minor-color) 1px solid;
+}
