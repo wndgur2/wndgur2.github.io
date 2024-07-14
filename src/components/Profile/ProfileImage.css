@@ -1,5 +1,6 @@
 .profile-img-wrapper {
     width: calc(10em + 6vw);
+    /* width: calc(5em + 3vw); */
     aspect-ratio: 1/1;
     padding: 0;
     margin-top: 1em;
@@ -10,14 +11,11 @@
 
     border-radius: 50%;
     border: 0.4em solid var(--accent-color);
-    transition: width 0.3s, border 0.3s, margin 0.3s;
+    transition: width 0.3s, border 0.3s, margin 0.3s, scale 0.3s;
     background-color: #fff;
-
 }
 
 .profile-img-wrapper:hover {
-    width: calc(11em + 7vw);
-    cursor: pointer;
     border: 0.8em solid var(--action-color);
     margin-top: 0;
 }
