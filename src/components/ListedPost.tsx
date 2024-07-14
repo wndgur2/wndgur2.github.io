@@ -13,7 +13,7 @@ interface ListedPostProps {
 
 const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProps) => {
     return (
-        <Link className="listed-post link" to={`/post/${post.title}`}>
+        <Link className="listed-post link clickable" to={`/post/${post.title}`}>
             <header>
                 <h3>
                     <span>{post.title}</span>

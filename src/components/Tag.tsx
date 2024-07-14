@@ -21,7 +21,7 @@ const Tag: FunctionComponent<TagProps> = ({ tag }) => {
     return (
         <li
             ref={tagRef}
-            className="tag"
+            className="tag clickable"
             onClick={
                 (e) => {
                     e.preventDefault(); // x e.stopPropagation()
