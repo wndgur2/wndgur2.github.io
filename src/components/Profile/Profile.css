@@ -11,13 +11,6 @@
     color: var(--content-color);
 }
 
-.col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
 .profile-name {
     letter-spacing: 0.1em;
 }
