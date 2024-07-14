@@ -7,16 +7,17 @@ import _Category from "../../types/_Category";
 interface HomeCategoryProps {
     category: _Category;
     children: JSX.Element[];
+    more: boolean;
 }
 
-const HomeCategory: FunctionComponent<HomeCategoryProps> = ({ category, children }: HomeCategoryProps) => {
+const HomeCategory: FunctionComponent<HomeCategoryProps> = ({ category, children, more }: HomeCategoryProps) => {
     const postsRef = useRef<HTMLUListElement>(null);
     const buttonsRef = useRef<HTMLDivElement>(null);
 
     const scrollPosts = (direction: "backward" | "forward") => {
         if (postsRef.current) {
             postsRef.current.scrollBy({
-                left: direction === "backward" ? -300 : 300,
+                left: direction === "backward" ? -600 : 600,
                 behavior: 'smooth'
             });
         }
@@ -57,6 +58,10 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({ category, children
             </header>
             <ul className="posts" ref={postsRef} onScroll={changeScrollButtons}>
                 {children}
+                {more &&
+                    <Link className="more clickable" to={`/search/@${category}`} state={{ search_text: '@' + category }}>
+                        <p>더보기</p>
+                    </Link>}
             </ul>
         </section >
     );

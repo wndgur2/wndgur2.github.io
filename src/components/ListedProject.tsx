@@ -15,7 +15,7 @@ const ListedProject: FunctionComponent<ListedProjectProps> = ({ post }) => {
     return (
         <Link
             to={`/post/${post.title}`}
-            className="project link clickable"
+            className="listed-post project link clickable"
         >
             <section>
                 <div className="project-image-wrapper">

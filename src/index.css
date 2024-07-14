@@ -199,6 +199,20 @@ button.accent:hover {
     scale: 1.02;
 }
 
+
+.clickable.small {
+    cursor: pointer;
+    transition: scale 0.2s;
+}
+
+.clickable.small:hover {
+    scale: 1.12;
+}
+
+.clickable.small:active {
+    scale: 1.06;
+}
+
 .clickable:active:has(.clickable:hover) {
     scale: 1.04;
 }

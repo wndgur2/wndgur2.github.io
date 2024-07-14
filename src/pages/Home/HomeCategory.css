@@ -52,6 +52,18 @@
     overflow-y: visible;
 }
 
+.listed-post {
+    display: flex;
+    flex-flow: column nowrap;
+    min-width: fit-content;
+    margin: 0.6em;
+    padding: 0.6em;
+    border-radius: 1em;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--fg-color);
+}
+
 
 .scroll-buttons {
     display: flex;
@@ -61,4 +73,19 @@
 .category-btn:disabled {
     pointer-events: none;
     opacity: 0.5;
+}
+
+.more {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    padding: 1em 2em;
+    background-color: var(--fg-color);
+    border-radius: 1em;
+}
+
+.more>p {
+    text-align: center;
+    width: 4em;
 }
