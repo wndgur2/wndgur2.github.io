@@ -1,20 +1,25 @@
 import { FunctionComponent } from "react";
 import './Footer.css';
-import FooterLink from "./FooterLink";
 import { IoLogoGithub } from "react-icons/io";
 import { HiOutlineMail } from "react-icons/hi";
+import IconLink from "../../../components/IconLink/IconLink";
 
 const Footer: FunctionComponent = () => {
     return (
         <footer>
             <div className="links">
-                <FooterLink icon={<IoLogoGithub size={40} />} url={"https://github.com/wndgur2"}>
+                <div className="col">
+                    <IconLink icon={<IoLogoGithub size={44} />} url={"https://github.com/wndgur2"} />
+                    <div className="seperator" />
                     <small>Github</small>
-                </FooterLink>
-                <FooterLink icon={<HiOutlineMail size={38} />} url={"https://mail.google.com/mail/?view=cm&to=dkandjsl@gmail.com"}>
+                    <small>wndgur2</small>
+                </div>
+                <div className="col">
+                    <IconLink icon={<HiOutlineMail size={42} />} url={"https://mail.google.com/mail/?view=cm&to=dkandjsl@gmail.com"} />
+                    <div className="seperator" />
                     <small>Email</small>
                     <small>dkandjsl@gmail.com</small>
-                </FooterLink>
+                </div>
             </div>
         </footer>
     );
