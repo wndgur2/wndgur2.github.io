@@ -1,13 +1,16 @@
-import { FunctionComponent, useContext, useEffect, useRef } from "react";
+import { FunctionComponent, useContext, useRef } from "react";
 import './Header.css';
 import Theme from "./Theme/Theme";
 import SearchBar from "./SearchBar/SearchBar";
 import { DeviceContext } from "../../../contexts/Device";
-import HomeButton from "./HomeButton/HomeButton";
+import IconLink from "../../../components/IconLink/IconLink";
+import { useLocation } from "react-router-dom";
+import { IoLogoGithub } from "react-icons/io";
 
 const Header: FunctionComponent = () => {
     const { isDark, setIsDark } = useContext(DeviceContext);
     const headerRef = useRef<HTMLDivElement>(null);
+    const location = useLocation();
 
     // hide header when scrolling down
     let lastScrollTop = 0;
@@ -31,7 +34,15 @@ const Header: FunctionComponent = () => {
     return (
         <div id="header" ref={headerRef}>
             <SearchBar />
-            <HomeButton />
+
+
+            {
+                location.pathname === "/" ?
+                    <IconLink url={"https://github.com/wndgur2"} icon={<IoLogoGithub size={42} />} />
+                    :
+                    <IconLink url={"/"} icon={<img src="/images/profile/0.jpeg" alt="my face" width={"40px"} />} />
+            }
+
             <Theme isChecked={isDark} handleChange={() => {
                 setIsDark(!isDark)
                 localStorage.setItem('theme', isDark ? 'light' : 'dark');

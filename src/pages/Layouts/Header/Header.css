@@ -16,6 +16,7 @@
     box-shadow: 0 0 3px var(--border-color);
 
     overflow: hidden;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
 @media screen and (max-width: 768px) {
@@ -33,7 +34,7 @@
 }
 
 #header.hide {
-    display: none;
+    transform: translateY(-100%);
 }
 
 #header.top {
