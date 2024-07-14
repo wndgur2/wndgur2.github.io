@@ -9,6 +9,14 @@ const ProfileImage: FunctionComponent = () => {
     const [imgIndex, setImgIndex] = useState(0);
 
     useEffect(() => {
+        // preload images
+        for (let i = 0; i < IMG_AMOUNT; i++) {
+            const img = new Image();
+            img.src = `images/profile/${i}.jpeg`;
+        }
+    })
+
+    useEffect(() => {
         if (!profileRef.current) return;
         profileRef.current.style.background = `url(images/profile/${imgIndex}.jpeg)`;
         profileRef.current.style.backgroundSize = "cover";
