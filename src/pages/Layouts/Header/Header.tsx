@@ -4,7 +4,7 @@ import Theme from "./Theme/Theme";
 import SearchBar from "./SearchBar/SearchBar";
 import { DeviceContext } from "../../../contexts/Device";
 import IconLink from "../../../components/IconLink/IconLink";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { IoLogoGithub } from "react-icons/io";
 
 const Header: FunctionComponent = () => {
@@ -33,16 +33,14 @@ const Header: FunctionComponent = () => {
 
     return (
         <div id="header" ref={headerRef}>
-            <SearchBar />
-
-
             {
-                location.pathname === "/" ?
-                    <IconLink url={"https://github.com/wndgur2"} icon={<IoLogoGithub size={42} />} />
-                    :
-                    <IconLink url={"/"} icon={<img src="/images/profile/0.jpeg" alt="my face" width={"40px"} />} />
+                // location.pathname === "/" ?
+                // <IconLink url={"https://github.com/wndgur2"} icon={<IoLogoGithub size={42} />} />
+                // :
+                // <IconLink url={"/"} icon={<img src="/images/profile/0.jpeg" alt="my face" width={"40px"} />} />
+                <Link to={"/"} className="logo">hlog</Link>
             }
-
+            <SearchBar />
             <Theme isChecked={isDark} handleChange={() => {
                 setIsDark(!isDark)
                 localStorage.setItem('theme', isDark ? 'light' : 'dark');
