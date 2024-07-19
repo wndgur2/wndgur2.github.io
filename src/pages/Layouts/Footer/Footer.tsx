@@ -11,19 +11,19 @@ const Footer: FunctionComponent = () => {
         <footer>
             <div className="links">
                 <div className="col">
-                    <IconLink icon={<IoLogoGithub size={42} />} url={"https://github.com/wndgur2"} />
+                    <IconLink icon={<IoLogoGithub size={38} />} url={"https://github.com/wndgur2"} />
                     <div className="seperator" />
                     <small>Github</small>
                     <small>@wndgur2</small>
                 </div>
                 <div className="col">
-                    <IconLink icon={<HiOutlineMail size={38} />} url={"https://mail.google.com/mail/?view=cm&to=dkandjsl@gmail.com"} />
+                    <IconLink icon={<HiOutlineMail size={34} />} url={"https://mail.google.com/mail/?view=cm&to=dkandjsl@gmail.com"} />
                     <div className="seperator" />
                     <small>Email</small>
                     <small>dkandjsl@gmail.com</small>
                 </div>
                 <div className="col">
-                    <IconLink icon={<FaYoutube size={32} />} url={"https://www.youtube.com/@junghyeok_lee6710"} />
+                    <IconLink icon={<FaYoutube size={30} />} url={"https://www.youtube.com/@junghyeok_lee6710"} />
                     <div className="seperator" />
                     <small>Youtube</small>
                     <small>Demo videos / vlog</small>

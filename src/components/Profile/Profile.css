@@ -5,7 +5,7 @@
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    margin: calc(4em + 1vw) 0 calc(9em - 6vw) 0;
+    margin: calc(2em + 1vw) 0 calc(6em - 4vw) 0;
     width: 100%;
 
     color: var(--content-color);
@@ -40,7 +40,7 @@
 .marquee-container {
     z-index: -1;
     position: absolute;
-    top: calc(13em + 5vw);
+    top: calc(11em + 5vw);
     left: 0;
     width: 100vw;
 }
