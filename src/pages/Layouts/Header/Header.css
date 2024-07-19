@@ -42,3 +42,9 @@
     box-shadow: none;
     background-color: transparent;
 }
+
+.logo {
+    font-family: "Playwrite HR", cursive;
+    font-size: 1.2em;
+    padding: 0.6em;
+}
