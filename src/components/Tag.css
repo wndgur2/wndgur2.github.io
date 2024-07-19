@@ -6,6 +6,7 @@
 
     color: var(--accent-color);
     font-size: 1em;
+    line-height: 1.2em;
 
     border-radius: 1em;
     box-shadow: 0 0 0 1.5px var(--accent-color);
