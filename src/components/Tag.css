@@ -1,14 +1,14 @@
 .tag {
-    padding: 0.2em 0.5em;
-    margin: 5px;
+    padding: 0.3em 0.6em;
+    margin: 0.3em 0.5em;
 
     cursor: pointer;
 
     color: var(--accent-color);
-    font-size: 0.9em;
+    font-size: 1em;
 
-    border-radius: 0.8em;
-    box-shadow: 0 0 0 1px var(--accent-color);
+    border-radius: 1em;
+    box-shadow: 0 0 0 1.5px var(--accent-color);
     background-color: var(--fg-color);
     transition: box-shadow 0.2s, scale 0.2s;
 }
@@ -16,7 +16,6 @@
 .tag:hover {
     box-shadow: 0 0 0 2px var(--action-color);
     color: var(--action-color);
-    border-radius: 1em;
 }
 
 .tag-active {
