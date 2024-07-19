@@ -3,14 +3,11 @@ import './Header.css';
 import Theme from "./Theme/Theme";
 import SearchBar from "./SearchBar/SearchBar";
 import { DeviceContext } from "../../../contexts/Device";
-import IconLink from "../../../components/IconLink/IconLink";
-import { Link, useLocation } from "react-router-dom";
-import { IoLogoGithub } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Header: FunctionComponent = () => {
     const { isDark, setIsDark } = useContext(DeviceContext);
     const headerRef = useRef<HTMLDivElement>(null);
-    const location = useLocation();
 
     // hide header when scrolling down
     let lastScrollTop = 0;
