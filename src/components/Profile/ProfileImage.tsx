@@ -6,6 +6,7 @@ const IMG_AMOUNT = 5;
 const ProfileImage: FunctionComponent = () => {
     const [clickCount, setClickCount] = useState<number>(0);
     const profileRef = useRef<HTMLButtonElement>(null);
+    const bgRef = useRef<HTMLDivElement>(null);
     const [imgIndex, setImgIndex] = useState(0);
 
     useEffect(() => {
@@ -17,9 +18,9 @@ const ProfileImage: FunctionComponent = () => {
     })
 
     useEffect(() => {
-        if (!profileRef.current) return;
-        profileRef.current.style.background = `url(images/profile/${imgIndex}.jpeg)`;
-        profileRef.current.style.backgroundSize = "cover";
+        if (!bgRef.current) return;
+        bgRef.current.style.background = `url(images/profile/${imgIndex}.jpeg)`;
+        bgRef.current.style.backgroundSize = "cover";
 
     }, [imgIndex]);
 
@@ -52,7 +53,9 @@ const ProfileImage: FunctionComponent = () => {
 
     return (
         <button className="profile-img-wrapper" onClick={profileClicked} ref={profileRef}>
-            <img className="profile-img" src={`images/profile/${imgIndex}.jpeg`} alt="profile" />
+            <div className="profile-img-background" ref={bgRef}>
+                <img className="profile-img" src={`images/profile/${imgIndex}.jpeg`} alt="profile" />
+            </div>
         </button>
     );
 }

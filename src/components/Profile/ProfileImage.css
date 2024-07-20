@@ -12,6 +12,7 @@
     border-radius: 50%;
     border: 0.4em solid var(--accent-color);
     transition: width 0.3s, border 0.3s, margin 0.3s, scale 0.3s;
+    overflow: hidden;
     background-color: #fff;
 }
 
