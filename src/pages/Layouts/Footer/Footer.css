@@ -20,5 +20,10 @@ footer {
     flex-grow: 1;
     justify-content: center;
     align-items: flex-start;
-    gap: 8em;
+    gap: 8vw;
+}
+
+.footer-item {
+    width: 8em;
+    overflow: visible;
 }

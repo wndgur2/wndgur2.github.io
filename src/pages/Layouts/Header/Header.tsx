@@ -14,7 +14,6 @@ const Header: FunctionComponent = () => {
     window.addEventListener('scroll', () => {
         if (!headerRef.current) return;
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-        console.log(currentScroll, lastScrollTop);
         if (currentScroll > 0 && currentScroll > lastScrollTop) {
             headerRef.current.classList.add('hide');
         } else if (currentScroll === 0) {
