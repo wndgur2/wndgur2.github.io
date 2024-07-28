@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useRef, useState } from "react";
 import "./ProfileImage.css";
 
-const IMG_AMOUNT = 5;
+const IMG_AMOUNT = 4;
 
 const ProfileImage: FunctionComponent = () => {
     const [clickCount, setClickCount] = useState<number>(0);
@@ -25,11 +25,14 @@ const ProfileImage: FunctionComponent = () => {
     }, [imgIndex]);
 
     const profileClicked = () => {
-        // if (clickCount > 10) return;
+        if (clickCount > 10) {
+            profileRef.current?.classList.add("hidden");
+            return;
+        }
         if (!profileRef.current) return;
         setClickCount(clickCount + 1);
 
-        switch (Math.floor(Math.random() * 2)) {
+        switch (Math.floor(Math.random() * 4)) {
             case 0:
                 profileRef.current.style.animation = "spinLeft 0.3s";
                 setImgIndex((imgIndex + 1) % IMG_AMOUNT);

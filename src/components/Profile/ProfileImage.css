@@ -35,6 +35,7 @@
 .hidden {
     width: calc(9em + 5vw);
     border: 0.4em solid var(--minor-color);
+    filter: brightness(0.9);
 }
 
 .hidden:hover {
