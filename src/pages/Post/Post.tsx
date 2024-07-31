@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import Tag from "../../components/Tag";
 import { _Post } from "../../types/_Post";
 import { PostsContext } from "../../contexts/Posts";
-import Markdown from "markdown-to-jsx";
+import Markdown, { MarkdownToJSX } from "markdown-to-jsx";
 import Loading from "../../components/Loading";
 import hljs from "highlight.js";
 import 'highlight.js/styles/github-dark-dimmed.css';
@@ -12,6 +12,15 @@ import { IoLogoGithub } from "react-icons/io";
 import useResetScroll from "../../hooks/useResetScroll";
 import CATEGORIES from "../../consts/CATEGORIES";
 import ImageSkeleton from "../../components/ImageSkeleton";
+
+const mdOption = {
+    wrapper: 'div',
+    overrides: {
+        img: {
+            component: (props: any) => <ImageSkeleton props={props} />
+        }
+    }
+} as MarkdownToJSX.Options;
 
 const Post: FunctionComponent = () => {
     const posts: _Post[] = useContext(PostsContext).posts;
@@ -58,14 +67,7 @@ const Post: FunctionComponent = () => {
                         </section>
                     </header>
                     <main className="post-content">
-                        <Markdown options={{
-                            wrapper: 'div',
-                            overrides: {
-                                img: {
-                                    component: (props: any) => <ImageSkeleton props={props} />
-                                }
-                            }
-                        }}>
+                        <Markdown options={mdOption}>
                             {
                                 post.content +
                                 (post.category === CATEGORIES.ALGORITHM ?
