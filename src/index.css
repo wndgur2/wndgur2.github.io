@@ -5,6 +5,13 @@
     font-family: "Roboto", "Noto Sans KR", sans-serif;
     color: var(--content-color);
     scrollbar-width: none;
+    overflow: visible;
+}
+
+*::selection {
+    color: var(--action-color);
+    background-color: var(--bg-color);
+    /* text-shadow: 1px 1px 1px var(--accent-color); */
 }
 
 :root {
@@ -15,10 +22,11 @@
     --light-dimmed-fg-color: #eee;
     --light-bg-color: #eee;
     --light-dimmed-bg-color: #ddd;
-    --light-hover-bg-color: #fff8;
+    --light-hover-bg-color: #fafafa;
     --light-accent-color: #13f;
     --light-dimmed-accent-color: #13f2;
     --light-accent-content-color: #082df0cc;
+    --light-intense-content-color: #000;
     --light-content-color: #242424;
     --light-action-color: #f4a;
     --light-minor-color: #888;
@@ -35,6 +43,7 @@
     --dark-accent-color: #64f;
     --dark-dimmed-accent-color: #64f2;
     --dark-accent-content-color: #86fc;
+    --dark-intense-content-color: #fff;
     --dark-content-color: #eee;
     --dark-action-color: #aff;
     --dark-minor-color: #888;
@@ -70,6 +79,7 @@
     --accent-color: var(--light-accent-color);
     --action-color: var(--light-action-color);
     --content-color: var(--light-content-color);
+    --intense-content-color: var(--light-intense-content-color);
     --minor-color: var(--light-minor-color);
     --icon-color: var(--light-icon-color);
     --dimmed-icon-color: var(--light-dimmed-icon-color);
@@ -88,6 +98,7 @@
     --dimmed-accent-color: var(--dark-dimmed-accent-color);
     --accent-content-color: var(--dark-accent-content-color);
     --content-color: var(--dark-content-color);
+    --intense-content-color: var(--dark-intense-content-color);
     --minor-color: var(--dark-minor-color);
     --icon-color: var(--dark-icon-color);
     --dimmed-icon-color: var(--dark-dimmed-icon-color);
