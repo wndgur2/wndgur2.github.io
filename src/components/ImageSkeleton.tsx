@@ -5,18 +5,20 @@ interface ImageSkeletonProps {
     props: any;
 }
 
-const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({ img, props }) => {
-    const skeletonRef = useRef<HTMLDivElement>(null);
+const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({ props }) => {
+    const skeletonRef = useRef<HTMLCanvasElement>(null);
     const imgRef = useRef<HTMLImageElement>(null);
+
     useEffect(() => {
         if (!imgRef.current) return;
-        const image = imgRef.current.querySelector('img');
+        const image = imgRef.current;
 
         if (!image) return;
         image.src = props.src;
+        imgRef.current.classList.add('loading');
         image.onload = () => {
             if (!skeletonRef.current) return;
-            skeletonRef.current.style.display = 'none';
+            skeletonRef.current.remove();
             if (!imgRef.current) return;
             imgRef.current.classList.replace('loading', 'loaded');
         };
@@ -25,10 +27,8 @@ const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({ img, props }) =>
 
     return (
         <>
-            <div className="image-skeleton" ref={skeletonRef} />
-            <div className="img-wrapper loading" ref={imgRef}>
-                <img alt="" {...props} />
-            </div>
+            <canvas className="image-skeleton" ref={skeletonRef} />
+            <img alt="" {...props} ref={imgRef} />
         </>
     );
 }
