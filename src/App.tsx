@@ -11,8 +11,6 @@ import NoPage from './pages/NoPage';
 import { _Post } from "./types/_Post";
 
 export default function App() {
-    // let isBrowserDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-
     const [isDark, setIsDark] = useState(localStorage.getItem('theme') === 'light' ? false : true);
     const [innerWidth, setInnerWidth] = useState(window.innerWidth);
     const posts: _Post[] = usePosts();
