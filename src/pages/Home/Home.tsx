@@ -10,8 +10,6 @@ import Loading from "../../components/Loading";
 import ListedProject from "../../components/ListedProject";
 import usePostsByCategory from "../../hooks/usePostsByCategory";
 import CATEGORIES from "../../consts/CATEGORIES";
-import useSWR from "swr";
-import useWeather from "../../hooks/useWeather";
 
 const Home: FunctionComponent = () => {
     const posts = useContext(PostsContext).posts as _Post[];
@@ -20,8 +18,6 @@ const Home: FunctionComponent = () => {
     const router = useNavigate();
     const searchParams = useSearchParams()[0];
     const lost_url = searchParams.get("lost_url");
-
-    // const { data, error, isLoading } = useWeather();
 
     useEffect(() => {
         if (!lost_url) return;
@@ -33,7 +29,6 @@ const Home: FunctionComponent = () => {
     return (
         <div id="home">
             <Profile />
-
             <main>
                 {
                     postsByCategory[CATEGORIES.PROJECT] &&
