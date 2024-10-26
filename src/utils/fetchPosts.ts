@@ -125,7 +125,7 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
     if (post.language === "java") {
         if (post.site === "SWEA") {
             filename = "Solution";
-        } else if (post.site === "BOJ") {
+        } else if (post.site === "BOJ" || post.site === "백준") {
             filename = "Main";
         }
     }
