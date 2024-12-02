@@ -3,7 +3,7 @@ import { PostsContext } from "../contexts/Posts";
 import { _Post } from "../types/_Post";
 import { Params } from "react-router-dom";
 
-function useSearchPosts(params: Readonly<Params<string>>) {
+function useSearchPosts (params: Readonly<Params<string>>) {
 
     const posts = useContext(PostsContext).posts as _Post[];
 

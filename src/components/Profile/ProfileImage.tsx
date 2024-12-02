@@ -18,6 +18,7 @@ const ProfileImage: FunctionComponent = () => {
     })
 
     useEffect(() => {
+        // 배경 이미지
         if (!bgRef.current) return;
         bgRef.current.style.background = `url(images/profile/${imgIndex}.jpeg)`;
         bgRef.current.style.backgroundSize = "cover";
@@ -55,9 +56,10 @@ const ProfileImage: FunctionComponent = () => {
     }
 
     return (
-        <button className="profile-img-wrapper" onClick={profileClicked} ref={profileRef}>
-            <div className="profile-img-background" ref={bgRef}>
-                <img className="profile-img" src={`images/profile/${imgIndex}.jpeg`} alt="profile" />
+        <button className="profile-img-wrapper" onClick={ profileClicked } ref={ profileRef }>
+            <div className="profile-img-background" ref={ bgRef }>
+                <img className="profile-img" src={ `images/profile/${imgIndex}.jpeg` } alt="profile" />
+                {/* <img className="profile-img" src={`images/profile/default.png`} alt="profile" /> */ }
             </div>
         </button>
     );

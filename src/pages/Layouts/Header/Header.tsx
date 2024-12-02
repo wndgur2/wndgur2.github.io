@@ -15,7 +15,7 @@ const Header: FunctionComponent = () => {
         if (!headerRef.current) return;
         const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
         if (currentScroll > 0 && currentScroll > lastScrollTop) {
-            headerRef.current.classList.add('hide');
+            headerRef.current.classList.remove('top');
         } else if (currentScroll === 0) {
             headerRef.current.classList.remove('hide');
             headerRef.current.classList.add('top');
@@ -28,19 +28,19 @@ const Header: FunctionComponent = () => {
     });
 
     return (
-        <div id="header" ref={headerRef}>
-            {
-                // location.pathname === "/" ?
-                // <IconLink url={"https://github.com/wndgur2"} icon={<IoLogoGithub size={42} />} />
-                // :
-                // <IconLink url={"/"} icon={<img src="/images/profile/0.jpeg" alt="my face" width={"40px"} />} />
-                <Link to={"/"} className="logo">hlog</Link>
-            }
+        <div id="header" ref={ headerRef }>
+            <div>
+                <h5>
+                    <Link to={ "/" } className="logo">
+                        WHO'S <br /> LEEJUNG <br /> HYEOK?
+                    </Link>
+                </h5>
+            </div>
             <SearchBar />
-            <Theme isChecked={isDark} handleChange={() => {
+            <Theme isChecked={ isDark } handleChange={ () => {
                 setIsDark(!isDark)
                 localStorage.setItem('theme', isDark ? 'light' : 'dark');
-            }} />
+            } } />
         </div>
     );
 }

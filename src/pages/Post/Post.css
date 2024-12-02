@@ -1,3 +1,7 @@
+.post {
+    padding: 0 4vw;
+}
+
 .post header {
     padding: 4vh 4vw;
     padding-bottom: 1.2em;
@@ -59,6 +63,8 @@
     margin-top: -1px;
     padding: 2em 4vw;
 
+    text-wrap: pretty;
+
     border: 1px solid var(--border-color);
     background-color: var(--fg-color);
     border-radius: 0em 0em 1em 1em;
@@ -75,16 +81,15 @@
 
 .post-content h1,
 .post-content h2 {
-    margin: 1.4em 0px 0.8em 0px;
+    margin: 1.2em 0px 0.5em 0px;
 }
 
 .post-content h3 {
-    margin: 1em 0px 0.5em 0px;
+    margin: 0.8em 0px 0.3em 0px;
 }
 
 .post-content p {
-    text-wrap: pretty;
-    margin: 1em 0px;
+    margin: 0.2em 0px;
     line-height: 1.5em;
 }
 
@@ -93,12 +98,18 @@
     padding-left: 1em;
 }
 
+.post-content ol {
+    padding: 0.3em 0.3em 1em 1em;
+}
+
 .post-content li {
+    padding-left: 0.5em;
     line-height: 1.5em;
+    padding: 0.3em 0px 0.3em 0.5em;
 }
 
 .post-content li::marker {
-    content: '- ';
+    content: '•';
     white-space: pre-line;
 }
 
@@ -107,7 +118,8 @@
     object-fit: contain;
     object-position: top left;
 
-    max-width: 100%;
+    max-width: 70vw;
+    max-height: 70vh;
 
     margin: 1em 0px;
     border-radius: 0.5em;

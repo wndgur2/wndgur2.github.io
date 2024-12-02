@@ -15,16 +15,16 @@ const Profile: FunctionComponent = () => {
                     기술 블로그
                 </h2>
                 <div className="profile-tags">
-                    {stacks.map((stack, index) => (
-                        <Tag key={index} tag={stack} />
-                    ))}
+                    { stacks.map((stack, index) => (
+                        <Tag key={ index } tag={ stack } />
+                    )) }
                 </div>
             </div>
 
             <div className="marquee-container">
                 <Marquee className="marquee">
                     <span className="in-marquee">
-                        {"whosleejunghyeok".repeat(5)}
+                        { "whosleejunghyeok".repeat(5) }
                     </span>
                 </Marquee>
             </div>

@@ -10,7 +10,7 @@ import SearchResult from "./pages/Search/Search";
 import NoPage from './pages/NoPage';
 import { _Post } from "./types/_Post";
 
-export default function App() {
+export default function App () {
     const [isDark, setIsDark] = useState(localStorage.getItem('theme') === 'light' ? false : true);
     const [innerWidth, setInnerWidth] = useState(window.innerWidth);
     const posts: _Post[] = usePosts();
@@ -30,14 +30,14 @@ export default function App() {
 
     return (
         <BrowserRouter>
-            <DeviceContext.Provider value={{ isDark, setIsDark, innerWidth }}>
-                <PostsContext.Provider value={{ posts }}>
+            <DeviceContext.Provider value={ { isDark, setIsDark, innerWidth } }>
+                <PostsContext.Provider value={ { posts } }>
                     <Routes>
-                        <Route path="/" element={<Layout />}>
-                            <Route index element={<Home />} />
-                            <Route path="/search/:search_text" element={<SearchResult />} />
-                            <Route path="/post/:post_title" element={<Post />} />
-                            <Route path="*" element={<NoPage />} />
+                        <Route path="/" element={ <Layout /> }>
+                            <Route index element={ <Home /> } />
+                            <Route path="/search/:search_text" element={ <SearchResult /> } />
+                            <Route path="/post/:post_title" element={ <Post /> } />
+                            <Route path="*" element={ <NoPage /> } />
                         </Route>
                     </Routes>
                 </PostsContext.Provider>

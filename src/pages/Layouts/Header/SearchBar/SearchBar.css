@@ -13,21 +13,20 @@
     border: 1px solid var(--border-color);
     border-radius: 2em;
 
-    transition: height 0.3s, flex-grow 0.3s;
+    transition: height 0.3s, scale 0.3s, flex 0.3s;
 }
 
 @media screen and (min-width: 768px) {
     .search-bar:hover {
-        height: 3em;
-        flex-grow: 0.03;
+        scale: 1.03;
     }
 
 }
 
 
 .search-bar:focus-within {
-    height: 3em;
-    flex-grow: 0.2;
+    /* height: 3em; */
+    flex: 1.2;
     border: 2px solid var(--border-color);
 }
 

@@ -17,7 +17,7 @@ const mdOption = {
     wrapper: 'div',
     overrides: {
         img: {
-            component: (props: any) => <ImageSkeleton props={props} />
+            component: (props: any) => <ImageSkeleton props={ props } />
         }
     }
 } as MarkdownToJSX.Options;
@@ -46,28 +46,28 @@ const Post: FunctionComponent = () => {
                 <div className="post">
                     <header>
                         <section className="post-title">
-                            <h1>{title}</h1>
+                            <h1>{ title }</h1>
                             <ol className="tags">
                                 {
                                     post.tags.map((tag: string, index: number) => (
-                                        <Tag key={index} tag={tag} />
+                                        <Tag key={ index } tag={ tag } />
                                     ))
                                 }
                             </ol>
                         </section>
                         <section className="post-meta">
                             <Link className="link github"
-                                to={post.github}
+                                to={ post.github }
                                 rel="noreferrer"
                                 target="_blank"
                             >
-                                <IoLogoGithub size={42} />
+                                <IoLogoGithub size={ 42 } />
                             </Link>
-                            <small>{post.date_started} ~  {post.date_finished}</small>
+                            <small>{ post.date_started } ~  { post.date_finished }</small>
                         </section>
                     </header>
                     <main className="post-content">
-                        <Markdown options={mdOption}>
+                        <Markdown options={ mdOption }>
                             {
                                 post.content +
                                 (post.category === CATEGORIES.ALGORITHM ?

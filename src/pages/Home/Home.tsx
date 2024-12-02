@@ -32,10 +32,10 @@ const Home: FunctionComponent = () => {
             <main>
                 {
                     postsByCategory[CATEGORIES.PROJECT] &&
-                    <HomeCategory category={CATEGORIES.PROJECT} more={postsByCategory[CATEGORIES.PROJECT].length > 7}>{
+                    <HomeCategory category={ CATEGORIES.PROJECT } more={ postsByCategory[CATEGORIES.PROJECT].length > 7 }>{
                         postsByCategory[CATEGORIES.PROJECT].map((project: _Project, i: number) =>
-                            <ListedProject key={i} post={project} />
-                        )}
+                            <ListedProject key={ i } post={ project } />
+                        ) }
                     </HomeCategory>
                 }
                 {
@@ -43,10 +43,10 @@ const Home: FunctionComponent = () => {
                         Object.keys(postsByCategory)
                             .filter((key) => key !== CATEGORIES.PROJECT)
                             .map((category: any) =>
-                                <HomeCategory key={category} category={category} more={postsByCategory[category].length > 7}>
+                                <HomeCategory key={ category } category={ category } more={ postsByCategory[category].length > 7 }>
                                     {
                                         postsByCategory[category].map((post: _Post, i: number) => {
-                                            return <ListedPost key={i} post={post} />
+                                            return <ListedPost key={ i } post={ post } />
                                         })
                                     }
                                 </HomeCategory>) :
