@@ -62,10 +62,8 @@ input:focus {
         flex-grow: 1;
     }
 
-    .search-bar:focus-within~a,
-    .search-bar:focus-within~div {
+    #header:has(.search-bar:focus-within)>*:not(.search-bar) {
         display: none;
-        flex-grow: 1;
     }
 
     .search-bar:focus-within {

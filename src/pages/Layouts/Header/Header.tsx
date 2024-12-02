@@ -29,13 +29,11 @@ const Header: FunctionComponent = () => {
 
     return (
         <div id="header" ref={ headerRef }>
-            <div>
-                <h5>
-                    <Link to={ "/" } className="logo">
-                        WHO'S <br /> LEEJUNG <br /> HYEOK?
-                    </Link>
-                </h5>
-            </div>
+            <h5>
+                <Link to={ "/" } className="logo">
+                    WHO'S <br /> LEEJUNG <br /> HYEOK?
+                </Link>
+            </h5>
             <SearchBar />
             <Theme isChecked={ isDark } handleChange={ () => {
                 setIsDark(!isDark)
