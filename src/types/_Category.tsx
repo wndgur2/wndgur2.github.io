@@ -1,5 +1,5 @@
-import CATEGORIES from "../consts/CATEGORIES";
+import CATEGORIES from '../consts/CATEGORIES'
 
-type _Category = CATEGORIES;
+type _Category = CATEGORIES
 
-export default _Category;
+export default _Category
