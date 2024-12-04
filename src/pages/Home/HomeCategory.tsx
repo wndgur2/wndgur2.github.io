@@ -3,7 +3,7 @@ import './HomeCategory.css'
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { IoIosArrowForward } from 'react-icons/io'
 import { Link } from 'react-router-dom'
-import _Category from '../../types/_Category'
+import _Category from '@/types/_Category'
 interface HomeCategoryProps {
   category: _Category
   children: JSX.Element[]
@@ -53,56 +53,56 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
       <header>
         <Link
           className='link'
-          to={`/search/@${category}`}
-          state={{ search_text: '@' + category }}
+          to={ `/search/@${category}` }
+          state={ { search_text: '@' + category } }
         >
-          <h1>{category[0].toLocaleUpperCase() + category.slice(1)}</h1>
+          <h1>{ category[0].toLocaleUpperCase() + category.slice(1) }</h1>
           <IoIosArrowForward
             className='arrow-wrapper'
-            size={24}
+            size={ 24 }
           />
         </Link>
         <div
           className='scroll-buttons icon'
-          ref={buttonsRef}
+          ref={ buttonsRef }
         >
           <button
             className='category-btn'
-            onClick={() => scrollPosts('backward')}
+            onClick={ () => scrollPosts('backward') }
           >
             <RiArrowLeftSLine
-              style={{ marginLeft: '-2px' }}
+              style={ { marginLeft: '-2px' } }
               className='icon'
-              size={28}
+              size={ 28 }
             />
           </button>
           <button
             className='category-btn'
-            onClick={() => scrollPosts('forward')}
+            onClick={ () => scrollPosts('forward') }
           >
             <RiArrowRightSLine
-              style={{ marginRight: '-2px' }}
+              style={ { marginRight: '-2px' } }
               className='icon'
-              size={28}
+              size={ 28 }
             />
           </button>
         </div>
       </header>
       <ul
         className='posts'
-        ref={postsRef}
-        onScroll={changeScrollButtons}
+        ref={ postsRef }
+        onScroll={ changeScrollButtons }
       >
-        {children}
-        {more && (
+        { children }
+        { more && (
           <Link
             className='more clickable'
-            to={`/search/@${category}`}
-            state={{ search_text: '@' + category }}
+            to={ `/search/@${category}` }
+            state={ { search_text: '@' + category } }
           >
             <p>더보기</p>
           </Link>
-        )}
+        ) }
       </ul>
     </section>
   )

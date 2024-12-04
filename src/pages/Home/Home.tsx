@@ -2,14 +2,14 @@ import { FunctionComponent, useContext, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import './Home.css'
 import HomeCategory from './HomeCategory'
-import Profile from '../../components/Profile/Profile'
-import { PostsContext } from '../../contexts/Posts'
-import { _Post, _Project } from '../../types/_Post'
-import ListedPost from '../../components/ListedPost'
-import Loading from '../../components/Loading'
-import ListedProject from '../../components/ListedProject'
-import usePostsByCategory from '../../hooks/usePostsByCategory'
-import CATEGORIES from '../../consts/CATEGORIES'
+import Profile from '@/components/Profile/Profile'
+import { PostsContext } from '@/contexts/Posts'
+import { _Post, _Project } from '@/types/_Post'
+import ListedPost from '@/components/ListedPost'
+import Loading from '@/components/Loading'
+import ListedProject from '@/components/ListedProject'
+import usePostsByCategory from '@/hooks/usePostsByCategory'
+import CATEGORIES from '@/consts/CATEGORIES'
 
 const Home: FunctionComponent = () => {
   const posts = useContext(PostsContext).posts as _Post[]
@@ -30,41 +30,41 @@ const Home: FunctionComponent = () => {
     <div id='home'>
       <Profile />
       <main>
-        {postsByCategory[CATEGORIES.PROJECT] && (
+        { postsByCategory[CATEGORIES.PROJECT] && (
           <HomeCategory
-            category={CATEGORIES.PROJECT}
-            more={postsByCategory[CATEGORIES.PROJECT].length > 7}
+            category={ CATEGORIES.PROJECT }
+            more={ postsByCategory[CATEGORIES.PROJECT].length > 7 }
           >
-            {postsByCategory[CATEGORIES.PROJECT].map((project: _Project, i: number) => (
+            { postsByCategory[CATEGORIES.PROJECT].map((project: _Project, i: number) => (
               <ListedProject
-                key={i}
-                post={project}
+                key={ i }
+                post={ project }
               />
-            ))}
+            )) }
           </HomeCategory>
-        )}
-        {Object.keys(postsByCategory).length ? (
+        ) }
+        { Object.keys(postsByCategory).length ? (
           Object.keys(postsByCategory)
             .filter((key) => key !== CATEGORIES.PROJECT)
             .map((category: any) => (
               <HomeCategory
-                key={category}
-                category={category}
-                more={postsByCategory[category].length > 7}
+                key={ category }
+                category={ category }
+                more={ postsByCategory[category].length > 7 }
               >
-                {postsByCategory[category].map((post: _Post, i: number) => {
+                { postsByCategory[category].map((post: _Post, i: number) => {
                   return (
                     <ListedPost
-                      key={i}
-                      post={post}
+                      key={ i }
+                      post={ post }
                     />
                   )
-                })}
+                }) }
               </HomeCategory>
             ))
         ) : (
           <Loading phrase='loading posts' />
-        )}
+        ) }
       </main>
     </div>
   )

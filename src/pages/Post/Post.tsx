@@ -1,23 +1,23 @@
 import { FunctionComponent, useContext, useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import Tag from '../../components/Tag'
-import { _Post } from '../../types/_Post'
-import { PostsContext } from '../../contexts/Posts'
+import Tag from '@/components/Tag'
+import { _Post } from '@/types/_Post'
+import { PostsContext } from '@/contexts/Posts'
 import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
-import Loading from '../../components/Loading'
+import Loading from '@/components/Loading'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github-dark-dimmed.css'
 import './Post.css'
 import { IoLogoGithub } from 'react-icons/io'
-import useResetScroll from '../../hooks/useResetScroll'
-import CATEGORIES from '../../consts/CATEGORIES'
-import ImageSkeleton from '../../components/ImageSkeleton'
+import useResetScroll from '@/hooks/useResetScroll'
+import CATEGORIES from '@/consts/CATEGORIES'
+import ImageSkeleton from '@/components/ImageSkeleton'
 
 const mdOption = {
   wrapper: 'div',
   overrides: {
     img: {
-      component: (props: any) => <ImageSkeleton props={props} />,
+      component: (props: any) => <ImageSkeleton props={ props } />,
     },
   },
 } as MarkdownToJSX.Options
@@ -42,46 +42,46 @@ const Post: FunctionComponent = () => {
 
   return (
     <>
-      {post ? (
+      { post ? (
         <div className='post'>
           <header>
             <section className='post-title'>
-              <h1>{title}</h1>
+              <h1>{ title }</h1>
               <ol className='tags'>
-                {post.tags.map((tag: string, index: number) => (
+                { post.tags.map((tag: string, index: number) => (
                   <Tag
-                    key={index}
-                    tag={tag}
+                    key={ index }
+                    tag={ tag }
                   />
-                ))}
+                )) }
               </ol>
             </section>
             <section className='post-meta'>
               <Link
                 className='link github'
-                to={post.github}
+                to={ post.github }
                 rel='noreferrer'
                 target='_blank'
               >
-                <IoLogoGithub size={42} />
+                <IoLogoGithub size={ 42 } />
               </Link>
               <small>
-                {post.date_started} ~ {post.date_finished}
+                { post.date_started } ~ { post.date_finished }
               </small>
             </section>
           </header>
           <main className='post-content'>
-            <Markdown options={mdOption}>
-              {post.content +
+            <Markdown options={ mdOption }>
+              { post.content +
                 (post.category === CATEGORIES.ALGORITHM
                   ? '\n\n```' + post.language + '\n\n' + post.code + '```'
-                  : '')}
+                  : '') }
             </Markdown>
           </main>
         </div>
       ) : (
         <Loading phrase='Loading post' />
-      )}
+      ) }
     </>
   )
 }
