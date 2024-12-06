@@ -15,41 +15,46 @@ const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProp
   return (
     <Link
       className='listed-post link clickable'
-      to={`/post/${post.title}`}
+      to={ `/post/${post.title}` }
     >
       <header>
         <h3>
-          <span>{post.title}</span>
-          {post.site && <small>{post.site}</small>}
-          {post.number && <small>{post.number}</small>}
-          {post.level && (
-            <small style={{ color: TIER_COLOR[(post as _Algorithm).level] }}>{post.level}</small>
-          )}
+          <span>{ post.title }</span>
+          { post.site && <small>{ post.site }</small> }
+          { post.number && <small>{ post.number }</small> }
+          { post.level && (
+            <small style={ { color: TIER_COLOR[(post as _Algorithm).level] } }>{ post.level }</small>
+          ) }
         </h3>
-        {post.category === CATEGORIES.PROJECT ? (
+        { post.category === CATEGORIES.PROJECT ? (
           <small>
-            {post.date_started}~ {post.date_finished}
+            { post.date_started }~ { post.date_finished }
           </small>
         ) : (
-          <small>{post.date_started}</small>
-        )}
+          <small>{ post.date_started }</small>
+        ) }
       </header>
       <section className='preview'>
         <Markdown
-          options={{ overrides: { a: { component: (props: any) => <span {...props} /> } } }}
+          options={ {
+            overrides: {
+              a: { component: (props: any) => <span { ...props } /> },
+              Integer: { component: (props: any) => <span { ...props } /> }
+            }
+          } }
         >
-          {post.content + (post.code ? post.code : '')}
+          { post.content + (post.code ? post.code : '') }
         </Markdown>
       </section>
       <ol className='tags'>
-        {post.tags.map((tag, index) => (
+        { post.tags.map((tag, index) => (
           <Tag
-            key={index}
-            tag={tag}
+            key={ index }
+            tag={ tag }
           />
-        ))}
+        )) }
       </ol>
-    </Link>
+    </Link >
   )
 }
 

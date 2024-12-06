@@ -33,6 +33,7 @@ const Post: FunctionComponent = () => {
     nodes.forEach((node) => {
       hljs.highlightElement(node as HTMLElement)
     })
+    console.log(post)
   }, [post])
 
   useEffect(() => {

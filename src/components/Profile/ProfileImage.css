@@ -1,25 +1,24 @@
 .profile-img-wrapper {
     /* width: calc(10em + 6vw); */
-    width: calc(2em + 3vw);
+    width: calc(5em + 3vw);
     aspect-ratio: 1/1;
     padding: 0;
-    margin-top: 1em;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     border-radius: 50%;
-    border: 0.4em solid var(--accent-color);
+    border: 0.2em solid var(--accent-color);
     transition: width 0.3s, border 0.3s, margin 0.3s, scale 0.3s;
     overflow: hidden;
     background-color: #fff;
 }
 
 .profile-img-wrapper:hover {
-    width: calc(11em + 7vw);
+    width: calc(6em + 4vw);
     cursor: pointer;
-    border: 0.6em solid var(--action-color);
+    border: 0.5em solid var(--action-color);
     margin-top: 0;
 }
 

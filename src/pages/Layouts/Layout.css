@@ -1,7 +1,7 @@
 #container {
     width: 100vw;
     min-height: 100vh;
-    padding-top: 6em;
+    padding-top: 5em;
 
     overflow: hidden;
     background-color: var(--bg-color);

@@ -23,16 +23,16 @@
     --light-bg-color: #f3f3f3;
     --light-dimmed-bg-color: #ddd;
     --light-hover-bg-color: #fafafa;
-    --light-accent-color: #13f;
+    --light-accent-color: #36f;
     --light-dimmed-accent-color: #13f2;
-    --light-accent-content-color: #082df0cc;
+    --light-accent-content-color: #082af0dd;
     --light-intense-content-color: #000;
     --light-content-color: #242424;
     --light-action-color: #f4a;
     --light-minor-color: #888;
     --light-icon-color: #444;
     --light-dimmed-icon-color: #4442;
-    --light-border-color: #13f;
+    --light-border-color: #36f;
     --light-light-only-border-color: #f4a;
 
     --dark-fg-color: #181818;

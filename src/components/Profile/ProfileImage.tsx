@@ -4,7 +4,6 @@ import './ProfileImage.css'
 const IMG_AMOUNT = 4
 
 const ProfileImage: FunctionComponent = () => {
-  const [clickCount, setClickCount] = useState<number>(0)
   const profileRef = useRef<HTMLButtonElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
   const [imgIndex, setImgIndex] = useState(0)
@@ -25,14 +24,9 @@ const ProfileImage: FunctionComponent = () => {
   }, [imgIndex])
 
   const profileClicked = () => {
-    if (clickCount > 10) {
-      profileRef.current?.classList.add('hidden')
-      return
-    }
     if (!profileRef.current) return
-    setClickCount(clickCount + 1)
 
-    switch (Math.floor(Math.random() * 4)) {
+    switch (Math.floor(Math.random() * 2)) {
       case 0:
         profileRef.current.style.animation = 'spinLeft 0.3s'
         setImgIndex((imgIndex + 1) % IMG_AMOUNT)
@@ -40,9 +34,6 @@ const ProfileImage: FunctionComponent = () => {
       case 1:
         profileRef.current.style.animation = 'spinRight 0.3s'
         setImgIndex((imgIndex + 2) % IMG_AMOUNT)
-        break
-      default:
-        profileRef.current.style.animation = 'shake 0.3s'
         break
     }
     profileRef.current.disabled = true
@@ -57,19 +48,19 @@ const ProfileImage: FunctionComponent = () => {
   return (
     <button
       className='profile-img-wrapper'
-      onClick={profileClicked}
-      ref={profileRef}
+      onClick={ profileClicked }
+      ref={ profileRef }
     >
       <div
         className='profile-img-background'
-        ref={bgRef}
+        ref={ bgRef }
       >
         <img
           className='profile-img'
-          src={`images/profile/${imgIndex}.jpeg`}
+          src={ `images/profile/${imgIndex}.jpeg` }
           alt='profile'
         />
-        {/* <img className="profile-img" src={`images/profile/default.png`} alt="profile" /> */}
+        {/* <img className="profile-img" src={`images/profile/default.png`} alt="profile" /> */ }
       </div>
     </button>
   )

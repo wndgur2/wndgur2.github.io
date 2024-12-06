@@ -31,7 +31,7 @@ const Header: FunctionComponent = () => {
         <div id="header" ref={ headerRef }>
             <h5>
                 <Link to={ "/" } className="logo">
-                    WHO'S <br /> LEEJUNG <br /> HYEOK?
+                    leejunghyeok
                 </Link>
             </h5>
             <SearchBar />
