@@ -66,7 +66,7 @@ const Home: FunctionComponent = () => {
           <Loading phrase='loading posts' />
         ) }
       </main>
-    </div>
+    </div >
   )
 }
 

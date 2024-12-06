@@ -5,14 +5,14 @@ import './Layout.css'
 import { DeviceContext } from '../../contexts/Device'
 import Footer from './Footer/Footer'
 
-interface LayoutProps {}
+interface LayoutProps { }
 
 const Layout: FunctionComponent<LayoutProps> = () => {
   const { isDark } = useContext(DeviceContext)
   return (
     <div
       id='container'
-      data-theme={isDark ? 'dark' : 'light'}
+      data-theme={ isDark ? 'dark' : 'light' }
     >
       <Header />
       <div id='body-container'>

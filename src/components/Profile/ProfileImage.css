@@ -1,6 +1,6 @@
 .profile-img-wrapper {
-    width: calc(10em + 6vw);
-    /* width: calc(5em + 3vw); */
+    /* width: calc(10em + 6vw); */
+    width: calc(2em + 3vw);
     aspect-ratio: 1/1;
     padding: 0;
     margin-top: 1em;
