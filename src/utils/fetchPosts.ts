@@ -1,39 +1,34 @@
-import CATEGORIES from '../consts/CATEGORIES';
-import PostsAction from '../types/PostsAction';
-import { _Post } from '../types/_Post';
-import fetchPostUrls from './fetchPostsUrls';
+import CATEGORIES from '../consts/CATEGORIES'
+import PostsAction from '../types/PostsAction'
+import { _Post } from '../types/_Post'
+import fetchPostUrls from './fetchPostsUrls'
 
-const fetchPosts = async (
-  dispatch: React.Dispatch<PostsAction>
-): Promise<void> => {
-  let urls = await fetchPostUrls();
+const fetchPosts = async (dispatch: React.Dispatch<PostsAction>): Promise<void> => {
+  let urls = await fetchPostUrls()
 
-  if (Object.prototype.toString.call(urls) === '[object Object]')
-    urls = urls.urls;
+  if (Object.prototype.toString.call(urls) === '[object Object]') urls = urls.urls
 
-  urls.pop();
+  urls.pop()
 
   urls.forEach(async (url: string) => {
     await fetchPost(url)
       .then((post) => {
-        if (!post) return;
-        dispatch({ type: 'INSERT_POST', payload: post });
+        if (!post) return
+        dispatch({ type: 'INSERT_POST', payload: post })
       })
-      .catch((err) => console.log(err));
-  });
-};
+      .catch((err) => console.log(err))
+  })
+}
 
 const fetchPost = async (url: string) => {
   try {
-    const response = await fetch(
-      'https://raw.githubusercontent.com/wndgur2/BlogDB/main/' + url
-    );
-    const data = await response.text();
-    return await getPost(data, url);
+    const response = await fetch('https://raw.githubusercontent.com/wndgur2/BlogDB/main/' + url)
+    const data = await response.text()
+    return await getPost(data, url)
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
-};
+}
 
 const getPost = async (data: string, url: string): Promise<_Post | null> => {
   const post: _Post = {
@@ -45,107 +40,102 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
     date_started: 'No date found.',
     github: 'https://github.com/wndgur2',
     preview: 'No preview found.',
-  };
-  const header = data.match(/---\n(.+)\n---/s);
+  }
+
+  // header is between first two '---'
+  const header = data.match(/---\n([\s\S]+?)\n---/)
   if (header) {
-    const headerData = header[1].toString().split('\n');
+    const headerData = header[1].toString().split('\n')
     headerData.forEach((line: string) => {
-      let [key, value] = line.split(': ');
-      if (key === 'category') value = value.toLowerCase();
+      let [key, value] = line.split(': ')
+      if (key === 'category') value = value.toLowerCase()
       if (key && value)
         switch (key) {
           case 'category':
-            post.category = value.toLowerCase() as CATEGORIES;
-            break;
+            post.category = value.toLowerCase() as CATEGORIES
+            break
           case 'title':
-            post.title = value;
-            break;
+            post.title = value
+            break
           case 'tags':
-            post.tags = value
-              .replaceAll('"', '')
-              .replaceAll("'", '')
-              .split(', ')
-              .sort();
-            break;
+            post.tags = value.replaceAll('"', '').replaceAll("'", '').split(', ').sort()
+            break
           case 'date_started':
-            let dates = value.split('.');
-            dates = dates.map((date) =>
-              date.length === 1 ? '0' + date : date
-            );
-            value = dates.join('.');
+            let dates = value.split('.')
+            dates = dates.map((date) => (date.length === 1 ? '0' + date : date))
+            value = dates.join('.')
 
-            post.date_started = value;
-            break;
+            post.date_started = value
+            break
           case 'preview':
-            post.preview = value;
-            break;
+            post.preview = value
+            break
           default:
-            post[key] = value;
-            break;
+            post[key] = value
+            break
         }
-    });
-  } else return null;
+    })
+  } else return null
 
-  const content = data.match(/---\n.+\n---\n(.+)/s);
+  const content = data.match(/---\n[\s\S]+?\n---\n([\s\S]*)/)
 
-  if (content) post.content = content[1].toString();
+  if (content) post.content = content[1].toString()
 
-  post.github = 'https://github.com/wndgur2/wndgur2.github.io/tree/main/' + url;
+  post.github = 'https://github.com/wndgur2/wndgur2.github.io/tree/main/' + url
 
-  if (post.category !== CATEGORIES.ALGORITHM) return post;
+  if (post.category !== CATEGORIES.ALGORITHM) return post
 
   // get code
-  const code_path = url.split('/');
-  code_path.pop();
+  const code_path = url.split('/')
+  code_path.pop()
   post.tags.forEach((tag: string) => {
     switch (tag.toLowerCase()) {
       case 'c++':
-        post.language = 'cpp';
-        break;
+        post.language = 'cpp'
+        break
       case 'java':
-        post.language = 'java';
-        break;
+        post.language = 'java'
+        break
       case 'python':
-        post.language = 'py';
-        break;
+        post.language = 'py'
+        break
       case 'javascript':
-        post.language = 'js';
-        break;
+        post.language = 'js'
+        break
       case 'c':
-        post.language = 'c';
-        break;
+        post.language = 'c'
+        break
       default:
-        break;
+        break
     }
-  });
-  if (!post.language) return post;
+  })
+  if (!post.language) return post
 
-  let filename = code_path[code_path.length - 1].replaceAll(' ', '');
+  let filename = code_path[code_path.length - 1].replaceAll(' ', '')
   if (post.language === 'java') {
     if (post.site === 'SWEA') {
-      filename = 'Solution';
+      filename = 'Solution'
     } else if (post.site === 'BOJ' || post.site === '백준') {
-      filename = 'Main';
+      filename = 'Main'
     }
   }
-  code_path.push(filename + '.' + post.language);
+  code_path.push(filename + '.' + post.language)
 
   post.code = await getCode(
-    'https://raw.githubusercontent.com/wndgur2/BlogDB/main/' +
-      code_path.join('/')
-  );
-  return post;
-};
+    'https://raw.githubusercontent.com/wndgur2/BlogDB/main/' + code_path.join('/')
+  )
+  return post
+}
 
 const getCode = async (url: string): Promise<string> => {
   try {
-    const response = await fetch(url);
-    const data = await response.text();
-    return data;
+    const response = await fetch(url)
+    const data = await response.text()
+    return data
   } catch (err) {
-    console.log(err);
-    return '';
+    console.log(err)
+    return ''
   }
-};
+}
 
-export default fetchPosts;
+export default fetchPosts
