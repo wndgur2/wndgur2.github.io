@@ -25,17 +25,17 @@ const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({ props }) => {
   }, [props.src])
 
   return (
-    <>
+    <div className='image-wrapper'>
       <canvas
         className='image-skeleton'
-        ref={skeletonRef}
+        ref={ skeletonRef }
       />
       <img
         alt=''
-        {...props}
-        ref={imgRef}
+        { ...props }
+        ref={ imgRef }
       />
-    </>
+    </div>
   )
 }
 
