@@ -81,7 +81,7 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
 
   if (content) post.content = content[1].toString()
 
-  post.github = 'https://github.com/wndgur2/wndgur2.github.io/tree/main/' + url
+  post.github = 'https://github.com/wndgur2/BlogDB/tree/main/' + url
 
   if (post.category !== CATEGORIES.ALGORITHM) return post
 
