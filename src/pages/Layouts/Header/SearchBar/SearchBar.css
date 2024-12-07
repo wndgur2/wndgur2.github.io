@@ -5,6 +5,7 @@
     height: 2.6em;
     padding: 0 0.5em;
 
+    flex: 1;
     display: flex;
     align-items: center;
     gap: 0.5em;
@@ -13,7 +14,7 @@
     border: 1px solid var(--border-color);
     border-radius: 2em;
 
-    transition: height 0.3s, scale 0.3s, flex 0.3s;
+    transition: height 0.3s, scale 0.3s, flex 0.3s, width 0.3s;
 }
 
 @media screen and (min-width: 768px) {
@@ -63,7 +64,8 @@ input:focus {
     }
 
     #header:has(.search-bar:focus-within)>*:not(.search-bar) {
-        display: none;
+        max-width: 0px;
+        overflow: hidden;
     }
 
     .search-bar:focus-within {

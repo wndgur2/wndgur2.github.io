@@ -41,6 +41,6 @@
     padding: 0.4em;
 }
 
-#header>* {
+#header>*:not(.search-bar) {
     flex: 1;
 }

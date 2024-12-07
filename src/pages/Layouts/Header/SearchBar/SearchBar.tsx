@@ -20,10 +20,10 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
 
     return (
         <search className="search-bar">
-            <FiSearch className="search-icon" onClick={() => {
+            <FiSearch className="search-icon" onClick={ () => {
                 if (inputRef.current)
                     inputRef.current.focus();
-            }} />
+            } } />
             <form
                 onSubmit={
                     (e) => {
@@ -38,10 +38,10 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
                 }
             >
                 <input
-                    ref={inputRef}
+                    ref={ inputRef }
                     type="search"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    value={ search }
+                    onChange={ (e) => setSearch(e.target.value) }
                 />
             </form>
         </search>
