@@ -1,9 +1,11 @@
+import { sortedInsert } from '@/utils/sortedInsert'
 import CATEGORIES from '../consts/CATEGORIES'
-import PostsAction from '../types/PostsAction'
 import { _Post } from '../types/_Post'
 import fetchPostUrls from './fetchPostsUrls'
 
-const fetchPosts = async (dispatch: React.Dispatch<PostsAction>): Promise<void> => {
+const fetchPosts = async (
+  setPosts: React.Dispatch<React.SetStateAction<_Post[]>>
+): Promise<void> => {
   let urls = await fetchPostUrls()
 
   if (Object.prototype.toString.call(urls) === '[object Object]') urls = urls.urls
@@ -11,12 +13,14 @@ const fetchPosts = async (dispatch: React.Dispatch<PostsAction>): Promise<void> 
   urls.pop()
 
   urls.forEach(async (url: string) => {
-    await fetchPost(url)
-      .then((post) => {
-        if (!post) return
-        dispatch({ type: 'INSERT_POST', payload: post })
-      })
-      .catch((err) => console.log(err))
+    try {
+      const post = await fetchPost(url)
+      if (!post) return
+      setPosts((prevPosts) => sortedInsert(prevPosts, post))
+    } catch (err) {
+      console.error(err)
+      return null
+    }
   })
 }
 
@@ -26,7 +30,7 @@ const fetchPost = async (url: string) => {
     const data = await response.text()
     return await getPost(data, url)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -42,10 +46,9 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
     preview: 'No preview found.',
   }
 
-  // header is between first two '---'
   const header = data.match(/---\n([\s\S]+?)\n---/)
   if (header) {
-    const headerData = header[1].toString().split('\n')
+    const headerData = header[1].split('\n')
     headerData.forEach((line: string) => {
       let [key, value] = line.split(': ')
       if (key === 'category') value = value.toLowerCase()
@@ -64,7 +67,6 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
             let dates = value.split('.')
             dates = dates.map((date) => (date.length === 1 ? '0' + date : date))
             value = dates.join('.')
-
             post.date_started = value
             break
           case 'preview':
@@ -75,19 +77,19 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
             break
         }
     })
-  } else return null
+  } else {
+    return null
+  }
 
   const content = data.match(/---\n[\s\S]+?\n---\n([\s\S]*)/)
-
-  if (content) post.content = content[1].toString()
+  if (content) post.content = content[1]
 
   post.github = 'https://github.com/wndgur2/BlogDB/tree/main/' + url
 
   if (post.category !== CATEGORIES.ALGORITHM) return post
 
-  // get code
-  const code_path = url.split('/')
-  code_path.pop()
+  const codePath = url.split('/')
+  codePath.pop()
   post.tags.forEach((tag: string) => {
     switch (tag.toLowerCase()) {
       case 'c++':
@@ -111,7 +113,7 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
   })
   if (!post.language) return post
 
-  let filename = code_path[code_path.length - 1].replaceAll(' ', '')
+  let filename = codePath[codePath.length - 1].replaceAll(' ', '')
   if (post.language === 'java') {
     if (post.site === 'SWEA') {
       filename = 'Solution'
@@ -119,10 +121,10 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
       filename = 'Main'
     }
   }
-  code_path.push(filename + '.' + post.language)
+  codePath.push(filename + '.' + post.language)
 
   post.code = await getCode(
-    'https://raw.githubusercontent.com/wndgur2/BlogDB/main/' + code_path.join('/')
+    'https://raw.githubusercontent.com/wndgur2/BlogDB/main/' + codePath.join('/')
   )
   return post
 }
@@ -130,10 +132,9 @@ const getPost = async (data: string, url: string): Promise<_Post | null> => {
 const getCode = async (url: string): Promise<string> => {
   try {
     const response = await fetch(url)
-    const data = await response.text()
-    return data
+    return await response.text()
   } catch (err) {
-    console.log(err)
+    console.error(err)
     return ''
   }
 }

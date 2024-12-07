@@ -1,31 +1,32 @@
-import { FunctionComponent, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
 import './Search.css';
-import { _Post, _Project } from "../../types/_Post";
-import ListedPost from "../../components/ListedPost";
-import useSearchPosts from "../../hooks/useSearchPosts";
+import { FunctionComponent, useMemo, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { useParams } from "react-router-dom";
 import { FaSortAmountUp, FaSortAmountDown } from "react-icons/fa";
-import ListedProject from "../../components/ListedProject";
-import CATEGORIES from "../../consts/CATEGORIES";
+import ListedPost from "@/components/ListedPost";
+import ListedProject from "@/components/ListedProject";
+import { _Post, _Project } from "@/types/_Post";
+import CATEGORIES from "@/consts/CATEGORIES";
+import { searchedPostsSelector } from "@/recoil/selectors/postsSelector";
 
 const Search: FunctionComponent = () => {
     const params = useParams();
-    const posts = useSearchPosts(params);
+    const searchedPosts = useRecoilValue(searchedPostsSelector({ search_text: params.search_text }));
     const [recentFirst, setRecentFirst] = useState(true);
-    const sortedPosts = useMemo(() => [...posts.sort((a, b) => (
+    const sortedPosts = useMemo(() => [...searchedPosts].sort((a, b) => (
         recentFirst ?
             (a.date_started < b.date_started ? 1 : -1)
             : (a.date_started > b.date_started ? 1 : -1))
-    )], [posts, recentFirst])
+    ), [searchedPosts, recentFirst])
 
     return (
         <main className="search-result">
             <header>
-                <h2>Search Result for {params.search_text}</h2>
-                <button className="search-options accent" onClick={() => {
+                <h2 className='content'>Search Result for { params.search_text }</h2>
+                <button className="search-options accent" onClick={ () => {
                     setRecentFirst(!recentFirst);
-                }}>
-                    {recentFirst ?
+                } }>
+                    { recentFirst ?
                         <FaSortAmountDown /> :
                         <FaSortAmountUp />
                     }
@@ -36,8 +37,8 @@ const Search: FunctionComponent = () => {
                     sortedPosts.length ?
                         sortedPosts.map((post: _Post, i) =>
                             post.category === CATEGORIES.PROJECT ?
-                                <ListedProject key={i} post={post as _Project} />
-                                : <ListedPost key={i} post={post} />
+                                <ListedProject key={ i } post={ post as _Project } />
+                                : <ListedPost key={ i } post={ post } />
                         ) : <span>No post.</span>
                 }
             </ul>

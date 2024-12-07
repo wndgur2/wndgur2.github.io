@@ -1,18 +1,19 @@
-import { FunctionComponent, useContext, useEffect } from 'react'
+import { FunctionComponent, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import './Home.css'
 import HomeCategory from './HomeCategory'
 import Profile from '@/components/Profile/Profile'
-import { PostsContext } from '@/contexts/Posts'
 import { _Post, _Project } from '@/types/_Post'
 import ListedPost from '@/components/ListedPost'
 import Loading from '@/components/Loading'
 import ListedProject from '@/components/ListedProject'
 import usePostsByCategory from '@/hooks/usePostsByCategory'
 import CATEGORIES from '@/consts/CATEGORIES'
+import { useRecoilValue } from 'recoil'
+import { postsAtom } from '@/recoil'
 
 const Home: FunctionComponent = () => {
-  const posts = useContext(PostsContext).posts as _Post[]
+  const posts = useRecoilValue(postsAtom)
   const postsByCategory = usePostsByCategory(posts)
 
   const router = useNavigate()

@@ -50,6 +50,7 @@ const RAW_RUNTIME_STATE =
           ["react-icons", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:5.4.0"],\
           ["react-router-dom", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:7.0.2"],\
           ["react-scripts", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:5.0.1"],\
+          ["recoil", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:0.7.7"],\
           ["speed-measure-webpack-plugin", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:1.5.0"],\
           ["swr", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:2.2.5"],\
           ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"],\
@@ -10284,6 +10285,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["hamt_plus", [\
+      ["npm:1.0.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/hamt_plus-npm-1.0.2-67a52ee1df-10c0.zip/node_modules/hamt_plus/",\
+        "packageDependencies": [\
+          ["hamt_plus", "npm:1.0.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["handle-thing", [\
       ["npm:2.0.1", {\
         "packageLocation": "../../../.yarn/berry/cache/handle-thing-npm-2.0.1-084baca59e-10c0.zip/node_modules/handle-thing/",\
@@ -16087,6 +16097,37 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["recoil", [\
+      ["npm:0.7.7", {\
+        "packageLocation": "../../../.yarn/berry/cache/recoil-npm-0.7.7-4452f58b67-10c0.zip/node_modules/recoil/",\
+        "packageDependencies": [\
+          ["recoil", "npm:0.7.7"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:0.7.7", {\
+        "packageLocation": "./.yarn/__virtual__/recoil-virtual-6a7b997a12/4/.yarn/berry/cache/recoil-npm-0.7.7-4452f58b67-10c0.zip/node_modules/recoil/",\
+        "packageDependencies": [\
+          ["recoil", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:0.7.7"],\
+          ["@types/react", "npm:18.3.14"],\
+          ["@types/react-dom", "npm:18.3.2"],\
+          ["@types/react-native", null],\
+          ["hamt_plus", "npm:1.0.2"],\
+          ["react", "npm:18.3.1"],\
+          ["react-dom", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:18.3.1"],\
+          ["react-native", null]\
+        ],\
+        "packagePeers": [\
+          "@types/react-dom",\
+          "@types/react-native",\
+          "@types/react",\
+          "react-dom",\
+          "react-native",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["recursive-readdir", [\
       ["npm:2.2.3", {\
         "packageLocation": "../../../.yarn/berry/cache/recursive-readdir-npm-2.2.3-3f177ebd90-10c0.zip/node_modules/recursive-readdir/",\
@@ -18913,6 +18954,7 @@ const RAW_RUNTIME_STATE =
           ["react-icons", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:5.4.0"],\
           ["react-router-dom", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:7.0.2"],\
           ["react-scripts", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:5.0.1"],\
+          ["recoil", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:0.7.7"],\
           ["speed-measure-webpack-plugin", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:1.5.0"],\
           ["swr", "virtual:849db7b043b8498857c349ec65a34bd5fa4b6a9b1fe715d1b5878365274c3402b79766d9a6d7f4c9331ee767aef67b2617c50ece05987a6aed393bb431dcaef8#npm:2.2.5"],\
           ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=289587"],\

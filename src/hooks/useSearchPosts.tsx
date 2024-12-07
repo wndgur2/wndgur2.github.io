@@ -1,10 +1,11 @@
 import { useContext, useMemo } from 'react'
-import { PostsContext } from '../contexts/Posts'
 import { _Post } from '../types/_Post'
 import { Params } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
+import { postsAtom } from '@/recoil'
 
-function useSearchPosts(params: Readonly<Params<string>>) {
-  const posts = useContext(PostsContext).posts as _Post[]
+function useSearchPosts (params: Readonly<Params<string>>) {
+  const posts = useRecoilValue(postsAtom)
 
   const searchedPosts: _Post[] = useMemo(() => {
     if (!params.search_text) return []

@@ -1,45 +1,43 @@
-import { FunctionComponent, useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
-import Tag from '@/components/Tag'
-import { _Post } from '@/types/_Post'
-import { PostsContext } from '@/contexts/Posts'
-import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
-import Loading from '@/components/Loading'
-import hljs from 'highlight.js'
-import 'highlight.js/styles/github-dark-dimmed.css'
+import 'highlight.js/styles/github-dark.css'
 import './Post.css'
+import { FunctionComponent, useEffect } from 'react'
+import { Link, useParams } from 'react-router-dom'
+import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
+import hljs from 'highlight.js'
 import { IoLogoGithub } from 'react-icons/io'
+import Tag from '@/components/Tag'
+import Loading from '@/components/Loading'
 import useResetScroll from '@/hooks/useResetScroll'
 import CATEGORIES from '@/consts/CATEGORIES'
 import ImageSkeleton from '@/components/ImageSkeleton'
-
-const mdOption = {
-  wrapper: 'div',
-  overrides: {
-    img: {
-      component: (props: any) => <ImageSkeleton props={ props } />,
-    },
-  },
-} as MarkdownToJSX.Options
+import { useRecoilValue } from 'recoil'
+import { postSelector } from '@/recoil'
 
 const Post: FunctionComponent = () => {
-  const posts: _Post[] = useContext(PostsContext).posts
   const title = useParams().post_title
-  const [post, setPost] = useState<_Post>()
+  const post = useRecoilValue(postSelector({ post_title: title }))
   useResetScroll()
 
-  useEffect(() => {
-    const nodes = document.querySelectorAll('pre code')
-    nodes.forEach((node) => {
-      hljs.highlightElement(node as HTMLElement)
-    })
-    console.log(post)
-  }, [post])
+  const mdOption = {
+    overrides: {
+      img: {
+        component: (props: any) => <ImageSkeleton props={ props } />,
+      },
+
+      p: {
+        component: ({ children }) => <div className='post-content-block'>{ children }</div>,
+      },
+    }
+  } as MarkdownToJSX.Options
 
   useEffect(() => {
-    if (!posts) return
-    setPost(posts.find((_post) => _post.title === title))
-  }, [posts, title])
+    if (!post) return
+    const nodes = document.querySelectorAll('pre code')
+    nodes.forEach((node) => {
+      if (node.hasAttribute('data-highlighted')) return
+      hljs.highlightElement(node as HTMLElement)
+    })
+  }, [post])
 
   return (
     <>
@@ -47,7 +45,7 @@ const Post: FunctionComponent = () => {
         <div className='post'>
           <header>
             <section className='post-title'>
-              <h1>{ title }</h1>
+              <h2>{ title }</h2>
               <ol className='tags'>
                 { post.tags.map((tag: string, index: number) => (
                   <Tag

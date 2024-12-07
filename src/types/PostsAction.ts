@@ -1,6 +1,6 @@
 import { _Post } from './_Post'
 
 export default interface PostsAction {
-  type: 'INSERT_POST'
+  type: 'post/inserted'
   payload: _Post
 }

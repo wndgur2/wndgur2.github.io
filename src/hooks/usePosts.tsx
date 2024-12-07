@@ -1,17 +1,18 @@
-import { useEffect, useReducer } from 'react'
-import fetchPosts from '../utils/fetchPosts'
-import fetchProjects from '../utils/fetchProjects'
-import postsReducer from '../utils/postsReducer'
+import { useEffect } from 'react'
+import fetchPosts from '@/services/fetchPosts'
+import fetchProjects from '@/services/fetchProjects'
+import { useSetRecoilState } from 'recoil'
+import { postsAtom } from '@/recoil/atoms/postsAtom'
 
-function usePosts() {
-  const [posts, dispatch] = useReducer(postsReducer, [])
+
+function usePosts () {
+  const setPosts = useSetRecoilState(postsAtom);
 
   useEffect(() => {
-    fetchPosts(dispatch)
-    fetchProjects(dispatch)
-  }, [])
-
-  return posts
+    console.log("fetching post")
+    fetchPosts(setPosts)
+    fetchProjects(setPosts)
+  }, [setPosts])
 }
 
 export default usePosts

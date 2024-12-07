@@ -1,10 +1,9 @@
 .post {
-    padding: 0 4vw;
+    color: var(--content-color);
 }
 
 .post header {
-    padding: 4vh 4vw;
-    padding-bottom: 1.2em;
+    padding: 2em;
 
     display: flex;
     justify-content: space-between;
@@ -60,14 +59,23 @@
 }
 
 .post-content {
+    padding: 4em 2em;
     margin-top: -1px;
-    padding: 2em 4vw;
 
     text-wrap: pretty;
 
     border: 1px solid var(--border-color);
     background-color: var(--fg-color);
     border-radius: 0em 0em 1em 1em;
+}
+
+.post-content-block {
+    padding: 0.5em 0;
+}
+
+.post-content hr {
+    opacity: 0.5;
+    margin: 4em 0px;
 }
 
 .post-content>div * {
@@ -81,15 +89,14 @@
 
 .post-content h1,
 .post-content h2 {
-    margin: 1.2em 0px 0.5em 0px;
+    margin: 1.4em 0px 0.2em 0px;
 }
 
 .post-content h3 {
-    margin: 0.8em 0px 0.3em 0px;
+    margin: 1.2em 0px 0.2em 0px;
 }
 
 .post-content p {
-    margin: 0.2em 0px;
     line-height: 1.5em;
 }
 
@@ -105,7 +112,11 @@
 .post-content li {
     padding-left: 0.5em;
     line-height: 1.5em;
-    padding: 0.3em 0px 0.3em 0.5em;
+    padding: 0.1em 0px 0.1em 0.5em;
+}
+
+.post-content em {
+    color: var(--intense-content-color);
 }
 
 .post-content li::marker {
@@ -142,24 +153,34 @@
 }
 
 .post-content pre {
-    margin: 2em 0px;
+    margin: 1em 0px;
 }
 
 .post-content code {
     border-radius: 0.5em;
 }
 
+.post-content div>code {
+    color: var(--accent-content-color);
+}
+
+
+span.hljs-property {
+    color: var(--accent-content-color);
+}
+
 .post-content pre code {
-    font-weight: 300;
-    letter-spacing: 0.04em;
-    line-height: 1.2em;
-    padding: 1em 2em;
+    padding: 1em;
+    line-height: 1.5em;
+    word-spacing: 0.2em;
+    font-size: small;
+    color: #eaeaea;
 }
 
 .post-content blockquote {
     border-left: 0.2em solid var(--accent-color);
     padding: 0px 1em;
-    margin: 0.4em 0px;
+    margin: 2em 0px;
     background-color: var(--dimmed-fg-color);
 }
 
@@ -174,7 +195,7 @@
 
 .post-content code:not(.hljs) {
     font-size: 0.9em;
-    padding: 0.2em 0.4em;
+    padding: 0.2em;
     line-height: 2em;
     border-radius: 0.2em;
     background-color: var(--dimmed-fg-color);
