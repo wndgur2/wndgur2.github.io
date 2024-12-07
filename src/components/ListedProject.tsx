@@ -13,35 +13,35 @@ interface ListedProjectProps {
 const ListedProject: FunctionComponent<ListedProjectProps> = ({ post }) => {
   return (
     <Link
-      to={`/post/${post.title}`}
+      to={ `/post/${post.title}` }
       className='listed-post project link clickable'
     >
       <section>
         <div className='project-image-wrapper'>
-          {post.thumbnail ? (
+          { post.thumbnail ? (
             parse(post.thumbnail)
           ) : (
             <CiImageOff
               className='no-image'
-              size={32}
+              size={ 32 }
             />
-          )}
+          ) }
         </div>
-        <div className='project-info'>
-          <h2 className='project-title'>{post.title}</h2>
-          <p>{post.description}</p>
+        <div className='project-info content'>
+          <h2 className='project-title'>{ post.title }</h2>
+          <p>{ post.description }</p>
           <small className='project-date'>
-            {post.date_started}~ {post.date_finished}
+            { post.date_started }~ { post.date_finished }
           </small>
         </div>
       </section>
       <ol className='tags'>
-        {post.tags.map((tag, index) => (
+        { post.tags.map((tag, index) => (
           <Tag
-            key={index}
-            tag={tag}
+            key={ index }
+            tag={ tag }
           />
-        ))}
+        )) }
       </ol>
     </Link>
   )

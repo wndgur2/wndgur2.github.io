@@ -17,7 +17,7 @@ const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProp
       className='listed-post link clickable'
       to={ `/post/${post.title}` }
     >
-      <header>
+      <header >
         <h3>
           <span>{ post.title }</span>
           { post.site && <small>{ post.site }</small> }

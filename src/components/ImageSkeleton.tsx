@@ -24,6 +24,14 @@ const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({ props }) => {
     }
   }, [props.src])
 
+  useEffect(() => {
+    if (!skeletonRef.current) return
+    // set random animation duration
+    const duration = Math.random() * 2
+    skeletonRef.current.style.setProperty('animation-delay', `${duration}s`)
+
+  }, [skeletonRef])
+
   return (
     <div className='image-wrapper'>
       <canvas

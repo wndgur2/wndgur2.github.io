@@ -32,10 +32,6 @@
     font-size: 1.1em;
 }
 
-.profile-description {
-    color: var(--accent-content-color);
-}
-
 .marquee-container {
     z-index: -1;
     position: absolute;
