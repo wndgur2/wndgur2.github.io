@@ -4,7 +4,7 @@ import Tag from '../Tag'
 import ProfileImage from './ProfileImage'
 
 const Profile: FunctionComponent = () => {
-  const stacks = ['HTML', 'CSS', 'Typescript', 'Javascript', 'ReactJs', 'NextJs', 'Express']
+  const stacks = ['html', 'css', 'typescript', 'javascript', 'react', 'nextJS', 'express']
 
   return (
     <div className='profile'>
