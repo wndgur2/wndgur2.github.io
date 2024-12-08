@@ -21,7 +21,7 @@
 
 .preview {
     padding: 0.5em;
-    height: 8em;
+    max-height: 10em;
     max-width: 20em;
     overflow: hidden;
 }
