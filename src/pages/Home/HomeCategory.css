@@ -27,7 +27,8 @@
 
     padding: 0.4em 0px;
 
-    border-radius: 2em;
+    border-radius: var(--radius-pill);
+    ;
     transition: padding 0.2s;
 }
 
@@ -58,7 +59,7 @@
     min-width: fit-content;
     margin: 0.6em;
     padding: 0.6em;
-    border-radius: 1em;
+    border-radius: var(--radius);
 
     border: 1px solid var(--border-color);
     background-color: var(--fg-color);
@@ -82,7 +83,7 @@
     margin: 1em;
     padding: 1em 2em;
     background-color: var(--fg-color);
-    border-radius: 1em;
+    border-radius: var(--radius);
 }
 
 .more>p {

@@ -12,7 +12,8 @@
 
     background-color: var(--fg-color);
     border: 1px solid var(--border-color);
-    border-radius: 2em;
+    border-radius: var(--radius-pill);
+    ;
 
     transition: height 0.3s, scale 0.3s, flex 0.3s, width 0.3s;
 }
@@ -60,7 +61,7 @@ input:focus {
 @media screen and (max-width: 768px) {
     .search-bar {
         height: 3em;
-        flex-grow: 1;
+        max-width: 6em;
     }
 
     #header:has(.search-bar:focus-within)>*:not(.search-bar) {
@@ -70,6 +71,7 @@ input:focus {
 
     .search-bar:focus-within {
         flex-grow: 1;
+        max-width: none;
     }
 
     .search-icon {

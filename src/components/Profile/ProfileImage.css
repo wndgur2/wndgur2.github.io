@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
 
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     border: 0.2em solid var(--accent-color);
     transition: width 0.3s, border 0.3s, margin 0.3s, scale 0.3s;
     overflow: hidden;
@@ -16,9 +16,9 @@
 }
 
 .profile-img-wrapper:hover {
-    width: calc(6em + 4vw);
+    width: calc(5.5em + 3.5vw);
     cursor: pointer;
-    border: 0.5em solid var(--action-color);
+    border: 0.3em solid var(--action-color);
     margin-top: 0;
 }
 
@@ -27,7 +27,7 @@
     height: 100%;
     aspect-ratio: 1/1;
 
-    border-radius: 50%;
+    border-radius: var(--radius-pill);
     object-fit: contain;
 }
 

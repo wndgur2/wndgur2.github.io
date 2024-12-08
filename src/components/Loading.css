@@ -9,7 +9,7 @@
 .spinner {
     border: 1.8em solid;
     border-color: var(--bg-color) var(--bg-color) var(--accent-color) var(--accent-color);
-    border-radius: 50%;
+    border-radius: var(--radius-pill);
     position: relative;
     animation: spin 1s linear infinite
 }
@@ -23,7 +23,7 @@
     width: 0.6em;
     aspect-ratio: 1/1;
     background: var(--accent-color);
-    border-radius: 50%;
+    border-radius: var(--radius-pill);
 }
 
 

@@ -2,22 +2,27 @@
     width: 80%;
     aspect-ratio: 16/9;
 
-    background: linear-gradient(90deg, var(--bg-color) 25%, var(--fg-color) 50%, var(--bg-color) 75%);
+    background: linear-gradient(90deg, var(--dimmed-bg-color) 25%, var(--dimmed-fg-color) 50%, var(--dimmed-bg-color) 75%);
     background-size: 200%;
     animation: load 1.5s infinite;
-    border-radius: 1em;
+    border-radius: var(--radius);
 }
 
-.image-wrapper {
+.image-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.image-wrapper {
+    border-radius: var(--radius-sm);
+    overflow: hidden;
 }
 
 .loaded {
-    width: fit-content;
-    height: fit-content;
     opacity: 1;
     transition: opacity 0.3s;
 }
