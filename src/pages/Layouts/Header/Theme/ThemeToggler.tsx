@@ -2,22 +2,22 @@ import { ChangeEvent, FunctionComponent } from "react";
 import { IoMdMoon } from "react-icons/io";
 import { PiSunDimFill } from "react-icons/pi";
 
-import './Theme.css';
+import './ThemeToggler.css';
 
 interface ThemeProps {
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
     isChecked: boolean;
 }
 
-const Theme: FunctionComponent<ThemeProps> = ({ handleChange, isChecked }) => {
+const ThemeToggler: FunctionComponent<ThemeProps> = ({ handleChange, isChecked }) => {
     return (
         <div className="theme">
             <input
                 type="checkbox"
                 className="toggle"
                 id="check"
-                onChange={handleChange}
-                checked={isChecked}
+                onChange={ handleChange }
+                checked={ isChecked }
             />
             <label htmlFor="check">
             </label>
@@ -29,4 +29,4 @@ const Theme: FunctionComponent<ThemeProps> = ({ handleChange, isChecked }) => {
     );
 }
 
-export default Theme;
+export default ThemeToggler;

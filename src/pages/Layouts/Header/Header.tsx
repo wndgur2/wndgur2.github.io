@@ -1,6 +1,6 @@
 import { FunctionComponent, useContext, useRef } from "react";
 import './Header.css';
-import Theme from "./Theme/Theme";
+import ThemeToggler from "./Theme/ThemeToggler";
 import SearchBar from "./SearchBar/SearchBar";
 import { DeviceContext } from "../../../contexts/Device";
 import { Link } from "react-router-dom";
@@ -35,7 +35,7 @@ const Header: FunctionComponent = () => {
                 </Link>
             </h5>
             <SearchBar />
-            <Theme isChecked={ isDark } handleChange={ () => {
+            <ThemeToggler isChecked={ isDark } handleChange={ () => {
                 setIsDark(!isDark)
                 localStorage.setItem('theme', isDark ? 'light' : 'dark');
             } } />

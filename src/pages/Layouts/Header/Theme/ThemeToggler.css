@@ -24,8 +24,8 @@
 
 .toggle+label::before {
     content: '';
-    height: calc(2.6em - 2px);
-    aspect-ratio: 4.2/2.2;
+    height: calc(2.4em - 2px);
+    aspect-ratio: 3.8/2.2;
     border-radius: 2em;
     background-color: var(--fg-color);
     border: 1px solid var(--border-color);
@@ -34,11 +34,11 @@
 .toggle+label::after {
     content: '';
 
-    width: 2.2em;
+    width: 2em;
     aspect-ratio: 1;
-    margin-left: calc(-4.6em);
+    margin-left: calc(-3.85em);
 
-    border-radius: 50%;
+    border-radius: 2em;
     background-color: var(--accent-color);
     transition: transform 0.3s, background-color 0.5s, color 0.3s;
 }
@@ -46,8 +46,8 @@
 .icons {
     display: flex;
     align-items: center;
-    gap: 0.8em;
-    margin-left: calc(-2em + 2px);
+    gap: 0.25em;
+    margin-left: calc(-1.9em + 2px);
     pointer-events: none;
 }
 
@@ -63,7 +63,7 @@
 
 @media screen and (min-width: 768px) {
     .toggle:checked+label::after {
-        transform: translateX(100%);
+        transform: translateX(82%);
     }
 }
 
@@ -76,8 +76,6 @@
 }
 
 @media screen and (max-width: 768px) {
-    .theme {}
-
     .toggle+label::before {
         height: 3em;
         aspect-ratio: 1;
@@ -93,7 +91,7 @@
     }
 
     .moon {
-        margin-left: calc(-1.5em);
+        margin-left: calc(-1.2em);
     }
 
     .theme-icon {
