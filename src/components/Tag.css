@@ -15,11 +15,11 @@
 }
 
 .tag:hover {
-    box-shadow: 0 0 0 2px var(--action-color);
+    box-shadow: 0 0 0 1.5px var(--action-color);
     color: var(--action-color);
 }
 
 .tag-active {
-    box-shadow: 0 0 0 2px var(--action-color);
+    box-shadow: 0 0 0 1.5px var(--action-color);
     color: var(--action-color);
 }

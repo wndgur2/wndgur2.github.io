@@ -71,6 +71,11 @@
     gap: 1em;
 }
 
+.category-btn {
+    aspect-ratio: 1;
+    color: var(--minor-color);
+}
+
 .category-btn:disabled {
     pointer-events: none;
     opacity: 0.5;

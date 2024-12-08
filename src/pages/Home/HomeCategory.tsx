@@ -63,7 +63,7 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
           />
         </Link>
         <div
-          className='scroll-buttons icon'
+          className='scroll-buttons'
           ref={ buttonsRef }
         >
           <button
@@ -72,7 +72,6 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
           >
             <RiArrowLeftSLine
               style={ { marginLeft: '-2px' } }
-              className='icon'
               size={ 28 }
             />
           </button>
@@ -82,7 +81,6 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
           >
             <RiArrowRightSLine
               style={ { marginRight: '-2px' } }
-              className='icon'
               size={ 28 }
             />
           </button>

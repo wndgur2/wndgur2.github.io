@@ -5,7 +5,6 @@ const IMG_AMOUNT = 4
 
 const ProfileImage: FunctionComponent = () => {
   const profileRef = useRef<HTMLButtonElement>(null)
-  const bgRef = useRef<HTMLDivElement>(null)
   const [imgIndex, setImgIndex] = useState(0)
 
   useEffect(() => {
@@ -15,13 +14,6 @@ const ProfileImage: FunctionComponent = () => {
       img.src = `images/profile/${i}.jpeg`
     }
   })
-
-  useEffect(() => {
-    // 배경 이미지
-    if (!bgRef.current) return
-    bgRef.current.style.background = `url(images/profile/${imgIndex}.jpeg)`
-    bgRef.current.style.backgroundSize = 'cover'
-  }, [imgIndex])
 
   const profileClicked = () => {
     if (!profileRef.current) return
@@ -51,17 +43,11 @@ const ProfileImage: FunctionComponent = () => {
       onClick={ profileClicked }
       ref={ profileRef }
     >
-      <div
-        className='profile-img-background'
-        ref={ bgRef }
-      >
-        <img
-          className='profile-img'
-          src={ `images/profile/${imgIndex}.jpeg` }
-          alt='profile'
-        />
-        {/* <img className="profile-img" src={`images/profile/default.png`} alt="profile" /> */ }
-      </div>
+      <img
+        className='profile-img'
+        src={ `images/profile/${imgIndex}.jpeg` }
+        alt='profile'
+      />
     </button>
   )
 }
