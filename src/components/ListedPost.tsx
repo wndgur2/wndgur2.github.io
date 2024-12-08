@@ -39,7 +39,8 @@ const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProp
           options={ {
             overrides: {
               a: { component: (props: any) => <span { ...props } /> },
-              Integer: { component: (props: any) => <span { ...props } /> }
+              Integer: { component: (props: any) => <span { ...props } /> },
+              img: { component: (props: any) => <img { ...props } alt={ props.alt } style={ { maxWidth: '100%', maxHeight: '100%', objectFit: 'cover' } } /> },
             }
           } }
         >
