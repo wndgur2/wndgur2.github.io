@@ -4,12 +4,12 @@
         "title": "CatChess",
         "description": "실시간 3D 웹 대전 게임",
         "tags": [
-            "ThreeJs",
-            "NodeJs",
-            "Express",
-            "Javascript",
+            "threeJS",
+            "nodeJS",
+            "express",
+            "javascript",
             "CSS",
-            "Pug"
+            "pug"
         ],
         "date_started": "2023.12.01",
         "date_finished": "2024.04.17",
@@ -20,9 +20,9 @@
         "title": "Memohub",
         "description": "자유분방한 웹 메모장",
         "tags": [
-            "NextJs",
+            "nextjs",
             "mongoDB",
-            "Javascript"
+            "javascript"
         ],
         "date_started": "2023.11.23",
         "date_finished": "2023.11.29",
@@ -33,11 +33,11 @@
         "title": "whosleejunghyeok",
         "description": "깃허브 연동 블로그",
         "tags": [
-            "ReactJs",
-            "Git",
-            "Markdown",
+            "react",
+            "git",
+            "markdown",
             "CSS",
-            "Typescript"
+            "typescript"
         ],
         "date_started": "2024.05.05",
         "github": "https://github.com/wndgur2/whosleejunghyeok"
@@ -47,10 +47,10 @@
         "title": "Cheese",
         "description": "야외 포토 부스 서비스",
         "tags": [
-            "NextJs",
+            "nextjs",
             "CSS",
-            "Javascript",
-            "WebRTC"
+            "javascript",
+            "webRTC"
         ],
         "date_started": "2023.01.01",
         "date_finished": "2023.11.14",
@@ -61,9 +61,9 @@
         "title": "Reptopia",
         "description": "파충류 매니아를 위한 커뮤니티",
         "tags": [
-            "AngularJs",
+            "angularJS",
             "CSS",
-            "Javascript"
+            "javascript"
         ],
         "date_started": "2020.12.15",
         "date_finished": "2021.04.01",
