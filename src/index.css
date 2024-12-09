@@ -36,7 +36,8 @@
     --light-minor-color: #888;
     --light-icon-color: #444;
     --light-dimmed-icon-color: #4442;
-    --light-border-color: #36f;
+    --light-border-color: #ccc;
+    /* --light-border-color: #36f; */
     --light-light-only-border-color: #ff50aa;
 
     --dark-fg-color: #181818;
@@ -135,8 +136,8 @@ small {
 }
 
 .link:hover {
-    color: var(--action-color);
-    background-color: var(--hover-bg-color);
+    /* color: var(--action-color);
+    background-color: var(--hover-bg-color); */
 }
 
 .link:hover h1,
