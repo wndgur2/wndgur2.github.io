@@ -11,38 +11,38 @@ interface SearchBarProps {
 const SearchBar: FunctionComponent<SearchBarProps> = () => {
     const navigate = useNavigate();
     const inputRef = useRef<HTMLInputElement>(null);
-    const [search, setSearch] = useState<string>("");
+    const [searchText, setSearchText] = useState<string>("");
     let { state } = useLocation();
 
     useEffect(() => {
-        if (state) setSearch(state.search_text);
+        if (state) setSearchText(state.search_text);
     }, [state])
 
+    function search (e: React.FormEvent) {
+        e.preventDefault();
+        if (searchText) {
+            navigate(`/search/${encodeURIComponent(searchText)}`, {
+                state: { search_text: searchText }
+            })
+        }
+        else {
+            navigate(`/`, {
+                state: { search_text: "" }
+            })
+        }
+    }
+
     return (
-        <search className="search-bar">
-            <FiSearch className="search-icon" onClick={ () => {
-                if (inputRef.current)
-                    inputRef.current.focus();
-            } } />
-            <form
-                onSubmit={
-                    (e) => {
-                        e.preventDefault();
-                        if (search) navigate(`/search/${encodeURIComponent(search)}`, {
-                            state: { search_text: search }
-                        });
-                        else navigate(`/`, {
-                            state: { search_text: "" }
-                        });
-                    }
-                }
-            >
+        <search className="search-bar clickable">
+            <form className="search-form dimmed content" onSubmit={ search }>
                 <input
                     ref={ inputRef }
-                    type="search"
-                    value={ search }
-                    onChange={ (e) => setSearch(e.target.value) }
+                    value={ searchText }
+                    onChange={ (e) => setSearchText(e.target.value) }
                 />
+                <button type="submit">
+                    <FiSearch className="search-icon minor" />
+                </button>
             </form>
         </search>
     );

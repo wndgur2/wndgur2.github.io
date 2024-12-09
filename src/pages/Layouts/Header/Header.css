@@ -40,7 +40,3 @@
 .logo {
     padding: 0.4em;
 }
-
-#header>*:not(.search-bar) {
-    flex: 1;
-}

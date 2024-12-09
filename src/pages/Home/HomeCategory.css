@@ -42,10 +42,6 @@
     color: var(--accent-color);
 }
 
-.arrow-wrapper path {
-    color: var(--accent-color);
-}
-
 .posts {
     display: flex;
     flex-flow: row nowrap;
@@ -69,16 +65,6 @@
 .scroll-buttons {
     display: flex;
     gap: 1em;
-}
-
-.category-btn {
-    aspect-ratio: 1;
-    color: var(--minor-color);
-}
-
-.category-btn:disabled {
-    pointer-events: none;
-    opacity: 0.5;
 }
 
 .more {

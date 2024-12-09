@@ -32,6 +32,7 @@
     --light-accent-content-color: #082af0dd;
     --light-intense-content-color: #000;
     --light-content-color: #242424;
+    --light-dimmed-content-color: #424242;
     --light-action-color: #ff50aa;
     --light-minor-color: #888;
     --light-icon-color: #444;
@@ -51,6 +52,7 @@
     /* --dark-accent-content-color: #86fc; */
     --dark-intense-content-color: #fff;
     --dark-content-color: #eee;
+    --dark-dimmed-content-color: #ccc;
     --dark-action-color: #adf;
     --dark-minor-color: #888;
     --dark-icon-color: #ddd;
@@ -85,6 +87,7 @@
     --accent-color: var(--light-accent-color);
     --action-color: var(--light-action-color);
     --content-color: var(--light-content-color);
+    --dimmed-content-color: var(--light-dimmed-content-color);
     --intense-content-color: var(--light-intense-content-color);
     --minor-color: var(--light-minor-color);
     --icon-color: var(--light-icon-color);
@@ -104,6 +107,7 @@
     --dimmed-accent-color: var(--dark-dimmed-accent-color);
     --accent-content-color: var(--dark-accent-content-color);
     --content-color: var(--dark-content-color);
+    --dimmed-content-color: var(--dark-dimmed-content-color);
     --intense-content-color: var(--dark-intense-content-color);
     --minor-color: var(--dark-minor-color);
     --icon-color: var(--dark-icon-color);
@@ -184,7 +188,6 @@ button {
 
 button:hover * {
     color: var(--icon-color);
-    fill: var(--icon-color);
     stroke: var(--icon-color);
 }
 
@@ -212,7 +215,7 @@ button.accent:hover {
 }
 
 .clickable:active {
-    scale: 1.02;
+    scale: 1.03;
 }
 
 
@@ -249,4 +252,17 @@ button.accent:hover {
 
 .content {
     color: var(--content-color);
+}
+
+.dimmed.content {
+    color: var(--dimmed-content-color);
+}
+
+button:disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+input {
+    color: inherit;
 }

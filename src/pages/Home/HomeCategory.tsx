@@ -7,13 +7,11 @@ import _Category from '@/types/_Category'
 interface HomeCategoryProps {
   category: _Category
   children: JSX.Element[]
-  more?: boolean
 }
 
 const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
   category,
   children,
-  more,
 }: HomeCategoryProps) => {
   const postsRef = useRef<HTMLUListElement>(null)
   const buttonsRef = useRef<HTMLDivElement>(null)
@@ -57,32 +55,17 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
           state={ { search_text: '@' + category } }
         >
           <h1>{ category[0].toLocaleUpperCase() + category.slice(1) }</h1>
-          <IoIosArrowForward
-            className='arrow-wrapper'
-            size={ 24 }
-          />
+          <IoIosArrowForward size={ 24 } />
         </Link>
         <div
           className='scroll-buttons'
           ref={ buttonsRef }
         >
-          <button
-            className='category-btn'
-            onClick={ () => scrollPosts('backward') }
-          >
-            <RiArrowLeftSLine
-              style={ { marginLeft: '-2px' } }
-              size={ 28 }
-            />
+          <button onClick={ () => scrollPosts('backward') }>
+            <RiArrowLeftSLine size={ 28 } />
           </button>
-          <button
-            className='category-btn'
-            onClick={ () => scrollPosts('forward') }
-          >
-            <RiArrowRightSLine
-              style={ { marginRight: '-2px' } }
-              size={ 28 }
-            />
+          <button onClick={ () => scrollPosts('forward') }>
+            <RiArrowRightSLine size={ 28 } />
           </button>
         </div>
       </header>
@@ -92,15 +75,6 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
         onScroll={ changeScrollButtons }
       >
         { children }
-        { more && (
-          <Link
-            className='more clickable'
-            to={ `/search/@${category}` }
-            state={ { search_text: '@' + category } }
-          >
-            <p>더보기</p>
-          </Link>
-        ) }
       </ul>
     </section>
   )

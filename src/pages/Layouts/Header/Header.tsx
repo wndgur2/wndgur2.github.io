@@ -4,6 +4,7 @@ import ThemeToggler from "./Theme/ThemeToggler";
 import SearchBar from "./SearchBar/SearchBar";
 import { DeviceContext } from "../../../contexts/Device";
 import { Link } from "react-router-dom";
+import Spacer from "@/components/common/Spacer";
 
 const Header: FunctionComponent = () => {
     const { isDark, setIsDark } = useContext(DeviceContext);
@@ -34,7 +35,9 @@ const Header: FunctionComponent = () => {
                     leejunghyeok
                 </Link>
             </h5>
+            <Spacer />
             <SearchBar />
+            <Spacer />
             <ThemeToggler isChecked={ isDark } handleChange={ () => {
                 setIsDark(!isDark)
                 localStorage.setItem('theme', isDark ? 'light' : 'dark');

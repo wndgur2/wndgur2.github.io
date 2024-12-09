@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import './Profile.css'
-import Tag from '../Tag'
+import Tag from '../common/Tag'
 import ProfileImage from './ProfileImage'
 
 const Profile: FunctionComponent = () => {

@@ -11,7 +11,7 @@ interface ThemeProps {
 
 const ThemeToggler: FunctionComponent<ThemeProps> = ({ handleChange, isChecked }) => {
     return (
-        <div className="theme">
+        <div className="theme clickable">
             <input
                 type="checkbox"
                 className="toggle"

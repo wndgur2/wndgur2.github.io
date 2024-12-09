@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
 import './ListedPost.css'
-import Tag from '@/components/Tag'
+import Tag from '@/components/common/Tag'
 import { Link } from 'react-router-dom'
 import { _Algorithm, _Post } from '@/types/_Post'
 import CATEGORIES from '@/consts/CATEGORIES'
