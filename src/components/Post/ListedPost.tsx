@@ -1,11 +1,11 @@
 import { FunctionComponent } from 'react'
 import './ListedPost.css'
-import Tag from './Tag'
+import Tag from '@/components/Tag'
 import { Link } from 'react-router-dom'
-import { _Algorithm, _Post } from '../types/_Post'
-import CATEGORIES from '../consts/CATEGORIES'
+import { _Algorithm, _Post } from '@/types/_Post'
+import CATEGORIES from '@/consts/CATEGORIES'
 import Markdown from 'markdown-to-jsx'
-import TIER_COLOR from '../consts/TIER_COLOR'
+import TIER_COLOR from '@/consts/TIER_COLOR'
 
 interface ListedPostProps {
   post: _Post
@@ -48,7 +48,7 @@ const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProp
         </Markdown>
       </section>
       <ol className='tags'>
-        { post.tags.map((tag, index) => (
+        { post.tags.map((tag: string, index: number) => (
           <Tag
             key={ index }
             tag={ tag }

@@ -7,7 +7,7 @@ import _Category from '@/types/_Category'
 interface HomeCategoryProps {
   category: _Category
   children: JSX.Element[]
-  more: boolean
+  more?: boolean
 }
 
 const HomeCategory: FunctionComponent<HomeCategoryProps> = ({

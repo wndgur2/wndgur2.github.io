@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react'
-import { _Project } from '../types/_Post'
-import Tag from './Tag'
+import { _Project } from '@/types/_Post'
+import Tag from '@/components/Tag'
 import './ListedProject.css'
 import { Link } from 'react-router-dom'
 import parse from 'html-react-parser'
@@ -36,7 +36,7 @@ const ListedProject: FunctionComponent<ListedProjectProps> = ({ post }) => {
         </div>
       </section>
       <ol className='tags'>
-        { post.tags.map((tag, index) => (
+        { post.tags.map((tag: string, index: number) => (
           <Tag
             key={ index }
             tag={ tag }

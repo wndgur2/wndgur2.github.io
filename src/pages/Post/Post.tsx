@@ -9,7 +9,7 @@ import Tag from '@/components/Tag'
 import Loading from '@/components/Loading'
 import useResetScroll from '@/hooks/useResetScroll'
 import CATEGORIES from '@/consts/CATEGORIES'
-import ImageSkeleton from '@/components/ImageSkeleton'
+import ImageSkeleton from '@/components/Post/ImageSkeleton'
 import { useRecoilValue } from 'recoil'
 import { postSelector } from '@/recoil'
 
@@ -41,21 +41,21 @@ const Post: FunctionComponent = () => {
 
   return (
     <>
-      { post ? (
-        <div className='post'>
-          <header>
-            <section className='post-title'>
-              <h2>{ title }</h2>
-              <ol className='tags'>
-                { post.tags.map((tag: string, index: number) => (
-                  <Tag
-                    key={ index }
-                    tag={ tag }
-                  />
-                )) }
-              </ol>
-            </section>
-            <section className='post-meta'>
+      <div className='post'>
+        <header>
+          <section className='post-title'>
+            <h2>{ title }</h2>
+            <ol className='tags'>
+              { post?.tags.map((tag: string, index: number) => (
+                <Tag
+                  key={ index }
+                  tag={ tag }
+                />
+              )) }
+            </ol>
+          </section>
+          <section className='post?-meta'>
+            { post &&
               <Link
                 className='link github'
                 to={ post.github }
@@ -63,24 +63,25 @@ const Post: FunctionComponent = () => {
                 target='_blank'
               >
                 <IoLogoGithub size={ 42 } />
-              </Link>
-              <small>
-                { post.date_started } ~ { post.date_finished }
-              </small>
-            </section>
-          </header>
-          <main className='post-content'>
+              </Link> }
+            <small>
+              { post?.date_started } ~ { post?.date_finished }
+            </small>
+          </section>
+        </header>
+        <main className='post-content'>{
+          post ?
             <Markdown options={ mdOption }>
               { post.content +
                 (post.category === CATEGORIES.ALGORITHM
                   ? '\n\n```' + post.language + '\n\n' + post.code + '```'
                   : '') }
             </Markdown>
-          </main>
-        </div>
-      ) : (
-        <Loading phrase='Loading post' />
-      ) }
+            :
+            <Loading />
+        }
+        </main>
+      </div>
     </>
   )
 }

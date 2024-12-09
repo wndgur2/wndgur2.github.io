@@ -4,9 +4,9 @@ import './Home.css'
 import HomeCategory from './HomeCategory'
 import Profile from '@/components/Profile/Profile'
 import { _Post, _Project } from '@/types/_Post'
-import ListedPost from '@/components/ListedPost'
+import ListedPost from '@/components/Post/ListedPost'
 import Loading from '@/components/Loading'
-import ListedProject from '@/components/ListedProject'
+import ListedProject from '@/components/Post/ListedProject'
 import usePostsByCategory from '@/hooks/usePostsByCategory'
 import CATEGORIES from '@/consts/CATEGORIES'
 import { useRecoilValue } from 'recoil'
@@ -31,41 +31,44 @@ const Home: FunctionComponent = () => {
     <div id='home'>
       <Profile />
       <main>
-        { postsByCategory[CATEGORIES.PROJECT] && (
-          <HomeCategory
-            category={ CATEGORIES.PROJECT }
-            more={ postsByCategory[CATEGORIES.PROJECT].length > 7 }
-          >
-            { postsByCategory[CATEGORIES.PROJECT].map((project: _Project, i: number) => (
-              <ListedProject
-                key={ i }
-                post={ project }
-              />
-            )) }
-          </HomeCategory>
-        ) }
-        { Object.keys(postsByCategory).length ? (
+
+        <HomeCategory
+          category={ CATEGORIES.PROJECT }
+        >
+          {
+            postsByCategory[CATEGORIES.PROJECT] ? (
+              postsByCategory[CATEGORIES.PROJECT].map((project: _Project, i: number) => (
+                <ListedProject
+                  key={ i }
+                  post={ project }
+                />
+              ))
+            ) :
+              <Loading phrase='loading projects' />
+          }
+        </HomeCategory>
+        {
           Object.keys(postsByCategory)
             .filter((key) => key !== CATEGORIES.PROJECT)
             .map((category: any) => (
               <HomeCategory
                 key={ category }
                 category={ category }
-                more={ postsByCategory[category].length > 7 }
               >
-                { postsByCategory[category].map((post: _Post, i: number) => {
-                  return (
-                    <ListedPost
-                      key={ i }
-                      post={ post }
-                    />
-                  )
-                }) }
+                { postsByCategory[category].length ? postsByCategory[category].map
+                  ((post: _Post, i: number) => {
+                    return (
+                      <ListedPost
+                        key={ i }
+                        post={ post }
+                      />
+                    )
+                  }) :
+                  <Loading phrase={ `loading ${category} posts` } />
+                }
               </HomeCategory>
             ))
-        ) : (
-          <Loading phrase='loading posts' />
-        ) }
+        }
       </main>
     </div >
   )
