@@ -266,3 +266,27 @@ button:disabled {
 input {
     color: inherit;
 }
+
+input:focus {
+    outline: none;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile {
+        display: block;
+    }
+
+    .pc {
+        display: none !important;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .mobile {
+        display: none !important;
+    }
+
+    .pc {
+        display: block;
+    }
+}

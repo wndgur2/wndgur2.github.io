@@ -32,18 +32,27 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
         }
     }
 
+    function focusInput () {
+        console.log(inputRef.current);
+        if (!inputRef.current) return
+        // set display block
+        inputRef.current.style.display = "block";
+        inputRef.current.focus();
+    }
+
     return (
-        <search className="search-bar clickable">
+        <search onClick={ focusInput } className="search-bar clickable">
             <form className="search-form dimmed content" onSubmit={ search }>
                 <input
                     ref={ inputRef }
                     value={ searchText }
                     onChange={ (e) => setSearchText(e.target.value) }
                 />
-                <button type="submit">
-                    <FiSearch className="search-icon minor" />
+                <button type="submit" className="btn-submit pc">
+                    <FiSearch className="search-icon minor" size={ 24 } />
                 </button>
             </form>
+            <FiSearch className="search-icon minor mobile" size={ 24 } />
         </search>
     );
 }

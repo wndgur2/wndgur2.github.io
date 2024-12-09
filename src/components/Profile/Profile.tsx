@@ -10,7 +10,7 @@ const Profile: FunctionComponent = () => {
     <div className='profile'>
       <ProfileImage />
       <div className='profile-content'>
-        <h2 className='profile-name'>이중혁</h2>
+        <h3 className='profile-name'>이중혁</h3>
         <div className='profile-tags'>
           { stacks.map((stack, index) => (
             <Tag
