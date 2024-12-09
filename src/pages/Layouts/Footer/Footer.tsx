@@ -11,8 +11,8 @@ const Footer: FunctionComponent = () => {
       <div className='links'>
         <div className='footer-item col'>
           <IconLink
-            icon={<IoLogoGithub size={38} />}
-            url={'https://github.com/wndgur2'}
+            icon={ <IoLogoGithub size={ 38 } /> }
+            url={ 'https://github.com/wndgur2' }
           />
           <div className='seperator' />
           <small>Github</small>
@@ -20,8 +20,8 @@ const Footer: FunctionComponent = () => {
         </div>
         <div className='footer-item col'>
           <IconLink
-            icon={<HiOutlineMail size={34} />}
-            url={'https://mail.google.com/mail/?view=cm&to=dkandjsl@gmail.com'}
+            icon={ <HiOutlineMail size={ 34 } /> }
+            url={ 'https://mail.google.com/mail/?view=cm&to=dkandjsl@gmail.com' }
           />
           <div className='seperator' />
           <small>Email</small>
@@ -29,8 +29,8 @@ const Footer: FunctionComponent = () => {
         </div>
         <div className='footer-item col'>
           <IconLink
-            icon={<FaYoutube size={30} />}
-            url={'https://www.youtube.com/@junghyeok_lee6710'}
+            icon={ <FaYoutube size={ 30 } /> }
+            url={ 'https://www.youtube.com/@junghyeok_lee6710' }
           />
           <div className='seperator' />
           <small>Youtube</small>

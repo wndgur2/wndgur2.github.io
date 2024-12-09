@@ -1,7 +1,7 @@
 import 'highlight.js/styles/github-dark.css'
 import './Post.css'
 import { FunctionComponent, useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
 import hljs from 'highlight.js'
 import { IoLogoGithub } from 'react-icons/io'
@@ -12,6 +12,7 @@ import CATEGORIES from '@/consts/CATEGORIES'
 import ImageSkeleton from '@/components/Post/ImageSkeleton'
 import { useRecoilValue } from 'recoil'
 import { postSelector } from '@/recoil'
+import IconLink from '@/components/IconLink/IconLink'
 
 const Post: FunctionComponent = () => {
   const title = useParams().post_title
@@ -54,19 +55,18 @@ const Post: FunctionComponent = () => {
               )) }
             </ol>
           </section>
-          <section className='post?-meta'>
+          <section className='post-meta'>
             { post &&
-              <Link
-                className='link github'
-                to={ post.github }
-                rel='noreferrer'
-                target='_blank'
-              >
-                <IoLogoGithub size={ 42 } />
-              </Link> }
-            <small>
-              { post?.date_started } ~ { post?.date_finished }
-            </small>
+              <>
+                <IconLink
+                  icon={ <IoLogoGithub size={ 42 } /> }
+                  url={ post.github }
+                />
+                <small>
+                  { post.date_started } ~ { post.date_finished }
+                </small>
+              </>
+            }
           </section>
         </header>
         <main className='post-content'>{
