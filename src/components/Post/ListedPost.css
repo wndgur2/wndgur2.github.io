@@ -58,3 +58,11 @@
 .listed-post:hover .preview * {
     color: var(--content-color);
 }
+
+
+.tags {
+    display: flex;
+    flex-flow: row wrap;
+    margin-top: 0.3em;
+    align-items: center;
+}

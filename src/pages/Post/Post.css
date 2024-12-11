@@ -19,6 +19,10 @@
     font-size: xx-large;
 }
 
+.post-category {
+    width: fit-content;
+}
+
 .post-title {
     max-width: 70%;
 

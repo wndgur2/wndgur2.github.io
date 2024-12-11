@@ -47,10 +47,10 @@ const Post: FunctionComponent = () => {
           <section className='post-title'>
             { post &&
               <Link
-                to={ `/search/@${post.category}` } className='minor'
+                to={ `/search/@${post.category}` } className='minor post-category'
                 state={ { search_text: `@${post.category}` } }
               >
-                { post.category }
+                { post.category[0].toUpperCase() + post.category.slice(1) }
               </Link>
             }
             <h2>{ title }</h2>

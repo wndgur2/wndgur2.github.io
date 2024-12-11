@@ -158,11 +158,16 @@ small {
     color: var(--minor-color);
 }
 
-.tags {
-    display: flex;
-    flex-flow: row wrap;
-    margin-top: 0.3em;
-    align-items: center;
+.icon {
+    color: var(--icon-color);
+}
+
+.content {
+    color: var(--content-color);
+}
+
+.dimmed.content {
+    color: var(--dimmed-content-color);
 }
 
 .action {
@@ -248,14 +253,6 @@ button.accent:hover {
     margin-bottom: 0.5em;
     width: 4em;
     border-bottom: var(--minor-color) 1px solid;
-}
-
-.content {
-    color: var(--content-color);
-}
-
-.dimmed.content {
-    color: var(--dimmed-content-color);
 }
 
 button:disabled {
