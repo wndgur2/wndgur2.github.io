@@ -5,9 +5,10 @@ import { useParams } from "react-router-dom";
 import { FaSortAmountUp, FaSortAmountDown } from "react-icons/fa";
 import ListedPost from "@/components/Post/ListedPost";
 import ListedProject from "@/components/Post/ListedProject";
-import { _Post, _Project } from "@/types/_Post";
 import CATEGORIES from "@/consts/CATEGORIES";
 import { searchedPostsSelector } from "@/recoil/selectors/postsSelector";
+import _Post from '@/types/_Post'
+import _Project from '@/types/_Project'
 
 const Search: FunctionComponent = () => {
     const params = useParams();

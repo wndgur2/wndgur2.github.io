@@ -1,6 +1,6 @@
 import { selectorFamily } from 'recoil'
 import { postsAtom } from '@/recoil/atoms/postsAtom'
-import { _Post } from '@/types/_Post'
+import _Post from '@/types/_Post'
 
 export const searchedPostsSelector = selectorFamily<_Post[], { search_text?: string }>({
   key: 'searchedPostsSelector',

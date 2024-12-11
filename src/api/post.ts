@@ -1,6 +1,7 @@
 import { sortedInsert } from '@/utils/sortedInsert'
 import CATEGORIES from '@/consts/CATEGORIES'
-import { _Post } from '@/types/_Post'
+import _Post from '@/types/_Post'
+import _Category from '@/types/_Category'
 
 const BASE_URL = 'https://raw.githubusercontent.com/wndgur2/BlogDB/main/'
 const BLOG_URL = 'https://wndgur2.github.io/BlogDB/tree/main/'
@@ -13,9 +14,7 @@ export const getPosts = async (
       urls.forEach(async (url: string) => {
         if (!url) return
         getPost(url).then((post) => {
-          setPosts((prevPosts) => {
-            sortedInsert(prevPosts, post as _Post)
-          })
+          setPosts((prevPosts) => sortedInsert(prevPosts, post as _Post))
         })
       })
     })
@@ -55,7 +54,7 @@ const parsePost = async (data: string, url: string): Promise<_Post | null> => {
     if (key && value)
       switch (key) {
         case 'category':
-          post.category = value.toLowerCase() as CATEGORIES
+          post.category = value.toLowerCase() as _Category
           break
         case 'tags':
           post.tags = value.replaceAll('"', '').replaceAll("'", '').split(', ').sort()

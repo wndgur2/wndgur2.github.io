@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'react'
-import { _Project } from '@/types/_Post'
 import Tag from '@/components/common/Tag'
 import './ListedProject.css'
 import { Link } from 'react-router-dom'
 import parse from 'html-react-parser'
 import { CiImageOff } from 'react-icons/ci'
+import _Project from '@/types/_Project'
 
 interface ListedProjectProps {
   post: _Project

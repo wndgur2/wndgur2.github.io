@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { _Post } from '../types/_Post'
+import _Post from '../types/_Post'
 
 const usePostsByCategory = (posts: _Post[]) => {
   const postsByCategory = useMemo(() => {

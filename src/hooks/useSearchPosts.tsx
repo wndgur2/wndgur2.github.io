@@ -1,5 +1,5 @@
-import { useContext, useMemo } from 'react'
-import { _Post } from '../types/_Post'
+import { useMemo } from 'react'
+import _Post from '@/types/_Post'
 import { Params } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 import { postsAtom } from '@/recoil'
@@ -14,18 +14,14 @@ function useSearchPosts (params: Readonly<Params<string>>) {
 
     let result = posts
     search_words.forEach((word) => {
-      if (word.startsWith('#')) {
-        result = result.filter((post: _Post) =>
-          post.tags.map((tag) => tag.toLowerCase()).includes(word.slice(1))
-        )
-      } else if (word.startsWith('@')) {
-        result = result.filter((post: _Post) => post.category.toLowerCase() === word.slice(1))
-      } else {
-        result = result.filter(
-          (post: _Post) =>
-            post.content.toLowerCase().includes(word) || post.title.toLowerCase().includes(word)
-        )
-      }
+      result = result.filter((post: _Post) => {
+        if (word.startsWith('#')) // tag search
+          return post.tags.map((tag) => tag.toLowerCase()).includes(word.slice(1))
+        else if (word.startsWith('@')) // category search
+          return post.category.toLowerCase() === word.slice(1)
+        else // title or content search
+          return (post.content + post.title).toLowerCase().includes(word)
+      })
     })
     return result
   }, [params, posts])
