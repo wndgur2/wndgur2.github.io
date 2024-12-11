@@ -52,7 +52,7 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
         <Link
           className='link'
           to={ `/search/@${category}` }
-          state={ { search_text: '@' + category } }
+          state={ { search_text: `@${category}` } }
         >
           <h1>{ category[0].toLocaleUpperCase() + category.slice(1) }</h1>
           <IoIosArrowForward size={ 24 } />

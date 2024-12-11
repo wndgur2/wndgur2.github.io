@@ -1,7 +1,7 @@
 import 'highlight.js/styles/github-dark.css'
 import './Post.css'
 import { FunctionComponent, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
 import hljs from 'highlight.js'
 import { IoLogoGithub } from 'react-icons/io'
@@ -45,13 +45,18 @@ const Post: FunctionComponent = () => {
       <div className='post'>
         <header>
           <section className='post-title'>
+            { post &&
+              <Link
+                to={ `/search/@${post.category}` } className='minor'
+                state={ { search_text: `@${post.category}` } }
+              >
+                { post.category }
+              </Link>
+            }
             <h2>{ title }</h2>
             <ol className='tags'>
               { post?.tags.map((tag: string, index: number) => (
-                <Tag
-                  key={ index }
-                  tag={ tag }
-                />
+                <Tag key={ index } tag={ tag } />
               )) }
             </ol>
           </section>
@@ -75,7 +80,8 @@ const Post: FunctionComponent = () => {
               { post.content +
                 (post.category === CATEGORIES.ALGORITHM
                   ? '\n\n```' + post.language + '\n\n' + post.code + '```'
-                  : '') }
+                  : '')
+              }
             </Markdown>
             :
             <Loading />

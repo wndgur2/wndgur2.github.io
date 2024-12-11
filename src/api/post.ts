@@ -1,7 +1,6 @@
 import { sortedInsert } from '@/utils/sortedInsert'
 import CATEGORIES from '@/consts/CATEGORIES'
 import _Post from '@/types/_Post'
-import _Category from '@/types/_Category'
 
 const BASE_URL = 'https://raw.githubusercontent.com/wndgur2/BlogDB/main/'
 const BLOG_URL = 'https://wndgur2.github.io/BlogDB/tree/main/'
@@ -50,18 +49,14 @@ const parsePost = async (data: string, url: string): Promise<_Post | null> => {
   const headerData = header[1].split('\n')
   headerData.forEach((line: string) => {
     let [key, value] = line.split(': ')
-    if (key === 'category') value = value.toLowerCase()
     if (key && value)
       switch (key) {
-        case 'category':
-          post.category = value.toLowerCase() as _Category
-          break
         case 'tags':
           post.tags = value.replaceAll('"', '').replaceAll("'", '').split(', ').sort()
           break
         case 'date_started':
           let dates = value.split('.')
-          dates = dates.map((date) => (date.length === 1 ? '0' + date : date))
+          dates = dates.map((date) => (date.length === 1 ? `0${date}` : date))
           value = dates.join('.')
           post.date_started = value
           break
@@ -113,7 +108,7 @@ const parsePost = async (data: string, url: string): Promise<_Post | null> => {
     else if (post.site === 'BOJ' || post.site === '백준') filename = 'Main'
   }
 
-  codePath.push(filename + '.' + post.language)
+  codePath.push(`${filename}.${post.language}`)
 
   const codeURL = BASE_URL + codePath.join('/')
   post.code = await getCode(codeURL)
@@ -168,7 +163,7 @@ export const getProjects = async (
         project.id = project.title
 
         const img = new Image()
-        img.src = '/images/' + project.title.toLowerCase() + '.jpeg'
+        img.src = `/images/${project.title.toLowerCase()}.jpeg`
 
         project.thumbnail = `<img src="${img.src}" alt="${project.title}" />`
 
