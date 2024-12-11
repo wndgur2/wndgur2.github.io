@@ -1,3 +1,7 @@
+.project {
+    width: fit-content;
+}
+
 .project p {
     width: 100%;
     word-wrap: break-word;
@@ -10,7 +14,7 @@
 .project-image-wrapper {
     height: 14em;
     width: max-content;
-    min-width: 100%;
+    min-width: 20em;
     max-width: 80vw;
 
     display: flex;
@@ -18,6 +22,8 @@
     align-items: center;
     border-radius: 0.8em;
     overflow: hidden;
+
+    background-color: var(--bg-color);
 }
 
 .project-image-wrapper>img {

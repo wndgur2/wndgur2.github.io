@@ -1,3 +1,16 @@
+.listed-post {
+    display: flex;
+    flex-flow: column nowrap;
+    width: 20em;
+    height: fit-content;
+    margin: 0.6em;
+    padding: 0.6em;
+    border-radius: var(--radius);
+
+    border: 1px solid var(--border-color);
+    background-color: var(--fg-color);
+}
+
 .listed-post>header {
     min-width: 16rem;
     display: flex;
@@ -20,10 +33,20 @@
 }
 
 .preview {
+
     padding: 0.5em;
     max-height: 10em;
-    max-width: 20em;
     overflow: hidden;
+}
+
+.preview>div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.preview>div>img {
+    align-self: center;
 }
 
 .preview * {

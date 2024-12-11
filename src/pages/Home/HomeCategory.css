@@ -49,18 +49,6 @@
     overflow-y: visible;
 }
 
-.listed-post {
-    display: flex;
-    flex-flow: column nowrap;
-    min-width: fit-content;
-    margin: 0.6em;
-    padding: 0.6em;
-    border-radius: var(--radius);
-
-    border: 1px solid var(--border-color);
-    background-color: var(--fg-color);
-}
-
 
 .scroll-buttons {
     display: flex;
