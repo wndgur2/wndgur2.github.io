@@ -15,12 +15,7 @@ export default function App () {
     const link = document.querySelector('link[rel="icon"]')
     if (!link) return
 
-    if (isDark) {
-      link.setAttribute('href', '/favicon-dark.ico')
-    }
-    else {
-      link.setAttribute('href', '/favicon-light.ico')
-    }
+    link.setAttribute('href', `/favicon-${isDark ? 'dark' : 'light'}.ico`)
   }, [isDark])
 
   return (
