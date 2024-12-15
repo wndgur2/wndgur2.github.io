@@ -15,6 +15,7 @@
 
     border-radius: var(--radius);
     overflow: hidden;
+    margin: 1em 0;
 }
 
 .image-wrapper {
@@ -27,7 +28,14 @@
 }
 
 .loaded {
+    display: block;
+    object-fit: contain;
+    object-position: top center;
+
+    max-width: 72vw;
+    max-height: 80vh;
     opacity: 1;
+
     transition: opacity 0.3s;
 }
 
