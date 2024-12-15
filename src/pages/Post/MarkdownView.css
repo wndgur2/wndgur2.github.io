@@ -1,0 +1,123 @@
+.markdown hr {
+  opacity: 0.5;
+  margin: 2em 0px;
+}
+
+.markdown>div * {
+  scroll-margin-top: 4em;
+}
+
+.markdown>div>*:first-child {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.markdown h1,
+.markdown h2 {
+  margin: 1.4em 0px 1em 0px;
+}
+
+.markdown h3 {
+  margin: 1.2em 0px 0.8em 0px;
+}
+
+.markdown p {
+  line-height: 1.5em;
+}
+
+.markdown ul {
+  padding-left: 1em;
+}
+
+.markdown ol {
+  padding: 0.3em 0.3em 1em 1em;
+}
+
+.markdown li {
+  padding-left: 0.5em;
+  line-height: 1.5em;
+  padding: 0.1em 0px 0.1em 0.5em;
+}
+
+.markdown em {
+  color: var(--intense-content-color);
+}
+
+.markdown li::marker {
+  content: '•';
+  white-space: pre-line;
+}
+
+.markdown table {
+  display: inline;
+  margin: 1em;
+}
+
+.markdown td {
+  padding: 0.5em;
+  border: 1px solid var(--border-color);
+  background-color: var(--fg-color);
+}
+
+.markdown mark {
+  background-color: var(--minor-color);
+  border-radius: var(--radius);
+}
+
+.markdown pre {
+  margin: 1em 0px;
+}
+
+.markdown code {
+  border-radius: var(--radius);
+}
+
+.markdown div>code {
+  color: var(--accent-content-color);
+}
+
+
+span.hljs-property {
+  color: var(--accent-content-color);
+}
+
+.markdown pre code {
+  padding: 1em;
+  line-height: 1.5em;
+  word-spacing: 0.2em;
+  font-size: small;
+  color: #eaeaea;
+}
+
+.markdown blockquote {
+  border-left: 0.2em solid var(--accent-color);
+  padding: 0px 1em;
+  margin: 2em 0px;
+  background-color: var(--dimmed-fg-color);
+}
+
+.markdown blockquote div {
+  color: var(--dimmed-content-color)
+}
+
+.hljs-params {
+  color: inherit;
+}
+
+.markdown code:not(.hljs) {
+  font-size: 0.9em;
+  padding: 0.2em;
+  line-height: 2em;
+  border-radius: var(--radius);
+  background-color: var(--dimmed-fg-color);
+}
+
+.markdown img {
+  display: block;
+  object-fit: contain;
+  object-position: top left;
+
+  max-width: 60vw;
+  max-height: 60vh;
+  margin: 1em 0;
+}
