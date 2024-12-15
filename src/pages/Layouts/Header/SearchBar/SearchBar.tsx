@@ -33,9 +33,7 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
     }
 
     function focusInput () {
-        console.log(inputRef.current);
         if (!inputRef.current) return
-        // set display block
         inputRef.current.style.display = "block";
         inputRef.current.focus();
     }

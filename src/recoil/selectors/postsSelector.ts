@@ -9,7 +9,6 @@ export const searchedPostsSelector = selectorFamily<_Post[], { search_text?: str
     ({ get }) => {
       const posts = get(postsAtom) // Retrieve posts from the atom
 
-      console.log('posts:', posts)
       const searchText = params.search_text?.toLowerCase()
       if (!searchText) return []
 
@@ -30,9 +29,6 @@ export const searchedPostsSelector = selectorFamily<_Post[], { search_text?: str
         }
       }, posts)
 
-      console.log('search result: ', result)
-
-      // Apply the same filtering logic
       return result
     },
 })
