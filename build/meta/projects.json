@@ -28,9 +28,9 @@
         "date_finished": "2023.11.29",
         "github": "https://github.com/wndgur2/memohub"
     },
-    "whosleejunghyeok": {
+    "wndgur2.github.io": {
         "category": "project",
-        "title": "whosleejunghyeok",
+        "title": "wndgur2.github.io",
         "description": "깃허브 연동 블로그",
         "tags": [
             "react",
