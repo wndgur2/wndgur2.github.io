@@ -1,23 +1,18 @@
 import { FunctionComponent } from 'react'
 import './Profile.css'
-import Tag from '../common/Tag'
 import ProfileImage from './ProfileImage'
+import TagList from '../common/TagList'
 
 const Profile: FunctionComponent = () => {
   const stacks = ['typescript', 'javascript', 'react', 'nextJS', 'express', 'css', 'java']
 
   return (
-    <div className='profile'>
+    <div className="profile">
       <ProfileImage />
-      <div className='profile-content'>
-        <h3 className='profile-name'>이중혁</h3>
-        <div className='profile-tags'>
-          { stacks.map((stack, index) => (
-            <Tag
-              key={ index }
-              tag={ stack }
-            />
-          )) }
+      <div className="profile-content">
+        <h2 className="profile-name">이중혁</h2>
+        <div className="profile-tags">
+          <TagList tags={stacks} />
         </div>
       </div>
     </div>

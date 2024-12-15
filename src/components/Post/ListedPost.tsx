@@ -1,12 +1,12 @@
 import { FunctionComponent } from 'react'
 import './ListedPost.css'
-import Tag from '@/components/common/Tag'
 import { Link } from 'react-router-dom'
 import _Post from '@/types/_Post'
 import _Algorithm from '@/types/_Algorithm'
 import CATEGORIES from '@/consts/CATEGORIES'
-import Markdown from 'markdown-to-jsx'
 import TIER_COLOR from '@/consts/TIER_COLOR'
+import MarkdownView from '@/pages/Post/MarkdownView'
+import TagList from '../common/TagList'
 
 interface ListedPostProps {
   post: _Post
@@ -15,47 +15,28 @@ interface ListedPostProps {
 const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProps) => {
   return (
     <Link
-      className='listed-post link clickable'
-      to={ `/post/${post.title}` }
+      className="listed-post link clickable"
+      to={`/post/${post.title}`}
     >
-      <header >
+      <header>
         <h3>
-          <span>{ post.title }</span>
-          { post.site && <small>{ post.site }</small> }
-          { post.number && <small>{ post.number }</small> }
-          { post.level && (
-            <small style={ { color: TIER_COLOR[(post as _Algorithm).level] } }>{ post.level }</small>
-          ) }
+          <span>{post.title}</span>
+          {post.site && <small>{post.site}</small>}
+          {post.number && <small>{post.number}</small>}
+          {post.level && (
+            <small style={{ color: TIER_COLOR[(post as _Algorithm).level] }}>{post.level}</small>
+          )}
         </h3>
         <small>
-          { post.date_started }
-          {
-            post.category === CATEGORIES.PROJECT && `~ ${post.date_finished}`
-          }
+          {post.date_started}
+          {post.category === CATEGORIES.PROJECT && `~ ${post.date_finished}`}
         </small>
       </header>
-      <section className='preview'>
-        <Markdown
-          options={ {
-            overrides: {
-              a: { component: (props: any) => <span { ...props } /> },
-              Integer: { component: (props: any) => <span { ...props } /> },
-              img: { component: (props: any) => <img { ...props } alt={ props.alt } style={ { maxWidth: '100%', maxHeight: '8em', objectFit: 'contain', } } /> },
-            }
-          } }
-        >
-          { post.content + (post.code ? post.code : '') }
-        </Markdown>
+      <section className="preview">
+        <MarkdownView post={post} />
       </section>
-      <ol className='tags'>
-        { post.tags.map((tag: string, index: number) => (
-          <Tag
-            key={ index }
-            tag={ tag }
-          />
-        )) }
-      </ol>
-    </Link >
+      <TagList tags={post.tags} />
+    </Link>
   )
 }
 

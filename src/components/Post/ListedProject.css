@@ -1,10 +1,6 @@
 .project {
-    width: fit-content;
-}
-
-.project p {
-    width: 100%;
-    word-wrap: break-word;
+    min-width: 24em;
+    width: 24em;
 }
 
 .project-date {
@@ -12,15 +8,12 @@
 }
 
 .project-image-wrapper {
-    height: 14em;
-    width: max-content;
-    min-width: 20em;
-    max-width: 80vw;
+    aspect-ratio: 16/9;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0.8em;
+    border-radius: var(--radius);
     overflow: hidden;
 
     background-color: var(--bg-color);
@@ -45,9 +38,4 @@
 
 .project-title {
     margin: 0.6em 0px 0px 0px;
-}
-
-.project .tags {
-    max-width: 24em;
-    margin-top: 1em;
 }
