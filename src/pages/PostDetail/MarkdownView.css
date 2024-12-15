@@ -111,13 +111,3 @@ span.hljs-property {
   border-radius: var(--radius);
   background-color: var(--dimmed-fg-color);
 }
-
-.markdown img {
-  display: block;
-  object-fit: contain;
-  object-position: top left;
-
-  max-width: 60vw;
-  max-height: 60vh;
-  margin: 1em 0;
-}
