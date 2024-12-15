@@ -3,8 +3,8 @@ import { FunctionComponent, useMemo, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { useParams } from 'react-router-dom'
 import { FaSortAmountUp, FaSortAmountDown } from 'react-icons/fa'
-import ListedPost from '@/components/Post/PostListItem'
-import ListedProject from '@/components/Post/ProjectListItem'
+import PostListItem from '@/components/Post/PostListItem'
+import ProjectListItem from '@/components/Post/ProjectListItem'
 import CATEGORIES from '@/consts/CATEGORIES'
 import { searchedPostsSelector } from '@/recoil/selectors/postsSelector'
 import _Post from '@/types/_Post'
@@ -59,12 +59,12 @@ const Search: FunctionComponent = () => {
         {sortedPosts.length ? (
           sortedPosts.map((post: _Post, i) =>
             post.category === CATEGORIES.PROJECT ? (
-              <ListedProject
+              <ProjectListItem
                 key={i}
                 post={post as _Project}
               />
             ) : (
-              <ListedPost
+              <PostListItem
                 key={i}
                 post={post}
               />

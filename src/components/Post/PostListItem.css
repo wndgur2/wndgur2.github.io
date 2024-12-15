@@ -1,4 +1,4 @@
-.listed-post {
+.post-list-item {
     display: flex;
     flex-flow: column nowrap;
     min-width: 20em;
@@ -15,7 +15,7 @@
 }
 
 
-.listed-post>header {
+.post-list-item>header {
     min-width: 16rem;
     display: flex;
     align-items: center;
@@ -25,14 +25,14 @@
     transition: padding 0.2s;
 }
 
-.listed-post>header>h3 {
+.post-list-item>header>h3 {
     color: var(--content-color);
     text-wrap: nowrap;
 
     overflow: hidden;
 }
 
-.listed-post>header>h3>small {
+.post-list-item>header>h3>small {
     margin-left: 0.5em;
 }
 

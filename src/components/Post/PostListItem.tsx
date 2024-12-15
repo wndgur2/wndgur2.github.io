@@ -15,7 +15,7 @@ interface PostListItemProps {
 const PostListItem: FunctionComponent<PostListItemProps> = ({ post }: PostListItemProps) => {
   return (
     <Link
-      className="listed-post link clickable"
+      className="post-list-item link clickable"
       to={`/post/${post.title}`}
     >
       <header>
