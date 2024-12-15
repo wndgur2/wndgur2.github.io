@@ -46,34 +46,40 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
   if (!children || children.length === 0) return <></>
 
   return (
-    <section className='home-category'>
+    <section className="home-category">
       <header>
         <Link
-          className='link'
-          to={ `/search/@${category}` }
-          state={ { search_text: `@${category}` } }
+          className="link"
+          to={`/search/@${category}`}
+          state={{ search_text: `@${category}` }}
         >
-          <h1>{ category[0].toUpperCase() + category.slice(1) }</h1>
-          <IoIosArrowForward size={ 24 } />
+          <h1>{category[0].toUpperCase() + category.slice(1)}</h1>
+          <IoIosArrowForward size={24} />
         </Link>
         <div
-          className='scroll-buttons'
-          ref={ buttonsRef }
+          className="scroll-buttons"
+          ref={buttonsRef}
         >
-          <button className='icon' onClick={ () => scrollPosts('backward') }>
-            <RiArrowLeftSLine size={ 28 } />
+          <button
+            className="icon"
+            onClick={() => scrollPosts('backward')}
+          >
+            <RiArrowLeftSLine size={28} />
           </button>
-          <button className='icon' onClick={ () => scrollPosts('forward') }>
-            <RiArrowRightSLine size={ 28 } />
+          <button
+            className="icon"
+            onClick={() => scrollPosts('forward')}
+          >
+            <RiArrowRightSLine size={28} />
           </button>
         </div>
       </header>
       <ul
-        className='posts'
-        ref={ postsRef }
-        onScroll={ changeScrollButtons }
+        className="posts"
+        ref={postsRef}
+        onScroll={changeScrollButtons}
       >
-        { children }
+        {children}
       </ul>
     </section>
   )
