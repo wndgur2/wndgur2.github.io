@@ -1,18 +1,18 @@
 import { FunctionComponent } from 'react'
-import './ListedPost.css'
+import './PostListItem.css'
 import { Link } from 'react-router-dom'
 import _Post from '@/types/_Post'
 import _Algorithm from '@/types/_Algorithm'
 import CATEGORIES from '@/consts/CATEGORIES'
 import TIER_COLOR from '@/consts/TIER_COLOR'
-import MarkdownView from '@/pages/Post/MarkdownView'
+import MarkdownView from '@/pages/PostDetail/MarkdownView'
 import TagList from '../common/TagList'
 
-interface ListedPostProps {
+interface PostListItemProps {
   post: _Post
 }
 
-const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProps) => {
+const PostListItem: FunctionComponent<PostListItemProps> = ({ post }: PostListItemProps) => {
   return (
     <Link
       className="listed-post link clickable"
@@ -40,4 +40,4 @@ const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProp
   )
 }
 
-export default ListedPost
+export default PostListItem

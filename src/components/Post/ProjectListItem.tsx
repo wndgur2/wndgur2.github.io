@@ -1,16 +1,16 @@
 import { FunctionComponent } from 'react'
-import './ListedProject.css'
+import './ProjectListItem.css'
 import { Link } from 'react-router-dom'
 import parse from 'html-react-parser'
 import { CiImageOff } from 'react-icons/ci'
 import _Project from '@/types/_Project'
 import TagList from '../common/TagList'
 
-interface ListedProjectProps {
+interface ProjectListItemProps {
   post: _Project
 }
 
-const ListedProject: FunctionComponent<ListedProjectProps> = ({ post }) => {
+const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
   return (
     <Link
       to={`/post/${post.title}`}
@@ -40,4 +40,4 @@ const ListedProject: FunctionComponent<ListedProjectProps> = ({ post }) => {
   )
 }
 
-export default ListedProject
+export default ProjectListItem
