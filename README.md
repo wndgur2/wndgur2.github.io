@@ -1,8 +1,8 @@
-# [whosleejunghyeok](https://wndgur2.github.io/)
+# [leejunghyeok](https://wndgur2.github.io/)
 
 개발자로서의 이중혁을 담은 개인 블로그
 
-![image](https://github.com/wndgur2/whosleejunghyeok/assets/65120311/e93a2d9e-6c49-4470-9f37-007c14957ac1)
+<img width="1440" alt="Screenshot 2024-12-15 at 13 20 18" src="https://github.com/user-attachments/assets/6dccf12f-022c-47b8-9b0f-622027850828" />
 
 ## 목표
 
@@ -26,7 +26,7 @@
   - ReactJs로 SPA 구현 -> routing 속도 개선 ✅
   - Light/Dark theme 제공 ✅
   - Data Fetch 비동기 처리 ✅
-  - Performance 
+  - Performance
 
     - Binary Search로 log(N)에 posts 날짜 내림차순 삽입 연산 ✅
     - useCallback() hook으로 리랜더링 시 중복 선언 방지 ✅
@@ -35,13 +35,13 @@
 
   - 검색
 
-    - 필터링 
+    - 필터링
 
       - 태그 ✅
       - 카테고리 ✅
       - 내용 ✅
 
-    - 정렬 
+    - 정렬
 
       - 날짜 오름/내림차순 ✅
 
