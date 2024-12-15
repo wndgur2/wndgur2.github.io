@@ -1,37 +1,74 @@
 .search-result {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
 .search-result>header {
     z-index: 1;
-    margin: 0.5em 0 2em 0;
-    padding: 0.3em;
+    min-width: 32em;
+    margin: 0.5em 0.6em 2em 0.6em;
+    padding: 0.8em;
     padding-left: 1em;
 
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 2em;
+    flex-direction: column;
+    gap: 0.8em;
 
-    width: fit-content;
-
-
-    /* background-color: var(--fg-color);
-    border: 1px solid var(--border-color); */
+    background-color: var(--fg-color);
+    /* border: 1px solid var(--border-color); */
     border-radius: var(--radius-pill);
-    ;
+}
+
+.search-result>header>div {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.search-info {
+    padding: 0 0.4em;
+
+    font-size: 1.2em;
+}
+
+.search-info>div {
+    display: flex;
+    align-items: end;
+}
+
+
+.search-result>header .tag-list {
+    margin: 0;
 }
 
 .search-result ul {
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 .search-result .home-category {
     margin: 1em 0px;
 }
 
+.search-result .listed-post {
+    display: flex;
+    flex-grow: 1;
+    flex-flow: column nowrap;
+}
+
 .search-result .listed-post .preview {
-    height: 16em;
+    aspect-ratio: 16/9;
+    max-height: max-content;
+}
+
+.btn-search-result-sort {
+    margin-left: 2em;
 }
