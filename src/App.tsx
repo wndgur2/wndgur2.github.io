@@ -6,7 +6,7 @@ import SearchResult from '@/pages/Search/SearchResult'
 import NoPage from '@/pages/NoPage'
 import Layout from '@/pages/Layouts/Layout'
 import Home from '@/pages/Home/Home'
-import Post from '@/pages/Post/PostDetail'
+import Post from '@/pages/PostDetail/PostDetail'
 
 export default function App() {
   const [isDark, setIsDark] = useState(localStorage.getItem('theme') === 'light' ? false : true)
