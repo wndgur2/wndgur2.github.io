@@ -1,9 +1,7 @@
-import _Category from './_Category'
-
 export default interface _Post {
-  [index: string]: number | string | _Category | string[] | undefined
+  [index: string]: number | string | string[] | undefined
   id: string
-  category: _Category
+  category: string
   title: string
   content: string
   tags: string[]

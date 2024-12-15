@@ -3,9 +3,8 @@ import './HomeCategory.css'
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { IoIosArrowForward } from 'react-icons/io'
 import { Link } from 'react-router-dom'
-import _Category from '@/types/_Category'
 interface HomeCategoryProps {
-  category: _Category
+  category: string
   children: JSX.Element[]
 }
 
