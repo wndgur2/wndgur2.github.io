@@ -4,7 +4,7 @@
     padding: 0 0.5em 0 1em;
 
     display: flex;
-    flex: 1;
+    flex: 1.8;
     align-items: center;
 
     background-color: var(--fg-color);
@@ -18,7 +18,7 @@
 
 
 .search-bar:focus-within {
-    flex: 1.3;
+    flex: 2.4;
     border: 2px solid var(--border-color);
 }
 
