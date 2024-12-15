@@ -1,5 +1,5 @@
 import 'highlight.js/styles/github-dark.css'
-import './Post.css'
+import './PostDetail.css'
 import { FunctionComponent, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
@@ -38,6 +38,7 @@ const Post: FunctionComponent = () => {
       if (node.hasAttribute('data-highlighted')) return
       hljs.highlightElement(node as HTMLElement)
     })
+    console.log(post)
   }, [post])
 
   return (
@@ -78,7 +79,7 @@ const Post: FunctionComponent = () => {
           post ?
             <Markdown options={ mdOption }>
               { post.content +
-                (post.category === CATEGORIES.ALGORITHM
+                (post.category.toLowerCase() === CATEGORIES.ALGORITHM
                   ? '\n\n```' + post.language + '\n\n' + post.code + '```'
                   : '')
               }

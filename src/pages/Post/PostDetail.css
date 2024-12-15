@@ -3,7 +3,7 @@
 }
 
 .post header {
-    padding: 2em calc(1em + 2vw);
+    padding: calc(1em + 2vw);
 
     display: flex;
     justify-content: space-between;
@@ -50,7 +50,7 @@
 }
 
 .post-content {
-    padding: 3em calc(1em + 2vw);
+    padding: calc(2em + 2vw) calc(1em + 2vw);
     margin-top: -2px;
 
     text-wrap: pretty;

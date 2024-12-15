@@ -1,4 +1,4 @@
-import './Search.css';
+import './SearchResult.css';
 import { FunctionComponent, useMemo, useState } from "react";
 import { useRecoilValue } from "recoil";
 import { useParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import CATEGORIES from "@/consts/CATEGORIES";
 import { searchedPostsSelector } from "@/recoil/selectors/postsSelector";
 import _Post from '@/types/_Post'
 import _Project from '@/types/_Project'
+import useResetScroll from '@/hooks/useResetScroll';
 
 const Search: FunctionComponent = () => {
     const params = useParams();
@@ -19,6 +20,8 @@ const Search: FunctionComponent = () => {
             (a.date_started < b.date_started ? 1 : -1)
             : (a.date_started > b.date_started ? 1 : -1))
     ), [searchedPosts, recentFirst])
+
+    useResetScroll(params.search_text);
 
     return (
         <main className="search-result">
