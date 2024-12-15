@@ -71,7 +71,7 @@ const parsePost = async (data: string, url: string): Promise<_Post | null> => {
 
   post.github = BLOG_URL + url
 
-  if (post.category !== CATEGORIES.ALGORITHM) return post
+  if (post.category.toLowerCase() !== CATEGORIES.ALGORITHM) return post
 
   // Get code
   const codePath = url.split('/')

@@ -27,13 +27,12 @@ const ListedPost: FunctionComponent<ListedPostProps> = ({ post }: ListedPostProp
             <small style={ { color: TIER_COLOR[(post as _Algorithm).level] } }>{ post.level }</small>
           ) }
         </h3>
-        { post.category === CATEGORIES.PROJECT ? (
-          <small>
-            { post.date_started }~ { post.date_finished }
-          </small>
-        ) : (
-          <small>{ post.date_started }</small>
-        ) }
+        <small>
+          { post.date_started }
+          {
+            post.category === CATEGORIES.PROJECT && `~ ${post.date_finished}`
+          }
+        </small>
       </header>
       <section className='preview'>
         <Markdown
