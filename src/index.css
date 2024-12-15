@@ -4,7 +4,6 @@
     box-sizing: border-box;
     font-family: "Roboto", "Noto Sans KR", sans-serif;
     scrollbar-width: none;
-    overflow: visible;
 }
 
 *::selection {
