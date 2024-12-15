@@ -47,6 +47,7 @@
 
 .preview>div>img {
     align-self: center;
+    margin: 1em 0;
 }
 
 .preview * {
