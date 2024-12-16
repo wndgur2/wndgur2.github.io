@@ -140,12 +140,7 @@ small {
     cursor: pointer;
 }
 
-.link:hover h1,
-.link:hover h2,
-.link:hover h3,
-.link:hover p,
-.link:hover span,
-.link:hover path {
+.link:hover header {
     color: var(--action-color);
 }
 

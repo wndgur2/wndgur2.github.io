@@ -27,13 +27,13 @@ const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
             />
           )}
         </div>
-        <div className="project-info content">
+        <header className="project-info content">
           <h2 className="project-title">{post.title}</h2>
           <p>{post.description}</p>
           <small className="project-date">
             {post.date_started}~ {post.date_finished}
           </small>
-        </div>
+        </header>
       </section>
       <TagList tags={post.tags} />
     </Link>
