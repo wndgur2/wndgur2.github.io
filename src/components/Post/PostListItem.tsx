@@ -18,7 +18,7 @@ const PostListItem: FunctionComponent<PostListItemProps> = ({ post }: PostListIt
       className="post-list-item link clickable"
       to={`/post/${post.title}`}
     >
-      <header>
+      <header className="content">
         <h3>
           <span>{post.title}</span>
           {post.site && <small>{post.site}</small>}

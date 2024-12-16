@@ -71,4 +71,5 @@
 
 .btn-search-result-sort {
     margin-left: 2em;
+    color: var(--dimmed-content-color);
 }
