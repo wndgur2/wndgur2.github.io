@@ -10,15 +10,12 @@ import { searchedPostsSelector } from '@/recoil/selectors/postsSelector'
 import _Post from '@/types/_Post'
 import _Project from '@/types/_Project'
 import useResetScroll from '@/hooks/useResetScroll'
-import TagList from '@/components/common/TagList'
 import useRelatedTags from '@/hooks/useRelatedTags'
+import TagCountList from '@/components/common/TagCountList'
 
-const Search: FunctionComponent = () => {
-  const params = useParams()
-  const searchedPosts = useRecoilValue(searchedPostsSelector({ search_text: params.search_text }))
-  const relatedTags = useRelatedTags(searchedPosts)
-  const [recentFirst, setRecentFirst] = useState(true)
-  const sortedPosts = useMemo(
+// Custom hook to handle sorting logic
+function useSortedPosts(searchedPosts: _Post[], recentFirst: boolean) {
+  return useMemo(
     () =>
       [...searchedPosts].sort((a, b) =>
         recentFirst
@@ -31,6 +28,14 @@ const Search: FunctionComponent = () => {
       ),
     [searchedPosts, recentFirst]
   )
+}
+
+const Search: FunctionComponent = () => {
+  const params = useParams()
+  const searchedPosts = useRecoilValue(searchedPostsSelector({ search_text: params.search_text }))
+  const relatedTags = useRelatedTags(searchedPosts)
+  const [recentFirst, setRecentFirst] = useState(true)
+  const sortedPosts = useSortedPosts(searchedPosts, recentFirst)
 
   useResetScroll(params.search_text)
 
@@ -47,13 +52,13 @@ const Search: FunctionComponent = () => {
             <h3 className="content">{params.search_text}</h3>
           </div>
           <button
-            className="accent btn-search-result-sort"
+            className="clickable btn-search-result-sort"
             onClick={toggleSort}
           >
             {recentFirst ? <FaSortAmountDown /> : <FaSortAmountUp />}
           </button>
         </div>
-        <div>{params.search_text && <TagList tags={relatedTags} />}</div>
+        <div>{params.search_text && <TagCountList tags={relatedTags} />}</div>
       </header>
       <ul>
         {sortedPosts.length ? (

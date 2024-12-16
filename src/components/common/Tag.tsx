@@ -4,9 +4,10 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 interface TagProps {
   tag: string
+  count?: number
 }
 
-const Tag: FunctionComponent<TagProps> = ({ tag }) => {
+const Tag: FunctionComponent<TagProps> = ({ tag, count }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const tagRef = useRef<HTMLLIElement>(null)
@@ -27,7 +28,7 @@ const Tag: FunctionComponent<TagProps> = ({ tag }) => {
         navigate(`/search/%23${tag}`, { state: { search_text: `#${tag}` } })
       }}
     >
-      {tag}
+      {tag} {count}
     </li>
   )
 }
