@@ -91,7 +91,7 @@ span.hljs-property {
 
 .markdown blockquote {
   border-left: 0.2em solid var(--accent-color);
-  padding: 0px 1em;
+  padding: 0.8em;
   margin: 2em 0px;
   background-color: var(--dimmed-fg-color);
 }
