@@ -20,7 +20,7 @@
         "title": "Memohub",
         "description": "자유분방한 웹 메모장",
         "tags": [
-            "nextjs",
+            "next.js",
             "mongoDB",
             "javascript"
         ],
@@ -48,7 +48,7 @@
         "title": "Cheese",
         "description": "야외 포토 부스 서비스",
         "tags": [
-            "nextjs",
+            "next.js",
             "CSS",
             "javascript",
             "webRTC"
