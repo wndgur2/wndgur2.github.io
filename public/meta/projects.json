@@ -34,6 +34,7 @@
         "description": "깃허브 연동 블로그",
         "tags": [
             "react",
+            "recoil",
             "git",
             "markdown",
             "CSS",
