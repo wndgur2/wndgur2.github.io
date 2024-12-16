@@ -8,15 +8,29 @@ import Layout from '@/pages/Layouts/Layout'
 import Home from '@/pages/Home/Home'
 import Post from '@/pages/PostDetail/PostDetail'
 
-export default function App() {
-  const [isDark, setIsDark] = useState(localStorage.getItem('theme') === 'light' ? false : true)
-  usePosts()
+// Custom hook to manage theme
+function useTheme() {
+  const [isDark, setIsDark] = useState(localStorage.getItem('theme') !== 'light')
+
   useEffect(() => {
     const link = document.querySelector('link[rel="icon"]')
     if (!link) return
-
     link.setAttribute('href', `/favicon-${isDark ? 'dark' : 'light'}.ico`)
   }, [isDark])
+
+  return { isDark, setIsDark }
+}
+
+const routes = [
+  { path: '/', element: <Home />, index: true }, // Default child route for the root path
+  { path: '/search/:search_text', element: <SearchResult /> },
+  { path: '/post/:post_title', element: <Post /> },
+  { path: '*', element: <NoPage /> },
+]
+
+export default function App() {
+  const { isDark, setIsDark } = useTheme()
+  usePosts()
 
   return (
     <BrowserRouter>
@@ -26,22 +40,14 @@ export default function App() {
             path="/"
             element={<Layout />}
           >
-            <Route
-              index
-              element={<Home />}
-            />
-            <Route
-              path="/search/:search_text"
-              element={<SearchResult />}
-            />
-            <Route
-              path="/post/:post_title"
-              element={<Post />}
-            />
-            <Route
-              path="*"
-              element={<NoPage />}
-            />
+            {routes.map(({ path, element, index }) => (
+              <Route
+                key={path}
+                path={path}
+                element={element}
+                index={index}
+              />
+            ))}
           </Route>
         </Routes>
       </DeviceContext.Provider>
