@@ -40,6 +40,7 @@
 }
 
 .loading {
+    display: block;
     width: 0px;
     opacity: 0;
     transition: opacity 0.3s;

@@ -9,11 +9,16 @@ import 'highlight.js/styles/github-dark-dimmed.css'
 
 interface MarkdownViewProps {
   post: _Post
+  overrides?: MarkdownToJSX.Overrides
 }
 
-const MarkdownView: FunctionComponent<MarkdownViewProps> = ({ post }: MarkdownViewProps) => {
+const MarkdownView: FunctionComponent<MarkdownViewProps> = ({
+  post,
+  overrides,
+}: MarkdownViewProps) => {
   const mdOption = {
     overrides: {
+      ...overrides,
       img: {
         component: (props: any) => <ImageSkeleton props={props} />,
       },
@@ -35,7 +40,7 @@ const MarkdownView: FunctionComponent<MarkdownViewProps> = ({ post }: MarkdownVi
       className="markdown"
     >
       {post.content +
-        (post.category.toLowerCase() === CATEGORIES.ALGORITHM
+        (post.category.toLowerCase() === CATEGORIES.ALGORITHM && post.language
           ? '\n\n```' + post.language + '\n\n' + post.code + '```'
           : '')}
     </Markdown>

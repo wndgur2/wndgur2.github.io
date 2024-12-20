@@ -1,6 +1,6 @@
 import 'highlight.js/styles/github-dark.css'
 import './PostDetail.css'
-import { FunctionComponent } from 'react'
+import { FunctionComponent, useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { IoLogoGithub } from 'react-icons/io'
 import { useRecoilValue } from 'recoil'
@@ -11,7 +11,7 @@ import IconLink from '@/components/IconLink/IconLink'
 import MarkdownView from './MarkdownView'
 import TagList from '@/components/common/TagList'
 
-const Post: FunctionComponent = () => {
+const PostDetail: FunctionComponent = () => {
   const title = useParams().post_title
   const post = useRecoilValue(postSelector({ post_title: title }))
   useResetScroll()
@@ -49,4 +49,4 @@ const Post: FunctionComponent = () => {
   )
 }
 
-export default Post
+export default PostDetail

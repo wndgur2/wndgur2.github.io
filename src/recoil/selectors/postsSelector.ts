@@ -39,6 +39,8 @@ export const postSelector = selectorFamily<_Post | undefined, { post_title?: str
     (params) =>
     ({ get }) => {
       const posts = get(postsAtom)
+      // console.log(posts) // TODO : posts가 아직 다 로드되지 않았을 때, loading 반환
+      // 현재 undefined 반환했을 때, 로딩중인지, 없는 post인지 구분할 수 없음
       return posts.find((post) => post.title === params.post_title)
     },
 })

@@ -20,6 +20,7 @@ const Tag: FunctionComponent<TagProps> = ({ tag, count }) => {
   }, [location.state, tag])
   return (
     <li
+      key={`${tag}${count}`}
       ref={tagRef}
       className="tag clickable small"
       onClick={(e) => {

@@ -11,7 +11,7 @@ const ProfileImage: FunctionComponent = () => {
     // preload images
     for (let i = 0; i < IMG_AMOUNT; i++) {
       const img = new Image()
-      img.src = `images/profile/${i}.jpeg`
+      img.src = `/images/profile/${i}.jpeg`
     }
   })
 
@@ -39,14 +39,14 @@ const ProfileImage: FunctionComponent = () => {
 
   return (
     <button
-      className='profile-img-wrapper'
-      onClick={ profileClicked }
-      ref={ profileRef }
+      className="profile-img-wrapper"
+      onClick={profileClicked}
+      ref={profileRef}
     >
       <img
-        className='profile-img'
-        src={ `images/profile/${imgIndex}.jpeg` }
-        alt='profile'
+        className="profile-img"
+        src={`/images/profile/${imgIndex}.jpeg`}
+        alt="profile"
       />
     </button>
   )
