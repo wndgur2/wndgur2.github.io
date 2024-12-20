@@ -1,6 +1,6 @@
 import 'highlight.js/styles/github-dark.css'
 import './PostDetail.css'
-import { FunctionComponent, useEffect } from 'react'
+import { FunctionComponent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { IoLogoGithub } from 'react-icons/io'
 import { useRecoilValue } from 'recoil'

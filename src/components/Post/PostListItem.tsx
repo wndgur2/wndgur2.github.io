@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect } from 'react'
+import { FunctionComponent } from 'react'
 import './PostListItem.css'
 import { Link } from 'react-router-dom'
 import _Post from '@/types/_Post'
