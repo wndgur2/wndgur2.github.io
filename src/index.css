@@ -21,7 +21,7 @@
     --radius-circle: 50%;
 
     --light-fg-color: #fcfcfc;
-    --light-dimmed-fg-color: #f5f5f5;
+    --light-dimmed-fg-color: #f0f0f0;
     --light-bg-color: #fafafa;
     /* --light-bg-color: #f3f3f3; */
     --light-dimmed-bg-color: #eaeaea;
@@ -29,8 +29,8 @@
     --light-hover-bg-color: #fcfcfc;
     --light-accent-color: #36f;
     --light-dimmed-accent-color: #13f2;
+    --light-accent-content-color: #00a57b;
     /* --light-accent-content-color: #d46e1b; */
-    --light-accent-content-color: #082af0dd;
     --light-intense-content-color: #000;
     --light-content-color: #242424;
     --light-dimmed-content-color: #505050;
@@ -52,8 +52,8 @@
     --dark-accent-content-color: #e6d874;
     /* --dark-accent-content-color: #86fc; */
     --dark-intense-content-color: #fff;
-    --dark-content-color: #eee;
-    --dark-dimmed-content-color: #bfbfbf;
+    --dark-content-color: #fff;
+    --dark-dimmed-content-color: #ddd;
     --dark-action-color: #adf;
     --dark-minor-color: #888;
     --dark-icon-color: #ddd;

@@ -50,7 +50,7 @@
 }
 
 .post-content {
-    padding: calc(2em + 2vw) calc(1em + 2vw);
+    padding: calc(2em + 2vw) calc(0.5em + 1vw);
     margin-top: -2px;
 
     text-wrap: pretty;

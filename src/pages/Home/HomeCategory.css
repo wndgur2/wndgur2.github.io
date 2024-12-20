@@ -33,13 +33,7 @@
 
 .home-category>header>.link:hover {
     padding: 0.4em 0.8em;
-    /* border: 1px solid var(--light-only-border-color); */
     border: 1px solid var(--action-color);
-}
-
-.home-category>header h1 {
-    font-size: x-large;
-    color: var(--accent-color);
 }
 
 .posts {

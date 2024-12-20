@@ -3,13 +3,17 @@
   margin: 2em 0px;
 }
 
-.markdown>div * {
+.markdown>p * {
   scroll-margin-top: 4em;
 }
 
-.markdown>div>*:first-child {
+.markdown>p>*:first-child {
   padding-top: 0px;
   margin-top: 0px;
+}
+
+.markdown>* {
+  padding: 0 1vw;
 }
 
 .markdown h1,
@@ -21,12 +25,17 @@
   margin: 1.2em 0px 0.8em 0px;
 }
 
-.markdown p {
-  line-height: 1.5em;
+.markdown h4 {
+  margin: 1em 0px 0.6em 0px;
+}
+
+.markdown>p {
+  line-height: 1.7;
+  margin: 1em 0;
 }
 
 .markdown ul {
-  padding-left: 1em;
+  padding-left: 1.2em;
 }
 
 .markdown ol {
@@ -40,7 +49,7 @@
 }
 
 .markdown em {
-  color: var(--intense-content-color);
+  font-style: italic;
 }
 
 .markdown li::marker {
@@ -66,27 +75,28 @@
 
 .markdown pre {
   margin: 1em 0px;
+  padding: 0;
 }
 
 .markdown code {
   border-radius: var(--radius);
 }
 
-.markdown div>code {
+.markdown p>code {
   color: var(--accent-content-color);
+}
+
+.markdown a {
+  color: #0074ff;
+}
+
+.markdown a:hover {
+  color: var(--action-color);
 }
 
 
 span.hljs-property {
   color: var(--accent-content-color);
-}
-
-.markdown pre code {
-  padding: 1em;
-  line-height: 1.5em;
-  word-spacing: 0.2em;
-  font-size: small;
-  color: #eaeaea;
 }
 
 .markdown blockquote {
@@ -96,7 +106,7 @@ span.hljs-property {
   background-color: var(--dimmed-fg-color);
 }
 
-.markdown blockquote div {
+.markdown blockquote p {
   color: var(--dimmed-content-color)
 }
 
@@ -106,8 +116,15 @@ span.hljs-property {
 
 .markdown code:not(.hljs) {
   font-size: 0.9em;
-  padding: 0.2em;
+  padding: 0.2em 0.4em;
   line-height: 2em;
   border-radius: var(--radius);
   background-color: var(--dimmed-fg-color);
+}
+
+.markdown pre code {
+  line-height: 1.5em;
+  word-spacing: 0.2em;
+  font-size: small;
+  color: #eaeaea;
 }

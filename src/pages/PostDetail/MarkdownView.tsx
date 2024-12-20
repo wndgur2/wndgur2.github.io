@@ -5,6 +5,7 @@ import _Post from '@/types/_Post'
 import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
 import { FunctionComponent, useEffect } from 'react'
 import hljs from 'highlight.js'
+import 'highlight.js/styles/github-dark-dimmed.css'
 
 interface MarkdownViewProps {
   post: _Post
@@ -15,9 +16,6 @@ const MarkdownView: FunctionComponent<MarkdownViewProps> = ({ post }: MarkdownVi
     overrides: {
       img: {
         component: (props: any) => <ImageSkeleton props={props} />,
-      },
-      p: {
-        component: ({ children }) => <div className="post-content-block">{children}</div>,
       },
     },
   } as MarkdownToJSX.Options
