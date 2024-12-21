@@ -1,9 +1,11 @@
 .post {
     color: var(--content-color);
+    max-width: 70vw;
+    margin: 2em auto 0 auto;
 }
 
 .post header {
-    padding: calc(0.8em + 1.2vw);
+    padding: calc(0.8em + 1.2vw) calc(1em + 1.4vw);
 
     display: flex;
     justify-content: space-between;
@@ -50,7 +52,7 @@
 }
 
 .post-content {
-    padding: calc(2em + 2vw) calc(0.5em + 1vw);
+    padding: calc(1em + 1vw);
     margin-top: -2px;
 
     text-wrap: pretty;

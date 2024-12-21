@@ -7,15 +7,6 @@
   scroll-margin-top: 4em;
 }
 
-.markdown>p>*:first-child {
-  padding-top: 0px;
-  margin-top: 0px;
-}
-
-.markdown>* {
-  padding: 0 1vw;
-}
-
 .markdown h1,
 .markdown h2 {
   margin: 1.4em 0px 1em 0px;
@@ -71,11 +62,6 @@
 .markdown mark {
   background-color: var(--minor-color);
   border-radius: var(--radius);
-}
-
-.markdown pre {
-  margin: 1em 0px;
-  padding: 0;
 }
 
 .markdown code {
