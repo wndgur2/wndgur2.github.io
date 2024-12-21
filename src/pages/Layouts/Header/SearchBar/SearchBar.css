@@ -12,6 +12,7 @@
     border-radius: var(--radius-pill);
 
     pointer-events: auto;
+    caret-color: var(--accent-color);
 
     transition: height 0.3s, scale 0.3s, flex 0.3s, width 0.3s;
 }
@@ -19,7 +20,6 @@
 
 .search-bar:focus-within {
     flex: 2.4;
-    border: 2px solid var(--border-color);
 }
 
 .search-bar>form {
