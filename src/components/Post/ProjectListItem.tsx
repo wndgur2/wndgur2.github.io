@@ -30,9 +30,15 @@ const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
         <header className="project-info content">
           <h2 className="project-title">{post.title}</h2>
           <p>{post.description}</p>
-          <small className="project-date">
-            {post.date_started}~ {post.date_finished}
-          </small>
+          <div className="project-info-footer">
+            <small>
+              {post.date_started}~ {post.date_finished}
+            </small>
+            <div className="project-meta">
+              <small>{post.role}</small>
+              <small>{post.head_count}인</small>
+            </div>
+          </div>
         </header>
       </section>
       <TagList tags={post.tags} />

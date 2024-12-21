@@ -1,7 +1,6 @@
 .post-list-item {
     display: flex;
     flex-flow: column nowrap;
-    gap: 1em;
 
     min-width: 20em;
     max-width: 46em;
@@ -9,11 +8,16 @@
     height: fit-content;
 
     margin: 0.6em;
-    padding: 0.6em;
+    padding: 0.5em;
+
     border-radius: var(--radius);
 
     border: 1px solid var(--border-color);
     background-color: var(--fg-color);
+}
+
+.post-list-item>section {
+    padding: 0.3em;
 }
 
 
@@ -37,6 +41,10 @@
 
 .post-list-item>header>h3>small {
     margin-left: 0.5em;
+}
+
+.post-list-item .tag-list {
+    margin-top: 0;
 }
 
 .preview {

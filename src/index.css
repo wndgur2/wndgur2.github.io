@@ -111,7 +111,7 @@ a {
 }
 
 a:hover {
-    color: var(--action-color);
+    /* color: var(--action-color); */
 }
 
 small {
@@ -124,7 +124,7 @@ small {
 }
 
 .link:hover header {
-    color: var(--action-color);
+    /* color: var(--action-color); */
 }
 
 

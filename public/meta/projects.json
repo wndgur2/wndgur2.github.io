@@ -13,6 +13,8 @@
         ],
         "date_started": "2023.12.01",
         "date_finished": "2024.04.17",
+        "head_count": "3",
+        "role": "Full-stack",
         "github": "https://github.com/wndgur2/CatChess"
     },
     "Memohub": {
@@ -26,6 +28,8 @@
         ],
         "date_started": "2023.11.23",
         "date_finished": "2023.11.29",
+        "head_count": "2",
+        "role": "Front-end",
         "github": "https://github.com/wndgur2/memohub"
     },
     "wndgur2.github.io": {
@@ -41,6 +45,8 @@
             "typescript"
         ],
         "date_started": "2024.05.05",
+        "head_count": "1",
+        "role": "Front-end",
         "github": "https://github.com/wndgur2/wndgur2.github.io"
     },
     "Cheese": {
@@ -55,6 +61,8 @@
         ],
         "date_started": "2023.01.01",
         "date_finished": "2023.11.14",
+        "head_count": "3",
+        "role": "Front-end",
         "github": "https://github.com/wndgur2/cheese"
     },
     "Reptopia": {
@@ -68,6 +76,8 @@
         ],
         "date_started": "2020.12.15",
         "date_finished": "2021.04.01",
+        "head_count": "1",
+        "role": "Front-end",
         "github": "https://github.com/wndgur2/reptopia"
     }
 }
