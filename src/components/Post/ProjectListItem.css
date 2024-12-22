@@ -14,7 +14,12 @@
     background-color: var(--dimmed-bg-color);
 }
 
-.project-image-wrapper>img {
+.project-image-wrapper .image-container {
+    margin: 0;
+    padding: 0;
+}
+
+.project-image-wrapper img {
     max-width: 100%;
     max-height: 18em;
     object-fit: contain;

@@ -1,15 +1,15 @@
 import { FunctionComponent } from 'react'
 import './ProjectListItem.css'
 import { Link } from 'react-router-dom'
-import parse from 'html-react-parser'
 import { CiImageOff } from 'react-icons/ci'
 import _Project from '@/types/_Project'
 import TagList from '../common/TagList'
+import ImageSkeleton from './ImageSkeleton'
 
 interface ProjectListItemProps {
   post: _Project
 }
-
+// TODO : image skeleton 적용
 const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
   return (
     <Link
@@ -19,7 +19,7 @@ const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
       <section>
         <div className="project-image-wrapper">
           {post.thumbnail ? (
-            parse(post.thumbnail)
+            <ImageSkeleton props={{ src: post.thumbnail, alt: post.title }} />
           ) : (
             <CiImageOff
               className="no-image"

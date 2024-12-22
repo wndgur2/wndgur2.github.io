@@ -165,7 +165,7 @@ export const getProjects = async (
         const img = new Image()
         img.src = `/images/${project.title.toLowerCase()}.jpeg`
 
-        project.thumbnail = `<img src="${img.src}" alt="${project.title}" />`
+        project.thumbnail = img.src
 
         setPosts((prevPosts) => sortedInsert(prevPosts, project))
       } catch (error) {
