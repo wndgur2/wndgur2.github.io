@@ -66,13 +66,13 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
             className="icon"
             onClick={() => scrollPosts('backward')}
           >
-            <RiArrowLeftSLine size={28} />
+            <RiArrowLeftSLine size={26} />
           </button>
           <button
             className="icon"
             onClick={() => scrollPosts('forward')}
           >
-            <RiArrowRightSLine size={28} />
+            <RiArrowRightSLine size={26} />
           </button>
         </div>
       </header>
