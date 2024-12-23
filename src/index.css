@@ -124,7 +124,7 @@ small {
 }
 
 .link:hover header {
-    /* color: var(--action-color); */
+    color: var(--action-color);
 }
 
 

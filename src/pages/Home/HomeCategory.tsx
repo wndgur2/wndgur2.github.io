@@ -53,8 +53,10 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
           to={`/search/@${category}`}
           state={{ search_text: `@${category}` }}
         >
-          <h1>{category[0].toUpperCase() + category.slice(1)}</h1>
-          <IoIosArrowForward size={20} />
+          <header>
+            <h1>{category[0].toUpperCase() + category.slice(1)}</h1>
+            <IoIosArrowForward size={20} />
+          </header>
         </Link>
         <div
           className="scroll-buttons"
