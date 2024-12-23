@@ -1,12 +1,10 @@
 .theme {
-    order: 4;
+    width: 10vw;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-}
 
-.thme:hover {
-    /* TODO */
+    order: 4;
 }
 
 .toggle {

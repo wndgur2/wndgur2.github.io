@@ -26,6 +26,10 @@
     background-color: transparent;
 }
 
+#header h5 {
+    width: 10vw;
+}
+
 .logo {
     padding: 0.4em;
 }
