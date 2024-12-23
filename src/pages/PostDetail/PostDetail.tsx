@@ -10,14 +10,17 @@ import useResetScroll from '@/hooks/useResetScroll'
 import IconLink from '@/components/IconLink/IconLink'
 import MarkdownView from './MarkdownView'
 import TagList from '@/components/common/TagList'
+import { nextPostSelector, prevPostSelector } from '@/recoil/selectors/postsSelector'
 
 const PostDetail: FunctionComponent = () => {
   const title = useParams().post_title
   const post = useRecoilValue(postSelector({ post_title: title }))
-  useResetScroll()
+  const prevPost = useRecoilValue(prevPostSelector({ post_title: title }))
+  const nextPost = useRecoilValue(nextPostSelector({ post_title: title }))
+  useResetScroll(post)
 
   return (
-    <div className="post">
+    <article className="post">
       <header>
         <section className="post-title">
           {post && (
@@ -45,7 +48,31 @@ const PostDetail: FunctionComponent = () => {
         )}
       </header>
       <main className="post-content">{post ? <MarkdownView post={post} /> : <Loading />}</main>
-    </div>
+      <nav>
+        {prevPost && (
+          <Link
+            to={`/post/${prevPost.title}`}
+            className="clickable prev"
+          >
+            <small>previous</small>
+            <div>
+              <p>{prevPost.title}</p>
+            </div>
+          </Link>
+        )}
+        {nextPost && (
+          <Link
+            to={`/post/${nextPost.title}`}
+            className="clickable next"
+          >
+            <small>next</small>
+            <div>
+              <p>{nextPost.title}</p>
+            </div>
+          </Link>
+        )}
+      </nav>
+    </article>
   )
 }
 

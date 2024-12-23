@@ -44,3 +44,25 @@ export const postSelector = selectorFamily<_Post | undefined, { post_title?: str
       return posts.find((post) => post.title === params.post_title)
     },
 })
+
+export const prevPostSelector = selectorFamily<_Post | undefined, { post_title?: string }>({
+  key: 'prevPostSelector',
+  get:
+    (params) =>
+    ({ get }) => {
+      const posts = get(postsAtom)
+      const postIndex = posts.findIndex((post) => post.title === params.post_title)
+      return posts[postIndex + 1]
+    },
+})
+
+export const nextPostSelector = selectorFamily<_Post | undefined, { post_title?: string }>({
+  key: 'nextPostSelector',
+  get:
+    (params) =>
+    ({ get }) => {
+      const posts = get(postsAtom)
+      const postIndex = posts.findIndex((post) => post.title === params.post_title)
+      return posts[postIndex - 1]
+    },
+})
