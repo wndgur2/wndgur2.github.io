@@ -32,7 +32,6 @@
     --light-content-color: #242424;
     --light-dimmed-content-color: #505050;
     --light-accent-content-color: #00a57b;
-    --light-intense-content-color: #000;
     --light-minor-color: #888;
     --light-icon-color: #444;
     --light-dimmed-icon-color: #4442;
@@ -49,9 +48,8 @@
     --dark-dimmed-accent-color: #64f2;
     --dark-action-color: #adf;
     --dark-minor-color: #888;
-    --dark-content-color: #fff;
+    --dark-content-color: #fafafc;
     --dark-dimmed-content-color: #c0c0c0;
-    --dark-intense-content-color: #fff;
     --dark-accent-content-color: #e6d874;
     --dark-icon-color: #ddd;
     --dark-dimmed-icon-color: #ddd2;
@@ -71,7 +69,6 @@
     --action-color: var(--light-action-color);
     --content-color: var(--light-content-color);
     --dimmed-content-color: var(--light-dimmed-content-color);
-    --intense-content-color: var(--light-intense-content-color);
     --minor-color: var(--light-minor-color);
     --icon-color: var(--light-icon-color);
     --dimmed-icon-color: var(--light-dimmed-icon-color);
@@ -92,7 +89,6 @@
     --accent-content-color: var(--dark-accent-content-color);
     --content-color: var(--dark-content-color);
     --dimmed-content-color: var(--dark-dimmed-content-color);
-    --intense-content-color: var(--dark-intense-content-color);
     --minor-color: var(--dark-minor-color);
     --icon-color: var(--dark-icon-color);
     --dimmed-icon-color: var(--dark-dimmed-icon-color);
