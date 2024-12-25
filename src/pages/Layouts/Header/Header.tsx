@@ -1,4 +1,5 @@
 import { FunctionComponent, useContext, useRef } from 'react'
+import { ReactComponent as Logo } from '@/assets/logo.svg'
 import './Header.css'
 import ThemeToggler from './Theme/ThemeToggler'
 import SearchBar from './SearchBar/SearchBar'
@@ -32,14 +33,12 @@ const Header: FunctionComponent = () => {
       id="header"
       ref={headerRef}
     >
-      <h5>
-        <Link
-          to={'/'}
-          className="logo"
-        >
-          leejunghyeok
-        </Link>
-      </h5>
+      <Link
+        to={'/'}
+        className="logo clickable small"
+      >
+        <Logo />
+      </Link>
       <Spacer />
       <SearchBar />
       <Spacer />
