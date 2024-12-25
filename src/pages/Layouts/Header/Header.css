@@ -26,13 +26,16 @@
     background-color: transparent;
 }
 
-#header h5 {
-    width: 10vw;
+.logo {
+    height: 100%;
+    width: fit-content;
+    padding: 1em;
+    display: flex;
 }
 
-.logo {
-    height: 2em;
-    padding: 0.4em;
+.logo svg {
+    height: 100%;
+    width: fit-content;
 }
 
 .logo svg * {
