@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useEffect, useState } from 'react'
 import { DeviceContext } from '@/contexts/Device'
 import usePosts from '@/hooks/usePosts'
 import SearchResult from '@/pages/Search/SearchResult'
@@ -7,19 +6,7 @@ import NoPage from '@/pages/NoPage'
 import Layout from '@/pages/Layouts/Layout'
 import Home from '@/pages/Home/Home'
 import Post from '@/pages/PostDetail/PostDetail'
-
-// Custom hook to manage theme
-function useTheme() {
-  const [isDark, setIsDark] = useState(localStorage.getItem('theme') !== 'light')
-
-  useEffect(() => {
-    const link = document.querySelector('link[rel="icon"]')
-    if (!link) return
-    link.setAttribute('href', `/favicon-${isDark ? 'dark' : 'light'}.ico`)
-  }, [isDark])
-
-  return { isDark, setIsDark }
-}
+import useTheme from './hooks/useTheme'
 
 const routes = [
   { path: '/', element: <Home />, index: true }, // Default child route for the root path

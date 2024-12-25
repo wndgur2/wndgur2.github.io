@@ -1,5 +1,5 @@
 import './SearchResult.css'
-import { FunctionComponent, useMemo, useState } from 'react'
+import { FunctionComponent, useState } from 'react'
 import { useRecoilValue } from 'recoil'
 import { useParams } from 'react-router-dom'
 import { FaSortAmountUp, FaSortAmountDown } from 'react-icons/fa'
@@ -12,23 +12,7 @@ import _Project from '@/types/_Project'
 import useResetScroll from '@/hooks/useResetScroll'
 import useRelatedTags from '@/hooks/useRelatedTags'
 import TagCountList from '@/components/common/TagCountList'
-
-// Custom hook to handle sorting logic
-function useSortedPosts(searchedPosts: _Post[], recentFirst: boolean) {
-  return useMemo(
-    () =>
-      [...searchedPosts].sort((a, b) =>
-        recentFirst
-          ? a.date_started < b.date_started
-            ? 1
-            : -1
-          : a.date_started > b.date_started
-          ? 1
-          : -1
-      ),
-    [searchedPosts, recentFirst]
-  )
-}
+import useSortedPosts from '@/hooks/useSortedPosts'
 
 const Search: FunctionComponent = () => {
   const params = useParams()
