@@ -89,13 +89,13 @@
 }
 
 .prev {
-    margin-right: auto;
-    justify-content: flex-start;
+    margin-left: auto;
+    align-items: flex-end;
 }
 
 .next {
-    margin-left: auto;
-    align-items: flex-end;
+    margin-right: auto;
+    align-items: flex-start;
 }
 
 @media (max-width: 768px) {

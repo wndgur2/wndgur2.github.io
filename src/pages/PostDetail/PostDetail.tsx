@@ -49,17 +49,6 @@ const PostDetail: FunctionComponent = () => {
       </header>
       <main className="post-content">{post ? <MarkdownView post={post} /> : <Loading />}</main>
       <nav>
-        {prevPost && (
-          <Link
-            to={`/post/${prevPost.title}`}
-            className="clickable prev"
-          >
-            <small>previous</small>
-            <div>
-              <p>{prevPost.title}</p>
-            </div>
-          </Link>
-        )}
         {nextPost && (
           <Link
             to={`/post/${nextPost.title}`}
@@ -68,6 +57,17 @@ const PostDetail: FunctionComponent = () => {
             <small>next</small>
             <div>
               <p>{nextPost.title}</p>
+            </div>
+          </Link>
+        )}
+        {prevPost && (
+          <Link
+            to={`/post/${prevPost.title}`}
+            className="clickable prev"
+          >
+            <small>previous</small>
+            <div>
+              <p>{prevPost.title}</p>
             </div>
           </Link>
         )}
