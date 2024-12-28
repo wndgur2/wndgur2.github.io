@@ -15,8 +15,13 @@
 }
 
 .project-image-wrapper .image-container {
+    width: 100%;
     margin: 0;
     padding: 0;
+}
+
+.project-image-wrapper .image-container .image-skeleton {
+    width: 100%;
 }
 
 .project-image-wrapper img {

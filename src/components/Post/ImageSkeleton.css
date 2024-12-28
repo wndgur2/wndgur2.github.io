@@ -36,6 +36,8 @@
     max-height: 80vh;
     opacity: 1;
 
+    background-color: var(--content-color);
+
     transition: opacity 0.3s;
 }
 
