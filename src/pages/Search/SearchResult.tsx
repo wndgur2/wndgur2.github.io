@@ -31,18 +31,17 @@ const Search: FunctionComponent = () => {
     <main className="search-result">
       <header>
         <div className="search-info">
-          <div>
-            <p className="content">Search Result for &nbsp;</p>
-            <h3 className="content">{params.search_text}</h3>
-          </div>
-          <button
-            className="clickable btn-search-result-sort"
-            onClick={toggleSort}
-          >
-            {recentFirst ? <FaSortAmountDown /> : <FaSortAmountUp />}
-          </button>
+          <h3 className="content">{params.search_text}</h3>
+          <p className="dimmed content search-result-text"> &nbsp; 검색 결과</p>
         </div>
         <div>{params.search_text && <TagCountList tags={relatedTags} />}</div>
+        <button
+          className="clickable btn-search-result-sort"
+          onClick={toggleSort}
+        >
+          <p className="dimmed content">{recentFirst ? '최근글순' : '오랜글순'}</p>
+          {recentFirst ? <FaSortAmountUp /> : <FaSortAmountDown />}
+        </button>
       </header>
       <ul>
         {sortedPosts.length ? (

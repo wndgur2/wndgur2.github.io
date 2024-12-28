@@ -17,6 +17,7 @@
 
     --radius: 0.5em;
     --radius-sm: 0.2em;
+    --radius-lg: 0.8em;
     --radius-pill: 1em;
     --radius-circle: 50%;
 
@@ -152,7 +153,6 @@ button {
     padding: 0.5em;
 
     display: flex;
-    font-size: 1.3em;
 
     border-radius: var(--radius-pill);
     border: none;
