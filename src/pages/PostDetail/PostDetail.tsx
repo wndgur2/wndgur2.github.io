@@ -47,25 +47,39 @@ const PostDetail: FunctionComponent = () => {
           </section>
         )}
       </header>
-      <main className="post-content">{post ? <MarkdownView post={post} /> : <Loading />}</main>
+      <main className="post-content">
+        {post === null ? (
+          <span>게시글 '{title}' 을 찾을 수 없어요.</span>
+        ) : post === undefined ? (
+          <Loading />
+        ) : (
+          <MarkdownView post={post} />
+        )}
+      </main>
       <nav>
         {nextPost && (
           <Link
             to={`/post/${nextPost.title}`}
             className="clickable next"
           >
-            <small>next</small>
+            <small>&lt; next</small>
             <div>
               <p>{nextPost.title}</p>
             </div>
           </Link>
         )}
+        <Link
+          className="clickable list"
+          to={`/search/@${post?.category}`}
+        >
+          go to list
+        </Link>
         {prevPost && (
           <Link
             to={`/post/${prevPost.title}`}
             className="clickable prev"
           >
-            <small>previous</small>
+            <small>previous &gt;</small>
             <div>
               <p>{prevPost.title}</p>
             </div>
