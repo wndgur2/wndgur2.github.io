@@ -69,7 +69,7 @@
     align-items: center;
 }
 
-.post nav a {
+.post nav a:not(.list) {
     min-width: 18%;
     padding: 1.4em;
 
@@ -88,12 +88,19 @@
     gap: 0.5em;
 }
 
-.prev {
+.post nav .prev {
     margin-left: auto;
     align-items: flex-end;
 }
 
-.next {
+.post nav .list {
+    align-items: center;
+    text-align: center;
+    margin: 1em 0;
+    padding: 1em 0;
+}
+
+.post nav .next {
     margin-right: auto;
     align-items: flex-start;
 }

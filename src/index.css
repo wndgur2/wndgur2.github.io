@@ -22,7 +22,7 @@
     --radius-circle: 50%;
 
     --light-fg-color: #fcfcfc;
-    --light-dimmed-fg-color: #f0f0f0;
+    --light-dimmed-fg-color: #ccc;
     --light-transparent-fg-color: #fcfcfcaf;
     --light-bg-color: #fafafa;
     --light-dimmed-bg-color: #eaeaea;
@@ -256,4 +256,16 @@ input:focus {
     .pc {
         display: block;
     }
+}
+
+.d-flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-end {
+    align-items: flex-end;
 }
