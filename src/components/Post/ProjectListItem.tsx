@@ -9,7 +9,6 @@ import ImageSkeleton from './ImageSkeleton'
 interface ProjectListItemProps {
   post: _Project
 }
-// TODO : image skeleton 적용
 const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
   return (
     <Link
