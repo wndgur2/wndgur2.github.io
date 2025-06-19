@@ -6,13 +6,10 @@ interface LoadingProps {
 }
 
 const Loading: FunctionComponent<LoadingProps> = ({ phrase }) => {
-
   return (
-    <div className='spinner-wrapper'>
-      <div className='spinner' />
-      <span className='minor'>
-        { phrase }
-      </span>
+    <div className="spinner-wrapper">
+      <div className="spinner" />
+      <span className="minor">{phrase}</span>
     </div>
   )
 }

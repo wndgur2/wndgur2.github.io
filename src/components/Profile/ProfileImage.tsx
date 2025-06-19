@@ -1,7 +1,7 @@
 import { FunctionComponent, useEffect, useRef, useState } from 'react'
 import './ProfileImage.css'
 
-const IMG_AMOUNT = 4
+const IMG_AMOUNT = 5
 
 const ProfileImage: FunctionComponent = () => {
   const profileRef = useRef<HTMLButtonElement>(null)
