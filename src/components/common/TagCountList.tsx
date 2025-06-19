@@ -10,11 +10,7 @@ const TagCountList: FunctionComponent<TagCountListProps> = ({ tags }: TagCountLi
   return (
     <ol className="tag-list">
       {tags.map(({ tag, count }, index: number) => (
-        <Tag
-          key={`${tag}${count}${index}`}
-          tag={tag}
-          count={count}
-        />
+        <Tag key={`${tag}${count}${index}`} tag={tag} count={count} />
       ))}
     </ol>
   )

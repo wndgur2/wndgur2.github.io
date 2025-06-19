@@ -48,39 +48,22 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
   return (
     <section className="home-category">
       <header>
-        <Link
-          className="link"
-          to={`/search/@${category}`}
-          state={{ search_text: `@${category}` }}
-        >
+        <Link className="link" to={`/search/@${category}`} state={{ search_text: `@${category}` }}>
           <header>
             <h1>{category[0].toUpperCase() + category.slice(1)}</h1>
             <IoIosArrowForward size={20} />
           </header>
         </Link>
-        <div
-          className="scroll-buttons"
-          ref={buttonsRef}
-        >
-          <button
-            className="icon"
-            onClick={() => scrollPosts('backward')}
-          >
+        <div className="scroll-buttons" ref={buttonsRef}>
+          <button className="icon" onClick={() => scrollPosts('backward')}>
             <RiArrowLeftSLine size={26} />
           </button>
-          <button
-            className="icon"
-            onClick={() => scrollPosts('forward')}
-          >
+          <button className="icon" onClick={() => scrollPosts('forward')}>
             <RiArrowRightSLine size={26} />
           </button>
         </div>
       </header>
-      <ul
-        className="posts"
-        ref={postsRef}
-        onScroll={changeScrollButtons}
-      >
+      <ul className="posts" ref={postsRef} onScroll={changeScrollButtons}>
         {children}
       </ul>
     </section>

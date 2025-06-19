@@ -19,18 +19,10 @@ const PostList: FunctionComponent<PostListProps> = () => {
       {Object.keys(postsByCategory)
         .filter((key) => key !== CATEGORIES.PROJECT)
         .map((category: any) => (
-          <HomeCategory
-            key={category}
-            category={category}
-          >
+          <HomeCategory key={category} category={category}>
             {postsByCategory[category].length ? (
               postsByCategory[category].map((post: _Post, i: number) => {
-                return (
-                  <PostListItem
-                    key={i}
-                    post={post}
-                  />
-                )
+                return <PostListItem key={i} post={post} />
               })
             ) : (
               <Loading phrase={`loading ${category} posts`} />

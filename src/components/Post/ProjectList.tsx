@@ -18,10 +18,7 @@ const ProjectList: FunctionComponent<ProjectListProps> = () => {
     <HomeCategory category={CATEGORIES.PROJECT}>
       {postsByCategory[CATEGORIES.PROJECT] ? (
         postsByCategory[CATEGORIES.PROJECT].map((project: _Project, i: number) => (
-          <ProjectListItem
-            key={i}
-            post={project}
-          />
+          <ProjectListItem key={i} post={project} />
         ))
       ) : (
         <Loading phrase="loading projects" />

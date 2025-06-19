@@ -30,26 +30,16 @@ const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({ props }) => {
 
   return (
     <var className="image-container">
-      <canvas
-        className="image-skeleton"
-        ref={skeletonRef}
-      />
+      <canvas className="image-skeleton" ref={skeletonRef} />
       <var className="image-wrapper">
         {isError ? (
           <var className="no-image-container">
-            <FaRegFaceSadCry
-              className="no-image minor"
-              size={48}
-            />
+            <FaRegFaceSadCry className="no-image minor" size={48} />
             <small>이미지를 못 가져왔어요.</small>
             <small>{props.src}</small>
           </var>
         ) : (
-          <img
-            alt=""
-            {...props}
-            ref={imgRef}
-          />
+          <img alt="" {...props} ref={imgRef} />
         )}
       </var>
     </var>

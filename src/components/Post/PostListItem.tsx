@@ -23,10 +23,7 @@ const PostListItem: FunctionComponent<PostListItemProps> = ({ post }: PostListIt
     },
   }
   return (
-    <Link
-      className="post-list-item link clickable"
-      to={`/post/${post.title}`}
-    >
+    <Link className="post-list-item link clickable" to={`/post/${post.title}`}>
       <header className="content">
         <h3>
           <span>{post.title}</span>
@@ -42,10 +39,7 @@ const PostListItem: FunctionComponent<PostListItemProps> = ({ post }: PostListIt
         </small>
       </header>
       <section className="preview">
-        <MarkdownView
-          post={post}
-          overrides={overrides}
-        />
+        <MarkdownView post={post} overrides={overrides} />
       </section>
       <TagList tags={post.tags} />
     </Link>

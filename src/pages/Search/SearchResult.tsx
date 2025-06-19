@@ -35,10 +35,7 @@ const Search: FunctionComponent = () => {
           <p className="dimmed content search-result-text"> &nbsp; 검색 결과</p>
         </div>
         <div>{params.search_text && <TagCountList tags={relatedTags} />}</div>
-        <button
-          className="clickable btn-search-result-sort"
-          onClick={toggleSort}
-        >
+        <button className="clickable btn-search-result-sort" onClick={toggleSort}>
           <p className="dimmed content">{recentFirst ? '최근글순' : '오랜글순'}</p>
           {recentFirst ? <FaSortAmountUp /> : <FaSortAmountDown />}
         </button>
@@ -47,15 +44,9 @@ const Search: FunctionComponent = () => {
         {sortedPosts.length ? (
           sortedPosts.map((post: _Post, i) =>
             post.category === CATEGORIES.PROJECT ? (
-              <ProjectListItem
-                key={i}
-                post={post as _Project}
-              />
+              <ProjectListItem key={i} post={post as _Project} />
             ) : (
-              <PostListItem
-                key={i}
-                post={post}
-              />
+              <PostListItem key={i} post={post} />
             )
           )
         ) : (

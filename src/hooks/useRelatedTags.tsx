@@ -10,10 +10,10 @@ const useRelatedTags = (posts: _Post[]): { tag: string; count: number }[] => {
       })
     })
     // acending sort by count
-    tagCounts[Symbol.iterator] = function* () {
-      yield* [...this.entries()].sort((a, b) => b[1] - a[1])
-    }
-    return Array.from(tagCounts, ([tag, count]) => ({ tag, count }))
+
+    return Array.from(tagCounts, ([tag, count]) => ({ tag, count })).sort(
+      (a, b) => b.count - a.count
+    )
   }, [posts])
 
   return relatedTags

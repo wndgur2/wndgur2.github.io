@@ -38,16 +38,8 @@ const ProfileImage: FunctionComponent = () => {
   }
 
   return (
-    <button
-      className="profile-img-wrapper"
-      onClick={profileClicked}
-      ref={profileRef}
-    >
-      <img
-        className="profile-img"
-        src={`/images/profile/${imgIndex}.jpeg`}
-        alt="profile"
-      />
+    <button className="profile-img-wrapper" onClick={profileClicked} ref={profileRef}>
+      <img className="profile-img" src={`/images/profile/${imgIndex}.jpeg`} alt="profile" />
     </button>
   )
 }

@@ -11,19 +11,13 @@ interface ProjectListItemProps {
 }
 const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
   return (
-    <Link
-      to={`/post/${post.title}`}
-      className="post-list-item project link clickable"
-    >
+    <Link to={`/post/${post.title}`} className="post-list-item project link clickable">
       <section>
         <div className="project-image-wrapper">
           {post.thumbnail ? (
             <ImageSkeleton props={{ src: post.thumbnail, alt: post.title }} />
           ) : (
-            <CiImageOff
-              className="no-image"
-              size={32}
-            />
+            <CiImageOff className="no-image" size={32} />
           )}
         </div>
         <header className="project-info content">

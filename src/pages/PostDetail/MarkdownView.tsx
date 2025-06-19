@@ -35,10 +35,7 @@ const MarkdownView: FunctionComponent<MarkdownViewProps> = ({
   }, [post])
 
   return (
-    <Markdown
-      options={mdOption}
-      className="markdown"
-    >
+    <Markdown options={mdOption} className="markdown">
       {post.content +
         (post.category.toLowerCase() === CATEGORIES.ALGORITHM && post.language
           ? '\n\n```' + post.language + '\n\n' + post.code + '```'
