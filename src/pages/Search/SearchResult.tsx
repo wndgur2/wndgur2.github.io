@@ -37,7 +37,11 @@ const Search: FunctionComponent = () => {
         <div>{params.search_text && <TagCountList tags={relatedTags} />}</div>
         <button className="clickable btn-search-result-sort" onClick={toggleSort}>
           <p className="dimmed content">{recentFirst ? '최근글순' : '오랜글순'}</p>
-          {recentFirst ? <FaSortAmountUp /> : <FaSortAmountDown />}
+          {recentFirst ? (
+            <FaSortAmountUp className="icon" />
+          ) : (
+            <FaSortAmountDown className="icon" />
+          )}
         </button>
       </header>
       <ul>
