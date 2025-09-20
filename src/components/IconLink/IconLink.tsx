@@ -10,9 +10,9 @@ interface IconLinkProps {
 
 const IconLink: FunctionComponent<IconLinkProps> = ({ icon, url }) => {
   return (
-    <Link to={url} className="icon-link clickable small content">
+    <a href={url} className="icon-link clickable small content" target="_blank" rel="noreferrer">
       {icon}
-    </Link>
+    </a>
   )
 }
 
