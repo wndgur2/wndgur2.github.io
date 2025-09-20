@@ -1,5 +1,4 @@
 import { FunctionComponent, ReactElement } from 'react'
-import { Link } from 'react-router-dom'
 import './IconLink.css'
 import { IconType } from 'react-icons'
 
