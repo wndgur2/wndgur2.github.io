@@ -39,21 +39,21 @@
     --light-border-color: #ccc;
     --light-light-only-border-color: #ff50aa;
 
-    --dark-fg-color: #1a1a1b;
-    --dark-dimmed-fg-color: #282828;
-    --dark-transparent-fg-color: #1a1a1baf;
-    --dark-bg-color: #111112;
-    --dark-dimmed-bg-color: #141414;
-    --dark-hover-bg-color: #101010;
-    --dark-accent-color: #64f;
+    --dark-fg-color: #24242a;
+    --dark-dimmed-fg-color: #333;
+    --dark-transparent-fg-color: #202022af;
+    --dark-bg-color: #161619;
+    --dark-dimmed-bg-color: #222;
+    --dark-hover-bg-color: #161616;
+    --dark-accent-color: #75f;
     --dark-dimmed-accent-color: #64f2;
     --dark-action-color: #adf;
     --dark-minor-color: #888;
     --dark-content-color: #fafafc;
-    --dark-dimmed-content-color: #c0c0c0;
+    --dark-dimmed-content-color: #cacaca;
     --dark-accent-content-color: #e6d874;
     --dark-icon-color: #ddd;
-    --dark-dimmed-icon-color: #ddd2;
+    --dark-dimmed-icon-color: #dfdfdf22;
     --dark-border-color: #323232;
 }
 
