@@ -1,4 +1,3 @@
-import 'highlight.js/styles/github-dark.css'
 import './PostDetail.css'
 import { FunctionComponent } from 'react'
 import { Link, useParams } from 'react-router-dom'
@@ -37,10 +36,7 @@ const PostDetail: FunctionComponent = () => {
         </section>
         {post && (
           <section className="post-meta">
-            <IconLink
-              icon={<IoLogoGithub size={42} />}
-              url={post.github}
-            />
+            <IconLink icon={<IoLogoGithub size={42} />} url={post.github} />
             <small>
               {post.date_started} ~ {post.date_finished}
             </small>
@@ -58,27 +54,18 @@ const PostDetail: FunctionComponent = () => {
       </main>
       <nav>
         {nextPost && (
-          <Link
-            to={`/post/${nextPost.title}`}
-            className="clickable next"
-          >
+          <Link to={`/post/${nextPost.title}`} className="clickable next">
             <small>&lt; next</small>
             <div>
               <p>{nextPost.title}</p>
             </div>
           </Link>
         )}
-        <Link
-          className="clickable list"
-          to={`/search/@${post?.category}`}
-        >
+        <Link className="clickable list" to={`/search/@${post?.category}`}>
           go to list
         </Link>
         {prevPost && (
-          <Link
-            to={`/post/${prevPost.title}`}
-            className="clickable prev"
-          >
+          <Link to={`/post/${prevPost.title}`} className="clickable prev">
             <small>previous &gt;</small>
             <div>
               <p>{prevPost.title}</p>
