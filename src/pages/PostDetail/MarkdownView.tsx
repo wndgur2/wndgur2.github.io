@@ -5,7 +5,7 @@ import _Post from '@/types/_Post'
 import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
 import { FunctionComponent, useEffect } from 'react'
 import hljs from 'highlight.js'
-import 'highlight.js/styles/github-dark-dimmed.css'
+import 'highlight.js/styles/atom-one-dark.css'
 
 interface MarkdownViewProps {
   post: _Post
