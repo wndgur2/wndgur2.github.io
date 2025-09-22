@@ -1,6 +1,5 @@
 import './MarkdownView.css'
 import ImageSkeleton from '@/components/Post/ImageSkeleton'
-import CATEGORIES from '@/consts/CATEGORIES'
 import _Post from '@/types/_Post'
 import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
 import { FunctionComponent, useEffect } from 'react'
@@ -36,10 +35,7 @@ const MarkdownView: FunctionComponent<MarkdownViewProps> = ({
 
   return (
     <Markdown options={mdOption} className="markdown">
-      {post.content +
-        (post.category.toLowerCase() === CATEGORIES.ALGORITHM && post.language
-          ? '\n\n```' + post.language + '\n\n' + post.code + '```'
-          : '')}
+      {post.content}
     </Markdown>
   )
 }

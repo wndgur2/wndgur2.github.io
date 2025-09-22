@@ -71,58 +71,7 @@ const parsePost = async (data: string, url: string): Promise<_Post | null> => {
 
   post.github = BLOG_URL + url
 
-  if (post.category.toLowerCase() !== CATEGORIES.ALGORITHM) return post
-
-  // Get code
-  const codePath = url.split('/')
-  codePath.pop()
-
-  // Set language based on tags
-  post.tags.forEach((tag: string) => {
-    switch (tag.toLowerCase()) {
-      case 'c++':
-        post.language = 'cpp'
-        break
-      case 'java':
-        post.language = 'java'
-        break
-      case 'python':
-        post.language = 'py'
-        break
-      case 'javascript':
-        post.language = 'js'
-        break
-      case 'c':
-        post.language = 'c'
-        break
-      default:
-        break
-    }
-  })
-
-  if (!post.language) return post
-
-  let filename = codePath[codePath.length - 1].replaceAll(' ', '')
-  if (post.language === 'java') {
-    if (post.site === 'SWEA') filename = 'Solution'
-    else if (post.site === 'BOJ' || post.site === '백준') filename = 'Main'
-  }
-
-  codePath.push(`${filename}.${post.language}`)
-
-  const codeURL = BASE_URL + codePath.join('/')
-  post.code = await getCode(codeURL)
   return post
-}
-
-const getCode = async (url: string): Promise<string> => {
-  try {
-    const response = await fetch(url)
-    return await response.text()
-  } catch (err) {
-    console.error(err)
-    return ''
-  }
 }
 
 const getPostUrls = async () => {
@@ -178,7 +127,7 @@ export const getProjects = async (
   }
 }
 
-async function fetchRawData(url: string) {
+async function fetchRawData (url: string) {
   try {
     let response = await fetch(url)
     const text = await response.text()

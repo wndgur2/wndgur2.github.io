@@ -6,7 +6,6 @@
 
 .search-result>header {
     z-index: 1;
-    min-width: 32em;
     width: calc(100% - 1.2em);
     margin: 0.5em 0.6em 2em 0.6em;
     padding: 0.8em;
@@ -27,7 +26,6 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-
 }
 
 .search-result-text {

@@ -53,25 +53,29 @@ const PostDetail: FunctionComponent = () => {
         )}
       </main>
       <nav>
-        {nextPost && (
-          <Link to={`/post/${nextPost.title}`} className="clickable next">
+        {
+          <Link
+            to={nextPost ? `/post/${nextPost.title}` : '#'}
+            className={nextPost ? 'clickable next' : 'disabled next'}
+          >
             <small>&lt; next</small>
             <div>
-              <p>{nextPost.title}</p>
+              <p>{nextPost ? nextPost.title : '마지막 글이에요.'}</p>
             </div>
           </Link>
-        )}
-        <Link className="clickable list" to={`/search/@${post?.category}`}>
-          go to list
+        }
+        <Link to={`/search/@${post?.category}`} className="clickable list">
+          <div>목록</div>
         </Link>
-        {prevPost && (
-          <Link to={`/post/${prevPost.title}`} className="clickable prev">
-            <small>previous &gt;</small>
-            <div>
-              <p>{prevPost.title}</p>
-            </div>
-          </Link>
-        )}
+        <Link
+          to={prevPost ? `/post/${prevPost.title}` : '#'}
+          className={prevPost ? 'clickable prev' : 'disabled prev'}
+        >
+          <small>previous &gt; </small>
+          <div>
+            <p>{prevPost ? prevPost.title : '첫 번째 글이에요.'}</p>
+          </div>
+        </Link>
       </nav>
     </article>
   )

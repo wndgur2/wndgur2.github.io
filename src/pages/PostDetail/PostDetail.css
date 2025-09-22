@@ -64,22 +64,30 @@
 
 .post nav {
     margin-top: 2em;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.post nav a:not(.list) {
-    min-width: 18%;
+.post nav a {
+    min-width: calc(160px + 8%);
+    height: 108px;
     padding: 1.4em;
 
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     gap: 0.6em;
 
     border: 1px solid var(--border-color);
     background-color: var(--fg-color);
     border-radius: var(--radius);
+}
+
+.post nav .disabled {
+    pointer-events: none;
+    opacity: 0.5;
 }
 
 .post nav a>div {
@@ -96,8 +104,6 @@
 .post nav .list {
     align-items: center;
     text-align: center;
-    margin: 1em 0;
-    padding: 1em 0;
 }
 
 .post nav .next {
@@ -111,7 +117,8 @@
     }
 
     .post nav {
-        flex-flow: column nowrap;
+        height: fit-content;
+        flex-direction: column;
         gap: 0.5em;
     }
 
