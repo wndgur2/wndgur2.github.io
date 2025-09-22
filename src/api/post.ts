@@ -3,7 +3,7 @@ import CATEGORIES from '@/consts/CATEGORIES'
 import _Post from '@/types/_Post'
 
 const BASE_URL = 'https://raw.githubusercontent.com/wndgur2/BlogDB/main/'
-const BLOG_URL = 'https://wndgur2.github.io/BlogDB/tree/main/'
+const GITHUB_URL = 'https://github.com/wndgur2/BlogDB/tree/main/'
 
 export const getPosts = async (
   setPosts: React.Dispatch<React.SetStateAction<_Post[]>>
@@ -69,7 +69,7 @@ const parsePost = async (data: string, url: string): Promise<_Post | null> => {
   const content = data.match(/---\n[\s\S]+?\n---\n([\s\S]*)/)
   if (content) post.content = content[1]
 
-  post.github = BLOG_URL + url
+  post.github = GITHUB_URL + url
 
   return post
 }
