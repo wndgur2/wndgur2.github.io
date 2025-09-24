@@ -1,6 +1,6 @@
 import { useContext, useRef, type FunctionComponent } from 'react'
 
-import Logo from '@/assets/logo.svg'
+import Logo from '@/assets/logo.svg?react'
 
 import './Header.css'
 
@@ -36,7 +36,7 @@ const Header: FunctionComponent = () => {
   return (
     <div id='header' ref={headerRef}>
       <Link to={'/'} className='logo clickable small'>
-        <img src={Logo} alt='logo' />
+        <Logo />
       </Link>
       <Spacer />
       <SearchBar />
