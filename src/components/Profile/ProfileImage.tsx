@@ -1,4 +1,5 @@
-import { FunctionComponent, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, type FunctionComponent } from 'react'
+
 import './ProfileImage.css'
 
 const IMG_AMOUNT = 5
@@ -38,8 +39,16 @@ const ProfileImage: FunctionComponent = () => {
   }
 
   return (
-    <button className="profile-img-wrapper" onClick={profileClicked} ref={profileRef}>
-      <img className="profile-img" src={`/images/profile/${imgIndex}.jpeg`} alt="profile" />
+    <button
+      className='profile-img-wrapper'
+      onClick={profileClicked}
+      ref={profileRef}
+    >
+      <img
+        className='profile-img'
+        src={`/images/profile/${imgIndex}.jpeg`}
+        alt='profile'
+      />
     </button>
   )
 }

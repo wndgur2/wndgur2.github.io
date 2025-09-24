@@ -1,0 +1,83 @@
+{
+    "CatChess": {
+        "category": "project",
+        "title": "CatChess",
+        "description": "실시간 3D 웹 대전 게임",
+        "tags": [
+            "threeJS",
+            "nodeJS",
+            "express",
+            "javascript",
+            "CSS",
+            "pug"
+        ],
+        "date_started": "2023.12.01",
+        "date_finished": "2024.04.17",
+        "head_count": "1",
+        "role": "Full-stack",
+        "github": "https://github.com/wndgur2/CatChess"
+    },
+    "Memohub": {
+        "category": "project",
+        "title": "Memohub",
+        "description": "자유분방한 웹 메모장",
+        "tags": [
+            "next.js",
+            "mongoDB",
+            "javascript"
+        ],
+        "date_started": "2023.11.23",
+        "date_finished": "2023.11.29",
+        "head_count": "2",
+        "role": "Front-end",
+        "github": "https://github.com/wndgur2/memohub"
+    },
+    "wndgur2.github.io": {
+        "category": "project",
+        "title": "wndgur2.github.io",
+        "description": "깃허브 연동 블로그",
+        "tags": [
+            "react",
+            "recoil",
+            "git",
+            "markdown",
+            "CSS",
+            "typescript"
+        ],
+        "date_started": "2024.05.05",
+        "head_count": "1",
+        "role": "Front-end",
+        "github": "https://github.com/wndgur2/wndgur2.github.io"
+    },
+    "Cheese": {
+        "category": "project",
+        "title": "Cheese",
+        "description": "야외 포토 부스 서비스",
+        "tags": [
+            "next.js",
+            "CSS",
+            "javascript",
+            "webRTC"
+        ],
+        "date_started": "2023.01.01",
+        "date_finished": "2023.11.14",
+        "head_count": "3",
+        "role": "Front-end",
+        "github": "https://github.com/wndgur2/cheese"
+    },
+    "Reptopia": {
+        "category": "project",
+        "title": "Reptopia",
+        "description": "파충류 매니아를 위한 커뮤니티",
+        "tags": [
+            "angularJS",
+            "CSS",
+            "javascript"
+        ],
+        "date_started": "2020.12.15",
+        "date_finished": "2021.04.01",
+        "head_count": "1",
+        "role": "Front-end",
+        "github": "https://github.com/wndgur2/reptopia"
+    }
+}

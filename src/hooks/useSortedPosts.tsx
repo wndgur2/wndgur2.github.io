@@ -1,7 +1,11 @@
-import _Post from '@/types/_Post'
 import { useMemo } from 'react'
 
-export default function useSortedPosts(searchedPosts: _Post[], recentFirst: boolean) {
+import { type IPost } from '@/types'
+
+export default function useSortedPosts(
+  searchedPosts: IPost[],
+  recentFirst: boolean,
+) {
   return useMemo(
     () =>
       [...searchedPosts].sort((a, b) =>
@@ -10,9 +14,9 @@ export default function useSortedPosts(searchedPosts: _Post[], recentFirst: bool
             ? 1
             : -1
           : a.date_started > b.date_started
-          ? 1
-          : -1
+            ? 1
+            : -1,
       ),
-    [searchedPosts, recentFirst]
+    [searchedPosts, recentFirst],
   )
 }

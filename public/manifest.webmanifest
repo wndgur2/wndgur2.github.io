@@ -1,0 +1,15 @@
+{
+  "name": "ㅇㅈㅎ",
+  "short_name": "ㅇㅈㅎ",
+  "description": "이중혁 블로그",
+  "theme_color": "#3366ff",
+  "background_color": "#fafafa",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "logo.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ]
+}

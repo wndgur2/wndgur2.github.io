@@ -1,9 +1,11 @@
-import { FunctionComponent, useEffect } from 'react'
+import { useEffect, type FunctionComponent } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
+
 import './Home.css'
-import Profile from '@/components/Profile/Profile'
+
 import PostList from '@/components/Post/PostList'
 import ProjectList from '@/components/Post/ProjectList'
+import Profile from '@/components/Profile/Profile'
 
 const Home: FunctionComponent = () => {
   const router = useNavigate()
@@ -13,12 +15,12 @@ const Home: FunctionComponent = () => {
   useEffect(() => {
     if (!lost_url) return
     let paths = lost_url.split('/')
-    paths = paths.map((path) => encodeURIComponent(path))
+    paths = paths.map(path => encodeURIComponent(path))
     router(`/${paths.join('/')}`)
   }, [lost_url, router])
 
   return (
-    <div id="home">
+    <div id='home'>
       <Profile />
       <main>
         <ProjectList />

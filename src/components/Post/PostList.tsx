@@ -1,10 +1,11 @@
+import { type FunctionComponent } from 'react'
+import { useRecoilValue } from 'recoil'
+
 import CATEGORIES from '@/consts/CATEGORIES'
 import usePostsByCategory from '@/hooks/usePostsByCategory'
 import HomeCategory from '@/pages/Home/HomeCategory'
 import { postsAtom } from '@/recoil'
-import _Post from '@/types/_Post'
-import { FunctionComponent } from 'react'
-import { useRecoilValue } from 'recoil'
+import { type IPost } from '@/types'
 import Loading from '../common/Loading'
 import PostListItem from './PostListItem'
 
@@ -17,11 +18,11 @@ const PostList: FunctionComponent<PostListProps> = () => {
   return (
     <>
       {Object.keys(postsByCategory)
-        .filter((key) => key !== CATEGORIES.PROJECT)
+        .filter(key => key !== CATEGORIES.PROJECT)
         .map((category: any) => (
           <HomeCategory key={category} category={category}>
             {postsByCategory[category].length ? (
-              postsByCategory[category].map((post: _Post, i: number) => {
+              postsByCategory[category].map((post: IPost, i: number) => {
                 return <PostListItem key={i} post={post} />
               })
             ) : (

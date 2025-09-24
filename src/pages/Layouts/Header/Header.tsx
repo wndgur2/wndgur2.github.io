@@ -1,11 +1,15 @@
-import { FunctionComponent, useContext, useRef } from 'react'
-import { ReactComponent as Logo } from '@/assets/logo.svg'
+import { useContext, useRef, type FunctionComponent } from 'react'
+
+import Logo from '@/assets/logo.svg'
+
 import './Header.css'
-import ThemeToggler from './Theme/ThemeToggler'
-import SearchBar from './SearchBar/SearchBar'
-import { DeviceContext } from '../../../contexts/Device'
+
 import { Link } from 'react-router-dom'
+
 import Spacer from '@/components/common/Spacer'
+import { DeviceContext } from '../../../contexts/Device'
+import SearchBar from './SearchBar/SearchBar'
+import ThemeToggler from './Theme/ThemeToggler'
 
 const Header: FunctionComponent = () => {
   const { isDark, setIsDark } = useContext(DeviceContext)
@@ -15,7 +19,8 @@ const Header: FunctionComponent = () => {
   let lastScrollTop = 0
   window.addEventListener('scroll', () => {
     if (!headerRef.current) return
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop
+    const currentScroll =
+      window.pageYOffset || document.documentElement.scrollTop
     if (currentScroll > 0 && currentScroll > lastScrollTop) {
       headerRef.current.classList.remove('top')
     } else if (currentScroll === 0) {
@@ -29,15 +34,9 @@ const Header: FunctionComponent = () => {
   })
 
   return (
-    <div
-      id="header"
-      ref={headerRef}
-    >
-      <Link
-        to={'/'}
-        className="logo clickable small"
-      >
-        <Logo />
+    <div id='header' ref={headerRef}>
+      <Link to={'/'} className='logo clickable small'>
+        <img src={Logo} alt='logo' />
       </Link>
       <Spacer />
       <SearchBar />

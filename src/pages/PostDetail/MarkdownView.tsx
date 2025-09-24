@@ -1,13 +1,16 @@
 import './MarkdownView.css'
-import ImageSkeleton from '@/components/Post/ImageSkeleton'
-import _Post from '@/types/_Post'
-import Markdown, { MarkdownToJSX } from 'markdown-to-jsx'
-import { FunctionComponent, useEffect } from 'react'
+
+import { useEffect, type FunctionComponent } from 'react'
 import hljs from 'highlight.js'
+import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx'
+
+import ImageSkeleton from '@/components/Post/ImageSkeleton'
+import type { IPost } from '@/types'
+
 import 'highlight.js/styles/atom-one-dark.css'
 
 interface MarkdownViewProps {
-  post: _Post
+  post: IPost
   overrides?: MarkdownToJSX.Overrides
 }
 
@@ -27,14 +30,14 @@ const MarkdownView: FunctionComponent<MarkdownViewProps> = ({
   useEffect(() => {
     if (!post) return
     const nodes = document.querySelectorAll('pre code')
-    nodes.forEach((node) => {
+    nodes.forEach(node => {
       if (node.hasAttribute('data-highlighted')) return
       hljs.highlightElement(node as HTMLElement)
     })
   }, [post])
 
   return (
-    <Markdown options={mdOption} className="markdown">
+    <Markdown options={mdOption} className='markdown'>
       {post.content}
     </Markdown>
   )

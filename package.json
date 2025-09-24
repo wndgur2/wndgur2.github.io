@@ -3,61 +3,43 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@craco/craco": "^7.1.0",
-    "@emotion/react": "^11.13.3",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^22.10.1",
-    "highlight.js": "^11.9.0",
-    "html-react-parser": "^5.1.10",
-    "markdown-to-jsx": "^7.7.1",
-    "mini-css-extract-plugin": "^2.9.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-fast-marquee": "^1.6.4",
-    "react-icons": "^5.4.0",
-    "react-router-dom": "^7.0.2",
+    "@types/node": "^24.5.2",
+    "highlight.js": "^11.11.1",
+    "html-react-parser": "^5.2.6",
+    "markdown-to-jsx": "^7.7.13",
+    "prettier": "^3.6.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.9.1",
     "react-scripts": "^5.0.1",
     "recoil": "^0.7.7",
-    "swr": "^2.2.5",
-    "use-local-storage": "^3.0.0",
-    "web-vitals": "^2.1.4"
+    "swr": "^2.3.6",
+    "vite-tsconfig-paths": "^5.1.4"
   },
   "scripts": {
-    "start": "craco start",
-    "build": "craco build ..",
-    "test": "craco test",
-    "eject": "craco eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "dev": "vite --host --open",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "@types/react": "^18.3.18",
-    "@types/react-dom": "^18.0.0",
+    "@eslint/js": "^9.36.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@types/react-highlight": "^0.12.8",
-    "eslint": "^8.57.0",
+    "eslint": "^9.36.0",
     "eslint-config-react-app": "^7.0.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.21",
+    "path": "^0.12.7",
     "speed-measure-webpack-plugin": "^1.5.0",
-    "typescript": "^5.8.3",
-    "webpack": "^5.97.0"
+    "typescript": "~5.9.2",
+    "typescript-eslint": "^8.44.1",
+    "vite": "^7.1.7",
+    "vite-plugin-pwa": "^1.0.3",
+    "globals": "^16.3.0"
   }
 }

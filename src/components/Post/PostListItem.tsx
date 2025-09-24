@@ -1,19 +1,23 @@
-import { FunctionComponent } from 'react'
+import { type FunctionComponent } from 'react'
+
 import './PostListItem.css'
+
+import { type MarkdownToJSX } from 'markdown-to-jsx'
 import { Link } from 'react-router-dom'
-import _Post from '@/types/_Post'
-import _Algorithm from '@/types/_Algorithm'
+
 import CATEGORIES from '@/consts/CATEGORIES'
 import TIER_COLOR from '@/consts/TIER_COLOR'
 import MarkdownView from '@/pages/PostDetail/MarkdownView'
+import { type IAlgorithm, type IPost } from '@/types'
 import TagList from '../common/TagList'
-import { MarkdownToJSX } from 'markdown-to-jsx'
 
 interface PostListItemProps {
-  post: _Post
+  post: IPost
 }
 
-const PostListItem: FunctionComponent<PostListItemProps> = ({ post }: PostListItemProps) => {
+const PostListItem: FunctionComponent<PostListItemProps> = ({
+  post,
+}: PostListItemProps) => {
   const overrides: MarkdownToJSX.Overrides = {
     a: {
       component: (props: any) => <strong {...props} />,
@@ -23,14 +27,16 @@ const PostListItem: FunctionComponent<PostListItemProps> = ({ post }: PostListIt
     },
   }
   return (
-    <Link className="post-list-item link clickable" to={`/post/${post.title}`}>
-      <header className="content">
+    <Link className='post-list-item link clickable' to={`/post/${post.title}`}>
+      <header className='content'>
         <h3>
           <span>{post.title}</span>
           {post.site && <small>{post.site}</small>}
           {post.number && <small>{post.number}</small>}
           {post.level && (
-            <small style={{ color: TIER_COLOR[(post as _Algorithm).level] }}>{post.level}</small>
+            <small style={{ color: TIER_COLOR[(post as IAlgorithm).level] }}>
+              {post.level}
+            </small>
           )}
         </h3>
         <small>
@@ -38,7 +44,7 @@ const PostListItem: FunctionComponent<PostListItemProps> = ({ post }: PostListIt
           {post.category === CATEGORIES.PROJECT && `~ ${post.date_finished}`}
         </small>
       </header>
-      <section className="preview">
+      <section className='preview'>
         <MarkdownView post={post} overrides={overrides} />
       </section>
       <TagList tags={post.tags} />

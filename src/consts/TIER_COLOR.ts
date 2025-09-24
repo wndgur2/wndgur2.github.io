@@ -1,4 +1,4 @@
-let COLOR_MAP = {
+const COLOR_MAP = {
   //SWEA
   '모의 역량': '#AAA',
   D1: '#CC0',

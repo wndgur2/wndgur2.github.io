@@ -1,7 +1,7 @@
 // utils/sortedInsert.ts
-import _Post from '../types/_Post'
+import { type IPost } from '../types'
 
-export const sortedInsert = (posts: _Post[], newPost: _Post): _Post[] => {
+export const sortedInsert = (posts: IPost[], newPost: IPost): IPost[] => {
   // 이상한 post가 들어오거나 이미 있는 post면 그냥 반환
   if (!newPost || posts.find((post) => post.id === newPost.id)) return posts
 

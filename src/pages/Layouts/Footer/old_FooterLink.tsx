@@ -1,5 +1,12 @@
-import React, { FunctionComponent, useCallback, useEffect, useRef } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useRef,
+  type FunctionComponent,
+} from 'react'
+
 import './old_FooterLink.css'
+
 import { Link } from 'react-router-dom'
 
 interface OldFooterLinkProps {
@@ -8,7 +15,11 @@ interface OldFooterLinkProps {
   url: string
 }
 
-const OldFooterLink: FunctionComponent<OldFooterLinkProps> = ({ title, children, url }) => {
+const OldFooterLink: FunctionComponent<OldFooterLinkProps> = ({
+  title,
+  children,
+  url,
+}) => {
   const itemRef = useRef<HTMLAnchorElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const childrenRef = useRef<HTMLDivElement>(null)
@@ -37,7 +48,8 @@ const OldFooterLink: FunctionComponent<OldFooterLinkProps> = ({ title, children,
     //get heights
     if (!titleRef.current || !childrenRef.current || !itemRef.current) return
     titleHeightRef.current = titleRef.current.getBoundingClientRect().height
-    childrenHeightRef.current = childrenRef.current.getBoundingClientRect().height
+    childrenHeightRef.current =
+      childrenRef.current.getBoundingClientRect().height
     itemRef.current.style.height = `calc(${paddingRef.current * 2}em + ${titleHeightRef.current}px)`
 
     const current = itemRef.current
@@ -63,10 +75,7 @@ const OldFooterLink: FunctionComponent<OldFooterLinkProps> = ({ title, children,
       <div className='footer-link-title'>
         <h4 ref={titleRef}>{title} </h4>
       </div>
-      <div
-        className='footer-link-children'
-        ref={childrenRef}
-      >
+      <div className='footer-link-children' ref={childrenRef}>
         {children}
       </div>
     </Link>

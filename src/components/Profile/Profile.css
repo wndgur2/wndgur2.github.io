@@ -28,24 +28,3 @@
     justify-content: center;
     font-size: 1.1em;
 }
-
-.marquee-container {
-    z-index: -1;
-    position: absolute;
-    top: calc(11em + 5vw);
-    left: 0;
-    width: 100vw;
-}
-
-.in-marquee {
-    font-size: 1em;
-    font-weight: 700;
-    color: var(--accent-color);
-    letter-spacing: 0.1em;
-
-    transition: color 0.3s;
-}
-
-.profile-img-wrapper:hover~.marquee-container .in-marquee {
-    color: var(--action-color);
-}

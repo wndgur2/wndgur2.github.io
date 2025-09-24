@@ -1,11 +1,14 @@
-import { FunctionComponent, useEffect, useRef } from 'react'
+import { useEffect, useRef, type FunctionComponent } from 'react'
+
 import './HomeCategory.css'
-import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
+
 import { IoIosArrowForward } from 'react-icons/io'
+import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
+
 interface HomeCategoryProps {
   category: string
-  children: JSX.Element[]
+  children: React.ReactNode
 }
 
 const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
@@ -28,42 +31,55 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
     if (!postsRef.current) return
     if (!buttonsRef.current) return
     if (postsRef.current.scrollLeft === 0)
-      buttonsRef.current.querySelector('button:first-child')?.setAttribute('disabled', 'true')
-    else buttonsRef.current.querySelector('button:first-child')?.removeAttribute('disabled')
+      buttonsRef.current
+        .querySelector('button:first-child')
+        ?.setAttribute('disabled', 'true')
+    else
+      buttonsRef.current
+        .querySelector('button:first-child')
+        ?.removeAttribute('disabled')
 
     if (
-      postsRef.current.scrollLeft + postsRef.current.getBoundingClientRect().width >=
+      postsRef.current.scrollLeft +
+        postsRef.current.getBoundingClientRect().width >=
       postsRef.current.scrollWidth * 0.99
     )
-      buttonsRef.current.querySelector('button:last-child')?.setAttribute('disabled', 'true')
-    else buttonsRef.current.querySelector('button:last-child')?.removeAttribute('disabled')
+      buttonsRef.current
+        .querySelector('button:last-child')
+        ?.setAttribute('disabled', 'true')
+    else
+      buttonsRef.current
+        .querySelector('button:last-child')
+        ?.removeAttribute('disabled')
   }
 
   useEffect(() => {
     changeScrollButtons()
   }, [children])
 
-  if (!children || children.length === 0) return <></>
-
   return (
-    <section className="home-category">
+    <section className='home-category'>
       <header>
-        <Link className="link" to={`/search/@${category}`} state={{ search_text: `@${category}` }}>
+        <Link
+          className='link'
+          to={`/search/@${category}`}
+          state={{ searchKey: `@${category}` }}
+        >
           <header>
             <h1>{category[0].toUpperCase() + category.slice(1)}</h1>
             <IoIosArrowForward size={20} />
           </header>
         </Link>
-        <div className="scroll-buttons" ref={buttonsRef}>
-          <button className="icon" onClick={() => scrollPosts('backward')}>
+        <div className='scroll-buttons' ref={buttonsRef}>
+          <button className='icon' onClick={() => scrollPosts('backward')}>
             <RiArrowLeftSLine size={26} />
           </button>
-          <button className="icon" onClick={() => scrollPosts('forward')}>
+          <button className='icon' onClick={() => scrollPosts('forward')}>
             <RiArrowRightSLine size={26} />
           </button>
         </div>
       </header>
-      <ul className="posts" ref={postsRef} onScroll={changeScrollButtons}>
+      <ul className='posts' ref={postsRef} onScroll={changeScrollButtons}>
         {children}
       </ul>
     </section>

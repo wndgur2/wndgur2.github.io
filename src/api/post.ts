@@ -1,19 +1,19 @@
 import { sortedInsert } from '@/utils/sortedInsert'
 import CATEGORIES from '@/consts/CATEGORIES'
-import _Post from '@/types/_Post'
+import { type IPost } from '@/types'
 
 const BASE_URL = 'https://raw.githubusercontent.com/wndgur2/BlogDB/main/'
 const GITHUB_URL = 'https://github.com/wndgur2/BlogDB/tree/main/'
 
 export const getPosts = async (
-  setPosts: React.Dispatch<React.SetStateAction<_Post[]>>
+  setPosts: React.Dispatch<React.SetStateAction<IPost[]>>
 ): Promise<void> => {
   getPostUrls()
     .then((urls) => {
       urls.forEach(async (url: string) => {
         if (!url) return
         getPost(url).then((post) => {
-          setPosts((prevPosts) => sortedInsert(prevPosts, post as _Post))
+          setPosts((prevPosts) => sortedInsert(prevPosts, post as IPost))
         })
       })
     })
@@ -31,8 +31,8 @@ const getPost = async (url: string) => {
   }
 }
 
-const parsePost = async (data: string, url: string): Promise<_Post | null> => {
-  const post: _Post = {
+const parsePost = async (data: string, url: string): Promise<IPost | null> => {
+  const post: IPost = {
     id: url,
     category: CATEGORIES.OTHER,
     title: 'No title found.',
@@ -48,17 +48,15 @@ const parsePost = async (data: string, url: string): Promise<_Post | null> => {
 
   const headerData = header[1].split('\n')
   headerData.forEach((line: string) => {
-    let [key, value] = line.split(': ')
+    const [key, value] = line.split(': ')
     if (key && value)
       switch (key) {
         case 'tags':
           post.tags = value.replaceAll('"', '').replaceAll("'", '').split(', ').sort()
           break
         case 'date_started':
-          let dates = value.split('.')
-          dates = dates.map((date) => (date.length === 1 ? `0${date}` : date))
-          value = dates.join('.')
-          post.date_started = value
+          const dates = value.split('.').map((date) => (date.length === 1 ? `0${date}` : date))
+          post.date_started = dates.join('.')
           break
         default:
           post[key] = value
@@ -85,7 +83,7 @@ const getPostUrls = async () => {
 }
 
 export const getProjects = async (
-  setPosts: React.Dispatch<React.SetStateAction<_Post[]>>
+  setPosts: React.Dispatch<React.SetStateAction<IPost[]>>
 ): Promise<void> => {
   try {
     // 프로젝트 메타데이터 불러오기
@@ -93,7 +91,7 @@ export const getProjects = async (
     const data = await response.json()
 
     // Convert the metadata into posts
-    const projects: _Post[] = Object.values(data)
+    const projects: IPost[] = Object.values(data)
 
     // Process each post
     projects.map(async (project) => {
@@ -129,7 +127,7 @@ export const getProjects = async (
 
 async function fetchRawData (url: string) {
   try {
-    let response = await fetch(url)
+    const response = await fetch(url)
     const text = await response.text()
     return text
   } catch {

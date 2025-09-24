@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
-import _Post from '@/types/_Post'
+import { type IPost } from '@/types'
 
-export const postsAtom = atom<_Post[]>({
+export const postsAtom = atom<IPost[]>({
   key: 'postsAtom', // Unique ID for the atom
   default: [], // Initial state (empty array)
 })

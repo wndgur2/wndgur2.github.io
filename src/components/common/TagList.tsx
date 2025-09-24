@@ -1,5 +1,7 @@
-import { FunctionComponent } from 'react'
+import { type FunctionComponent } from 'react'
+
 import './TagList.css'
+
 import Tag from './Tag'
 
 interface TagListProps {
@@ -8,7 +10,7 @@ interface TagListProps {
 
 const TagList: FunctionComponent<TagListProps> = ({ tags }: TagListProps) => {
   return (
-    <ol className="tag-list">
+    <ol className='tag-list'>
       {tags.map((tag: string, index: number) => (
         <Tag key={index} tag={tag} />
       ))}

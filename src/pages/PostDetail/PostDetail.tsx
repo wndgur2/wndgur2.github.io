@@ -1,32 +1,34 @@
 import './PostDetail.css'
-import { FunctionComponent } from 'react'
-import { Link, useParams } from 'react-router-dom'
+
+import { type FunctionComponent } from 'react'
 import { IoLogoGithub } from 'react-icons/io'
+import { Link, useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
-import { postSelector } from '@/recoil'
+
 import Loading from '@/components/common/Loading'
-import useResetScroll from '@/hooks/useResetScroll'
-import IconLink from '@/components/IconLink/IconLink'
-import MarkdownView from './MarkdownView'
 import TagList from '@/components/common/TagList'
-import { nextPostSelector, prevPostSelector } from '@/recoil/selectors/postsSelector'
+import IconLink from '@/components/IconLink/IconLink'
+import useResetScroll from '@/hooks/useResetScroll'
+import { getPostByTitle } from '@/recoil'
+import { getNextPost, getPrevPost } from '@/recoil/selectors/postsSelector'
+import MarkdownView from './MarkdownView'
 
 const PostDetail: FunctionComponent = () => {
-  const title = useParams().post_title
-  const post = useRecoilValue(postSelector({ post_title: title }))
-  const prevPost = useRecoilValue(prevPostSelector({ post_title: title }))
-  const nextPost = useRecoilValue(nextPostSelector({ post_title: title }))
+  const title = useParams().title
+  const post = useRecoilValue(getPostByTitle({ title: title }))
+  const prevPost = useRecoilValue(getPrevPost({ title: title }))
+  const nextPost = useRecoilValue(getNextPost({ title: title }))
   useResetScroll(post)
 
   return (
-    <article className="post">
+    <article className='post'>
       <header>
-        <section className="post-title">
+        <section className='post-title'>
           {post && (
             <Link
               to={`/search/@${post.category}`}
-              className="minor post-category"
-              state={{ search_text: `@${post.category}` }}
+              className='minor post-category'
+              state={{ searchKey: `@${post.category}` }}
             >
               {post.category[0].toUpperCase() + post.category.slice(1)}
             </Link>
@@ -35,7 +37,7 @@ const PostDetail: FunctionComponent = () => {
           <TagList tags={post?.tags || []} />
         </section>
         {post && (
-          <section className="post-meta">
+          <section className='post-meta'>
             <IconLink icon={<IoLogoGithub size={42} />} url={post.github} />
             <small>
               {post.date_started} ~ {post.date_finished}
@@ -43,9 +45,9 @@ const PostDetail: FunctionComponent = () => {
           </section>
         )}
       </header>
-      <main className="post-content">
+      <main className='post-content'>
         {post === null ? (
-          <span>게시글 '{title}' 을 찾을 수 없어요.</span>
+          <span>게시글 &apos;{title}&apos; 을 찾을 수 없어요.</span>
         ) : post === undefined ? (
           <Loading />
         ) : (
@@ -64,7 +66,7 @@ const PostDetail: FunctionComponent = () => {
             </div>
           </Link>
         }
-        <Link to={`/search/@${post?.category}`} className="clickable list">
+        <Link to={`/search/@${post?.category}`} className='clickable list'>
           <div>목록</div>
         </Link>
         <Link
