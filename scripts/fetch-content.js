@@ -3,23 +3,21 @@ import { writeFile, mkdir } from 'node:fs/promises'
 import path from 'node:path'
 import matter from 'gray-matter'
 import { Octokit } from '@octokit/rest'
-import process from 'node:process'
 
 /** ===================== Config ===================== **/
-const BLOG_DB_REPO = process.env.BLOG_DB_REPO ?? 'wndgur2/BlogDB' // owner/repo
-const BLOG_DB_REF  = process.env.BLOG_DB_REF  ?? 'main'           // branch
-const POSTS_DIR    = process.env.POSTS_DIR    ?? 'posts'          // folder in BlogDB containing .md
+const BLOG_DB_REPO = process.env.BLOG_DB_REPO ?? 'wndgur2/BlogDB' // owner/repo for posts
+const BLOG_DB_REF  = process.env.BLOG_DB_REF  ?? 'main'
+const POSTS_DIR    = process.env.POSTS_DIR    ?? 'posts'          // subdir inside BlogDB
 
-const OWNER_FOR_PROJECTS = process.env.OWNER_FOR_PROJECTS ?? 'wndgur2' // owner whose repos contain projects
-const PROJECTS_META_PATH = process.env.PROJECTS_META_PATH ?? 'meta/projects.json' // in *this* site repo
-const OUT_DIR_PUBLIC      = 'public'
-const OUT_DIR_META        = path.join(OUT_DIR_PUBLIC, 'meta')
-const OUT_DIR_POSTS       = path.join(OUT_DIR_PUBLIC, 'posts')
+const PROJECTS_OWNER = process.env.PROJECTS_OWNER ?? 'wndgur2'    // whose public repos to scan
 
+const OUT_DIR_PUBLIC = 'public'
+const OUT_DIR_META   = path.join(OUT_DIR_PUBLIC, 'meta')
+const OUT_DIR_POSTS  = path.join(OUT_DIR_PUBLIC, 'posts')
 /** =================================================== **/
 
 const octokit = new Octokit({
-  auth: process.env.GH_PAT // set in Actions → Secrets → GH_PAT
+  auth: process.env.GH_PAT || process.env.GITHUB_TOKEN || undefined
 })
 
 async function ensureDirs() {
@@ -29,143 +27,163 @@ async function ensureDirs() {
 }
 
 function slugFromPath(p) {
-  return p
-    .replace(/^\/+/, '')
-    .replace(/\.[^/.]+$/, '')
-    .replace(/[\/\\]/g, '-')
-    .toLowerCase()
+  return p.replace(/^\/+/, '').replace(/\.[^/.]+$/, '').replace(/[\/\\]/g, '-').toLowerCase()
 }
 
-/**
- * Recursively list all files under a directory in a repo/ref
- */
-async function listRepoFilesRecursive({ owner, repo, ref, dir }) {
-  // Use Git Trees API for recursion
-  const { data: treeData } = await octokit.git.getTree({
+function safeBlobUrl({ owner, repo, ref, path: p }) {
+  const encoded = p.split('/').map(encodeURIComponent).join('/')
+  return `https://github.com/${owner}/${repo}/blob/${ref}/${encoded}`
+}
+
+/* ===================== Posts ===================== */
+
+async function listTreeRecursive(owner, repo, ref) {
+  const { data } = await octokit.git.getTree({
     owner, repo, tree_sha: ref, recursive: 'true'
   })
-
-  // Filter tree entries inside dir
-  const prefix = dir.endsWith('/') ? dir : `${dir}/`
-  return treeData.tree
-    .filter((t) => t.type === 'blob' && t.path.startsWith(prefix))
-    .map((t) => t.path)
+  return data.tree
 }
 
-/**
- * Get a file's text content from a repo
- */
-async function getFileText({ owner, repo, path: filePath, ref }) {
+async function getFileText(owner, repo, filePath, ref) {
   const { data } = await octokit.repos.getContent({ owner, repo, path: filePath, ref })
-  // For blobs, content is base64-encoded
-  // data can be array (for dir) or object (for file)
-  if (Array.isArray(data)) throw new Error(`Path is a directory: ${filePath}`)
-  const buff = Buffer.from(data.content, 'base64')
-  return buff.toString('utf-8')
+  if (Array.isArray(data)) return null // directory
+  return Buffer.from(data.content, 'base64').toString('utf8')
 }
 
-/**
- * Fetch all posts: parse frontmatter + content
- */
+async function findPostFiles(owner, repo, ref) {
+  const tree = await listTreeRecursive(owner, repo, ref)
+  const prefix = POSTS_DIR.endsWith('/') ? POSTS_DIR : `${POSTS_DIR}/`
+  const files = tree
+    .filter(t => t.type === 'blob' && t.path.startsWith(prefix) && /\.(md|mdx)$/i.test(t.path))
+    .map(t => t.path)
+  files.sort((a, b) => a.localeCompare(b))
+  return files
+}
+
 async function fetchPosts() {
   const [owner, repo] = BLOG_DB_REPO.split('/')
-  const files = await listRepoFilesRecursive({ owner, repo, ref: BLOG_DB_REF, dir: POSTS_DIR })
-  const mdFiles = files.filter((p) => p.toLowerCase().endsWith('.md') || p.toLowerCase().endsWith('.mdx'))
+  const files = await findPostFiles(owner, repo, BLOG_DB_REF)
 
   const posts = []
-  for (const p of mdFiles) {
-    const raw = await getFileText({ owner, repo, path: p, ref: BLOG_DB_REF })
+  for (const p of files) {
+    const raw = await getFileText(owner, repo, p, BLOG_DB_REF)
+    if (!raw) continue
+
     const { data: fm, content } = matter(raw)
 
-    const id = p // keep original path as ID
     const slug = slugFromPath(p)
-    const htmlUrl = `https://github.com/${owner}/${repo}/blob/${BLOG_DB_REF}/${encodeURIComponent(p)}`
+    const htmlUrl = safeBlobUrl({ owner, repo, ref: BLOG_DB_REF, path: p })
 
-    // Map to your IPost shape (adjust as needed)
-    const post = {
-      id,
-      category: fm.category ?? 'OTHER',
+    const tags =
+      Array.isArray(fm.tags) ? [...fm.tags]
+      : typeof fm.tags === 'string'
+        ? fm.tags.replaceAll('"','').replaceAll("'",'').split(',').map(s => s.trim()).filter(Boolean)
+        : []
+
+    posts.push({
+      id: p,
+      category: fm.category ?? 'project', // change to 'OTHER' if you prefer
       title: fm.title ?? 'No title found.',
-      content, // raw markdown body (no frontmatter)
-      tags: Array.isArray(fm.tags)
-        ? [...fm.tags].sort()
-        : typeof fm.tags === 'string'
-          ? fm.tags.replaceAll('"','').replaceAll("'",'').split(',').map(s=>s.trim()).filter(Boolean).sort()
-          : [],
+      content,
+      tags: tags.sort(),
       date_started: fm.date_started ?? 'No date found.',
       github: htmlUrl,
       preview: fm.preview ?? '',
       thumbnail: fm.thumbnail ?? undefined
-    }
+    })
 
-    posts.push(post)
-
-    // Also write the raw markdown body for lazy loading (optional)
     await writeFile(path.join(OUT_DIR_POSTS, `${slug}.md`), content, 'utf8')
   }
 
-  // Sort descending by date_started (fallback title)
-  posts.sort((a, b) => String(b.date_started).localeCompare(String(a.date_started)) || String(b.title).localeCompare(String(a.title)))
-  await writeFile(path.join(OUT_DIR_META, 'posts.json'), JSON.stringify(posts, null, 2), 'utf8')
+  // Sort newest-first by date_started (expects YYYY.MM.DD or similar)
+  posts.sort((a, b) =>
+    String(b.date_started).localeCompare(String(a.date_started)) ||
+    String(b.title).localeCompare(String(a.title))
+  )
 
+  await writeFile(path.join(OUT_DIR_META, 'posts.json'), JSON.stringify(posts, null, 2), 'utf8')
   return posts
 }
 
-/**
- * Read projects meta from the site repo and enrich with README content from each repo.
- * Assumes each entry has { title, ... } where title === repo name.
- */
-import { readFile } from 'node:fs/promises'
-async function fetchProjects() {
-  // Load the curated list from your site repo
-  let projectsMeta = []
+/* ===================== Projects (scan all public repos) ===================== */
+
+async function fetchReadme(owner, repo) {
   try {
-    const raw = await readFile(PROJECTS_META_PATH, 'utf8')
-    const parsed = JSON.parse(raw)
-    // Support { "<key>": {...} } or [ {...} ]
-    projectsMeta = Array.isArray(parsed) ? parsed : Object.values(parsed)
-  } catch (e) {
-    console.warn(`Could not read ${PROJECTS_META_PATH}. Falling back to empty list.`)
-    projectsMeta = []
+    const { data } = await octokit.repos.getReadme({ owner, repo })
+    return Buffer.from(data.content, 'base64').toString('utf8')
+  } catch {
+    // If no README, return null and let caller skip or mark unavailable
+    return null
   }
-
-  const owner = OWNER_FOR_PROJECTS
-
-  const enriched = []
-  for (const project of projectsMeta) {
-    const repo = project.title // or project.repo if you have a different field
-    let readme = ''
-    try {
-      const { data } = await octokit.repos.getReadme({ owner, repo })
-      const buff = Buffer.from(data.content, 'base64')
-      readme = buff.toString('utf8')
-    } catch {
-      readme = 'This project is not available.'
-    }
-
-    enriched.push({
-      ...project,
-      id: project.id ?? repo,
-      content: readme,
-      thumbnail: project.thumbnail ?? `/images/${String(repo).toLowerCase()}.jpeg`
-    })
-  }
-
-  // Optional: sort by a field you maintain (e.g., date or pinned order)
-  await writeFile(path.join(OUT_DIR_META, 'projects.json'), JSON.stringify(enriched, null, 2), 'utf8')
-  return enriched
 }
 
-/** Main runner */
-async function main() {
-  if (!process.env.GH_PAT) {
-    console.error('GH_PAT is missing. Add it as a GitHub Actions secret and expose to this job.')
-    process.exit(1)
+async function listAllPublicRepos(user) {
+  // paginate through all public repos for the user
+  const repos = await octokit.paginate(octokit.repos.listForUser, {
+    username: user,
+    per_page: 100
+  })
+  // only public and not archived/fork? adjust to taste
+  return repos.filter(r => !r.private)
+}
+
+async function fetchProjects() {
+  const repos = await listAllPublicRepos(PROJECTS_OWNER)
+
+  const projectsObj = {}
+
+  for (const r of repos) {
+    const owner = r.owner.login
+    const repo  = r.name
+
+    // Read README (Octokit handles README.md vs readme.md)
+    const readme = await fetchReadme(owner, repo)
+    if (!readme) {
+      // If you want to include repos without README, keep this block and set a placeholder
+      // For now, skip repos that don't have README
+      continue
+    }
+
+    // Parse front-matter from README
+    const { data: fm, content } = matter(readme)
+
+    // Build fields (merge front-matter over sensible defaults)
+    const tags =
+      Array.isArray(fm.tags) ? [...fm.tags]
+      : typeof fm.tags === 'string'
+        ? fm.tags.replaceAll('"','').replaceAll("'",'').split(',').map(s => s.trim()).filter(Boolean)
+        : (Array.isArray(r.topics) ? r.topics : [])
+
+    const project = {
+      id: repo,
+      category: fm.category ?? 'project',
+      title: fm.title ?? repo,
+      description: fm.description ?? r.description ?? '',
+      tags: tags,
+      date_started: fm.date_started ?? (r.created_at ? new Date(r.created_at).toISOString().slice(0,10).replace(/-/g,'.') : 'No date found.'),
+      date_finished: fm.date_finished ?? '',
+      head_count: fm.head_count ?? '',
+      role: fm.role ?? '',
+      github: r.html_url,
+      content, // README body without front-matter
+      thumbnail: fm.thumbnail ?? `/images/${repo.toLowerCase()}.jpeg`
+    }
+
+    // Keep your previous shape: keyed by repo name
+    projectsObj[repo] = project
   }
+
+  await writeFile(path.join(OUT_DIR_META, 'projects.json'), JSON.stringify(projectsObj, null, 2), 'utf8')
+  return projectsObj
+}
+
+/* ===================== Main ===================== */
+
+async function main() {
   await ensureDirs()
   await fetchPosts()
   await fetchProjects()
-  console.log('Static content generated under public/meta and public/posts.')
+  console.log('✅ Static content generated under public/meta and public/posts')
 }
 
 main().catch((e) => {
