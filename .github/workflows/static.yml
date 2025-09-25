@@ -10,9 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+# Cancel older runs so Pages never blocks on "in progress deployment"
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
@@ -25,39 +26,39 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 1) Install pnpm (per official guidance)
+      # pnpm (per official guidance)
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
 
-      # 2) Setup Node and enable pnpm cache
+      # Node + cache for pnpm store
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
 
-      # 3) Install deps (pnpm CI defaults to frozen lockfile on CI; explicit flag is fine)
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 4) Generate static content with Octokit (build-time fetch)
+      # Build-time fetch:
+      # - Scans wndgur2/BlogDB posts/**.md|mdx
+      # - Scans ALL public repos under wndgur2, parses README frontmatter
+      # Outputs to public/meta/* and public/posts/*
       - name: Generate static content (Octokit)
         env:
+          # Prefer GH_PAT for higher rate limits/private repos (optional)
           GH_PAT: ${{ secrets.GH_PAT }}
+          PROJECTS_OWNER: wndgur2
           BLOG_DB_REPO: wndgur2/BlogDB
           BLOG_DB_REF: main
           POSTS_DIR: posts
-          OWNER_FOR_PROJECTS: wndgur2
-          PROJECTS_META_PATH: meta/projects.json
         run: pnpm exec node scripts/fetch-content.js
 
-      # 5) Build your site (Vite, etc.)
       - name: Build site
         run: pnpm build
 
-      # 6) Deploy to GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
