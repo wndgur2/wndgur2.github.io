@@ -11,7 +11,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: 'pages'
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -25,21 +25,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # 1) Install pnpm (per official guidance)
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      # 2) Setup Node and enable pnpm cache
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'pnpm'            # enables pnpm cache if lockfile is pnpm-lock.yaml
+          cache: pnpm
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 9               # or your exact version
-
+      # 3) Install deps (pnpm CI defaults to frozen lockfile on CI; explicit flag is fine)
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # If your fetch script uses ESM `import`, make sure package.json has: "type": "module"
+      # 4) Generate static content with Octokit (build-time fetch)
       - name: Generate static content (Octokit)
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
@@ -50,9 +53,11 @@ jobs:
           PROJECTS_META_PATH: meta/projects.json
         run: pnpm exec node scripts/fetch-content.js
 
+      # 5) Build your site (Vite, etc.)
       - name: Build site
         run: pnpm build
 
+      # 6) Deploy to GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
