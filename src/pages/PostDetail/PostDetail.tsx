@@ -66,8 +66,10 @@ const PostDetail: FunctionComponent = () => {
             </div>
           </Link>
         }
-        <Link to={`/search/@${post?.category}`} className='clickable list'>
-          <div>목록</div>
+        <Link to={`/search/@${post?.category}`} className='clickable list'
+          state={{ searchKey: `@${post?.category}` }}
+        >
+          <div>목록으로</div>
         </Link>
         <Link
           to={prevPost ? `/post/${prevPost.title}` : '#'}
