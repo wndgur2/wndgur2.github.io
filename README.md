@@ -1,7 +1,3 @@
----
-blog: true
----
-
 # [leejunghyeok](https://wndgur2.github.io/)
 
 개발자로서의 이중혁을 담은 개인 블로그

@@ -1,1 +1,23 @@
-[]
+[
+  {
+    "id": "wndgur2.github.io",
+    "category": "project",
+    "title": "wndgur2.github.io",
+    "description": "기술 블로그 ㅇㅈㅎ",
+    "tags": [
+      "blog",
+      "github",
+      "github-action",
+      "ljh",
+      "react",
+      "typescript"
+    ],
+    "date_started": "2024.05.05",
+    "date_finished": "",
+    "head_count": "",
+    "role": "",
+    "github": "https://github.com/wndgur2/wndgur2.github.io",
+    "content": "\n# [leejunghyeok](https://wndgur2.github.io/)\n\n개발자로서의 이중혁을 담은 개인 블로그\n\n<img width=\"1440\" alt=\"Screenshot 2024-12-15 at 13 20 18\" src=\"https://github.com/user-attachments/assets/6dccf12f-022c-47b8-9b0f-622027850828\" />\n\n## 목표\n\n1. 흥미로운 개발자 블로그\n\n2. 데이터베이스 통합\n\n<br>\n\n## 1\\. 흥미로운 개발자 블로그\n\n- Interactive/dynamic elements\n  - 마우스 이벤트 애니메이션 ✅\n  - 스크롤 이벤트 애니메이션\n  - 다양한 clickable elements\n\n- 굉장한 UX\n  - CSS의 media query, flex를 이용한 반응형 웹 ✅\n  - ReactJs로 SPA 구현 -> routing 속도 개선 ✅\n  - Light/Dark theme 제공 ✅\n  - Data Fetch 비동기 처리 ✅\n  - Performance\n    - Binary Search로 log(N)에 posts 날짜 내림차순 삽입 연산 ✅\n    - useCallback() hook으로 리랜더링 시 중복 선언 방지 ✅\n\n- 기능\n  - 검색\n    - 필터링\n      - 태그 ✅\n      - 카테고리 ✅\n      - 내용 ✅\n\n    - 정렬\n      - 날짜 오름/내림차순 ✅\n\n- 좋은 글\n  - 각 프로젝트의 MD파일 작성 (목적, 해결 과정, 사진)\n  - 공부한 내용 뿐만 아니라, 그때 느낀 인상, 아이디어 기록. 나중에 잘 와닿을 수\n    있도록.\n  - 컴퓨터 지식을 공부하며 인터넷에서 찾을 수 없었던 혹은 찾기 힘들었던 자료,\n    인사이트 공유.\n\n<br>\n\n## 2\\. 데이터베이스 통합을 위해\n\n- Github 데이터베이스에 `Post` 저장 ✅\n- <https://raw.githubusercontent.com> 로부터 data fetch ✅\n- `Shell script`와 `Github action`으로 `Post` metadata 관리 자동화 (목록과 urls)\n  ✅\n- Post의 metadata 정의하고, 각 MD 파일에 헤더 주석으로 작성\n\n> [깃허브 프로필](https://github.com/wndgur2)\n\n> [백준](https://www.acmicpc.net/user/wndgur2)\n\n> [SWExpertAcademy](https://swexpertacademy.com/main/userpage/home/userHome.do?userId=AY9bT9Ma97cDFAS1)\n",
+    "thumbnail": "/images/wndgur2.github.io.jpeg"
+  }
+]

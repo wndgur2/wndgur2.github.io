@@ -174,10 +174,7 @@ async function fetchProjects() {
 
     const { data: fm, content } = matter(readme)
 
-    console.log(fm)
-    console.log(fm.blog)
-
-    if (!fm.blog) continue // skip repos without blog: true in front-matter
+    if (!r.topics.some(t => t.toLowerCase() === 'ljh')) continue
 
     const tags = Array.isArray(fm.tags)
       ? [...fm.tags]
