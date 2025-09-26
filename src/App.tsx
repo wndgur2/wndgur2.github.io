@@ -2,7 +2,6 @@ import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { useSetRecoilState } from 'recoil'
 
-import { DeviceContext } from '@/contexts/ThemeContext'
 import Home from '@/pages/Home/Home'
 import Layout from '@/pages/Layouts/Layout'
 import NoPage from '@/pages/NoPage'
