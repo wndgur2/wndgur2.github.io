@@ -114,7 +114,8 @@ async function fetchPosts() {
       thumbnail: fm.thumbnail ?? undefined,
     })
 
-    await writeFile(path.join(OUT_DIR_POSTS, `${slug}.md`), content, 'utf8')
+    // Optionally write individual post files under public/posts
+    // await writeFile(path.join(OUT_DIR_POSTS, `${slug}.md`), content, 'utf8')
   }
 
   // Sort newest-first by date_started (expects YYYY.MM.DD or similar)

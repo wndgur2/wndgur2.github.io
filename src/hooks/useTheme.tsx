@@ -1,13 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+
+import { ThemeContext } from '@/contexts/ThemeProvider'
 
 export default function useTheme() {
-  const [isDark, setIsDark] = useState(localStorage.getItem('theme') !== 'light')
-
-  useEffect(() => {
-    const link = document.querySelector('link[rel="icon"]')
-    if (!link) return
-    link.setAttribute('href', `/favicon-${isDark ? 'dark' : 'light'}.ico`)
-  }, [isDark])
-
-  return { isDark, setIsDark }
+  const ctx = useContext(ThemeContext)
+  if (!ctx) {
+    throw new Error('useModal must be used within ModalProvider')
+  }
+  return ctx
 }

@@ -1,4 +1,4 @@
-import { useContext, useRef, type FunctionComponent } from 'react'
+import { useRef, type FunctionComponent } from 'react'
 
 import Logo from '@/assets/logo.svg?react'
 
@@ -7,12 +7,12 @@ import './Header.css'
 import { Link } from 'react-router-dom'
 
 import Spacer from '@/components/common/Spacer'
-import { DeviceContext } from '../../../contexts/Device'
+import useTheme from '@/hooks/useTheme'
 import SearchBar from './SearchBar/SearchBar'
 import ThemeToggler from './Theme/ThemeToggler'
 
 const Header: FunctionComponent = () => {
-  const { isDark, setIsDark } = useContext(DeviceContext)
+  const { isDark, setIsDark } = useTheme()
   const headerRef = useRef<HTMLDivElement>(null)
 
   // hide header when scrolling down
@@ -45,7 +45,6 @@ const Header: FunctionComponent = () => {
         isChecked={isDark}
         handleChange={() => {
           setIsDark(!isDark)
-          localStorage.setItem('theme', isDark ? 'light' : 'dark')
         }}
       />
     </div>
