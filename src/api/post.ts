@@ -1,6 +1,7 @@
 // import { sortedInsert } from '@/utils/sortedInsert'
 // import CATEGORIES from '@/consts/CATEGORIES'
 import { type IPost } from '@/types'
+import { sortedInsert } from '@/utils/sortedInsert'
 
 // const BASE_URL = 'https://raw.githubusercontent.com/wndgur2/BlogDB/main/'
 // const GITHUB_URL = 'https://github.com/wndgur2/BlogDB/tree/main/'
@@ -10,10 +11,9 @@ export async function getPosts (setPosts: React.Dispatch<React.SetStateAction<IP
     const res = await fetch('/meta/posts.json')
     const posts: IPost[] = await res.json()
     // If you want one-by-one inserts (keep your animation), otherwise just set once
-    // posts.forEach((p) => {
-    //   setPosts((prev) => sortedInsert(prev, p))
-    // })
-    setPosts(posts)
+    posts.forEach((p) => {
+      setPosts((prev) => sortedInsert(prev, p))
+    })
   } catch (e) {
     console.error('Failed to load posts.json', e)
   }
@@ -23,11 +23,10 @@ export async function getProjects (setPosts: React.Dispatch<React.SetStateAction
   try {
     const res = await fetch('/meta/projects.json')
     const projects: IPost[] = await res.json()
-    // projects.forEach((project) => {
-    //   // project.content already inlined at build
-    //   setPosts((prev) => sortedInsert(prev, project))
-    // })
-    setPosts(projects)
+    console.log(projects)
+    projects.forEach((project) => {
+      setPosts((prev) => sortedInsert(prev, project))
+    })
   } catch (e) {
     console.error('Failed to load projects.json', e)
   }

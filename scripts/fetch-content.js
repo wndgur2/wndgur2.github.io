@@ -79,11 +79,11 @@ async function fetchPosts() {
       : typeof fm.tags === 'string'
         ? fm.tags.replaceAll('"','').replaceAll("'",'').split(',').map(s => s.trim()).filter(Boolean)
         : []
-
+    if(!fm.title) continue; // skip posts without title
     posts.push({
       id: p,
       category: fm.category ?? 'project', // change to 'OTHER' if you prefer
-      title: fm.title ?? 'No title found.',
+      title: fm.title,
       content,
       tags: tags.sort(),
       date_started: fm.date_started ?? 'No date found.',
@@ -107,75 +107,86 @@ async function fetchPosts() {
 
 /* ===================== Projects (scan all public repos) ===================== */
 
+function yyyymmddFromDotDate(dot) {
+  // "2024.05.01" -> "20240501" for stable lexicographic sort
+  if (typeof dot !== 'string') return '';
+  const parts = dot.split('.');
+  if (parts.length < 3) return '';
+  const [y, m, d] = parts;
+  return `${y.padStart(4,'0')}${m.padStart(2,'0')}${d.padStart(2,'0')}`;
+}
+
 async function fetchReadme(owner, repo) {
   try {
-    const { data } = await octokit.repos.getReadme({ owner, repo })
-    return Buffer.from(data.content, 'base64').toString('utf8')
+    const { data } = await octokit.repos.getReadme({ owner, repo });
+    return Buffer.from(data.content, 'base64').toString('utf8');
   } catch {
-    // If no README, return null and let caller skip or mark unavailable
-    return null
+    return null; // skip repos without README
   }
 }
 
 async function listAllPublicRepos(user) {
-  // paginate through all public repos for the user
   const repos = await octokit.paginate(octokit.repos.listForUser, {
     username: user,
-    per_page: 100
-  })
-  // only public and not archived/fork? adjust to taste
-  return repos.filter(r => !r.private)
+    per_page: 100,
+  });
+  return repos.filter(r => !r.private);
 }
 
 async function fetchProjects() {
-  const repos = await listAllPublicRepos(PROJECTS_OWNER)
+  const repos = await listAllPublicRepos(PROJECTS_OWNER);
 
-  const projectsObj = {}
+  const projects = [];
 
   for (const r of repos) {
-    const owner = r.owner.login
-    const repo  = r.name
+    const owner = r.owner.login;
+    const repo  = r.name;
 
-    // Read README (Octokit handles README.md vs readme.md)
-    const readme = await fetchReadme(owner, repo)
-    if (!readme) {
-      // If you want to include repos without README, keep this block and set a placeholder
-      // For now, skip repos that don't have README
-      continue
-    }
+    const readme = await fetchReadme(owner, repo);
+    if (!readme) continue; // only include repos that have a README
 
-    // Parse front-matter from README
-    const { data: fm, content } = matter(readme)
+    const { data: fm, content } = matter(readme);
 
-    // Build fields (merge front-matter over sensible defaults)
     const tags =
-      Array.isArray(fm.tags) ? [...fm.tags]
-      : typeof fm.tags === 'string'
+      Array.isArray(fm.tags) ? [...fm.tags] :
+      typeof fm.tags === 'string'
         ? fm.tags.replaceAll('"','').replaceAll("'",'').split(',').map(s => s.trim()).filter(Boolean)
-        : (Array.isArray(r.topics) ? r.topics : [])
+        : (Array.isArray(r.topics) ? r.topics : []);
 
-    const project = {
+    // Prefer front-matter dates; fallback to repo created_at in YYYY.MM.DD
+    const createdDot = r.created_at
+      ? new Date(r.created_at).toISOString().slice(0,10).replace(/-/g,'.')
+      : 'No date found.';
+
+    const dateStarted = fm.date_started ?? createdDot;
+
+    projects.push({
       id: repo,
       category: fm.category ?? 'project',
       title: fm.title ?? repo,
       description: fm.description ?? r.description ?? '',
-      tags: tags,
-      date_started: fm.date_started ?? (r.created_at ? new Date(r.created_at).toISOString().slice(0,10).replace(/-/g,'.') : 'No date found.'),
+      tags,
+      date_started: dateStarted,
       date_finished: fm.date_finished ?? '',
       head_count: fm.head_count ?? '',
       role: fm.role ?? '',
       github: r.html_url,
       content, // README body without front-matter
-      thumbnail: fm.thumbnail ?? `/images/${repo.toLowerCase()}.jpeg`
-    }
-
-    // Keep your previous shape: keyed by repo name
-    projectsObj[repo] = project
+      thumbnail: fm.thumbnail ?? `/images/${repo.toLowerCase()}.jpeg`,
+    });
   }
 
-  await writeFile(path.join(OUT_DIR_META, 'projects.json'), JSON.stringify(projectsObj, null, 2), 'utf8')
-  return projectsObj
+  // Sort newest first by date_started (dot format), then title
+  projects.sort((a, b) => {
+    const ad = yyyymmddFromDotDate(a.date_started);
+    const bd = yyyymmddFromDotDate(b.date_started);
+    return (bd.localeCompare(ad)) || String(a.title).localeCompare(String(b.title));
+  });
+
+  await writeFile(path.join(OUT_DIR_META, 'projects.json'), JSON.stringify(projects, null, 2), 'utf8');
+  return projects;
 }
+
 
 /* ===================== Main ===================== */
 
