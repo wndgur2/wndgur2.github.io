@@ -634,5 +634,19 @@
     "date_started": "2023.07.07",
     "github": "https://github.com/wndgur2/BlogDB/blob/main/posts/algorithm/%EB%A7%88%EB%B2%95%EC%82%AC_%EC%83%81%EC%96%B4%EC%99%80_%EB%B8%94%EB%A6%AC%EC%9E%90%EB%93%9C.md",
     "preview": ""
+  },
+  {
+    "id": "posts/study/js_heap.md",
+    "category": "Study",
+    "title": "JS로 힙(heap) 구현하기",
+    "date_started": "2025.12.02",
+    "tags": [
+      "heap",
+      "data-structure",
+      "javascript",
+      "priority-queue"
+    ],
+    "github": "https://github.com/wndgur2/BlogDB/blob/main/posts/study/js_heap.md",
+    "preview": ""
   }
 ]
