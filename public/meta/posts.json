@@ -1,5 +1,35 @@
 [
   {
+    "id": "posts/study/js_deque.md",
+    "category": "Study",
+    "title": "JS로 덱(Double-ended queue) 구현하기",
+    "content": "\n# Double-ended queue\n\nDouble-ended queue(이하 Deque)는 한 방향으로만 입력과 출력이 가능한 Queue를 확장하여 양방향에서 입출력이 가능한 리스트 구조를 말한다.\n\n![deque](<img width=\"451\" height=\"306\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe74c9da-924a-4153-a3bb-681e16fef3ab\" />)\n\n## javascript로 왜 Deque를 구현해야할까?\n\njs에서 Array의 입출력은 주로 `push()`, `pop()`, `unshift()`, `shift()`를 사용한다.\n\n여기서 `push()`와 `pop()`는 배열의 마지막 원소를 추가/제거하는 함수이고, `shift()`, `unshift()`는 배열의 맨 앞 원소를 추가/제거한다.\n\n각 함수의 시간 복잡도는 아래와 같이 구현되어 있다.\n\n| 함수        | 시간복잡도 |\n| ----------- | ---------- |\n| `push()`    | O(1)       |\n| `pop()`     | O(1)       |\n| `unshift()` | O(N)       |\n| `shift()`   | O(N)       |\n\n따라서, DFS/BFS와 같이 `shift()`나 `unshift()`를 통해 원소 입출력 순서를 제어해야하는 경우, 시간 복잡도가 O(N)으로 늘어나게 된다.\n\n이러한 경우, deque를 구현하면 앞 원소 입출력을 O(1)에 해결할 수 있다.\n\ndeque를 구현할 여러 방법이 있겠지만 나는 다양한 활용 여지가 있는 Doubly-Linked-List로 구현해보았다.\n\n# 이중 연결 리스트\n\n이중연결리스트는 각 노드가 앞 노드와 뒷 노드를 참조하여 구현한다.\n\n<img width=\"640\" height=\"242\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/38fe747b-e014-47f6-b348-9f7a0d9f8e94\" />\n\n이중 연결 리스트의 장점은 앞 뒤 노드의 입출력 뿐만 아니라 리스트의 분할이나 병합을 O(1)만에 수행할 수 있다. 이 때문에 시간 복잡도를 고려해야하는 다양한 문제에서 활용된다.\n\n하지만 원소 조회가 O(N)이라는 치명적 단점을 항상 염두하고 사용해야한다.\n\n# Javscript 코드\n\n```js\nclass Deque {\n  head = null\n  tail = null\n  sum = 0\n  size = 0\n\n  pop() {\n    if (this.size === 0) return null\n\n    const res = this.head\n\n    this.head = res.next\n    if (this.head) {\n      this.head.prev = null\n    } else {\n      this.tail = null\n    }\n\n    this.sum -= res.value\n    this.size--\n\n    return res\n  }\n\n  push(node) {\n    if (this.size === 0) {\n      this.head = node\n      this.tail = node\n    } else {\n      this.tail.next = node\n      node.prev = this.tail\n      this.tail = node\n    }\n    this.sum += node.value\n    this.size++\n  }\n}\n\nclass Node {\n  prev = null\n  next = null\n  constructor(v) {\n    this.value = v\n  }\n}\n\n// example\n// 2022 KAKAO TECH INTERNSHIP 코딩테스트 - 두 큐 합 같게 만들기\n\nconst [queue1, queue2] = [\n  [1, 2, 1, 2],\n  [1, 10, 1, 2],\n]\nconst N = queue1.length\nvar answer = -1\nconst deq1 = new Deque()\nconst deq2 = new Deque()\n\nfor (let i = 0; i < N; i++) {\n  deq1.push(new Node(queue1[i]))\n  deq2.push(new Node(queue2[i]))\n}\n\nconsole.log(deq1)\nconsole.log(deq2)\n\nlet r = 0\nwhile (deq1.sum !== deq2.sum) {\n  if (deq1.sum > deq2.sum) {\n    const n = deq1.pop()\n    deq2.push(new Node(n.value))\n  } else {\n    const n = deq2.pop()\n    deq1.push(new Node(n.value))\n  }\n  console.log(deq1)\n  console.log(deq2)\n\n  if (r++ == N * 2) break\n}\nif (deq1.sum === deq2.sum) answer = r\n\nconsole.log(answer)\n```\n",
+    "tags": [
+      "data-structure",
+      "deque",
+      "javascript",
+      "queue"
+    ],
+    "date_started": "2026.01.13",
+    "github": "https://github.com/wndgur2/BlogDB/blob/main/posts/study/js_deque.md",
+    "preview": ""
+  },
+  {
+    "id": "posts/study/js_heap.md",
+    "category": "Study",
+    "title": "JS로 힙(heap) 구현하기",
+    "content": "\n![heap](https://github.com/user-attachments/assets/d1f75775-8196-40ef-9c65-5998e1ee4b56)\n\n## javascript로 왜 힙을 구현해야할까?\n\njs로 알고리즘을 풀다 보니, 구현해야하는 자료구조들이 있었다.\n\n특히 우선순위 큐가 그랬다.\n\n이를 직접 구현하는 것에 익숙하지 않다보니 해당 자료구조를 사용하지 않고 문제를 풀고자 하게 되었다.\n\n숙련도 때문에 문제 해결에 제약이 걸리는 것을 방지하고자 이를 구현하는 연습을 하고자 한다.\n\n아마 다음엔 Linked List를 통한 dequeue를 구현해볼 것 같다.\n\n> ### 목차\n>\n> 1. 힙이란?\n> 2. 힙 들여다보기\n> 3. javascript로 힙 구현하기\n\n## 1. 힙이란?\n\n완전이진트리의 한 종류이다.\n비교 연산을 통해 트리의 최고 우선 요소를 `root`로 가진다는 특징이 있다.\n\n예를 들어 비교 연산이 `<`(less than) 이라면 루트는 가장 작은 값을 가지게 되고 이를 `min-heap`이라 한다.\n\n트리를 사용한 덕분에 삽입과 삭제 연산이 `O(logN)` 만에 수행된다. 트리의 `depth` 만큼만 수행하면 되기 때문이다.\n\n주의해야할 점은, 모든 요소가 아니라 `부모-자식` 관계만 우선순위가 정렬되어있다는 점이다. 이 때문에 보통 중간 노드가 아닌 `top`을 뽑아 쓰는 용도로만 사용한다.\n\n## 2. 힙 들여다보기\n\n그럼 이 완전이진트리인 힙은 어떻게 정렬을 유지하는지 삽입과 삭제 과정을 살펴보자.\n여기서는 편의를 위해 `min-heap`을 예시로 적었다.\n\n### 2-1 삽입 insert(Node)\n\n<img alt=\"heap_insert\" src=\"https://github.com/user-attachments/assets/0c051d79-0632-49bf-a6d7-33863f578b1c\" />\n\n맨 마지막에 `새로운 노드`를 추가하고, 이 `새로운 노드`를 알맞은 `depth`까지 끌어올린다. (이를 sift up 과정이라 부른다.)  \n`min-heap`의 경우 `새로운 노드의 부모 노드`가 `새로운 노드`보다 큰 값을 가질 경우 자리를 바꾸는 과정을 반복한다.\n\n트리의 `depth` 만큼 수행되므로 시간복잡도는 `O(logN)`가 된다.\n\n### 2-2 삭제 pop()\n\n> heap에서의 삭제는, 보통 `root`를 삭제하는 `pop()`을 의미한다.  \n> `root`를 제외한 노드는 자료구조의 용도, 성능을 이유로 삭제를 구현하지는 않는 것 같다.\n\n<img alt=\"heap_pop\" src=\"https://github.com/user-attachments/assets/8bf4dd28-442e-4764-9fb5-7dcb6609bdb2\" />\n\n우선 `root` 자리를 마지막 노드로 대체한다. (삭제 후에도 완전 이진 트리를 유지하기 위한 좋은 방법 같다.)\n\n이제 `root` 노드를 적당한 자리로 보내기 위해 아래 과정을 거친다. (sift down 과정이라 부른다.)\n\n대체할 우선순위가 높은 자식 노드를 찾는다. `min-heap`에서는 더 작은 자식 노드가 `root`와 자리를 바꾸게 된다.\n\n내려간 자리에서 같은 과정을 반복한다. 즉, 리프노드가 되거나 자식들보다 본인의 우선순위가 높을 때까지 우선순위가 높은 자식노드와 자리를 바꾼다.\n\n트리의 `depth` 만큼 수행되므로 시간복잡도는 `O(logN)`가 된다.\n\n### 2-3 조회 top()\n\n트리의 `root`를 조회하여 값을 반환한다.\n\n트리의 `root`는 배열의 0번 인덱스로 즉시 접근 가능하므로 시간복잡도는 `O(1)`가 된다.\n\n## 3. javascript로 힙 구현하기\n\n완전이진트리는 배열로 쉽게 구현 가능하다. 인덱스 `i`의 자식을 `i*2+1`, `i*2`로 접근 가능하다.\n\n함수 `isPrior(a, b)`를 생성자의 인자로 두어 상황에 필요한 비교 연산을 넣을 수 있도록 했다.\n\n```javascript\nclass Heap {\n  constructor(isPrior) {\n    this.nodes = []\n    this.isPrior = isPrior\n  }\n\n  top() {\n    return this.nodes[0]\n  }\n\n  insert(node) {\n    this.nodes.push(node)\n    let i = this.nodes.length - 1\n\n    // sift up\n    while (i > 0) {\n      const pi = (i - 1) >> 1\n      if (this.isPrior(this.nodes[i], this.nodes[pi])) {\n        ;[this.nodes[i], this.nodes[pi]] = [this.nodes[pi], this.nodes[i]]\n        i = pi\n      } else {\n        break\n      }\n    }\n  }\n\n  pop() {\n    if (this.nodes.length === 0) return\n\n    const res = this.nodes[0]\n    if (this.nodes.length === 1) {\n      this.nodes.pop()\n      return res\n    }\n\n    this.nodes[0] = this.nodes.pop()\n\n    const size = this.nodes.length\n    let i = 0\n\n    // sift down\n    while (true) {\n      const l = i * 2 + 1\n      const r = l + 1\n      let best = i\n\n      if (l < size && this.isPrior(this.nodes[l], this.nodes[best])) {\n        best = l\n      }\n      if (r < size && this.isPrior(this.nodes[r], this.nodes[best])) {\n        best = r\n      }\n\n      if (best === i) break\n      ;[this.nodes[i], this.nodes[best]] = [this.nodes[best], this.nodes[i]]\n      i = best\n    }\n\n    return res\n  }\n}\n```\n\n생성 예\n\n```javascript\nconst pq = new Heap((a, b) => a < b) // min-heap\n```\n",
+    "tags": [
+      "data-structure",
+      "heap",
+      "javascript",
+      "priority-queue"
+    ],
+    "date_started": "2025.12.02",
+    "github": "https://github.com/wndgur2/BlogDB/blob/main/posts/study/js_heap.md",
+    "preview": ""
+  },
+  {
     "id": "posts/algorithm/카운트_디운.md",
     "category": "Algorithm",
     "title": "카운트 다운",
@@ -636,17 +666,31 @@
     "preview": ""
   },
   {
-    "id": "posts/study/js_heap.md",
-    "category": "Study",
-    "title": "JS로 힙(heap) 구현하기",
-    "date_started": "2025.12.02",
+    "id": "posts/algorithm/레이저_통신.md",
+    "category": "Algorithm",
+    "title": "레이저 통신",
+    "content": "\n# [문제](https://www.acmicpc.net/problem/6087)\n\n기차에서 하느라 목소리 좋은 규빈이가 대신 읽어주어 감사하다~\n\n# 문제 풀이\n각 칸까지 도달하기 위한 최소 거울 수를 2차원 벡터(`map_mirror`)에 저장하면서 DFS를 수행했습니다.  \n최소 거울 수가 최소 이동거리를 보장하기 때문에 별도로 최소 이동거리 검증은 하지 않았습니다.  \n\nDFS에서는 각 칸에서 꺾는지 여부를 확인해야 하므로 매개변수로 방향(`direction`)을 전달했습니다.  \n\n코드를 간결하게 하기 위해:  \n- `d_loc`: 크기가 1인 4방향 벡터를 저장  \n- `move(int direction, vector<int> loc)`: 현재 좌표에서 direction으로 이동한 좌표를 리턴  \n- `check_no_wall(vector<int> loc)`: 해당 좌표가 유효한지 확인  \n\n중간에 디버깅 출력을 위해 DFS 과정을 출력하는 코드가 있습니다. (line 35)\n\n# 코드\n```cpp\n#include<iostream>\n#include<vector>\n#include<algorithm>\nusing namespace std;\n\nvector<vector<int>> d_loc{{-1, 0}, {0, 1}, {1, 0}, {0, -1}}; // dy, dx\nvector<vector<char>> map_; // 각 칸의 character\nvector<vector<int>> map_mirror; // 각 칸까지 가기 위한 최소 거울 수\nint w, h, i, j;\n\nvector<int> move(int direction, vector<int> loc){\n  vector<int> new_loc = loc;\n  new_loc[0] += d_loc[direction][0];\n  new_loc[1] += d_loc[direction][1];\n  return new_loc;\n}\n\nbool check_no_wall(vector<int> loc){\n  if((loc[0] < 0) || (loc[1] < 0)) return false;\n  if((loc[0] >= h) || (loc[1] >= w)) return false;\n  if(map_[loc[0]][loc[1]] == '*') return false;\n  return true;\n}\n\nvoid dfs(int direction, vector<int> loc){\n  vector<int> new_loc;\n  int new_direction, is_turned;\n  for(int d=0; d<4; d++){\n    new_direction = (direction+d) % 4;\n    new_loc = move(new_direction, loc);\n    is_turned = (d==0 ? 0 : 1);\n    if(check_no_wall(new_loc)){\n      if(map_mirror[loc[0]][loc[1]] < map_mirror[new_loc[0]][new_loc[1]]){\n        map_mirror[new_loc[0]][new_loc[1]] = map_mirror[loc[0]][loc[1]] + is_turned;\n        dfs(new_direction, new_loc);\n      }\n    }\n  }\n}\n\nint main(){\n  cin >> w >> h;\n  for(i=0; i<h; i++){\n    vector<char> tmp;\n    vector<int> tmp_;\n    map_.push_back(tmp);\n    map_mirror.push_back(tmp_);\n    for(j=0; j<w; j++){\n      map_[i].push_back(' ');\n      map_mirror[i].push_back(h*w);\n    }\n  }\n  int start_x, start_y, end_x, end_y;\n  bool found_C = false;\n  for(i=0; i<h; i++){\n    for(j=0; j<w; j++){\n      cin >> map_[i][j];\n      if(map_[i][j] == 'C'){\n        if(found_C){\n          end_y = i; end_x = j;\n        } else{\n          start_y = i; start_x = j;\n          found_C = true;\n        }\n      }\n    }\n  }\n  map_[start_y][start_x] = '.';\n  map_mirror[start_y][start_x] = 0;\n  for(i=0; i<4; i++)\n    dfs(i, {start_y, start_x});\n  cout << map_mirror[end_y][end_x] << endl;\n  return 0;\n}\n```",
     "tags": [
-      "heap",
-      "data-structure",
-      "javascript",
-      "priority-queue"
+      "DFS",
+      "cpp",
+      "shortest-path"
     ],
-    "github": "https://github.com/wndgur2/BlogDB/blob/main/posts/study/js_heap.md",
+    "date_started": "2023.06.24",
+    "github": "https://github.com/wndgur2/BlogDB/blob/main/posts/algorithm/%EB%A0%88%EC%9D%B4%EC%A0%80_%ED%86%B5%EC%8B%A0.md",
+    "preview": ""
+  },
+  {
+    "id": "posts/algorithm/N과_M_(1).md",
+    "category": "Algorithm",
+    "title": "N과 M (1)",
+    "content": "\n# [문제](https://www.acmicpc.net/problem/15649)\n\n1부터 N까지 수 중에 M개의 수를 포함하는 모든 순열을 사전순으로 출력하는 문제입니다.\n\n# 문제 풀이\n\nN이 최대 8개이므로 할만하다고 생각해서 완전탐색을 먼저 시도했다.  \nBFS보다 DFS가 메모리를 덜 먹는다고 하여 recursion으로 dfs를 구현했다.\n\n# 코드\n\n```cpp\n#include <stdio.h>\n#include <vector>\n#include <algorithm>\nusing namespace std; // N과 M\n\nvoid dfs(int n, int m, vector<int> nums){\n  if(m == 0){\n    for(int i = 0; i < nums.size(); i++)\n      printf(\"%d \", nums[i]);\n    printf(\"\\n\");\n    return;\n  }\n  for(int i = 1; i <= n; i++){\n    if(find(nums.begin(), nums.end(), i) == nums.end()){\n      nums.push_back(i);\n      dfs(n, m - 1, nums);\n      nums.pop_back();\n    }\n  }\n}\n\nint main(){\n  int n, m;\n  scanf(\"%d %d\", &n, &m);\n  vector<int> nums;\n  dfs(n, m, nums);\n  return 0;\n}\n```\n\n감사합니다.\n",
+    "tags": [
+      "DFS",
+      "backtracking",
+      "cpp"
+    ],
+    "date_started": "2023.05.06",
+    "github": "https://github.com/wndgur2/BlogDB/blob/main/posts/algorithm/N%EA%B3%BC_M_(1).md",
     "preview": ""
   }
 ]
