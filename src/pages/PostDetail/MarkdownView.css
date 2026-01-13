@@ -90,6 +90,7 @@ span.hljs-property {
   padding: 0.8em;
   margin: 2em 0px;
   background-color: var(--dimmed-bg-color);
+  border-radius: var(--radius);
 }
 
 .markdown blockquote p {
