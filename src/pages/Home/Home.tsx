@@ -1,4 +1,4 @@
-import { useEffect, type FunctionComponent } from 'react'
+import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import './Home.css'
@@ -7,7 +7,7 @@ import PostList from '@/components/Post/PostList'
 import ProjectList from '@/components/Post/ProjectList'
 import Profile from '@/components/Profile/Profile'
 
-const Home: FunctionComponent = () => {
+export default function Home() {
   const router = useNavigate()
   const searchParams = useSearchParams()[0]
   const lost_url = searchParams.get('lost_url')
@@ -29,5 +29,3 @@ const Home: FunctionComponent = () => {
     </div>
   )
 }
-
-export default Home

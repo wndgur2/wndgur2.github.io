@@ -1,6 +1,6 @@
 import './MarkdownView.css'
 
-import { useEffect, type FunctionComponent } from 'react'
+import { useEffect } from 'react'
 import hljs from 'highlight.js'
 import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx'
 
@@ -13,10 +13,10 @@ interface MarkdownViewProps {
   overrides?: MarkdownToJSX.Overrides
 }
 
-const MarkdownView: FunctionComponent<MarkdownViewProps> = ({
+export default function MarkdownView({
   post,
   overrides,
-}: MarkdownViewProps) => {
+}: MarkdownViewProps) {
   const { isDark } = useTheme()
 
   const mdOption = {
@@ -69,5 +69,3 @@ const MarkdownView: FunctionComponent<MarkdownViewProps> = ({
     </Markdown>
   )
 }
-
-export default MarkdownView

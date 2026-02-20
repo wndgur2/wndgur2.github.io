@@ -1,4 +1,4 @@
-import type { FunctionComponent, ReactElement } from 'react'
+import type { ReactElement } from 'react'
 
 import './IconLink.css'
 
@@ -9,7 +9,7 @@ interface IconLinkProps {
   url: string
 }
 
-const IconLink: FunctionComponent<IconLinkProps> = ({ icon, url }) => {
+export default function IconLink({ icon, url }: IconLinkProps) {
   return (
     <a
       href={url}
@@ -21,5 +21,3 @@ const IconLink: FunctionComponent<IconLinkProps> = ({ icon, url }) => {
     </a>
   )
 }
-
-export default IconLink

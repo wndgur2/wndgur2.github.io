@@ -1,14 +1,10 @@
-import { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { useSetRecoilState } from 'recoil'
 
 import Home from '@/pages/Home/Home'
 import Layout from '@/pages/Layouts/Layout'
 import NoPage from '@/pages/NoPage'
 import Post from '@/pages/PostDetail/PostDetail'
 import SearchResult from '@/pages/Search/SearchResult'
-import { postsAtom } from '@/recoil/atoms/postsAtom'
-import { getPosts, getProjects } from './api/post'
 import ThemeProvider from './contexts/ThemeProvider'
 
 const routes = [
@@ -19,13 +15,6 @@ const routes = [
 ]
 
 export default function App() {
-  const setPosts = useSetRecoilState(postsAtom)
-
-  useEffect(() => {
-    getPosts(setPosts)
-    getProjects(setPosts)
-  }, [setPosts])
-
   return (
     <BrowserRouter>
       <ThemeProvider>

@@ -1,29 +1,27 @@
-import { type FunctionComponent } from 'react'
-
 import './PostListItem.css'
 
+import type { HTMLAttributes } from 'react'
 import { type MarkdownToJSX } from 'markdown-to-jsx'
 import { Link } from 'react-router-dom'
 
-import CATEGORIES from '@/consts/CATEGORIES'
 import TIER_COLOR from '@/consts/TIER_COLOR'
 import MarkdownView from '@/pages/PostDetail/MarkdownView'
-import { type IAlgorithm, type IPost } from '@/types'
+import { CATEGORIES, type IAlgorithm, type IPost } from '@/types'
 import TagList from '../common/TagList'
 
 interface PostListItemProps {
   post: IPost
 }
 
-const PostListItem: FunctionComponent<PostListItemProps> = ({
-  post,
-}: PostListItemProps) => {
+export default function PostListItem({ post }: PostListItemProps) {
   const overrides: MarkdownToJSX.Overrides = {
     a: {
-      component: (props: any) => <strong {...props} />,
+      component: (props: HTMLAttributes<HTMLAnchorElement>) => (
+        <strong {...props} />
+      ),
     },
     div: {
-      component: (props: any) => <span {...props} />,
+      component: (props: HTMLAttributes<HTMLDivElement>) => <span {...props} />,
     },
   }
   return (
@@ -51,5 +49,3 @@ const PostListItem: FunctionComponent<PostListItemProps> = ({
     </Link>
   )
 }
-
-export default PostListItem

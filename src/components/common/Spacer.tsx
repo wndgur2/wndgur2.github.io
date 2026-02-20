@@ -1,11 +1,5 @@
-import { type FunctionComponent } from 'react'
-
 import './Spacer.css'
 
-interface SpacerProps {}
-
-const Spacer: FunctionComponent<SpacerProps> = () => {
+export default function Spacer() {
   return <div className='spacer'></div>
 }
-
-export default Spacer

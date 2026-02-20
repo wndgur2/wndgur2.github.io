@@ -1,39 +1,37 @@
-import { useEffect, useRef, type FunctionComponent } from 'react'
+import { useEffect, useRef } from 'react'
 
 import './Tag.css'
 
 import { useLocation, useNavigate } from 'react-router-dom'
 
 interface TagProps {
-  tag: string
+  label: string
   count?: number
 }
 
-const Tag: FunctionComponent<TagProps> = ({ tag, count }) => {
+export default function Tag({ label, count }: TagProps) {
   const navigate = useNavigate()
   const location = useLocation()
   const tagRef = useRef<HTMLLIElement>(null)
   useEffect(() => {
     if (!location.state) return
     if (!tagRef.current) return
-    if (location.state.searchKey.replaceAll('#', '').split(' ').includes(tag))
+    if (location.state.searchKey.replaceAll('#', '').split(' ').includes(label))
       tagRef.current.classList.add('tag-active')
     else tagRef.current.classList.remove('tag-active')
-  }, [location.state, tag])
+  }, [location.state, label])
   return (
     <li
-      key={`${tag}${count}`}
+      key={`${label}${count}`}
       ref={tagRef}
       className='tag clickable small'
       onClick={e => {
         e.preventDefault() // x e.stopPropagation()
         e.stopPropagation()
-        navigate(`/search/%23${tag}`, { state: { searchKey: `#${tag}` } })
+        navigate(`/search/%23${label}`, { state: { searchKey: `#${label}` } })
       }}
     >
-      {tag} {count}
+      {label} {count}
     </li>
   )
 }
-
-export default Tag

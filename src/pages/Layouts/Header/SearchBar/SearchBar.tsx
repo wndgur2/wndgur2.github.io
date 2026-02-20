@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FunctionComponent } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
 
 import './SearchBar.css'
@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 
 interface SearchBarProps {}
 
-const SearchBar: FunctionComponent<SearchBarProps> = () => {
+export default function SearchBar(_props: SearchBarProps) {
   const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement>(null)
   const [searchText, setSearchText] = useState<string>('')
@@ -52,5 +52,3 @@ const SearchBar: FunctionComponent<SearchBarProps> = () => {
     </search>
   )
 }
-
-export default SearchBar

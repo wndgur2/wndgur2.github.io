@@ -1,12 +1,10 @@
 import { useMemo } from 'react'
 import { type Params } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
 
-import { postsAtom } from '@/recoil'
 import { type IPost } from '@/types'
 
 function useSearchPosts(params: Readonly<Params<string>>) {
-  const posts = useRecoilValue(postsAtom)
+  const posts: IPost[] = []
 
   const searchedPosts: IPost[] = useMemo(() => {
     if (!params.searchKey) return []

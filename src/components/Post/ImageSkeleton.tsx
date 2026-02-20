@@ -2,7 +2,6 @@ import {
   useEffect,
   useRef,
   useState,
-  type FunctionComponent,
   type JSX,
 } from 'react'
 import { FaRegFaceSadCry } from 'react-icons/fa6'
@@ -14,9 +13,9 @@ interface ImageSkeletonProps {
   props: React.ImgHTMLAttributes<HTMLImageElement>
 }
 
-const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({
+export default function ImageSkeleton({
   props,
-}: ImageSkeletonProps) => {
+}: ImageSkeletonProps) {
   const skeletonRef = useRef<HTMLCanvasElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const [isError, setIsError] = useState(false)
@@ -54,5 +53,3 @@ const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({
     </var>
   )
 }
-
-export default ImageSkeleton

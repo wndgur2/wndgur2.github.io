@@ -1,28 +1,21 @@
 import './SearchResult.css'
 
-import { useState, type FunctionComponent } from 'react'
+import { useState } from 'react'
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
 
 import TagCountList from '@/components/common/TagCountList'
 import PostListItem from '@/components/Post/PostListItem'
 import ProjectListItem from '@/components/Post/ProjectListItem'
-import CATEGORIES from '@/consts/CATEGORIES'
-import useRelatedTags from '@/hooks/useRelatedTags'
 import useResetScroll from '@/hooks/useResetScroll'
-import useSortedPosts from '@/hooks/useSortedPosts'
-import { getPostsBySearchKey } from '@/recoil/selectors/postsSelector'
-import { type IPost } from '@/types'
+import { CATEGORIES, type IPost, type ITag } from '@/types'
 
-const Search: FunctionComponent = () => {
+export default function Search() {
   const params = useParams()
-  const searchedPosts = useRecoilValue(
-    getPostsBySearchKey({ searchKey: params.searchKey }),
-  )
-  const relatedTags = useRelatedTags(searchedPosts)
   const [recentFirst, setRecentFirst] = useState(true)
-  const sortedPosts = useSortedPosts(searchedPosts, recentFirst)
+
+  const sortedPosts: IPost[] = []
+  const relatedTags: ITag[] = []
 
   useResetScroll(params.searchKey)
 
@@ -68,5 +61,3 @@ const Search: FunctionComponent = () => {
     </main>
   )
 }
-
-export default Search

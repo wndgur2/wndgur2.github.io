@@ -1,4 +1,4 @@
-import { useEffect, useRef, type FunctionComponent } from 'react'
+import { useEffect, useRef } from 'react'
 
 import './HomeCategory.css'
 
@@ -6,15 +6,17 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
+import type { CATEGORIES } from '@/types'
+
 interface HomeCategoryProps {
-  category: string
+  category: keyof typeof CATEGORIES
   children: React.ReactNode
 }
 
-const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
+export default function HomeCategory({
   category,
   children,
-}: HomeCategoryProps) => {
+}: HomeCategoryProps) {
   const postsRef = useRef<HTMLUListElement>(null)
   const buttonsRef = useRef<HTMLDivElement>(null)
 
@@ -85,5 +87,3 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
     </section>
   )
 }
-
-export default HomeCategory

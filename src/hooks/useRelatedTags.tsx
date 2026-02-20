@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 
-import { type IPost } from '@/types'
+import { type IPost, type ITag } from '@/types'
 
-const useRelatedTags = (posts: IPost[]): { tag: string; count: number }[] => {
+const useRelatedTags = (posts: IPost[]): ITag[] => {
   const relatedTags = useMemo(() => {
     const tagCounts = new Map<string, number>()
     posts.forEach(post => {
@@ -12,7 +12,7 @@ const useRelatedTags = (posts: IPost[]): { tag: string; count: number }[] => {
     })
     // acending sort by count
 
-    return Array.from(tagCounts, ([tag, count]) => ({ tag, count })).sort(
+    return Array.from(tagCounts, ([label, count]) => ({ label, count })).sort(
       (a, b) => b.count - a.count,
     )
   }, [posts])

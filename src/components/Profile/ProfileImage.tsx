@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState, type FunctionComponent } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import './ProfileImage.css'
 
 const IMG_AMOUNT = 5
 
-const ProfileImage: FunctionComponent = () => {
+export default function ProfileImage() {
   const profileRef = useRef<HTMLButtonElement>(null)
   const [imgIndex, setImgIndex] = useState(0)
 
@@ -52,5 +52,3 @@ const ProfileImage: FunctionComponent = () => {
     </button>
   )
 }
-
-export default ProfileImage

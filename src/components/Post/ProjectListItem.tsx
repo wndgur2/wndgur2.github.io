@@ -1,5 +1,3 @@
-import { type FunctionComponent } from 'react'
-
 import './ProjectListItem.css'
 
 import { CiImageOff } from 'react-icons/ci'
@@ -12,7 +10,7 @@ import ImageSkeleton from './ImageSkeleton'
 interface ProjectListItemProps {
   post: IPost
 }
-const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
+export default function ProjectListItem({ post }: ProjectListItemProps) {
   return (
     <Link
       to={`/post/${post.title}`}
@@ -44,5 +42,3 @@ const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
     </Link>
   )
 }
-
-export default ProjectListItem

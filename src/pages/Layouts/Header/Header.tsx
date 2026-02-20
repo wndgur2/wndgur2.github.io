@@ -1,4 +1,4 @@
-import { useRef, type FunctionComponent } from 'react'
+import { useRef } from 'react'
 
 import Logo from '@/assets/logo.svg?react'
 
@@ -11,7 +11,7 @@ import useTheme from '@/hooks/useTheme'
 import SearchBar from './SearchBar/SearchBar'
 import ThemeToggler from './Theme/ThemeToggler'
 
-const Header: FunctionComponent = () => {
+export default function Header() {
   const { isDark, setIsDark } = useTheme()
   const headerRef = useRef<HTMLDivElement>(null)
 
@@ -50,5 +50,3 @@ const Header: FunctionComponent = () => {
     </div>
   )
 }
-
-export default Header

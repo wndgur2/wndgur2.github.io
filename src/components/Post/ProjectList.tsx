@@ -1,24 +1,15 @@
-import { type FunctionComponent } from 'react'
-import { useRecoilValue } from 'recoil'
-
-import CATEGORIES from '@/consts/CATEGORIES'
 import HomeCategory from '@/pages/Home/HomeCategory'
-import { getPostsByCategory } from '@/recoil/selectors/postsSelector'
-import { type IPost } from '@/types'
+import { CATEGORIES, type IPost } from '@/types'
 import Loading from '../common/Loading'
 import ProjectListItem from './ProjectListItem'
 
-interface ProjectListProps {}
-
-const ProjectList: FunctionComponent<ProjectListProps> = () => {
-  const postsByCategory = useRecoilValue(
-    getPostsByCategory({ category: CATEGORIES.PROJECT }),
-  )
+export default function ProjectList() {
+  const projects: IPost[] = []
 
   return (
     <HomeCategory category={CATEGORIES.PROJECT}>
-      {postsByCategory.length > 0 ? (
-        postsByCategory.map((project: IPost, i: number) => (
+      {projects.length > 0 ? (
+        projects.map((project: IPost, i: number) => (
           <ProjectListItem key={i} post={project} />
         ))
       ) : (
@@ -27,5 +18,3 @@ const ProjectList: FunctionComponent<ProjectListProps> = () => {
     </HomeCategory>
   )
 }
-
-export default ProjectList

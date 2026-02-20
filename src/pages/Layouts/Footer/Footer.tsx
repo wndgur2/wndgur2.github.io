@@ -1,5 +1,3 @@
-import { type FunctionComponent } from 'react'
-
 import './Footer.css'
 
 import { FaYoutube } from 'react-icons/fa'
@@ -8,7 +6,7 @@ import { IoLogoGithub } from 'react-icons/io'
 
 import IconLink from '../../../components/IconLink/IconLink'
 
-const Footer: FunctionComponent = () => {
+export default function Footer() {
   return (
     <footer>
       <div className='links'>
@@ -43,5 +41,3 @@ const Footer: FunctionComponent = () => {
     </footer>
   )
 }
-
-export default Footer
