@@ -1,15 +1,16 @@
 import { createContext, useEffect, useState } from 'react'
 
-interface ThemeContextType {
+interface IThemeContext {
   isDark: boolean
   setIsDark: (_isDark: boolean) => void
 }
 
-const themeContext = createContext<ThemeContextType | null>(null)
+export const ThemeContext = createContext<IThemeContext>({
+  isDark: false,
+  setIsDark: () => {},
+})
 
-export const ThemeContext = themeContext
-
-function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [isDark, setIsDark] = useState(
     localStorage.getItem('theme') !== 'light',
   )
@@ -28,5 +29,3 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
     </ThemeContext.Provider>
   )
 }
-
-export default ThemeProvider

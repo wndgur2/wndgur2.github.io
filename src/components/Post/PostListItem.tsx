@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 import TIER_COLOR from '@/consts/TIER_COLOR'
 import MarkdownView from '@/pages/PostDetail/MarkdownView'
-import { CATEGORIES, type IAlgorithm, type IPost } from '@/types'
+import { CATEGORIES, type IAlgorithmSolution, type IPost } from '@/types'
 import TagList from '../common/TagList'
 
 interface PostListItemProps {
@@ -32,7 +32,9 @@ export default function PostListItem({ post }: PostListItemProps) {
           {post.site && <small>{post.site}</small>}
           {post.number && <small>{post.number}</small>}
           {post.level && (
-            <small style={{ color: TIER_COLOR[(post as IAlgorithm).level] }}>
+            <small
+              style={{ color: TIER_COLOR[(post as IAlgorithmSolution).level] }}
+            >
               {post.level}
             </small>
           )}

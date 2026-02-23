@@ -1,9 +1,10 @@
 import axios from 'axios'
 
+import type { IRepository } from '@/types'
 import { githubApi } from './github'
 
 export const fetchUserRepos = async () => {
-  const { data } = await githubApi.get(`/users/wndgur2/repos`, {
+  const { data } = await githubApi.get<IRepository[]>(`/users/wndgur2/repos`, {
     params: {
       sort: 'created', // created | updated | pushed | full_name
       per_page: 100, // 최대 100개까지 가져오기

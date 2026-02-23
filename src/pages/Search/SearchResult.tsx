@@ -8,7 +8,7 @@ import TagCountList from '@/components/common/TagCountList'
 import PostListItem from '@/components/Post/PostListItem'
 import ProjectListItem from '@/components/Post/ProjectListItem'
 import useResetScroll from '@/hooks/useResetScroll'
-import { CATEGORIES, type IPost, type ITag } from '@/types'
+import { CATEGORIES, type IPost, type IProject, type ITag } from '@/types'
 
 export default function Search() {
   const params = useParams()
@@ -49,7 +49,7 @@ export default function Search() {
         {sortedPosts.length ? (
           sortedPosts.map((post: IPost, i) =>
             post.category === CATEGORIES.PROJECT ? (
-              <ProjectListItem key={i} post={post as IPost} />
+              <ProjectListItem key={i} project={post as IProject} />
             ) : (
               <PostListItem key={i} post={post} />
             ),

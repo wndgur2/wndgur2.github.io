@@ -1,11 +1,11 @@
 import './MarkdownView.css'
 
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import hljs from 'highlight.js'
 import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx'
 
 import ImageSkeleton from '@/components/Post/ImageSkeleton'
-import useTheme from '@/hooks/useTheme'
+import { ThemeContext } from '@/contexts/ThemeProvider'
 import type { IPost } from '@/types'
 
 interface MarkdownViewProps {
@@ -13,11 +13,8 @@ interface MarkdownViewProps {
   overrides?: MarkdownToJSX.Overrides
 }
 
-export default function MarkdownView({
-  post,
-  overrides,
-}: MarkdownViewProps) {
-  const { isDark } = useTheme()
+export default function MarkdownView({ post, overrides }: MarkdownViewProps) {
+  const { isDark } = useContext(ThemeContext)
 
   const mdOption = {
     overrides: {

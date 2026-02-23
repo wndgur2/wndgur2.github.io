@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useContext, useRef } from 'react'
 
 import Logo from '@/assets/logo.svg?react'
 
@@ -7,12 +7,12 @@ import './Header.css'
 import { Link } from 'react-router-dom'
 
 import Spacer from '@/components/common/Spacer'
-import useTheme from '@/hooks/useTheme'
+import { ThemeContext } from '@/contexts/ThemeProvider'
 import SearchBar from './SearchBar/SearchBar'
 import ThemeToggler from './Theme/ThemeToggler'
 
 export default function Header() {
-  const { isDark, setIsDark } = useTheme()
+  const { isDark, setIsDark } = useContext(ThemeContext)
   const headerRef = useRef<HTMLDivElement>(null)
 
   // hide header when scrolling down
