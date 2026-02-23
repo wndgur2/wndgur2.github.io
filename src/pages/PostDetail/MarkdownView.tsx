@@ -20,7 +20,10 @@ export default function MarkdownView({ post, overrides }: MarkdownViewProps) {
     overrides: {
       ...overrides,
       img: {
-        component: (props: any) => <ImageSkeleton props={props} />,
+        component: ({ children, props }) => <ImageSkeleton {...props} />,
+      },
+      br: {
+        component: ({ children }) => <br className='markdown-line-break' />,
       },
     },
   } as MarkdownToJSX.Options

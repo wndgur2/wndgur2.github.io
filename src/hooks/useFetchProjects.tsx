@@ -1,22 +1,38 @@
-import { useEffect } from 'react'
+import { useMemo } from 'react'
+import { useQueries } from '@tanstack/react-query'
 
-import { CATEGORIES, type IProject, type IRepository } from '@/types'
+import { type IProject, type IRepository } from '@/types'
 
 export default function useFetchProjects(
   repositories: IRepository[] | undefined,
-  setProjects: React.Dispatch<React.SetStateAction<IProject[]>>,
 ) {
-  useEffect(() => {
-    if (!repositories) return
+  const queries = useQueries({
+    queries: (repositories ?? []).map(repo => ({
+      queryKey: ['project-readme', repo.name],
+      queryFn: async () => {
+        const contentUrl = `https://raw.githubusercontent.com/wndgur2/${repo.name}/${repo.default_branch}/README.md`
 
-    const promises: Promise<IProject>[] = []
+        const res = await fetch(contentUrl)
+        if (!res.ok) {
+          throw new Error(`Failed to fetch README for ${repo.name}`)
+        }
 
-    for (let i = 0; i < repositories.length; i++) {
-      const repo = repositories[i]
-      const meta = {
+        return res.text()
+      },
+      enabled: !!repositories,
+    })),
+  })
+
+  const projects: IProject[] = useMemo(() => {
+    if (!repositories) return []
+
+    return repositories.map((repo, index) => {
+      const query = queries[index]
+
+      return {
         id: repo.id,
         title: repo.name,
-        category: CATEGORIES.PROJECT,
+        category: 'PROJECT',
         description: repo.description || '',
         date_started: repo.created_at,
         date_finished: repo.updated_at,
@@ -24,27 +40,17 @@ export default function useFetchProjects(
         github: repo.html_url,
         contentUrl: `https://raw.githubusercontent.com/wndgur2/${repo.name}/${repo.default_branch}/README.md`,
         thumbnail: '',
+        content: query?.data ?? 'README not found.',
       }
-      promises.push(
-        new Promise(async resolve => {
-          try {
-            const response = await fetch(meta.contentUrl)
-            if (!response.ok) {
-              throw new Error(`Failed to fetch README for ${meta.title}`)
-            }
-            const content = await response.text()
-            resolve({ ...meta, content })
-          } catch (error) {
-            console.error(error)
-            resolve({ ...meta, content: 'README not found.' })
-          }
-        }),
-      )
-    }
-
-    // Fetch README content for each project
-    Promise.all(promises).then(projectsWithContent => {
-      setProjects(projectsWithContent)
     })
-  }, [repositories])
+  }, [repositories, queries])
+
+  const isLoading = queries.some(q => q.isLoading)
+  const isError = queries.some(q => q.isError)
+
+  return {
+    projects,
+    isLoading,
+    isError,
+  }
 }

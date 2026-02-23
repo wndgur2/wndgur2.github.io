@@ -1,28 +1,29 @@
-import usePostsByCategory from '@/hooks/usePostsByCategory'
+import { useContext } from 'react'
+
+import { GithubContext } from '@/contexts/GithubContext'
 import HomeCategory from '@/pages/Home/HomeCategory'
-import { CATEGORIES, type IPost, type TCategory } from '@/types'
-import Loading from '../common/Loading'
+import { CATEGORIES, type IPost } from '@/types'
 import PostListItem from './PostListItem'
 
 export default function PostList() {
-  const posts: IPost[] = []
-  const postsByCategory = usePostsByCategory(posts)
+  const { studies, algorithmSolutions } = useContext(GithubContext)
 
   return (
     <>
-      {Array.from(postsByCategory.keys())
-        .filter(key => key !== CATEGORIES.PROJECT)
-        .map(category => (
-          <HomeCategory key={category} category={category as TCategory}>
-            {postsByCategory.get(category)?.length ? (
-              postsByCategory.get(category)?.map((post: IPost, i: number) => {
-                return <PostListItem key={i} post={post} />
-              })
-            ) : (
-              <Loading phrase={`loading ${category} posts`} />
-            )}
-          </HomeCategory>
-        ))}
+      {!!studies && (
+        <HomeCategory category={CATEGORIES.STUDY}>
+          {studies.map((post: IPost, i: number) => (
+            <PostListItem key={i} post={post} />
+          ))}
+        </HomeCategory>
+      )}
+      {!!algorithmSolutions && (
+        <HomeCategory category={CATEGORIES.ALGORITHM}>
+          {algorithmSolutions.map((post: IPost, i: number) => (
+            <PostListItem key={i} post={post} />
+          ))}
+        </HomeCategory>
+      )}
     </>
   )
 }

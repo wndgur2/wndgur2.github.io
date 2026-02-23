@@ -2,6 +2,7 @@ import { createContext, useState } from 'react'
 
 import { useUserRepos } from '@/api/post'
 import useFetchProjects from '@/hooks/useFetchProjects'
+import useFetchStudies from '@/hooks/useFetchStudies'
 import {
   type IAlgorithmSolution,
   type IPost,
@@ -31,14 +32,16 @@ export function GithubProvider({ children }: { children: React.ReactNode }) {
   const { data: repositories, isLoading } = useUserRepos()
 
   // post states
-  const [projects, setProjects] = useState<IProject[]>([])
-  const [studies, _setStudies] = useState<IPost[]>([])
   const [algorithmSolutions, _setAlgorithmSolutions] = useState<
     IAlgorithmSolution[]
   >([])
 
-  useFetchProjects(repositories, setProjects)
-  // useFetchStudies(repositories, setStudies)
+  const {
+    projects,
+    isLoading: isProjectsLoading,
+    isError: isProjectsError,
+  } = useFetchProjects(repositories)
+  const { studies, isLoading: isStudiesLoading } = useFetchStudies()
   // useFetchAlgorithmSolutions(repositories, setAlgorithmSolutions)
 
   function getPostByTitle(title: string) {
@@ -52,7 +55,7 @@ export function GithubProvider({ children }: { children: React.ReactNode }) {
         projects,
         studies,
         algorithmSolutions,
-        isLoading,
+        isLoading: isLoading || isProjectsLoading,
         getPostByTitle,
       }}
     >

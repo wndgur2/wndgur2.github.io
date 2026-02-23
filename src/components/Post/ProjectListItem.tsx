@@ -20,9 +20,7 @@ export default function ProjectListItem({ project }: ProjectListItemProps) {
       <section>
         <div className='project-image-wrapper'>
           {project.thumbnail ? (
-            <ImageSkeleton
-              props={{ src: project.thumbnail, alt: project.title }}
-            />
+            <ImageSkeleton src={project.thumbnail} alt={project.title} />
           ) : (
             <CiImageOff className='no-image' size={32} />
           )}

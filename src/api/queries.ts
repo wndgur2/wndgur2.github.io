@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import type { IRepository } from '@/types'
+import type { IContent, IRepository } from '@/types/github'
 import { githubApi } from './github'
 
 export const fetchUserRepos = async () => {
@@ -15,7 +15,7 @@ export const fetchUserRepos = async () => {
 }
 
 export const fetchRepoContents = async (repo: string, path: string = '') => {
-  const { data } = await githubApi.get(
+  const { data } = await githubApi.get<IContent[]>(
     `/repos/wndgur2/${repo}/contents/${path}`,
   )
 

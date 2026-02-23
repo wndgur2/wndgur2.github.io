@@ -1,21 +1,14 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-  type JSX,
-} from 'react'
+import { useEffect, useRef, useState, type JSX } from 'react'
 import { FaRegFaceSadCry } from 'react-icons/fa6'
 
 import './ImageSkeleton.css'
 
-interface ImageSkeletonProps {
-  img?: JSX.Element
-  props: React.ImgHTMLAttributes<HTMLImageElement>
-}
+interface ImageSkeletonProps extends Omit<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  'children' | 'dangerouslySetInnerHTML'
+> {}
 
-export default function ImageSkeleton({
-  props,
-}: ImageSkeletonProps) {
+export default function ImageSkeleton({ src, ...rest }: ImageSkeletonProps) {
   const skeletonRef = useRef<HTMLCanvasElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const [isError, setIsError] = useState(false)
@@ -24,7 +17,7 @@ export default function ImageSkeleton({
     if (!imgRef.current) return
     const image = imgRef.current
 
-    image.src = props.src || ''
+    image.src = src || ''
     imgRef.current.classList.add('loading')
     image.onload = () => {
       skeletonRef.current?.remove()
@@ -34,7 +27,7 @@ export default function ImageSkeleton({
       skeletonRef.current?.remove()
       setIsError(true)
     }
-  }, [props.src])
+  }, [src])
 
   return (
     <var className='image-container'>
@@ -44,10 +37,10 @@ export default function ImageSkeleton({
           <var className='no-image-container'>
             <FaRegFaceSadCry className='no-image minor' size={48} />
             <small>이미지를 못 가져왔어요.</small>
-            <small>{props.src}</small>
+            <small>{src}</small>
           </var>
         ) : (
-          <img alt='' {...props} ref={imgRef} />
+          <img alt='' {...rest} ref={imgRef} />
         )}
       </var>
     </var>
