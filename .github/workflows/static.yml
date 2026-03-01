@@ -47,7 +47,7 @@ jobs:
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
           PROJECTS_OWNER: wndgur2
-          BLOG_DB_REPO: wndgur2/BlogDB
+          BLOG_DB_REPO: wndgur2/dev-log
           BLOG_DB_REF: main
           POSTS_DIR: posts
         run: pnpm exec node scripts/fetch-content.js
