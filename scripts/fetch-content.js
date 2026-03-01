@@ -187,7 +187,7 @@ async function fetchProjects() {
             .map(s => s.trim())
             .filter(Boolean)
         : Array.isArray(r.topics)
-          ? r.topics
+          ? r.topics.filter(t => t.toLowerCase() !== 'ljh') // exclude 'ljh' topic
           : []
 
     // Prefer front-matter dates; fallback to repo created_at in YYYY.MM.DD
