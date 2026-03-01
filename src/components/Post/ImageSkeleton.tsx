@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type JSX } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaRegFaceSadCry } from 'react-icons/fa6'
 
 import './ImageSkeleton.css'

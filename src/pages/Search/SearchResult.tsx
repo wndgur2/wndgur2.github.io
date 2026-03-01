@@ -6,9 +6,8 @@ import { useParams } from 'react-router-dom'
 
 import TagCountList from '@/components/common/TagCountList'
 import PostListItem from '@/components/Post/PostListItem'
-import ProjectListItem from '@/components/Post/ProjectListItem'
 import useResetScroll from '@/hooks/useResetScroll'
-import { CATEGORIES, type IPost, type IProject, type ITag } from '@/types'
+import { type IPost, type ITag } from '@/types'
 
 export default function Search() {
   const params = useParams()
@@ -47,13 +46,9 @@ export default function Search() {
       </header>
       <ul>
         {sortedPosts.length ? (
-          sortedPosts.map((post: IPost, i) =>
-            post.category === CATEGORIES.PROJECT ? (
-              <ProjectListItem key={i} project={post as IProject} />
-            ) : (
-              <PostListItem key={i} post={post} />
-            ),
-          )
+          sortedPosts.map((post: IPost, i) => (
+            <PostListItem key={i} post={post} />
+          ))
         ) : (
           <span>No post.</span>
         )}

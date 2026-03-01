@@ -1,16 +1,18 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import './Home.css'
 
 import PostList from '@/components/Post/PostList'
-import ProjectList from '@/components/Post/ProjectList'
 import Profile from '@/components/Profile/Profile'
+import { GithubContext } from '@/contexts/GithubContext'
+import { CATEGORIES } from '@/types'
 
 export default function Home() {
   const router = useNavigate()
   const searchParams = useSearchParams()[0]
   const lost_url = searchParams.get('lost_url')
+  const { studies, algorithmSolutions, projects } = useContext(GithubContext)
 
   useEffect(() => {
     if (!lost_url) return
@@ -23,8 +25,9 @@ export default function Home() {
     <div id='home'>
       <Profile />
       <main>
-        <ProjectList />
-        <PostList />
+        <PostList category={CATEGORIES.PROJECT} posts={projects} />
+        <PostList category={CATEGORIES.STUDY} posts={studies} />
+        <PostList category={CATEGORIES.ALGORITHM} posts={algorithmSolutions} />
       </main>
     </div>
   )

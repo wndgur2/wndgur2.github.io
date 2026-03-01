@@ -11,7 +11,6 @@ export interface IPost {
 }
 
 export interface IProject extends IPost {
-  thumbnail: string
   description: string
   date_finished: string
 }

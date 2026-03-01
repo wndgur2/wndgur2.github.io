@@ -39,9 +39,9 @@ export function GithubProvider({ children }: { children: React.ReactNode }) {
   const {
     projects,
     isLoading: isProjectsLoading,
-    isError: isProjectsError,
+    isError: _isProjectsError,
   } = useFetchProjects(repositories)
-  const { studies, isLoading: isStudiesLoading } = useFetchStudies()
+  const { studies, isLoading: _isStudiesLoading } = useFetchStudies()
   // useFetchAlgorithmSolutions(repositories, setAlgorithmSolutions)
 
   function getPostByTitle(title: string) {

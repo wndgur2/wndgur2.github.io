@@ -1,19 +1,19 @@
 import './PostListItem.css'
 
 import type { HTMLAttributes } from 'react'
-import { type MarkdownToJSX } from 'markdown-to-jsx'
+import type { MarkdownToJSX } from 'markdown-to-jsx'
 import { Link } from 'react-router-dom'
 
-import TIER_COLOR from '@/consts/TIER_COLOR'
 import MarkdownView from '@/pages/PostDetail/MarkdownView'
-import { CATEGORIES, type IAlgorithmSolution, type IPost } from '@/types'
+import { type IPost, type IProject } from '@/types'
+import { dateToString } from '@/utils/dateToString'
 import TagList from '../common/TagList'
 
-interface PostListItemProps {
-  post: IPost
+interface Props {
+  post: IPost | IProject
 }
 
-export default function PostListItem({ post }: PostListItemProps) {
+export default function PostListItem({ post }: Props) {
   const overrides: MarkdownToJSX.Overrides = {
     a: {
       component: (props: HTMLAttributes<HTMLAnchorElement>) => (
@@ -29,19 +29,10 @@ export default function PostListItem({ post }: PostListItemProps) {
       <header className='content'>
         <h3>
           <span>{post.title}</span>
-          {post.site && <small>{post.site}</small>}
-          {post.number && <small>{post.number}</small>}
-          {post.level && (
-            <small
-              style={{ color: TIER_COLOR[(post as IAlgorithmSolution).level] }}
-            >
-              {post.level}
-            </small>
-          )}
         </h3>
         <small>
-          {post.date_started}
-          {post.category === CATEGORIES.PROJECT && `~ ${post.date_finished}`}
+          {dateToString(post.date_started)}
+          {'date_finished' in post && `~ ${dateToString(post.date_finished)}`}
         </small>
       </header>
       <section className='preview'>

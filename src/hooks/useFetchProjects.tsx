@@ -1,7 +1,8 @@
 import { useMemo } from 'react'
 import { useQueries } from '@tanstack/react-query'
 
-import { type IProject, type IRepository } from '@/types'
+import { type IProject } from '@/types'
+import type { IRepository } from '@/types/github'
 
 export default function useFetchProjects(
   repositories: IRepository[] | undefined,
@@ -10,14 +11,19 @@ export default function useFetchProjects(
     queries: (repositories ?? []).map(repo => ({
       queryKey: ['project-readme', repo.name],
       queryFn: async () => {
-        const contentUrl = `https://raw.githubusercontent.com/wndgur2/${repo.name}/${repo.default_branch}/README.md`
+        try {
+          const contentUrl = `https://raw.githubusercontent.com/wndgur2/${repo.name}/${repo.default_branch}/README.md`
 
-        const res = await fetch(contentUrl)
-        if (!res.ok) {
-          throw new Error(`Failed to fetch README for ${repo.name}`)
+          const res = await fetch(contentUrl)
+          console.log(res)
+          if (!res.ok) {
+            return 'README not found.'
+          }
+
+          return res.text()
+        } catch (error) {
+          return 'README not found.'
         }
-
-        return res.text()
       },
       enabled: !!repositories,
     })),
@@ -40,7 +46,7 @@ export default function useFetchProjects(
         github: repo.html_url,
         contentUrl: `https://raw.githubusercontent.com/wndgur2/${repo.name}/${repo.default_branch}/README.md`,
         thumbnail: '',
-        content: query?.data ?? 'README not found.',
+        content: query.data ?? 'README not found.',
       }
     })
   }, [repositories, queries])

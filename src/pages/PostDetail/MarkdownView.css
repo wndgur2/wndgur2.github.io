@@ -7,6 +7,10 @@
   scroll-margin-top: 4em;
 }
 
+.markdown img {
+  max-width: 100%;
+}
+
 .markdown h1,
 .markdown h2 {
   margin: 1.4em 0px 1em 0px;

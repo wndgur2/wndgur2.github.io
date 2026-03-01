@@ -1,6 +1,6 @@
 import './MarkdownView.css'
 
-import { useContext, useEffect } from 'react'
+import { Fragment, useContext, useEffect } from 'react'
 import hljs from 'highlight.js'
 import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx'
 
@@ -20,13 +20,20 @@ export default function MarkdownView({ post, overrides }: MarkdownViewProps) {
     overrides: {
       ...overrides,
       img: {
-        component: ({ children, props }) => <ImageSkeleton {...props} />,
+        component: ImageSkeleton,
       },
-      br: {
-        component: ({ children }) => <br className='markdown-line-break' />,
+      Fragment: {
+        component: Fragment,
+        props: {
+          className: undefined,
+        },
       },
     },
   } as MarkdownToJSX.Options
+
+  useEffect(() => {
+    hljs.registerAliases(['env'], { languageName: 'bash' })
+  }, [])
 
   useEffect(() => {
     // Remove any existing highlight.js theme link
