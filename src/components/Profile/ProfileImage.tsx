@@ -37,8 +37,10 @@ export default function ProfileImage() {
       case 3:
         clickCounts.current[imgIndex] = (clickCounts.current[imgIndex] || 0) + 1
         if (videoRef.current) {
-          setVideoPlaying(true)
           videoRef.current.src = `/videos/profile/${imgIndex}.mp4`
+          videoRef.current.oncanplay = () => {
+            setVideoPlaying(true)
+          }
         }
         break
     }
