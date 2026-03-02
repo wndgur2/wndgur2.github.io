@@ -38,6 +38,10 @@
     border: 1px solid var(--action-color);
 }
 
+.home-category button:disabled {
+    opacity: 0.5;
+}
+
 .posts {
     display: flex;
     flex-flow: row nowrap;
