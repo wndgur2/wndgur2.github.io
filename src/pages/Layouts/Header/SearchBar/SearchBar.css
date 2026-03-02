@@ -1,9 +1,9 @@
 .search-bar {
+    width: 320px;
     height: 2.6em;
     padding: 0 0.5em 0 1em;
 
     display: flex;
-    flex: 1;
     align-items: center;
 
     background-color: var(--fg-color);
@@ -13,12 +13,12 @@
     pointer-events: auto;
     caret-color: var(--accent-color);
 
-    transition: height 0.3s, scale 0.3s, flex 0.3s, width 0.3s;
+    transition: width 0.3s, height 0.3s, scale 0.3s, flex 0.3s, width 0.3s;
 }
 
 
 .search-bar:focus-within {
-    flex: 2.4;
+    width: 768px;
 }
 
 .search-bar>form {
@@ -58,6 +58,8 @@
         width: 3em;
         max-width: 3em;
         padding: 0;
+        margin-left: auto;
+
         border-radius: 50%;
 
         justify-content: center;
@@ -74,6 +76,8 @@
 
     .search-bar:focus-within {
         flex-grow: 1;
+        width: 100%;
+        flex-shrink: 0;
         max-width: none;
         padding: 0 0.5em 0 1em;
         border-radius: var(--radius-pill);

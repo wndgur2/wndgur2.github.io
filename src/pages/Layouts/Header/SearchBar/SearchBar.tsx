@@ -41,6 +41,7 @@ export default function SearchBar() {
           ref={inputRef}
           value={searchText}
           onChange={e => setSearchText(e.target.value)}
+          autoComplete='false'
         />
         <button type='submit' className='btn-submit pc'>
           <FiSearch className='search-icon minor' size={24} />

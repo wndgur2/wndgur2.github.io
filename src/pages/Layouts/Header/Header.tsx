@@ -37,9 +37,7 @@ export default function Header() {
       <Link to={'/'} className='logo clickable small'>
         <Logo />
       </Link>
-      <Spacer />
       <SearchBar />
-      <Spacer />
       <ThemeToggler
         isChecked={isDark}
         handleChange={() => {
@@ -47,16 +45,5 @@ export default function Header() {
         }}
       />
     </div>
-  )
-}
-
-function Spacer() {
-  return (
-    <div
-      style={{
-        display: 'flex',
-        flexGrow: 1,
-      }}
-    ></div>
   )
 }

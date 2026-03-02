@@ -76,7 +76,7 @@ export default function Search() {
             {hasMore && <div ref={observerRef} className='infinite-trigger' />}
           </>
         ) : (
-          <span>No post.</span>
+          <span>검색 결과가 없습니다. 검색어를 확인해주세요.</span>
         )}
       </ul>
       {isLoading && <Loading />}
