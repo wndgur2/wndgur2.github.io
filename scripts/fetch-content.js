@@ -35,6 +35,10 @@ function safeBlobUrl({ owner, repo, ref, path: p }) {
   return `https://github.com/${owner}/${repo}/blob/${ref}/${encoded}`
 }
 
+function normalizeTitle(title) {
+  return title.replace('?', '')
+}
+
 function normalizeTag(tag) {
   return tag
     .toLowerCase()
@@ -159,47 +163,69 @@ async function findPostFiles(owner, repo, ref) {
 }
 
 async function fetchPosts() {
+  console.log('🚀 Fetching posts...')
+
   const [owner, repo] = BLOG_DB_REPO.split('/')
   const files = await findPostFiles(owner, repo, BLOG_DB_REF)
 
-  const posts = []
-  for (const p of files) {
-    const raw = await getFileText(owner, repo, p, BLOG_DB_REF)
-    if (!raw) continue
+  const logProgress = createProgressLogger(files.length, 'Posts')
 
-    const { data: fm, content } = matter(raw)
+  console.log(`📚 Found ${files.length} posts`)
 
-    const htmlUrl = safeBlobUrl({ owner, repo, ref: BLOG_DB_REF, path: p })
+  const posts = (
+    await Promise.all(
+      files.map(file =>
+        limit(async () => {
+          try {
+            const raw = await getFileText(owner, repo, file, BLOG_DB_REF)
+            if (!raw) return null
 
-    const tags = Array.isArray(fm.tags)
-      ? [...fm.tags]
-      : typeof fm.tags === 'string'
-        ? fm.tags
-            .replaceAll('"', '')
-            .replaceAll("'", '')
-            .split(',')
-            .map(normalizeTag)
-            .filter(Boolean)
-        : []
-    if (!fm.title) continue // skip posts without title
-    posts.push({
-      id: p,
-      category: fm.category?.toLowerCase() ?? 'project', // change to 'OTHER' if you prefer
-      title: fm.title,
-      content,
-      tags: tags.sort(),
-      date_started: fm.date_started ?? 'No date found.',
-      github: htmlUrl,
-      preview: fm.preview ?? '',
-      thumbnail: fm.thumbnail ?? undefined,
-    })
-  }
+            const { data: fm, content } = matter(raw)
 
-  // Sort newest-first by date_started (expects YYYY.MM.DD or similar)
+            const htmlUrl = safeBlobUrl({
+              owner,
+              repo,
+              ref: BLOG_DB_REF,
+              path: file,
+            })
+
+            const tags = Array.isArray(fm.tags)
+              ? [...fm.tags]
+              : typeof fm.tags === 'string'
+                ? fm.tags
+                    .replaceAll('"', '')
+                    .replaceAll("'", '')
+                    .split(',')
+                    .map(normalizeTag)
+                    .filter(Boolean)
+                : []
+
+            const id = file.replace(/^posts\//, '').replace(/\.(md|mdx)$/, '')
+
+            return {
+              id,
+              category: fm.category?.toLowerCase() ?? 'project',
+              title: normalizeTitle(fm.title ?? id),
+              content,
+              tags: tags.sort(),
+              date_started: fm.date_started ?? 'No date found.',
+              github: htmlUrl,
+            }
+          } catch (err) {
+            console.error(`\n❌ Error processing ${file}:`, err.message)
+            return null
+          } finally {
+            logProgress()
+          }
+        }),
+      ),
+    )
+  ).filter(Boolean)
+
   posts.sort(
     (a, b) =>
       String(b.date_started).localeCompare(String(a.date_started)) ||
-      String(b.title).localeCompare(String(a.title)),
+      String(a.title).localeCompare(String(b.title)),
   )
 
   await writeFile(
@@ -207,6 +233,9 @@ async function fetchPosts() {
     JSON.stringify(posts, null, 2),
     'utf8',
   )
+
+  console.log(`✅ Posts done (${posts.length} items generated)`)
+
   return posts
 }
 
@@ -239,56 +268,76 @@ async function listAllPublicRepos(user) {
 }
 
 async function fetchProjects() {
-  const repos = await listAllPublicRepos(PROJECTS_OWNER)
+  const repos = (await listAllPublicRepos(PROJECTS_OWNER)).filter(r =>
+    r.topics.some(t => t.toLowerCase() === 'ljh'),
+  )
 
-  const projects = []
+  console.log('🚀 Fetching projects...')
 
-  for (const r of repos) {
-    const owner = r.owner.login
-    const repo = r.name
+  console.log(`📚 Found ${repos.length} repositories`)
 
-    const readme = await fetchReadme(owner, repo)
-    if (!readme) continue // only include repos that have a README
+  const logProgress = createProgressLogger(repos.length, 'Projects')
 
-    const { data: fm, content } = matter(readme)
+  const projects = (
+    await Promise.all(
+      repos.map(r =>
+        limit(async () => {
+          try {
+            const owner = r.owner.login
+            const repo = r.name
 
-    if (!r.topics.some(t => t.toLowerCase() === 'ljh')) continue
+            const readme = await fetchReadme(owner, repo)
+            if (!readme) return null // only include repos that have a README
 
-    const tags = Array.isArray(fm.tags)
-      ? [...fm.tags]
-      : typeof fm.tags === 'string'
-        ? fm.tags
-            .replaceAll('"', '')
-            .replaceAll("'", '')
-            .split(',')
-            .map(normalizeTag)
-            .filter(Boolean)
-        : Array.isArray(r.topics)
-          ? r.topics.filter(t => t.toLowerCase() !== 'ljh') // exclude 'ljh' topic
-          : []
+            const { data: fm, content } = matter(readme)
 
-    // Prefer front-matter dates; fallback to repo created_at in YYYY.MM.DD
-    const createdDot = r.created_at
-      ? new Date(r.created_at).toISOString().slice(0, 10).replace(/-/g, '.')
-      : '-'
+            const tags = Array.isArray(fm.tags)
+              ? [...fm.tags]
+              : typeof fm.tags === 'string'
+                ? fm.tags
+                    .replaceAll('"', '')
+                    .replaceAll("'", '')
+                    .split(',')
+                    .map(normalizeTag)
+                    .filter(Boolean)
+                : Array.isArray(r.topics)
+                  ? r.topics.filter(t => t.toLowerCase() !== 'ljh') // exclude 'ljh' topic
+                  : []
 
-    const dateStarted = fm.date_started ?? createdDot
+            // Prefer front-matter dates; fallback to repo created_at in YYYY.MM.DD
+            const createdDot = r.created_at
+              ? new Date(r.created_at)
+                  .toISOString()
+                  .slice(0, 10)
+                  .replace(/-/g, '.')
+              : '-'
 
-    projects.push({
-      id: repo,
-      category: 'project',
-      title: fm.title ?? repo,
-      description: fm.description ?? r.description ?? '',
-      tags,
-      date_started: dateStarted,
-      date_finished: fm.date_finished ?? '',
-      head_count: fm.head_count ?? '',
-      role: fm.role ?? '',
-      github: r.html_url,
-      content, // README body without front-matter
-      thumbnail: fm.thumbnail ?? `/images/${repo.toLowerCase()}.jpeg`,
-    })
-  }
+            const dateStarted = fm.date_started ?? createdDot
+
+            return {
+              id: repo,
+              category: 'project',
+              title: normalizeTitle(fm.title ?? repo),
+              description: fm.description ?? r.description ?? '',
+              tags,
+              date_started: dateStarted,
+              date_finished: fm.date_finished ?? '',
+              head_count: fm.head_count ?? '',
+              role: fm.role ?? '',
+              github: r.html_url,
+              content, // README body without front-matter
+              thumbnail: fm.thumbnail ?? `/images/${repo.toLowerCase()}.jpeg`,
+            }
+          } catch (err) {
+            console.error(`\n❌ Error processing ${r.name}:`, err.message)
+            return null
+          } finally {
+            logProgress()
+          }
+        }),
+      ),
+    )
+  ).filter(Boolean)
 
   // Sort newest first by date_started (dot format), then title
   projects.sort((a, b) => {
@@ -304,6 +353,9 @@ async function fetchProjects() {
     JSON.stringify(projects, null, 2),
     'utf8',
   )
+
+  console.log(`✅ Projects done (${projects.length} items generated)`)
+
   return projects
 }
 
@@ -316,7 +368,6 @@ async function fetchAlgorithms() {
 
   // 1️⃣ 트리 한 번만 요청
   const tree = await listTreeRecursive(owner, repo, ALGO_REF)
-  const treeMap = new Map(tree.map(t => [t.path, t]))
 
   // 2️⃣ README 필터
   const readmeFiles = tree.filter(
@@ -365,7 +416,7 @@ async function fetchAlgorithms() {
 
             const difficulty = normalizeLevel(difficultyRaw)
 
-            const title = `${problemNumber}. ${problemName}`
+            const title = normalizeTitle(`${problemNumber}. ${problemName}`)
 
             const matchUrl = raw.match(/\[문제 링크\]\((.*?)\)/)
             const url = matchUrl ? matchUrl[1] : ''
@@ -456,8 +507,8 @@ async function fetchAlgorithms() {
 
 async function main() {
   await ensureDirs()
-  await fetchPosts()
   await fetchProjects()
+  await fetchPosts()
   await fetchAlgorithms()
   console.log('✅ Static content generated under public/meta')
 }
