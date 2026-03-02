@@ -43,6 +43,10 @@
     margin: 0.25em 0px 0px 0px;
 }
 
+a:hover.project-title {
+    color: var(--action-color);
+}
+
 .project-info-footer {
     margin: 1em 0 0.5em 0;
 
