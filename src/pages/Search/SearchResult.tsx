@@ -1,6 +1,6 @@
 import './SearchResult.css'
 
-import { useState, type FunctionComponent } from 'react'
+import { useState } from 'react'
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 import { useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
@@ -19,7 +19,7 @@ import { type IPost } from '@/types'
 
 const PAGE_SIZE = 10
 
-const Search: FunctionComponent = () => {
+export default function Search() {
   const params = useParams()
   const searchedPosts = useRecoilValue(
     getPostsBySearchKey({ searchKey: params.searchKey }),
@@ -83,5 +83,3 @@ const Search: FunctionComponent = () => {
     </main>
   )
 }
-
-export default Search

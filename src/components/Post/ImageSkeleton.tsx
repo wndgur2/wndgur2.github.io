@@ -1,22 +1,13 @@
-import {
-  useEffect,
-  useRef,
-  useState,
-  type FunctionComponent,
-  type JSX,
-} from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { FaRegFaceSadCry } from 'react-icons/fa6'
 
 import './ImageSkeleton.css'
 
-interface ImageSkeletonProps {
-  img?: JSX.Element
-  props: React.ImgHTMLAttributes<HTMLImageElement>
+interface Props {
+  attrs: React.ImgHTMLAttributes<HTMLImageElement>
 }
 
-const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({
-  props,
-}: ImageSkeletonProps) => {
+export default function ImageSkeleton({ attrs }: Props) {
   const skeletonRef = useRef<HTMLCanvasElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const [isError, setIsError] = useState(false)
@@ -25,7 +16,7 @@ const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({
     if (!imgRef.current) return
     const image = imgRef.current
 
-    image.src = props.src || ''
+    image.src = attrs.src || ''
     imgRef.current.classList.add('loading')
     image.onload = () => {
       skeletonRef.current?.remove()
@@ -35,7 +26,7 @@ const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({
       skeletonRef.current?.remove()
       setIsError(true)
     }
-  }, [props.src])
+  }, [attrs.src])
 
   return (
     <var className='image-container'>
@@ -45,14 +36,12 @@ const ImageSkeleton: FunctionComponent<ImageSkeletonProps> = ({
           <var className='no-image-container'>
             <FaRegFaceSadCry className='no-image minor' size={48} />
             <small>이미지를 못 가져왔어요.</small>
-            <small>{props.src}</small>
+            <small>{attrs.src}</small>
           </var>
         ) : (
-          <img alt='' {...props} ref={imgRef} />
+          <img alt='' {...attrs} ref={imgRef} />
         )}
       </var>
     </var>
   )
 }
-
-export default ImageSkeleton

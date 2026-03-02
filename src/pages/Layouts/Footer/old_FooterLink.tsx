@@ -1,25 +1,16 @@
-import React, {
-  useCallback,
-  useEffect,
-  useRef,
-  type FunctionComponent,
-} from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 
 import './old_FooterLink.css'
 
 import { Link } from 'react-router-dom'
 
-interface OldFooterLinkProps {
+interface Props {
   title: string
   children: React.ReactNode
   url: string
 }
 
-const OldFooterLink: FunctionComponent<OldFooterLinkProps> = ({
-  title,
-  children,
-  url,
-}) => {
+export default function OldFooterLink({ title, children, url }: Props) {
   const itemRef = useRef<HTMLAnchorElement>(null)
   const titleRef = useRef<HTMLHeadingElement>(null)
   const childrenRef = useRef<HTMLDivElement>(null)
@@ -81,5 +72,3 @@ const OldFooterLink: FunctionComponent<OldFooterLinkProps> = ({
     </Link>
   )
 }
-
-export default OldFooterLink

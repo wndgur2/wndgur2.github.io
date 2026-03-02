@@ -1,5 +1,3 @@
-import { type FunctionComponent } from 'react'
-
 import './PostListItem.css'
 
 import { type MarkdownToJSX } from 'markdown-to-jsx'
@@ -10,13 +8,11 @@ import MarkdownView from '@/pages/PostDetail/MarkdownView'
 import { type IPost } from '@/types'
 import TagList from '../common/TagList'
 
-interface PostListItemProps {
+interface Props {
   post: IPost
 }
 
-const PostListItem: FunctionComponent<PostListItemProps> = ({
-  post,
-}: PostListItemProps) => {
+export default function PostListItem({ post }: Props) {
   const overrides: MarkdownToJSX.Overrides = {
     a: {
       component: (props: any) => <strong {...props} />,
@@ -45,5 +41,3 @@ const PostListItem: FunctionComponent<PostListItemProps> = ({
     </Link>
   )
 }
-
-export default PostListItem

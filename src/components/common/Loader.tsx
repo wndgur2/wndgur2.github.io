@@ -1,12 +1,10 @@
-import type { FunctionComponent } from 'react'
-
 import './Loader.css'
 
-interface LoadingProps {
+interface Props {
   phrase?: string
 }
 
-const Loader: FunctionComponent<LoadingProps> = ({ phrase }) => {
+export default function Loader({ phrase }: Props) {
   return (
     <div className='spinner-wrapper'>
       <div className='loader' />
@@ -14,5 +12,3 @@ const Loader: FunctionComponent<LoadingProps> = ({ phrase }) => {
     </div>
   )
 }
-
-export default Loader

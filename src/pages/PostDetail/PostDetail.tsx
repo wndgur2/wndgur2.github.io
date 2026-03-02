@@ -1,6 +1,5 @@
 import './PostDetail.css'
 
-import { type FunctionComponent } from 'react'
 import { IoLogoGithub } from 'react-icons/io'
 import { Link, useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
@@ -13,7 +12,7 @@ import { getPostByTitle } from '@/recoil'
 import { getNextPost, getPrevPost } from '@/recoil/selectors/postsSelector'
 import MarkdownView from './MarkdownView'
 
-const PostDetail: FunctionComponent = () => {
+export default function PostDetail() {
   const title = useParams().title
   const post = useRecoilValue(getPostByTitle({ title: title }))
   const prevPost = useRecoilValue(getPrevPost({ title: title }))
@@ -86,5 +85,3 @@ const PostDetail: FunctionComponent = () => {
     </article>
   )
 }
-
-export default PostDetail

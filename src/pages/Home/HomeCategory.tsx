@@ -1,4 +1,4 @@
-import { useEffect, useRef, type FunctionComponent } from 'react'
+import { useEffect, useRef } from 'react'
 
 import './HomeCategory.css'
 
@@ -8,17 +8,13 @@ import { Link } from 'react-router-dom'
 
 import type CATEGORIES from '@/consts/CATEGORIES'
 
-interface HomeCategoryProps {
+interface Props {
   label: string
   category: (typeof CATEGORIES)[keyof typeof CATEGORIES]
   children: React.ReactNode
 }
 
-const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
-  category,
-  label,
-  children,
-}: HomeCategoryProps) => {
+export default function HomeCategory({ category, label, children }: Props) {
   const postsRef = useRef<HTMLUListElement>(null)
   const buttonsRef = useRef<HTMLDivElement>(null)
 
@@ -89,5 +85,3 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
     </section>
   )
 }
-
-export default HomeCategory

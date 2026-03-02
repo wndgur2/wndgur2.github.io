@@ -1,16 +1,12 @@
-import { type FunctionComponent } from 'react'
-
 import './TagCountList.css'
 
 import Tag from './Tag'
 
-interface TagCountListProps {
+interface Props {
   tags: { tag: string; count: number }[]
 }
 
-const TagCountList: FunctionComponent<TagCountListProps> = ({
-  tags,
-}: TagCountListProps) => {
+export default function TagCountList({ tags }: Props) {
   return (
     <ol className='tag-list'>
       {tags.map(({ tag, count }, index: number) => (
@@ -19,5 +15,3 @@ const TagCountList: FunctionComponent<TagCountListProps> = ({
     </ol>
   )
 }
-
-export default TagCountList

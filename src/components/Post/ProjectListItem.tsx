@@ -1,5 +1,3 @@
-import { type FunctionComponent } from 'react'
-
 import './ProjectListItem.css'
 
 import { CiImageOff } from 'react-icons/ci'
@@ -9,10 +7,10 @@ import { type IPost } from '@/types'
 import TagList from '../common/TagList'
 import ImageSkeleton from './ImageSkeleton'
 
-interface ProjectListItemProps {
+interface Props {
   post: IPost
 }
-const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
+export default function ProjectListItem({ post }: Props) {
   return (
     <Link
       to={`/post/${post.title}`}
@@ -21,7 +19,7 @@ const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
       <section>
         <div className='project-image-wrapper'>
           {post.thumbnail ? (
-            <ImageSkeleton props={{ src: post.thumbnail, alt: post.title }} />
+            <ImageSkeleton attrs={{ src: post.thumbnail, alt: post.title }} />
           ) : (
             <CiImageOff className='no-image' size={32} />
           )}
@@ -44,5 +42,3 @@ const ProjectListItem: FunctionComponent<ProjectListItemProps> = ({ post }) => {
     </Link>
   )
 }
-
-export default ProjectListItem

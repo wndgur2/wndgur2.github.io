@@ -1,14 +1,12 @@
-import { type FunctionComponent } from 'react'
-
 import './TagList.css'
 
 import Tag from './Tag'
 
-interface TagListProps {
+interface Props {
   tags: string[]
 }
 
-const TagList: FunctionComponent<TagListProps> = ({ tags }: TagListProps) => {
+export default function TagList({ tags }: Props) {
   return (
     <ol className='tag-list'>
       {tags.map((tag: string, index: number) => (
@@ -17,5 +15,3 @@ const TagList: FunctionComponent<TagListProps> = ({ tags }: TagListProps) => {
     </ol>
   )
 }
-
-export default TagList

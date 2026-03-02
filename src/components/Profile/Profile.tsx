@@ -1,5 +1,3 @@
-import { type FunctionComponent } from 'react'
-
 import './Profile.css'
 
 import { useRecoilValue } from 'recoil'
@@ -8,7 +6,7 @@ import { postsAtom } from '@/recoil'
 import TagCountList from '../common/TagCountList'
 import ProfileImage from './ProfileImage'
 
-const Profile: FunctionComponent = () => {
+export default function Profile() {
   const posts = useRecoilValue(postsAtom)
   const tagsMap = Array.from(
     posts.reduce((acc, post) => {
@@ -34,5 +32,3 @@ const Profile: FunctionComponent = () => {
     </div>
   )
 }
-
-export default Profile

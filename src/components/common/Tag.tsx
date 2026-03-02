@@ -1,15 +1,15 @@
-import { useEffect, useRef, type FunctionComponent } from 'react'
+import { useEffect, useRef } from 'react'
 
 import './Tag.css'
 
 import { useLocation, useNavigate } from 'react-router-dom'
 
-interface TagProps {
+interface Props {
   tag: string
   count?: number
 }
 
-const Tag: FunctionComponent<TagProps> = ({ tag, count }) => {
+export default function Tag({ tag, count }: Props) {
   const navigate = useNavigate()
   const location = useLocation()
   const tagRef = useRef<HTMLLIElement>(null)
@@ -35,5 +35,3 @@ const Tag: FunctionComponent<TagProps> = ({ tag, count }) => {
     </li>
   )
 }
-
-export default Tag

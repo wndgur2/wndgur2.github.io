@@ -1,18 +1,15 @@
-import type { ChangeEvent, FunctionComponent } from 'react'
+import type { ChangeEvent } from 'react'
 import { IoMdMoon } from 'react-icons/io'
 import { PiSunDimFill } from 'react-icons/pi'
 
 import './ThemeToggler.css'
 
-interface ThemeProps {
+interface Props {
   handleChange: (_e: ChangeEvent<HTMLInputElement>) => void
   isChecked: boolean
 }
 
-const ThemeToggler: FunctionComponent<ThemeProps> = ({
-  handleChange,
-  isChecked,
-}) => {
+export default function ThemeToggler({ handleChange, isChecked }: Props) {
   return (
     <div className='theme clickable'>
       <input
@@ -30,5 +27,3 @@ const ThemeToggler: FunctionComponent<ThemeProps> = ({
     </div>
   )
 }
-
-export default ThemeToggler

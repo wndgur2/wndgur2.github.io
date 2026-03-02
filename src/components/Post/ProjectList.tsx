@@ -1,4 +1,3 @@
-import { type FunctionComponent } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import CATEGORIES from '@/consts/CATEGORIES'
@@ -8,9 +7,7 @@ import { type IPost } from '@/types'
 import Loading from '../common/Loader'
 import ProjectListItem from './ProjectListItem'
 
-interface ProjectListProps {}
-
-const ProjectList: FunctionComponent<ProjectListProps> = () => {
+export default function ProjectList() {
   const postsByCategory = useRecoilValue(
     getPostsByCategory({ category: CATEGORIES.PROJECT }),
   )
@@ -27,5 +24,3 @@ const ProjectList: FunctionComponent<ProjectListProps> = () => {
     </HomeCategory>
   )
 }
-
-export default ProjectList

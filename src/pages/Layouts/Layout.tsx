@@ -1,4 +1,3 @@
-import { type FunctionComponent } from 'react'
 import { Outlet } from 'react-router-dom'
 
 import Header from './Header/Header'
@@ -8,9 +7,7 @@ import './Layout.css'
 import useTheme from '@/hooks/useTheme'
 import Footer from './Footer/Footer'
 
-interface LayoutProps {}
-
-const Layout: FunctionComponent<LayoutProps> = () => {
+export default function Layout() {
   const { isDark } = useTheme()
   return (
     <div id='container' data-theme={isDark ? 'dark' : 'light'}>
@@ -22,5 +19,3 @@ const Layout: FunctionComponent<LayoutProps> = () => {
     </div>
   )
 }
-
-export default Layout
