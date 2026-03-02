@@ -456,8 +456,8 @@ async function fetchAlgorithms() {
 
 async function main() {
   await ensureDirs()
-  // await fetchPosts()
-  // await fetchProjects()
+  await fetchPosts()
+  await fetchProjects()
   await fetchAlgorithms()
   console.log('✅ Static content generated under public/meta')
 }
