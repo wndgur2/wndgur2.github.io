@@ -233,7 +233,7 @@ button.accent:hover {
 
 button:disabled {
     pointer-events: none;
-    opacity: 0.5;
+    opacity: 0.9;
 }
 
 input {
@@ -274,4 +274,8 @@ input:focus {
 
 .align-end {
     align-items: flex-end;
+}
+
+.hidden {
+    display: none;
 }

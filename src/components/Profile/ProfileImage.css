@@ -16,13 +16,14 @@
 }
 
 .profile-img-wrapper:hover {
-    width: calc(7.2em + 5.3vw);
+    width: calc(7.1em + 5.2vw);
     cursor: pointer;
     border: 0.4em solid var(--action-color);
     background-color: #fff;
 }
 
-.profile-img {
+.profile-img,
+.profile-video {
     width: 100%;
     aspect-ratio: 1/1;
 

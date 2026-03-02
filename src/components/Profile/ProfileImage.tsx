@@ -7,6 +7,9 @@ const IMG_AMOUNT = 5
 export default function ProfileImage() {
   const profileRef = useRef<HTMLButtonElement>(null)
   const [imgIndex, setImgIndex] = useState(0)
+  const clickCounts = useRef<Record<number, number>>({})
+  const [videoPlaying, setVideoPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     // preload images
@@ -19,7 +22,7 @@ export default function ProfileImage() {
   const profileClicked = () => {
     if (!profileRef.current) return
 
-    switch (Math.floor(Math.random() * 2)) {
+    switch (Math.floor(Math.random() * 4)) {
       case 0:
         profileRef.current.style.animation = 'spinLeft 0.3s'
         setImgIndex((imgIndex + 1) % IMG_AMOUNT)
@@ -27,6 +30,16 @@ export default function ProfileImage() {
       case 1:
         profileRef.current.style.animation = 'spinRight 0.3s'
         setImgIndex((imgIndex + 2) % IMG_AMOUNT)
+        break
+      case 2:
+        profileRef.current.style.animation = 'shake 0.3s'
+        break
+      case 3:
+        clickCounts.current[imgIndex] = (clickCounts.current[imgIndex] || 0) + 1
+        if (videoRef.current) {
+          setVideoPlaying(true)
+          videoRef.current.src = `/videos/profile/${imgIndex}.mp4`
+        }
         break
     }
     profileRef.current.disabled = true
@@ -44,8 +57,14 @@ export default function ProfileImage() {
       onClick={profileClicked}
       ref={profileRef}
     >
+      <video
+        className={`profile-video ${videoPlaying ? 'visible' : 'hidden'}`}
+        autoPlay
+        onEnded={() => setVideoPlaying(false)}
+        ref={videoRef}
+      />
       <img
-        className='profile-img'
+        className={`profile-img ${videoPlaying ? 'hidden' : 'visible'}`}
         src={`/images/profile/${imgIndex}.jpeg`}
         alt='profile'
       />
