@@ -24,6 +24,11 @@
     margin-top: 0.4em;
 }
 
+.profile-tags {
+    max-height: 25vh;
+    overflow-y: scroll;
+}
+
 .profile-tags ol {
     justify-content: center;
     font-size: 1.1em;

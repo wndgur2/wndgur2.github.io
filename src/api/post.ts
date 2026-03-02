@@ -35,7 +35,6 @@ export async function getProjects(
   try {
     const res = await fetch('/meta/projects.json')
     const projects: IPost[] = await res.json()
-    console.log(projects)
     projects.forEach(project => {
       setPosts(prev => sortedInsert(prev, project))
     })

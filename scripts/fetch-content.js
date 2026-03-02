@@ -94,7 +94,7 @@ function normalizeLevel(level) {
   return lower.replace(/\s+/g, '')
 }
 
-const limit = pLimit(10) // 동시 10개
+const limit = pLimit(20) // 동시 10개
 
 async function getRawFile(owner, repo, ref, filePath) {
   const encoded = filePath.split('/').map(encodeURIComponent).join('/')
@@ -201,10 +201,12 @@ async function fetchPosts() {
                 : []
 
             const id = file.replace(/^posts\//, '').replace(/\.(md|mdx)$/, '')
+            const category = fm.category.toLowerCase()
+            if (!category) return null
 
             return {
               id,
-              category: fm.category?.toLowerCase() ?? 'project',
+              category,
               title: normalizeTitle(fm.title ?? id),
               content,
               tags: tags.sort(),
@@ -387,10 +389,7 @@ async function fetchAlgorithms() {
         limit(async () => {
           try {
             const raw = await getRawFile(owner, repo, ALGO_REF, file.path)
-            if (!raw) {
-              logProgress()
-              return null
-            }
+            if (!raw) return null
 
             const github = safeBlobUrl({
               owner,
@@ -405,10 +404,7 @@ async function fetchAlgorithms() {
             const language = normalizeLang(langDir)
 
             const matchTitle = raw.match(/^# \[(.*?)\] (.*?) - (\d+)/m)
-            if (!matchTitle) {
-              logProgress()
-              return null
-            }
+            if (!matchTitle) return null
 
             const difficultyRaw = matchTitle[1]
             const problemName = matchTitle[2]
@@ -459,8 +455,6 @@ async function fetchAlgorithms() {
               code = codeRaw ?? ''
             }
 
-            logProgress()
-
             const tags = [language, site, ...algoTags, difficulty].map(
               normalizeTag,
             )
@@ -478,8 +472,9 @@ async function fetchAlgorithms() {
             }
           } catch (err) {
             console.error(`\n❌ Error: ${file.path}`, err.message)
-            logProgress()
             return null
+          } finally {
+            logProgress()
           }
         }),
       ),
