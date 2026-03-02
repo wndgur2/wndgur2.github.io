@@ -8,7 +8,7 @@ import NoPage from '@/pages/NoPage'
 import Post from '@/pages/PostDetail/PostDetail'
 import SearchResult from '@/pages/Search/SearchResult'
 import { postsAtom } from '@/recoil/atoms/postsAtom'
-import { getPosts, getProjects } from './api/post'
+import { getAlgorithms, getPosts, getProjects } from './api/post'
 import ThemeProvider from './contexts/ThemeProvider'
 
 const routes = [
@@ -23,6 +23,7 @@ export default function App() {
 
   useEffect(() => {
     getPosts(setPosts)
+    getAlgorithms(setPosts)
     getProjects(setPosts)
   }, [setPosts])
 

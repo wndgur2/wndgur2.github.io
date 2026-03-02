@@ -5,7 +5,7 @@ import CATEGORIES from '@/consts/CATEGORIES'
 import HomeCategory from '@/pages/Home/HomeCategory'
 import { getPostsByCategory } from '@/recoil/selectors/postsSelector'
 import { type IPost } from '@/types'
-import Loading from '../common/Loading'
+import Loading from '../common/Loader'
 import ProjectListItem from './ProjectListItem'
 
 interface ProjectListProps {}
@@ -16,7 +16,7 @@ const ProjectList: FunctionComponent<ProjectListProps> = () => {
   )
 
   return (
-    <HomeCategory category={CATEGORIES.PROJECT}>
+    <HomeCategory label='Projects' category={CATEGORIES.PROJECT}>
       {postsByCategory.length > 0 ? (
         postsByCategory.map((project: IPost, i: number) => (
           <ProjectListItem key={i} post={project} />

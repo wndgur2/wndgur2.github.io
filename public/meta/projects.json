@@ -1,1 +1,121 @@
-[]
+[
+  {
+    "id": "memento",
+    "category": "project",
+    "title": "memento",
+    "description": "추억 아카이빙 SNS",
+    "tags": [
+      "cicd",
+      "docker",
+      "nginx",
+      "pwa",
+      "react",
+      "sse",
+      "storybook",
+      "tailwindcss",
+      "tanstack-query",
+      "typescript",
+      "zustand"
+    ],
+    "date_started": "2025.08.01",
+    "date_finished": "2025.11.30",
+    "head_count": 5,
+    "role": "FE, INFRA",
+    "github": "https://github.com/wndgur2/memento",
+    "content": "\n<img width=\"760\" height=\"786\" alt=\"Frame 1739334163\" src=\"https://github.com/user-attachments/assets/8c562510-e01e-43ba-85a8-45ebb0f529e8\" />\n\n\n# MEMENTO\n\n## 개요\n\n### 아카이빙에 집중한 소셜 네트워크 서비스\n\n- 인원: 5명 (FE 2, BE 3)\n- 서비스 주소: https://memento.ai.kr\n\n## 기술스택\n\n### Language & Framework\n\n![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)\n![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=20232A)\n![Vite](https://img.shields.io/badge/Vite-646CFF?logo=vite&logoColor=white)\n![SWC](https://img.shields.io/badge/SWC-FFCE45?logo=swc&logoColor=000000)\n\n### 상태 관리 & 데이터\n\n![Zustand](https://img.shields.io/badge/zustand-602c3c?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAMAAAAolt3jAAAA8FBMVEVHcExXQzpKQDlFV16lpqyGh4tPPTdWT0weHRU7LRZGQzmxYjlaTkZsbmywVyxtXDSFhISXm6WWpcaytb6bm56gprY0LiiXmp2prLamsMa0XS42MSxkTUVDSkuyYzGihXdDV2GprbmedVxaRD1kTUWUdGFGOCN4a2OfpbI0SFFAMSddTkbCc0dWQiGFRypXQyJUQCBcTTWviDVXQyJcUDjlqCWxjkG+hBTiohtURD6lr8lORTtDVVZmPyxwSipaRSJDOzaWpsyYqMyYqM2dq8tPOjBERTs6QUKTcCeKaCJvViZdSDK4iSngoiDvqx7KkRuGEi1hAAAAOXRSTlMApZ78cB8hCAMQO/j/FOH4KlT1wFfJTjaY6SxtVexFn3Tn2sN6d671mVuJ+/PPN9CT6TfpS4C9jJaVLRihAAAAi0lEQVQIHXXBxRKCUAAF0Es/QMDubsVuGrv1///GBQ4bx3PwgwC8gFCRohs8QrQV0ZtKOZ9JcgBmU8MwqFa9kjNTUWB58f2jPOjU9juTBTbPq+vIar972MZjwPr1uDvqCFw2wQpQVm/t7Oo9gAgAFtrtZNtMFQFp7nkWU5IQECfjYbuQFvBFRJHgjw9L0A80UmaGpAAAAABJRU5ErkJggg==)\n![TanStack Query](https://img.shields.io/badge/TanStack%20Query-FF4154?logo=reactquery&logoColor=white)\n\n### UI & Icon\n\n![Emotion](https://img.shields.io/badge/Emotion-DB7093?logo=emotion&logoColor=white)\n![@solar-icons/react](https://img.shields.io/badge/%40solar--icons%2Freact-FFB400?logo=starship&logoColor=white)\n\n### Build & Tooling\n\n![pnpm](https://img.shields.io/badge/pnpm-F69220?logo=pnpm&logoColor=white)\n![PWA](https://img.shields.io/badge/PWA-5A0FC8?logo=pwa&logoColor=white)\n\n### 코드 품질\n\n![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)\n![Prettier](https://img.shields.io/badge/Prettier-F7B93E?logo=prettier&logoColor=000000)\n\n### 테스트\n\n![Vitest](https://img.shields.io/badge/Vitest-6E9F18?logo=vitest&logoColor=white)\n![React Testing Library](https://img.shields.io/badge/React%20Testing%20Library-E33332?logo=testinglibrary&logoColor=white)\n![Storybook](https://img.shields.io/badge/Storybook-FF4785?logo=storybook&logoColor=white)\n\n## 디렉토리 구조\n\n```text\nfront-end/\n├── public/                 # 정적 에셋 및 manifest 등 PWA 관련 파일\n├── src/\n│   ├── api/                # 서버 API 호출 관련 모듈\n│   ├── components/         # 재사용 가능한 UI 컴포넌트\n│   ├── hooks/              # 커스텀 훅\n│   ├── layouts/            # 페이지 레이아웃 컴포넌트\n│   ├── pages/              # 라우트 단위의 페이지 컴포넌트\n│   ├── routes/             # 라우팅 설정\n│   ├── store/              # 전역 상태(zustand) 관련 파일\n│   ├── styles/             # 전역 스타일 및 테마\n│   ├── types/              # TypeScript 타입 정의\n│   └── utils/              # 공용 유틸 함수\n├── mock/                   # 모킹 데이터 및 핸들러\n├── docker/                 # 도커 관련 설정\n├── vite.config.ts          # Vite 설정\n└── package.json\n```\n",
+    "thumbnail": "https://github.com/user-attachments/assets/5ef53dd8-e315-47dc-8169-7b566077a132"
+  },
+  {
+    "id": "wndgur2.github.io",
+    "category": "project",
+    "title": "wndgur2.github.io",
+    "description": "기술 블로그 ㅇㅈㅎ",
+    "tags": [
+      "blog",
+      "github",
+      "github-action",
+      "react",
+      "typescript"
+    ],
+    "date_started": "2024.05.05",
+    "date_finished": "",
+    "head_count": 1,
+    "role": "FE",
+    "github": "https://github.com/wndgur2/wndgur2.github.io",
+    "content": "![Screenshot of the portfolio home page](https://github.com/user-attachments/assets/6dccf12f-022c-47b8-9b0f-622027850828)\n",
+    "thumbnail": "https://github.com/user-attachments/assets/6dccf12f-022c-47b8-9b0f-622027850828"
+  },
+  {
+    "id": "cat-chess",
+    "category": "project",
+    "title": "cat-chess",
+    "description": "Autochess on web, with cats!",
+    "tags": [
+      "express",
+      "javascript",
+      "pug",
+      "threejs",
+      "websocket"
+    ],
+    "date_started": "2023.12.01",
+    "date_finished": "2024.04.01",
+    "head_count": 1,
+    "role": "Full-stack",
+    "github": "https://github.com/wndgur2/cat-chess",
+    "content": "# CatChess\n\n_A real-time, browser-based 3D auto battler starring tactical cats._\n\n## Demo\n\n![DEMO_MAIN](https://github.com/wndgur2/CatChess/assets/65120311/127f7c91-6917-416a-accb-38428a96945a)\n![DEMO_GAME](https://github.com/user-attachments/assets/c83d8e9c-acf6-47d8-bd14-163b70201edd)\n\n## 한국어\n\n### 개요\n\nCatChess는 브라우저에서 실행되는 실시간 멀티플레이 오토 배틀러입니다. Node.js/Express 백엔드가 매칭, 전투 시뮬레이션, 영속성을 담당하고 Three.js 기반 프런트엔드가 3D 보드와 고양이 모델, 전투 이펙트를 렌더링합니다. WebSocket, WebGL, MongoDB를 결합해 두 플레이어가 끊김 없이 전략 대결을 펼칠 수 있도록 설계했습니다.\n\n### 라이브 빌드 & 자료\n\n- 최신 빌드 플레이: [Cat Chess home](https://cat-chess.vercel.app/)\n- 게임 플레이 영상: [0.2.9 데모](https://www.youtube.com/watch?v=07bcqwNsibg&t=314s)\n- UI/UX 기획안: [Figma 보드](https://www.figma.com/file/UTLu1K2qiGxK4XhZFt7q1h/catChess?type=design&node-id=0%3A1&mode=design&t=4keMP4w5z6JixYat-1)\n- 로직 다이어그램: [Draw.io 문서](https://drive.google.com/file/d/1AHRsH_nBJkpwJ-txst1yUMQeNCm4xSDl/view?usp=drive_link)\n\n### 주요 특징\n\n- `실시간 PvP`: `server/modules/socket.js`가 WebSocket 통신을 관리해 준비 - 전투 - 결과 - 대기 단계를 두 플레이어가 동일하게 경험합니다.\n- `3D 전장 렌더링`: `client/public/javascripts/modules/3D/Painter.js`가 Three.js, OutlineEffect, GLTF 모델을 활용해 직관적인 전장과 이펙트를 구현했습니다.\n- `유닛 & 스킬`: `server/modules/unit`과 `server/modules/constants`에 고양이 유닛의 능력치, 스킬, 시너지가 정의되어 있으며 전투 로직은 `Battle.js`에서 처리합니다.\n- `계정 & 전적`: `server/routes/auth.js`는 Google OAuth를 통해 토큰을 발급하고, `server/db/schema/User.js`가 승/패 기록과 접속 상태를 MongoDB에 저장합니다.\n- `다국어 지원`: `server/app.js`가 브라우저의 `Accept-Language`를 확인해 `lang` 쿠키를 설정하고 Pug 템플릿을 언어별로 렌더링합니다.\n- `플레이어 로그`: `client/public/javascripts/main.js`가 브라우저 정보를 수집해 `server/routes/user.js` 및 `server/db/schema/Device.js`에서 QA용 데이터를 축적합니다.\n\n### 기술 스택\n\n- **서버**: Node.js, Express, ws, dotenv, cookie-parser, body-parser\n- **클라이언트**: Three.js, GLTF 에셋, 바닐라 JS 기반 UI, Pug 템플릿\n- **데이터베이스**: MongoDB + Mongoose(User, Device 스키마)\n- **툴링**: Nodemon 스크립트, dotenv 환경 설정, `client/public` 에셋 파이프라인\n\n### 아키텍처\n\n```\n브라우저 (UI.js, Socket.js, Painter.js)\n    ↕  HTTPS + WebSocket (ws)\nExpress 앱 (server/app.js)\n    ↕  게임 루프 (Game.js, Battle.js, BattleField.js)\nMongoDB (User, Device 모델)\n```\n\n서버가 모든 게임 상태를 판단하고(`Game.js`), 틱 단위 전투를 해결하며(`Battle.js`), 플레이어 리소스를 관리합니다(`Player.js`). 클라이언트는 렌더링과 입력, 다국어 UI에 집중합니다.\n\n### 디렉터리 구조\n\n```\nCatChess/\n├── client/                          # 프런트엔드 정적 자산과 Pug 뷰\n│   ├── public/                      # 브라우저 번들에 포함되는 리소스\n│   │   ├── audio/                   # 효과음, 브금 등 오디오 파일\n│   │   ├── images/                  # UI 아이콘, 유닛 초상화\n│   │   ├── javascripts/             # 클라이언트 사이드 스크립트\n│   │   │   ├── main.js              # 페이지 엔트리 스크립트\n│   │   │   └── modules/             # 프런트엔드 게임 로직 모듈\n│   │   │       ├── 3D/              # Painter, Cat 등 Three.js 렌더러\n│   │   │       ├── Battle.js        # 전투 연출 및 라운드 상태\n│   │   │       ├── Game.js          # 클라이언트 게임 상태 매니저\n│   │   │       ├── Socket.js        # WebSocket 송수신 래퍼\n│   │   │       ├── UI.js            # HUD, 로비 등 UI 컨트롤러\n│   │   │       ├── User.js          # 사용자 정보 저장/업데이트\n│   │   │       └── constants/       # 프런트 고정값, 메시지 키\n│   │   ├── models/                  # GLTF 고양이, 보드 모델\n│   │   └── stylesheets/             # SCSS/CSS 스타일\n│   └── views/                       # Express가 렌더링하는 Pug 템플릿\n├── server/                          # Node.js 백엔드 소스\n│   ├── app.js                       # Express 설정과 공통 미들웨어\n│   ├── bin/                         # HTTP/WebSocket 서버 부트스트랩\n│   ├── modules/                     # 게임 루프, 전투, 소켓 도메인 로직\n│   │   ├── Game.js                  # 매치 플로우 및 라운드 관리\n│   │   ├── Battle.js                # 틱 단위 전투 시뮬레이션\n│   │   ├── BattleField.js           # 보드 상태 및 포지션 로직\n│   │   ├── Player.js                # 플레이어 자원, 덱, 체력 관리\n│   │   ├── Item.js                  # 아이템 부여 및 효과 처리\n│   │   ├── socket.js                # WebSocket 이벤트 핸들러 등록\n│   │   ├── utils.js                 # 공용 유틸 함수\n│   │   ├── unit/                    # 고양이/크립 유닛 클래스 모음\n│   │   │   ├── Unit.js              # 기본 유닛 베이스 클래스\n│   │   │   ├── SimpleCat.js         # 플레이어 유닛 구현\n│   │   │   ├── Creep.js             # PvE 라운드 크립 정의\n│   │   │   └── Modifier.js          # 버프/디버프 계산 로직\n│   │   └── constants/               # 전투/시너지/스테이지 상수\n│   │       ├── SKILLS.js            # 스킬 정의\n│   │       ├── SYNERGIES.js         # 시너지 조합\n│   │       ├── ITEMS.js             # 아이템 스펙\n│   │       └── cats.json            # 고양이 스탯 데이터\n│   ├── routes/                      # 인증 및 유저 관련 API 엔드포인트\n│   │   ├── auth.js                  # Google OAuth, 세션 관리\n│   │   ├── data.js                  # 전투 기록, 통계 제공\n│   │   └── user.js                  # 플레이어 정보 갱신, 로그 수집\n│   └── db/                          # MongoDB 연결 설정과 스키마\n│       ├── mongoDB.js               # Mongoose 커넥션 설정\n│       ├── query.js                 # 재사용 가능한 쿼리 함수\n│       └── schema/                  # User, Device 등 Mongoose 스키마\n├── docs/                            # 기획 문서, 다이어그램 등 참고 자료\n├── compressor.sh                    # 에셋 압축 및 최적화 스크립트\n├── exclude_list.txt                 # 압축 제외 대상 목록\n├── package.json                     # npm 스크립트와 프로젝트 의존성\n└── README.md                        # 프로젝트 개요 및 가이드\n```\n\n### 로컬 실행 방법\n\n1. Node.js 18+와 MongoDB(Atlas 또는 로컬 인스턴스)를 준비합니다.\n2. 의존성을 설치합니다.\n   ```bash\n   npm install\n   ```\n3. 프로젝트 루트에 `.env` 파일을 작성합니다.\n   ```ini\n   DB_URI=mongodb://localhost:27017/catchess   # 또는 Atlas 접속 문자열\n   GOOGLE_CLIENT_ID=구글 OAuth 클라이언트 ID\n   GOOGLE_CLIENT_SECRET=구글 OAuth 클라이언트 시크릿\n   PORT=3000\n   ```\n4. 개발 서버를 실행합니다.\n   ```bash\n   npm run dev\n   ```\n5. `http://localhost:8080/?lang=ko` (또는 `lang=en`)로 접속합니다. 개발 모드(`NODE_ENV=development`)에서는 빠른 테스트를 위해 시작 골드/체력이 상승하도록 설정되어 있습니다(`Player.js` 참고).\n\n배포 환경에서는 `npm start`가 `.env`를 불러오고 `PORT`로 바인딩한 뒤 `client/public` 정적 파일을 제공합니다.\n\n### 개발 메모\n\n- 매치 플로우는 `server/modules/Game.js`에서 관리하며 상태가 준비 → 전투 → 결과 → 대기로 순환합니다.\n- `client/public/javascripts/modules/Socket.js`에는 보드 업데이트, 유닛 이동, 전투 결과 동기화에 사용되는 WebSocket 메시지 타입이 정리되어 있습니다.\n- GLTF 모델, 초상화, 오디오 등 에셋은 `client/public/models`, `client/public/images`에 있으며, `main.js`가 유닛 이미지를 선로드합니다.\n- `?lang=ko` 또는 `?lang=en` 쿼리 파라미터로 언어를 강제할 수 있으며 쿠키가 이후 요청에 반영됩니다.\n\n### 어필 포인트\n\n- 무거운 게임 서버 없이도 WebSocket 기반의 실시간 게임 루프를 직접 설계해 권위 서버(authoritative server)를 구현했습니다.\n- Three.js OutlineEffect, GLTF 로더, 맞춤형 고양이 모델을 활용해 전투 상황에서도 직관적인 3D UI를 유지했습니다.\n- 사용자 전적과 장치 로그를 MongoDB에 저장해 밸런스 검토 및 QA 데이터를 확보합니다.\n\n### 향후 계획\n\n- 대용량 GLTF/텍스처 선로딩으로 초기 로딩 시간을 단축합니다.\n- 모바일/태블릿 대응 UI와 입력 개선을 진행합니다.\n- 추가 스킬, 현지화 문구, 튜토리얼 UI를 확장합니다.\n",
+    "thumbnail": "/images/cat-chess.jpeg"
+  },
+  {
+    "id": "memohub",
+    "category": "project",
+    "title": "memohub",
+    "description": "Memo by anyone at everywhere.",
+    "tags": [
+      "nextjs"
+    ],
+    "date_started": "2023.11.23",
+    "date_finished": "2023.11.29",
+    "head_count": 2,
+    "role": "FE",
+    "github": "https://github.com/wndgur2/memohub",
+    "content": "\n\n# Memohub\n### Memo by anyone at everywhere.\n### https://memohub.vercel.app/\n<img width=\"367\" alt=\"image\" src=\"https://github.com/wndgur2/memohub/assets/65120311/e6232f19-a2ac-4f2e-a75e-72da3e6877ae\">\n",
+    "thumbnail": "/images/memohub.jpeg"
+  },
+  {
+    "id": "cheese",
+    "category": "project",
+    "title": "cheese",
+    "description": "야외 포토 부스 서비스",
+    "tags": [
+      "mysql",
+      "nextjs",
+      "spring",
+      "tensorflow",
+      "vercel",
+      "webrtc"
+    ],
+    "date_started": "2023.01.01",
+    "date_finished": "2023.11.13",
+    "head_count": 3,
+    "role": "FE",
+    "github": "https://github.com/wndgur2/cheese",
+    "content": "# 🧀 치즈한장\n\n### 모바일 웹을 활용한 야외 포토 부스 서비스  \nNextjs, Java Spring, FastAPI, MySQL, Redis, Tensorflow, WebRTC  \n\n<img width=\"673\" alt=\"치즈한장 패널\" src=\"https://github.com/wndgur2/cheese/assets/65120311/614beae2-f2bb-4e31-8ae4-9e786b37f6a9\">\n\n## 서비스 개요도\n\n<img width=\"1029\" alt=\"image\" src=\"https://github.com/wndgur2/cheese/assets/65120311/a3dd91c5-5950-4cdb-91e6-e186e530798c\">\n\n## 시스템 구성도\n\n<img width=\"1214\" alt=\"image\" src=\"https://github.com/wndgur2/cheese/assets/65120311/d20a5c2e-e8e6-4de4-a848-55491c992dc6\">\n\n## [Demo video](https://www.youtube.com/watch?v=r800Of946go&t=201s)\n\n<img width=\"1440\" alt=\"image\" src=\"https://github.com/wndgur2/cheese/assets/65120311/c4041c34-6f92-4829-9f5f-19da8c8e5b4d\">\n\n## [Figma 화면설계](https://www.figma.com/file/UQmLtpMRRX1n2vbjDFNDNM/CHEESE?type=design&node-id=0%3A1&mode=design&t=XcYpFvnlMULj78eG-1)\n\n<img width=\"75%\" alt=\"Screenshot 2024-04-12 at 23 46 10\" src=\"https://github.com/wndgur2/cheese/assets/65120311/974f3957-cd20-4315-8db0-93c31aee44d0\">\n<img width=\"75%\" alt=\"Screenshot 2024-04-12 at 23 46 02\" src=\"https://github.com/wndgur2/cheese/assets/65120311/d2e8fcc4-c170-480e-a72a-0adb0935f28a\">\n<img width=\"75%\" alt=\"Screenshot 2024-04-12 at 23 46 16\" src=\"https://github.com/wndgur2/cheese/assets/65120311/7dc88432-a075-474f-8f0a-ce070dc14d09\">\n\n## [REST API 설계](https://docs.google.com/document/d/11c5ff5nQKbCjvw7g00swTiHJU6qSiivBfIiWF2CWOoc/edit?usp=sharing)\n\n<img width=\"683\" alt=\"image\" src=\"https://github.com/wndgur2/cheese/assets/65120311/67f50ae5-4e51-4678-a7f5-4baf9bc62078\">\n\n## [ERD](https://drive.google.com/file/d/1OM6V3gv4ZvNzaFMMej9JU_6k1JO8n7Eh/view?usp=sharing)\n\n<img width=\"961\" alt=\"Screenshot 2024-04-20 at 14 35 41\" src=\"https://github.com/wndgur2/cheese/assets/65120311/5b7b9fc7-a013-4dd5-bb82-9fd2d4e39caa\">\n\n## [CD](https://drive.google.com/file/d/1ErVFMeV1rfW0me8juUYVYhiNe4JGESD8/view?usp=sharing)\n\n<img width=\"1104\" alt=\"image\" src=\"https://github.com/wndgur2/cheese/assets/65120311/803f3cf4-8845-4060-87af-b92701bb10d0\">\n",
+    "thumbnail": "/images/cheese.jpeg"
+  },
+  {
+    "id": "Reptopia",
+    "category": "project",
+    "title": "Reptopia",
+    "description": "",
+    "tags": [
+      "canvas"
+    ],
+    "date_started": "2020.12.15",
+    "date_finished": "2021.04.01",
+    "head_count": 1,
+    "role": "FE",
+    "github": "https://github.com/wndgur2/Reptopia",
+    "content": "![reptopia](https://github.com/wndgur2/Reptopia/assets/65120311/99d587c1-d3cc-4c0f-9f2c-16905a4c73e0)\n\n\n# REPTOPIA\n\n파충류 사육을 배울 수 있는 시뮬레이터<br>\n<https://main--reptopia.netlify.app/>\n\n## 목표\n\n1. **파충류 그래픽** 구현\n2. **재밌는 UI** 구현\n\n## 파충류 그래픽\n\n1. 물리 엔진<br>\n  ![x1-ezgif com-speed](https://github.com/wndgur2/Reptopia/assets/65120311/3432b868-02a5-4a87-b39a-5053e869859e)\n\n2. 형태와 움직임<br>\n  ![movement](https://github.com/wndgur2/Reptopia/assets/65120311/347c90c2-9b3e-4bae-abe3-363891bb251d)\n\n## 재밌는 UI\n\n![ScreenRecording2024-06-21at22 35 29-ezgif com-video-to-gif-converter](https://github.com/wndgur2/Reptopia/assets/65120311/57baf603-5f17-47e9-8d07-9b4aa1e63acd)\n\n.\n",
+    "thumbnail": "/images/reptopia.jpeg"
+  }
+]

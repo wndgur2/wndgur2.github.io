@@ -1,9 +1,9 @@
 // utils/sortedInsert.ts
 import { type IPost } from '../types'
 
-export const sortedInsert = (posts: IPost[], newPost: IPost): IPost[] => {
+export const sortedInsert = <T extends IPost>(posts: T[], newPost: T): T[] => {
   // 이상한 post가 들어오거나 이미 있는 post면 그냥 반환
-  if (!newPost || posts.find((post) => post.id === newPost.id)) return posts
+  if (!newPost || posts.find(post => post.id === newPost.id)) return posts
 
   // Binary search for the correct index
   let left = 0

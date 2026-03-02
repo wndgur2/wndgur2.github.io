@@ -5,7 +5,7 @@ import { IoLogoGithub } from 'react-icons/io'
 import { Link, useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 
-import Loading from '@/components/common/Loading'
+import Loading from '@/components/common/Loader'
 import TagList from '@/components/common/TagList'
 import IconLink from '@/components/IconLink/IconLink'
 import useResetScroll from '@/hooks/useResetScroll'

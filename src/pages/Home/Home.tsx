@@ -1,13 +1,21 @@
-import { useEffect, type FunctionComponent } from 'react'
+import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import './Home.css'
 
-import PostList from '@/components/Post/PostList'
-import ProjectList from '@/components/Post/ProjectList'
-import Profile from '@/components/Profile/Profile'
+import { useRecoilValue } from 'recoil'
 
-const Home: FunctionComponent = () => {
+import Loading from '@/components/common/Loader'
+import PostListItem from '@/components/Post/PostListItem'
+import ProjectListItem from '@/components/Post/ProjectListItem'
+import Profile from '@/components/Profile/Profile'
+import CATEGORIES from '@/consts/CATEGORIES'
+import usePostsByCategory from '@/hooks/usePostsByCategory'
+import { postsAtom } from '@/recoil'
+import type { IPost } from '@/types'
+import HomeCategory from './HomeCategory'
+
+export default function Home() {
   const router = useNavigate()
   const searchParams = useSearchParams()[0]
   const lost_url = searchParams.get('lost_url')
@@ -19,15 +27,43 @@ const Home: FunctionComponent = () => {
     router(`/${paths.join('/')}`)
   }, [lost_url, router])
 
+  const posts = useRecoilValue(postsAtom)
+  const { projects, algorithms, studies } = usePostsByCategory(posts, 10)
+
   return (
     <div id='home'>
       <Profile />
       <main>
-        <ProjectList />
-        <PostList />
+        <HomeCategory label='Projects' category={CATEGORIES.PROJECT}>
+          {projects.length > 0 ? (
+            projects.map((project: IPost, i: number) => (
+              <ProjectListItem key={i} post={project} />
+            ))
+          ) : (
+            <Loading phrase='loading projects' />
+          )}
+        </HomeCategory>
+
+        <HomeCategory label='Studies' category={CATEGORIES.STUDY}>
+          {studies.length ? (
+            studies.map((post: IPost, i: number) => (
+              <PostListItem key={i} post={post} />
+            ))
+          ) : (
+            <Loading phrase={`loading studies`} />
+          )}
+        </HomeCategory>
+
+        <HomeCategory label='Algorithms' category={CATEGORIES.ALGORITHM}>
+          {algorithms.length ? (
+            algorithms.map((post: IPost, i: number) => (
+              <PostListItem key={i} post={post} />
+            ))
+          ) : (
+            <Loading phrase={`loading algorithms`} />
+          )}
+        </HomeCategory>
       </main>
     </div>
   )
 }
-
-export default Home

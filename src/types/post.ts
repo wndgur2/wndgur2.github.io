@@ -1,9 +1,9 @@
-import TIER_COLOR from '@/consts/TIER_COLOR'
+import type CATEGORIES from '@/consts/CATEGORIES'
 
 export interface IPost {
   [index: string]: number | string | string[] | undefined
   id: string
-  category: string
+  category: keyof typeof CATEGORIES
   title: string
   content: string
   tags: string[]
@@ -15,8 +15,8 @@ export interface IPost {
 }
 
 export interface IAlgorithm extends IPost {
-  site: string
-  level: keyof typeof TIER_COLOR
-  number: number
+  url: string
   code: string
 }
+
+export type PostTypes = IPost | IAlgorithm

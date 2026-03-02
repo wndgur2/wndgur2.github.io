@@ -6,13 +6,17 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
+import type CATEGORIES from '@/consts/CATEGORIES'
+
 interface HomeCategoryProps {
-  category: string
+  label: string
+  category: (typeof CATEGORIES)[keyof typeof CATEGORIES]
   children: React.ReactNode
 }
 
 const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
   category,
+  label,
   children,
 }: HomeCategoryProps) => {
   const postsRef = useRef<HTMLUListElement>(null)
@@ -66,7 +70,7 @@ const HomeCategory: FunctionComponent<HomeCategoryProps> = ({
           state={{ searchKey: `@${category}` }}
         >
           <header>
-            <h1>{category[0].toUpperCase() + category.slice(1)}</h1>
+            <h1>{label}</h1>
             <IoIosArrowForward size={20} />
           </header>
         </Link>

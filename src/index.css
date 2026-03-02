@@ -29,6 +29,7 @@
     --light-dimmed-bg-color: #e3e3e3;
     --light-hover-bg-color: #fcfcfc;
     --light-accent-color: #36f;
+    --light-accent-color-80: #3366ffcc;
     --light-dimmed-accent-color: #13f2;
     --light-action-color: #ff50aa;
     --light-content-color: #242424;
@@ -47,6 +48,7 @@
     --dark-dimmed-bg-color: #222;
     --dark-hover-bg-color: #161616;
     --dark-accent-color: #75f;
+    --dark-accent-color-80: #7755ffcc;
     --dark-dimmed-accent-color: #64f2;
     --dark-action-color: #adf;
     --dark-minor-color: #888;
@@ -66,6 +68,7 @@
     --dimmed-bg-color: var(--light-dimmed-bg-color);
     --hover-bg-color: var(--light-hover-bg-color);
     --dimmed-accent-color: var(--light-dimmed-accent-color);
+    --accent-color-80: var(--light-accent-color-80);
     --accent-content-color: var(--light-accent-content-color);
     --accent-color: var(--light-accent-color);
     --action-color: var(--light-action-color);
@@ -87,6 +90,7 @@
     --hover-bg-color: var(--dark-hover-bg-color);
     --action-color: var(--dark-action-color);
     --accent-color: var(--dark-accent-color);
+    --accent-color-80: var(--dark-accent-color-80);
     --dimmed-accent-color: var(--dark-dimmed-accent-color);
     --accent-content-color: var(--dark-accent-content-color);
     --content-color: var(--dark-content-color);
@@ -179,6 +183,7 @@ button.accent * {
 
 button.accent:hover {
     background-color: var(--dimmed-accent-color);
+    --dimmed-accent-color: ;
 }
 
 .clickable {

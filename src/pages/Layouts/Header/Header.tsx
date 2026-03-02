@@ -6,7 +6,6 @@ import './Header.css'
 
 import { Link } from 'react-router-dom'
 
-import Spacer from '@/components/common/Spacer'
 import useTheme from '@/hooks/useTheme'
 import SearchBar from './SearchBar/SearchBar'
 import ThemeToggler from './Theme/ThemeToggler'
@@ -52,3 +51,14 @@ const Header: FunctionComponent = () => {
 }
 
 export default Header
+
+function Spacer() {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexGrow: 1,
+      }}
+    ></div>
+  )
+}

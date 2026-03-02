@@ -6,10 +6,10 @@ import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx'
 
 import ImageSkeleton from '@/components/Post/ImageSkeleton'
 import useTheme from '@/hooks/useTheme'
-import type { IPost } from '@/types'
+import type { PostTypes } from '@/types'
 
 interface MarkdownViewProps {
-  post: IPost
+  post: PostTypes
   overrides?: MarkdownToJSX.Overrides
 }
 
@@ -63,9 +63,14 @@ const MarkdownView: FunctionComponent<MarkdownViewProps> = ({
     })
   }, [post])
 
+  let content = post.content
+  if ('code' in post) {
+    content = `${content}\n\n### 소스코드\n\`\`\`\n${post.code}\n\`\`\``
+  }
+
   return (
     <Markdown options={mdOption} className='markdown'>
-      {post.content}
+      {content}
     </Markdown>
   )
 }

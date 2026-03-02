@@ -10,6 +10,7 @@
     "highlight.js": "^11.11.1",
     "html-react-parser": "^5.2.6",
     "markdown-to-jsx": "^7.7.13",
+    "p-limit": "^7.3.0",
     "prettier": "^3.6.2",
     "react": "^18",
     "react-dom": "^18",

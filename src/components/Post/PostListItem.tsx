@@ -6,9 +6,8 @@ import { type MarkdownToJSX } from 'markdown-to-jsx'
 import { Link } from 'react-router-dom'
 
 import CATEGORIES from '@/consts/CATEGORIES'
-import TIER_COLOR from '@/consts/TIER_COLOR'
 import MarkdownView from '@/pages/PostDetail/MarkdownView'
-import { type IAlgorithm, type IPost } from '@/types'
+import { type IPost } from '@/types'
 import TagList from '../common/TagList'
 
 interface PostListItemProps {
@@ -33,11 +32,6 @@ const PostListItem: FunctionComponent<PostListItemProps> = ({
           <span>{post.title}</span>
           {post.site && <small>{post.site}</small>}
           {post.number && <small>{post.number}</small>}
-          {post.level && (
-            <small style={{ color: TIER_COLOR[(post as IAlgorithm).level] }}>
-              {post.level}
-            </small>
-          )}
         </h3>
         <small>
           {post.date_started}
