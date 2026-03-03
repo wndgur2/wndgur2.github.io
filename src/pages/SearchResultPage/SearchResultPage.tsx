@@ -1,61 +1,67 @@
 import './SearchResultPage.css'
 
-import { useState } from 'react'
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
-import { useParams } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
 
-import Loading from '@/components/common/Loader'
+import Loading from '@/components/common/Spinner'
 import TagCountList from '@/components/common/TagCountList'
 import PostListItem from '@/components/post/PostListItem'
 import ProjectListItem from '@/components/post/ProjectListItem'
 import CATEGORIES from '@/consts/CATEGORIES'
 import useInfiniteScroll from '@/hooks/useInfiniteScroll'
 import useResetScroll from '@/hooks/useResetScroll'
+import useSearchedPosts from '@/hooks/useSearchedPosts'
 import useSortedPosts from '@/hooks/useSortedPosts'
-import { getPostsBySearchKey } from '@/recoil/selectors/postsSelector'
 import { type IPost } from '@/types'
 import { getTagsWithCounts } from '@/utils/tag'
+
+/**
+ * 검색 결과 페이지 컴포넌트
+ * - 검색어에 해당하는 게시글 조회
+ * - 검색 결과 정렬 (최근글순, 오랜글순)
+ * - 무한 스크롤 (페이지네이션)
+ */
 
 const PAGE_SIZE = 10
 
 export default function SearchResultPage() {
-  const params = useParams()
-  const searchedPosts = useRecoilValue(
-    getPostsBySearchKey({ searchKey: params.searchKey }),
-  )
-  const relatedTags = getTagsWithCounts(searchedPosts)
-  const [recentFirst, setRecentFirst] = useState(true)
-  const sortedPosts = useSortedPosts(searchedPosts, recentFirst)
+  // 검색어에 해당하는 게시글들을 가져오기
+  const { searchedPosts, searchKey } = useSearchedPosts()
 
-  useResetScroll(params.searchKey)
+  // 검색 결과 정렬
+  const { sortedPosts, sortOrder, sortAttribute, toggleSortOrder } =
+    useSortedPosts(searchedPosts)
 
-  const toggleSort = () => {
-    setRecentFirst(!recentFirst)
-  }
-
-  const { visibleItems, observerRef, hasMore, isLoading } = useInfiniteScroll({
+  // 무한 스크롤
+  const {
+    visibleItems: posts,
+    observerRef,
+    hasMore,
+    isLoading,
+  } = useInfiniteScroll({
     items: sortedPosts,
     pageSize: PAGE_SIZE,
-    deps: [params.searchKey, recentFirst],
+    deps: [searchKey, sortAttribute, sortOrder],
   })
+
+  useResetScroll(searchKey)
+  const relatedTags = getTagsWithCounts(searchedPosts)
 
   return (
     <main className='search-result'>
       <header>
         <div className='search-info'>
-          <h3 className='content'>{params.searchKey}</h3>
+          <h3 className='content'>{searchKey}</h3>
           <p className='dimmed content search-result-text'> &nbsp; 검색 결과</p>
         </div>
-        <div>{params.searchKey && <TagCountList tags={relatedTags} />}</div>
+        <div>{searchKey && <TagCountList tags={relatedTags} />}</div>
         <button
           className='clickable btn-search-result-sort'
-          onClick={toggleSort}
+          onClick={toggleSortOrder}
         >
           <p className='dimmed content'>
-            {recentFirst ? '최근글순' : '오랜글순'}
+            {sortOrder === 'desc' ? '최근글순' : '오랜글순'}
           </p>
-          {recentFirst ? (
+          {sortOrder === 'desc' ? (
             <FaSortAmountDown className='icon' />
           ) : (
             <FaSortAmountUp className='icon' />
@@ -63,9 +69,9 @@ export default function SearchResultPage() {
         </button>
       </header>
       <ul>
-        {visibleItems.length ? (
+        {posts.length ? (
           <>
-            {visibleItems.map((post: IPost, i) =>
+            {posts.map((post: IPost, i) =>
               post.category === CATEGORIES.PROJECT ? (
                 <ProjectListItem key={post.id ?? i} post={post} />
               ) : (

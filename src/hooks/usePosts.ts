@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
 
 import { getAlgorithms, getPosts, getProjects } from '@/api/post'
-import { postsAtom } from '@/recoil'
+import { postsAtom } from '@/store'
 
 export default function usePosts() {
   const setPosts = useSetRecoilState(postsAtom)

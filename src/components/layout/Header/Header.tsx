@@ -8,8 +8,8 @@ import { Link } from 'react-router-dom'
 
 import useTheme from '@/hooks/useTheme'
 import { ROUTES } from '@/router'
-import SearchBar from '../SearchBar/SearchBar'
-import ThemeToggler from '../Theme/ThemeToggler'
+import SearchBar from '../SearchBar'
+import ThemeToggler from '../ThemeToggler'
 
 export default function Header() {
   const { isDark, setIsDark } = useTheme()

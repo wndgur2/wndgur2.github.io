@@ -61,11 +61,7 @@ export default function HomeCategory({ category, label, children }: Props) {
   return (
     <section className='home-category'>
       <header>
-        <Link
-          className='link'
-          to={ROUTES.SEARCH(`@${category}`)}
-          state={{ searchKey: `@${category}` }}
-        >
+        <Link className='link' to={ROUTES.SEARCH(`@${category}`)}>
           <header>
             <h1>{label}</h1>
             <IoIosArrowForward size={20} />

@@ -18,6 +18,7 @@ export const router = createBrowserRouter([
     children: [
       { path: ROUTES.HOME, element: <HomePage />, index: true }, // Default child route for the root path
       { path: ROUTES.SEARCH(':searchKey'), element: <SearchResultPage /> },
+      { path: ROUTES.SEARCH(''), element: <SearchResultPage /> },
       { path: ROUTES.POST_DETAIL(':title'), element: <PostDetailPage /> },
       { path: '*', element: <NoPage /> },
     ],

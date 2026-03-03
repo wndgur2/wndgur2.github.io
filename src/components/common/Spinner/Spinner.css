@@ -11,9 +11,9 @@
     margin-top: 1.6em;
 }
 
-.loader,
-.loader:before,
-.loader:after {
+.spinner,
+.spinner:before,
+.spinner:after {
     border-radius: 50%;
     width: 2em;
     height: 2em;
@@ -21,7 +21,7 @@
     animation: bblFadInOut 1.2s infinite ease-in-out;
 }
 
-.loader {
+.spinner {
     color: var(--accent-color-80);
     font-size: 7px;
     position: relative;
@@ -30,19 +30,19 @@
     animation-delay: -0.24s;
 }
 
-.loader:before,
-.loader:after {
+.spinner:before,
+.spinner:after {
     content: '';
     position: absolute;
     top: 0;
 }
 
-.loader:before {
+.spinner:before {
     left: -3.5em;
     animation-delay: -0.48s;
 }
 
-.loader:after {
+.spinner:after {
     left: 3.5em;
 }
 

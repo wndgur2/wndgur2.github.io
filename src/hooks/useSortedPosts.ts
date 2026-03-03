@@ -1,22 +1,31 @@
 import { useMemo } from 'react'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
+import { sortAttributeAtom, sortOrderAtom } from '@/store/atoms/searchAtom'
 import { type IPost } from '@/types'
 
-export default function useSortedPosts(
-  searchedPosts: IPost[],
-  recentFirst: boolean,
-) {
-  return useMemo(
+export default function useSortedPosts(searchedPosts: IPost[]) {
+  const sortAttribute = useRecoilValue(sortAttributeAtom)
+  const sortOrder = useRecoilValue(sortOrderAtom)
+  const setSortOrder = useSetRecoilState(sortOrderAtom)
+
+  const sortedPosts = useMemo(
     () =>
       [...searchedPosts].sort((a, b) =>
-        recentFirst
-          ? a.date_started < b.date_started
+        sortOrder === 'desc'
+          ? a[sortAttribute] < b[sortAttribute]
             ? 1
             : -1
-          : a.date_started > b.date_started
+          : a[sortAttribute] > b[sortAttribute]
             ? 1
             : -1,
       ),
-    [searchedPosts, recentFirst],
+    [searchedPosts, sortAttribute, sortOrder],
   )
+
+  const toggleSortOrder = () => {
+    setSortOrder(prev => (prev === 'asc' ? 'desc' : 'asc'))
+  }
+
+  return { sortedPosts, sortOrder, sortAttribute, toggleSortOrder }
 }

@@ -5,20 +5,31 @@ import { Link, useParams } from 'react-router-dom'
 import { useRecoilValue } from 'recoil'
 
 import IconLink from '@/components/common/IconLink'
-import Loading from '@/components/common/Loader'
 import TagList from '@/components/common/TagList'
 import MarkdownView from '@/components/post/MarkdownView'
 import useResetScroll from '@/hooks/useResetScroll'
-import { getPostByTitle } from '@/recoil'
-import { getNextPost, getPrevPost } from '@/recoil/selectors/postsSelector'
 import { ROUTES } from '@/router'
+import { getPostByTitle } from '@/store'
+import { getNextPost, getPrevPost } from '@/store/selectors/postsSelector'
 
 export default function PostDetailPage() {
   const title = useParams().title
-  const post = useRecoilValue(getPostByTitle({ title: title }))
-  const prevPost = useRecoilValue(getPrevPost({ title: title }))
-  const nextPost = useRecoilValue(getNextPost({ title: title }))
-  useResetScroll(post)
+  const post = useRecoilValue(getPostByTitle({ title }))
+  const prevPost = useRecoilValue(getPrevPost({ title }))
+  const nextPost = useRecoilValue(getNextPost({ title }))
+
+  useResetScroll(title)
+
+  if (!post) {
+    return (
+      <div>
+        <p>{title} 게시글을 찾을 수 없어요.</p>
+        <Link to={ROUTES.HOME} className='clickable'>
+          <b>홈으로 돌아가기</b>
+        </Link>
+      </div>
+    )
+  }
 
   return (
     <article className='post'>
@@ -28,7 +39,6 @@ export default function PostDetailPage() {
             <Link
               to={ROUTES.SEARCH(`@${post.category}`)}
               className='minor post-category'
-              state={{ searchKey: `@${post.category}` }}
             >
               {post.category[0].toUpperCase() + post.category.slice(1)}
             </Link>
@@ -46,13 +56,7 @@ export default function PostDetailPage() {
         )}
       </header>
       <main className='post-content'>
-        {post === null ? (
-          <span>게시글 &apos;{title}&apos; 을 찾을 수 없어요.</span>
-        ) : post === undefined ? (
-          <Loading />
-        ) : (
-          <MarkdownView post={post} />
-        )}
+        <MarkdownView post={post} />
       </main>
       <nav>
         {
@@ -66,11 +70,7 @@ export default function PostDetailPage() {
             </div>
           </Link>
         }
-        <Link
-          to={`/search/@${post?.category}`}
-          className='clickable list'
-          state={{ searchKey: `@${post?.category}` }}
-        >
+        <Link to={`/search`} className='clickable list'>
           <div>목록으로</div>
         </Link>
         <Link

@@ -5,13 +5,13 @@ import './HomePage.css'
 
 import { useRecoilValue } from 'recoil'
 
-import Loading from '@/components/common/Loader'
+import Loading from '@/components/common/Spinner'
 import PostListItem from '@/components/post/PostListItem'
 import ProjectListItem from '@/components/post/ProjectListItem'
 import Profile from '@/components/profile/Profile'
 import CATEGORIES from '@/consts/CATEGORIES'
 import usePostsByCategory from '@/hooks/usePostsByCategory'
-import { postsAtom } from '@/recoil'
+import { postsAtom } from '@/store'
 import type { IPost } from '@/types'
 import HomeCategory from '../../components/post/HomeCategory'
 

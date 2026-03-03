@@ -2,7 +2,7 @@ import './Profile.css'
 
 import { useRecoilValue } from 'recoil'
 
-import { postsAtom } from '@/recoil'
+import { postsAtom } from '@/store'
 import { getTagsWithCounts } from '@/utils/tag'
 import TagCountList from '../../common/TagCountList'
 import ProfileImage from '../ProfileImage'

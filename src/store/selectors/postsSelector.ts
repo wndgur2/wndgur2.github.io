@@ -1,6 +1,6 @@
 import { selectorFamily } from 'recoil'
 
-import { postsAtom } from '@/recoil/atoms/postsAtom'
+import { postsAtom } from '@/store/atoms/postsAtom'
 import { type IPost } from '@/types'
 import { filterPostsBySearchKey } from '@/utils/filterPosts'
 

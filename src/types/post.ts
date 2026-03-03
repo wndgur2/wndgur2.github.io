@@ -20,3 +20,5 @@ export interface IAlgorithm extends IPost {
 }
 
 export type PostTypes = IPost | IAlgorithm
+
+export type PostSortAttributeTypes = 'date_started' | 'title'
