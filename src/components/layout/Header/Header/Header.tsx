@@ -7,6 +7,7 @@ import './Header.css'
 import { Link } from 'react-router-dom'
 
 import useTheme from '@/hooks/useTheme'
+import { ROUTES } from '@/router'
 import SearchBar from '../SearchBar/SearchBar'
 import ThemeToggler from '../Theme/ThemeToggler'
 
@@ -34,7 +35,7 @@ export default function Header() {
 
   return (
     <div id='header' ref={headerRef}>
-      <Link to={'/'} className='logo clickable small'>
+      <Link to={ROUTES.HOME} className='logo clickable small'>
         <Logo />
       </Link>
       <SearchBar />

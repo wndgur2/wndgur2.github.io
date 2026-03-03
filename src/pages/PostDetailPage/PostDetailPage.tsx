@@ -11,6 +11,7 @@ import MarkdownView from '@/components/post/MarkdownView'
 import useResetScroll from '@/hooks/useResetScroll'
 import { getPostByTitle } from '@/recoil'
 import { getNextPost, getPrevPost } from '@/recoil/selectors/postsSelector'
+import { ROUTES } from '@/router'
 
 export default function PostDetailPage() {
   const title = useParams().title
@@ -25,7 +26,7 @@ export default function PostDetailPage() {
         <section className='post-title'>
           {post && (
             <Link
-              to={`/search/@${post.category}`}
+              to={ROUTES.SEARCH(`@${post.category}`)}
               className='minor post-category'
               state={{ searchKey: `@${post.category}` }}
             >

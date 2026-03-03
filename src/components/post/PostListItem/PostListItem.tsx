@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import MarkdownView from '@/components/post/MarkdownView'
 import CATEGORIES from '@/consts/CATEGORIES'
+import { ROUTES } from '@/router'
 import { type IPost } from '@/types'
 import TagList from '../../common/TagList'
 
@@ -22,7 +23,10 @@ export default function PostListItem({ post }: Props) {
     },
   }
   return (
-    <Link className='post-list-item link clickable' to={`/post/${post.title}`}>
+    <Link
+      className='post-list-item link clickable'
+      to={ROUTES.POST_DETAIL(post.title)}
+    >
       <header className='content'>
         <h3>
           <span>{post.title}</span>

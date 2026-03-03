@@ -7,6 +7,7 @@ import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
 import type CATEGORIES from '@/consts/CATEGORIES'
+import { ROUTES } from '@/router'
 
 interface Props {
   label: string
@@ -62,7 +63,7 @@ export default function HomeCategory({ category, label, children }: Props) {
       <header>
         <Link
           className='link'
-          to={`/search/@${category}`}
+          to={ROUTES.SEARCH(`@${category}`)}
           state={{ searchKey: `@${category}` }}
         >
           <header>

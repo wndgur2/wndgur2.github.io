@@ -3,6 +3,7 @@ import './ProjectListItem.css'
 import { CiImageOff } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
 
+import { ROUTES } from '@/router'
 import { type IPost } from '@/types'
 import TagList from '../../common/TagList'
 import ImageSkeleton from '../ImageSkeleton'
@@ -13,7 +14,7 @@ interface Props {
 export default function ProjectListItem({ post }: Props) {
   return (
     <Link
-      to={`/post/${post.title}`}
+      to={ROUTES.POST_DETAIL(post.title)}
       className='post-list-item project link clickable'
     >
       <section>

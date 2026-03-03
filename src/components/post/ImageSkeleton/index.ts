@@ -1,1 +1,1 @@
-export { default } from './ImageSkeleton'
+export { default } from './ImageSkeleton.tsx'
