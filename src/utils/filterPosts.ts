@@ -4,26 +4,26 @@ export const filterPostsBySearchKey = (
   posts: PostTypes[],
   searchKey?: string,
 ): PostTypes[] => {
-  const searchText = searchKey?.toLowerCase()
-  if (!searchText) return []
+  if (!searchKey) return []
 
-  const searchWords = searchText.split(' ')
+  const words = searchKey.toLowerCase().split(' ')
 
-  return searchWords.reduce((result, word) => {
-    if (word.startsWith('#')) {
-      return result.filter(post =>
-        post.tags.map(tag => tag.toLowerCase()).includes(word.slice(1)),
-      )
-    } else if (word.startsWith('@')) {
-      return result.filter(
-        post => post.category.toLowerCase() === word.slice(1),
-      )
-    } else {
-      return result.filter(
-        post =>
-          post.content.toLowerCase().includes(word) ||
-          post.title.toLowerCase().includes(word),
-      )
-    }
-  }, posts)
+  return posts.filter(post => {
+    const title = post.title.toLowerCase()
+    const content = post.content.toLowerCase()
+    const tags = post.tags.map(tag => tag.toLowerCase())
+    const category = post.category.toLowerCase()
+
+    return words.every(word => {
+      if (word.startsWith('#')) {
+        return tags.includes(word.slice(1))
+      }
+
+      if (word.startsWith('@')) {
+        return category === word.slice(1)
+      }
+
+      return title.includes(word) || content.includes(word)
+    })
+  })
 }

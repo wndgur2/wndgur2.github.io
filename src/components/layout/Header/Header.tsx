@@ -11,11 +11,16 @@ import { ROUTES } from '@/router'
 import SearchBar from '../SearchBar'
 import ThemeToggler from '../ThemeToggler'
 
+/**
+ * 헤더 컴포넌트
+ * - 로고/검색바/테마 토글 제공
+ * - 스크롤 방향에 따라 헤더 상태(top/hide) 변경
+ */
 export default function Header() {
   const { isDark, setIsDark } = useTheme()
   const headerRef = useRef<HTMLDivElement>(null)
 
-  // hide header when scrolling down
+  // 스크롤 위치를 비교해 헤더 노출 상태 제어
   let lastScrollTop = 0
   window.addEventListener('scroll', () => {
     if (!headerRef.current) return

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
@@ -10,7 +11,12 @@ export default function useSearchedPosts() {
   const setSearchKey = useSetRecoilState(searchKeyAtom)
 
   const searchKey = params.searchKey || searchKeyStored
-  setSearchKey(searchKey)
+
+  useEffect(() => {
+    if (searchKey) {
+      setSearchKey(searchKey)
+    }
+  }, [searchKey, setSearchKey])
 
   const searchedPosts = useRecoilValue(getPostsBySearchKey({ searchKey }))
 

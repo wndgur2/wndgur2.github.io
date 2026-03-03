@@ -3,6 +3,14 @@ import { FaRegFaceSadCry } from 'react-icons/fa6'
 
 import './ImageSkeleton.css'
 
+/**
+ * 이미지 스켈레톤 컴포넌트
+ * - 이미지 로딩 중 스켈레톤 표시
+ * - 로드 실패 시 대체 UI 렌더링
+ *
+ * @param attrs img 태그에 전달할 속성 객체
+ */
+
 interface Props {
   attrs: React.ImgHTMLAttributes<HTMLImageElement>
 }
@@ -12,6 +20,7 @@ export default function ImageSkeleton({ attrs }: Props) {
   const imgRef = useRef<HTMLImageElement>(null)
   const [isError, setIsError] = useState(false)
 
+  // 이미지 로드 성공/실패 상태에 따라 스켈레톤 및 표시 상태 전환
   useEffect(() => {
     if (!imgRef.current) return
     const image = imgRef.current

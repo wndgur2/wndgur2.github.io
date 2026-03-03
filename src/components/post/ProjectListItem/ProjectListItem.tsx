@@ -8,9 +8,18 @@ import { type IPost } from '@/types'
 import TagList from '../../common/TagList'
 import ImageSkeleton from '../ImageSkeleton'
 
+/**
+ * 프로젝트 목록 아이템 컴포넌트
+ * - 썸네일/요약/메타 정보를 카드 형태로 표시
+ * - 클릭 시 상세 페이지로 이동
+ *
+ * @param post 목록에서 표시할 프로젝트 게시글 데이터
+ */
+
 interface Props {
   post: IPost
 }
+
 export default function ProjectListItem({ post }: Props) {
   return (
     <Link

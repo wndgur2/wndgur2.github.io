@@ -9,11 +9,20 @@ import { ROUTES } from '@/router'
 import { type IPost } from '@/types'
 import TagList from '../../common/TagList'
 
+/**
+ * 게시글 목록 아이템 컴포넌트
+ * - 제목/날짜/미리보기/태그 정보를 표시
+ * - 클릭 시 상세 페이지로 이동
+ *
+ * @param post 목록에서 표시할 게시글 데이터
+ */
+
 interface Props {
   post: IPost
 }
 
 export default function PostListItem({ post }: Props) {
+  // 리스트 미리보기용 마크다운 태그 오버라이드
   const overrides: MarkdownToJSX.Overrides = {
     a: {
       component: (props: any) => <strong {...props} />,

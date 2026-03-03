@@ -7,6 +7,11 @@ import { getTagsWithCounts } from '@/utils/tag'
 import TagCountList from '../../common/TagCountList'
 import ProfileImage from '../ProfileImage'
 
+/**
+ * 프로필 영역 컴포넌트
+ * - 프로필 이미지 및 기본 정보 표시
+ * - 전체 게시글 기준 태그 카운트 노출
+ */
 export default function Profile() {
   const posts = useRecoilValue(postsAtom)
   const tags = getTagsWithCounts(posts)

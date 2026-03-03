@@ -12,7 +12,14 @@ import { ROUTES } from '@/router'
 import { getPostByTitle } from '@/store'
 import { getNextPost, getPrevPost } from '@/store/selectors/postsSelector'
 
+/**
+ * 게시글 상세 페이지 컴포넌트
+ * - URL 파라미터(title)로 게시글 조회
+ * - 이전글/다음글 네비게이션 제공
+ * - 본문 마크다운 렌더링
+ */
 export default function PostDetailPage() {
+  // 현재 게시글 및 이전/다음 게시글 조회
   const title = useParams().title
   const post = useRecoilValue(getPostByTitle({ title }))
   const prevPost = useRecoilValue(getPrevPost({ title }))

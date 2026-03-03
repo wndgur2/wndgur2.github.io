@@ -1,8 +1,20 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 
 import './Tag.css'
 
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
+
+import { ROUTES } from '@/router'
+import { searchKeyAtom } from '@/store/atoms/searchAtom'
+
+/**
+ * 태그 아이템 컴포넌트
+ * - 클릭 시 해당 태그 검색 결과 페이지로 이동
+ *
+ * @param tag 태그명
+ * @param count 태그가 사용된 게시글 수 (선택적)
+ */
 
 interface Props {
   tag: string
@@ -11,24 +23,21 @@ interface Props {
 
 export default function Tag({ tag, count }: Props) {
   const navigate = useNavigate()
-  const location = useLocation()
   const tagRef = useRef<HTMLLIElement>(null)
-  useEffect(() => {
-    if (!location.state) return
-    if (!tagRef.current) return
-    if (location.state.searchKey.replaceAll('#', '').split(' ').includes(tag))
-      tagRef.current.classList.add('tag-active')
-    else tagRef.current.classList.remove('tag-active')
-  }, [location.state, tag])
+
+  // 현재 검색 상태와 비교해 활성 태그 스타일 적용
+  const searchKey = useRecoilValue(searchKeyAtom)
+  const isActive = searchKey.replaceAll('#', '').split(' ').includes(tag)
+
   return (
     <li
       key={`${tag}${count}`}
       ref={tagRef}
-      className='tag clickable small'
+      className={`tag clickable small ${isActive ? 'tag-active' : ''}`}
       onClick={e => {
         e.preventDefault() // x e.stopPropagation()
         e.stopPropagation()
-        navigate(`/search/%23${tag}`, { state: { searchKey: `#${tag}` } })
+        navigate(ROUTES.SEARCH(`%23${tag}`))
       }}
     >
       {tag} {count}

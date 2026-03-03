@@ -6,6 +6,10 @@ import { IoLogoGithub } from 'react-icons/io'
 
 import IconLink from '@/components/common/IconLink'
 
+/**
+ * 푸터 컴포넌트
+ * - Github/Email/Youtube 외부 링크 제공
+ */
 export default function Footer() {
   return (
     <footer>
