@@ -26,6 +26,10 @@
     background-color: transparent;
 }
 
+#header.hide {
+    transform: translateY(-100%);
+}
+
 .logo {
     width: fit-content;
     padding: 0.4em;

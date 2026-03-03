@@ -1,9 +1,7 @@
-import { useEffect } from 'react'
-import { useNavigate, useSearchParams } from 'react-router-dom'
-
 import './HomePage.css'
 
-import { useRecoilValue } from 'recoil'
+import { useEffect } from 'react'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import Loading from '@/components/common/Spinner'
 import PostListItem from '@/components/post/PostListItem'
@@ -11,7 +9,9 @@ import ProjectListItem from '@/components/post/ProjectListItem'
 import Profile from '@/components/profile/Profile'
 import CATEGORIES from '@/consts/CATEGORIES'
 import usePostsByCategory from '@/hooks/usePostsByCategory'
+import useRestoreLostUrl from '@/hooks/useRestoreLostUrl'
 import { postsAtom } from '@/store'
+import { searchKeyAtom } from '@/store/atoms/searchAtom'
 import type { IPost } from '@/types'
 import HomeCategory from '../../components/post/HomeCategory'
 
@@ -21,19 +21,15 @@ import HomeCategory from '../../components/post/HomeCategory'
  * - 각 카테고리의 최신 목록을 가로 스크롤 형태로 제공
  */
 export default function HomePage() {
-  const router = useNavigate()
-  const searchParams = useSearchParams()[0]
-  const lost_url = searchParams.get('lost_url')
+  useRestoreLostUrl()
 
-  // 외부에서 전달된 경로 복구 파라미터가 있으면 해당 경로로 이동
+  // 검색어 초기화
+  const setSearchKey = useSetRecoilState(searchKeyAtom)
   useEffect(() => {
-    if (!lost_url) return
-    let paths = lost_url.split('/')
-    paths = paths.map(path => encodeURIComponent(path))
-    router(`/${paths.join('/')}`)
-  }, [lost_url, router])
+    setSearchKey('')
+  }, [setSearchKey])
 
-  // 메인 화면에서 보여줄 카테고리별 게시글 최대 10개 추출
+  // 카테고리별 게시글 10개 추출
   const posts = useRecoilValue(postsAtom)
   const { projects, algorithms, studies } = usePostsByCategory(posts, 10)
 

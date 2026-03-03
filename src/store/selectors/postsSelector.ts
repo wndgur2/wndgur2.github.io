@@ -30,47 +30,39 @@ export const getPostsBySearchKey = selectorFamily<
     },
 })
 
-export const getPostByTitle = selectorFamily<
-  IPost | undefined | null,
-  { title?: string }
->({
+export const getPostByTitle = selectorFamily<IPost | null, { title?: string }>({
   key: 'getPostByTitle',
   get:
     params =>
     ({ get }) => {
       const posts = get(postsAtom)
-      if (!posts.length) return undefined // Handle loading state
+      if (!posts.length) return null // Handle loading state
 
       return posts.find(post => post.title === params.title) || null
     },
 })
 
-export const getPrevPost = selectorFamily<
-  IPost | undefined,
-  { title?: string }
->({
+export const getPrevPost = selectorFamily<IPost | null, { title?: string }>({
   key: 'getPrevPost',
   get:
     params =>
     ({ get }) => {
       const posts = get(postsAtom)
-      if (!posts.length) return undefined // Handle loading state
+      if (!posts.length) return null
 
       const postIndex = posts.findIndex(post => post.title === params.title)
+      if (postIndex === -1) return null
       return posts[postIndex + 1]
     },
 })
 
-export const getNextPost = selectorFamily<
-  IPost | undefined,
-  { title?: string }
->({
+export const getNextPost = selectorFamily<IPost | null, { title?: string }>({
   key: 'getNextPost',
   get:
     params =>
     ({ get }) => {
       const posts = get(postsAtom)
-      if (!posts.length) return undefined // Handle loading state
+      if (!posts.length) return null
 
       const postIndex = posts.findIndex(post => post.title === params.title)
       return posts[postIndex - 1]

@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import Logo from '@/assets/logo.svg?react'
 
@@ -19,27 +19,30 @@ import ThemeToggler from '../ThemeToggler'
 export default function Header() {
   const { isDark, setIsDark } = useTheme()
   const headerRef = useRef<HTMLDivElement>(null)
+  const [isHidden, setIsHidden] = useState(false)
 
-  // 스크롤 위치를 비교해 헤더 노출 상태 제어
-  let lastScrollTop = 0
-  window.addEventListener('scroll', () => {
-    if (!headerRef.current) return
-    const currentScroll =
-      window.pageYOffset || document.documentElement.scrollTop
-    if (currentScroll > 0 && currentScroll > lastScrollTop) {
-      headerRef.current.classList.remove('top')
-    } else if (currentScroll === 0) {
-      headerRef.current.classList.remove('hide')
-      headerRef.current.classList.add('top')
-    } else {
-      headerRef.current.classList.remove('hide')
-      headerRef.current.classList.remove('top')
+  useEffect(() => {
+    // 스크롤 위치를 비교해 헤더 노출 상태 제어
+    let lastScrollTop = 0
+    window.addEventListener('scroll', () => {
+      if (!headerRef.current) return
+      const currentScroll =
+        window.pageYOffset || document.documentElement.scrollTop
+      if (currentScroll > 0 && currentScroll > lastScrollTop) {
+        setIsHidden(true)
+      } else {
+        setIsHidden(false)
+      }
+      lastScrollTop = currentScroll
+    })
+
+    return () => {
+      window.removeEventListener('scroll', () => {})
     }
-    lastScrollTop = currentScroll
-  })
+  }, [])
 
   return (
-    <div id='header' ref={headerRef}>
+    <div id='header' ref={headerRef} className={isHidden ? 'hide' : 'top'}>
       <Link to={ROUTES.HOME} className='logo clickable small'>
         <Logo />
       </Link>
