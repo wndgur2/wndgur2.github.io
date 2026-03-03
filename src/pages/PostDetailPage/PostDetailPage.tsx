@@ -29,7 +29,7 @@ export default function PostDetailPage() {
 
   if (!post) {
     return (
-      <div>
+      <div className='post'>
         <p>{title} 게시글을 찾을 수 없어요.</p>
         <Link to={ROUTES.HOME} className='clickable'>
           <b>홈으로 돌아가기</b>
