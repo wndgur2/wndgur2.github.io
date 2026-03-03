@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const useResetScroll = (dependency: any = undefined) => {
+const useResetScroll = (dependency: unknown = undefined) => {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [dependency])

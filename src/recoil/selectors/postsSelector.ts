@@ -1,7 +1,8 @@
 import { selectorFamily } from 'recoil'
 
 import { postsAtom } from '@/recoil/atoms/postsAtom'
-import { type IPost } from '@/types'
+import { type IPost, type PostTypes } from '@/types'
+import { filterPostsBySearchKey } from '@/utils/filterPosts'
 
 export const getPostsByCategory = selectorFamily<IPost[], { category: string }>(
   {
@@ -16,7 +17,7 @@ export const getPostsByCategory = selectorFamily<IPost[], { category: string }>(
 )
 
 export const getPostsBySearchKey = selectorFamily<
-  IPost[],
+  PostTypes[],
   { searchKey?: string }
 >({
   key: 'getPostsBySearchKey',
@@ -24,31 +25,7 @@ export const getPostsBySearchKey = selectorFamily<
     params =>
     ({ get }) => {
       const posts = get(postsAtom) // Retrieve posts from the atom
-
-      const searchText = params.searchKey?.toLowerCase()
-      if (!searchText) return []
-
-      const searchWords = searchText.split(' ')
-
-      const result = searchWords.reduce((result, word) => {
-        if (word.startsWith('#')) {
-          return result.filter(post =>
-            post.tags.map(tag => tag.toLowerCase()).includes(word.slice(1)),
-          )
-        } else if (word.startsWith('@')) {
-          return result.filter(
-            post => post.category.toLowerCase() === word.slice(1),
-          )
-        } else {
-          return result.filter(
-            post =>
-              post.content.toLowerCase().includes(word) ||
-              post.title.toLowerCase().includes(word),
-          )
-        }
-      }, posts)
-
-      return result
+      return filterPostsBySearchKey(posts, params.searchKey)
     },
 })
 

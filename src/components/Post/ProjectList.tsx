@@ -15,8 +15,8 @@ export default function ProjectList() {
   return (
     <HomeCategory label='Projects' category={CATEGORIES.PROJECT}>
       {postsByCategory.length > 0 ? (
-        postsByCategory.map((project: IPost, i: number) => (
-          <ProjectListItem key={i} post={project} />
+        postsByCategory.map((project: IPost) => (
+          <ProjectListItem key={project.id} post={project} />
         ))
       ) : (
         <Loading phrase='loading projects' />

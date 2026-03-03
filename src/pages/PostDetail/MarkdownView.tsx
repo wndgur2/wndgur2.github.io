@@ -20,7 +20,9 @@ export default function MarkdownView({ post, overrides }: Props) {
     overrides: {
       ...overrides,
       img: {
-        component: (props: any) => <ImageSkeleton attrs={props} />,
+        component: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
+          <ImageSkeleton attrs={props} />
+        ),
       },
     },
   } as MarkdownToJSX.Options
