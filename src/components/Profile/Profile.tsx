@@ -3,22 +3,13 @@ import './Profile.css'
 import { useRecoilValue } from 'recoil'
 
 import { postsAtom } from '@/recoil'
+import { getTagsWithCounts } from '@/utils/tag'
 import TagCountList from '../common/TagCountList'
 import ProfileImage from './ProfileImage'
 
 export default function Profile() {
   const posts = useRecoilValue(postsAtom)
-  const tagsMap = Array.from(
-    posts.reduce((acc, post) => {
-      post.tags.forEach(tag => {
-        acc.set(tag, (acc.get(tag) ?? 0) + 1)
-      })
-      return acc
-    }, new Map()),
-  )
-  const tags = tagsMap
-    .map(([tag, count]) => ({ tag, count }))
-    .sort((a, b) => b.count - a.count)
+  const tags = getTagsWithCounts(posts)
 
   return (
     <div className='profile'>

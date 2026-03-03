@@ -3,7 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 interface UseInfiniteScrollProps<T> {
   items: T[]
   pageSize?: number
-  deps?: any[]
+  deps?: unknown[]
 }
 
 const useInfiniteScroll = <T>({

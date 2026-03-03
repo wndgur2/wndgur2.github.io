@@ -11,11 +11,11 @@ import PostListItem from '@/components/Post/PostListItem'
 import ProjectListItem from '@/components/Post/ProjectListItem'
 import CATEGORIES from '@/consts/CATEGORIES'
 import useInfiniteScroll from '@/hooks/useInfiniteScroll'
-import useRelatedTags from '@/hooks/useRelatedTags'
 import useResetScroll from '@/hooks/useResetScroll'
 import useSortedPosts from '@/hooks/useSortedPosts'
 import { getPostsBySearchKey } from '@/recoil/selectors/postsSelector'
 import { type IPost } from '@/types'
+import { getTagsWithCounts } from '@/utils/tag'
 
 const PAGE_SIZE = 10
 
@@ -24,7 +24,7 @@ export default function Search() {
   const searchedPosts = useRecoilValue(
     getPostsBySearchKey({ searchKey: params.searchKey }),
   )
-  const relatedTags = useRelatedTags(searchedPosts)
+  const relatedTags = getTagsWithCounts(searchedPosts)
   const [recentFirst, setRecentFirst] = useState(true)
   const sortedPosts = useSortedPosts(searchedPosts, recentFirst)
 
