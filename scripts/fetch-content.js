@@ -328,7 +328,7 @@ async function fetchProjects() {
               role: fm.role ?? '',
               github: r.html_url,
               content, // README body without front-matter
-              thumbnail: fm.thumbnail ?? `/images/${repo.toLowerCase()}.jpeg`,
+              thumbnail: `/images/${repo.toLowerCase()}.jpeg`,
             }
           } catch (err) {
             console.error(`\n❌ Error processing ${r.name}:`, err.message)
