@@ -15,10 +15,14 @@ interface Props {
 export default function PostListItem({ post }: Props) {
   const overrides: MarkdownToJSX.Overrides = {
     a: {
-      component: (props: any) => <strong {...props} />,
+      component: (props: React.ComponentPropsWithoutRef<'a'>) => (
+        <strong {...props} />
+      ),
     },
     div: {
-      component: (props: any) => <span {...props} />,
+      component: (props: React.ComponentPropsWithoutRef<'div'>) => (
+        <span {...props} />
+      ),
     },
   }
   return (

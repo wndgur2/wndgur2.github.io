@@ -36,8 +36,8 @@ export default function Home() {
       <main>
         <HomeCategory label='Projects' category={CATEGORIES.PROJECT}>
           {projects.length > 0 ? (
-            projects.map((project: IPost, i: number) => (
-              <ProjectListItem key={i} post={project} />
+            projects.map((project: IPost) => (
+              <ProjectListItem key={project.id} post={project} />
             ))
           ) : (
             <Loading phrase='loading projects' />
@@ -46,8 +46,8 @@ export default function Home() {
 
         <HomeCategory label='Studies' category={CATEGORIES.STUDY}>
           {studies.length ? (
-            studies.map((post: IPost, i: number) => (
-              <PostListItem key={i} post={post} />
+            studies.map((post: IPost) => (
+              <PostListItem key={post.id} post={post} />
             ))
           ) : (
             <Loading phrase={`loading studies`} />
@@ -56,8 +56,8 @@ export default function Home() {
 
         <HomeCategory label='Algorithms' category={CATEGORIES.ALGORITHM}>
           {algorithms.length ? (
-            algorithms.map((post: IPost, i: number) => (
-              <PostListItem key={i} post={post} />
+            algorithms.map((post: IPost) => (
+              <PostListItem key={post.id} post={post} />
             ))
           ) : (
             <Loading phrase={`loading algorithms`} />
