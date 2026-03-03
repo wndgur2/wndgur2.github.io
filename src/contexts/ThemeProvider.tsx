@@ -9,7 +9,7 @@ const themeContext = createContext<ThemeContextType | null>(null)
 
 export const ThemeContext = themeContext
 
-function ThemeProvider({ children }: { children: React.ReactNode }) {
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [isDark, setIsDark] = useState(
     localStorage.getItem('theme') !== 'light',
   )
@@ -28,5 +28,3 @@ function ThemeProvider({ children }: { children: React.ReactNode }) {
     </ThemeContext.Provider>
   )
 }
-
-export default ThemeProvider
