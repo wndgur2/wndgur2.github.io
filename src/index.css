@@ -39,6 +39,7 @@
     --light-icon-color: #444;
     --light-dimmed-icon-color: #4442;
     --light-border-color: #ccc;
+    --light-dimmed-border-color: #e4e4e4;
     --light-light-only-border-color: #ff50aa;
 
     --dark-fg-color: #24242a;
@@ -58,6 +59,7 @@
     --dark-icon-color: #ddd;
     --dark-dimmed-icon-color: #dfdfdf22;
     --dark-border-color: #323232;
+    --dark-dimmed-border-color: #212121;
 }
 
 [data-theme="light"] {
@@ -78,6 +80,7 @@
     --icon-color: var(--light-icon-color);
     --dimmed-icon-color: var(--light-dimmed-icon-color);
     --border-color: var(--light-border-color);
+    --dimmed-border-color: var(--light-dimmed-border-color);
     --light-only-border-color: var(--light-light-only-border-color);
 }
 
@@ -99,6 +102,7 @@
     --icon-color: var(--dark-icon-color);
     --dimmed-icon-color: var(--dark-dimmed-icon-color);
     --border-color: var(--dark-border-color);
+    --dimmed-border-color: var(--dark-dimmed-border-color);
     --light-only-border-color: none;
 }
 
