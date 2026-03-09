@@ -1,4 +1,5 @@
 ---
+title: 이중혁 블로그
 date_started: 2024.05.05
 head_count: 1
 role: FE
