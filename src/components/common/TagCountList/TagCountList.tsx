@@ -1,5 +1,6 @@
 import './TagCountList.css'
 
+import InterssectionObserverWrapper from '../IntersectionObserverWrapper'
 import Tag from '../Tag'
 
 /**
@@ -16,7 +17,14 @@ export default function TagCountList({ tags }: Props) {
   return (
     <ol className='tag-list'>
       {tags.map(({ tag, count }, index: number) => (
-        <Tag key={`${tag}${count}${index}`} tag={tag} count={count} />
+        <InterssectionObserverWrapper
+          key={`${tag}${count}${index}`}
+          className='tag-item'
+          visibleClassName='tag-visible'
+          threshold={1}
+        >
+          <Tag tag={tag} count={count} />
+        </InterssectionObserverWrapper>
       ))}
     </ol>
   )

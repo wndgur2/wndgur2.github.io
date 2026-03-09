@@ -1,5 +1,3 @@
-import { useRef } from 'react'
-
 import './Tag.css'
 
 import { useNavigate } from 'react-router-dom'
@@ -23,24 +21,21 @@ interface Props {
 
 export default function Tag({ tag, count }: Props) {
   const navigate = useNavigate()
-  const tagRef = useRef<HTMLLIElement>(null)
 
   // 현재 검색 상태와 비교해 활성 태그 스타일 적용
   const searchKey = useRecoilValue(searchKeyAtom)
   const isActive = searchKey.replaceAll('#', '').split(' ').includes(tag)
 
   return (
-    <li
-      key={`${tag}${count}`}
-      ref={tagRef}
+    <div
       className={`tag clickable small ${isActive ? 'tag-active' : ''}`}
       onClick={e => {
-        e.preventDefault() // x e.stopPropagation()
+        e.preventDefault()
         e.stopPropagation()
         navigate(ROUTES.SEARCH(`%23${tag}`))
       }}
     >
       {tag} {count}
-    </li>
+    </div>
   )
 }

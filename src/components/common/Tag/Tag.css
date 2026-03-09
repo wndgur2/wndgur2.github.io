@@ -9,8 +9,10 @@
     border-radius: var(--radius-pill);
     box-shadow: 0 0 0 1.5px var(--accent-color);
     background-color: var(--fg-color);
-    transition: box-shadow 0.2s, scale 0.2s;
+
+
 }
+
 
 .tag:hover {
     box-shadow: 0 0 0 1.5px var(--action-color);

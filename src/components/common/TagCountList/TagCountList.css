@@ -3,4 +3,23 @@
   flex-flow: row wrap;
   margin-top: 0.5em;
   align-items: center;
+  padding: 1em 0px;
+
+  border-radius: var(--radius);
+  background: linear-gradient(to bottom,
+      var(--border-color) 0%,
+      rgba(0, 0, 0, 0) 10%),
+    linear-gradient(to top,
+      var(--border-color) 0%,
+      rgba(0, 0, 0, 0) 10%);
+
+}
+
+.tag-item>.intersection-observer-children-wrapper {
+  transform: scale(0.0);
+  transition: transform 0.3s ease;
+}
+
+.tag-visible>.intersection-observer-children-wrapper {
+  transform: scale(1);
 }
