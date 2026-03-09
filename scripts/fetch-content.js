@@ -44,7 +44,7 @@ function normalizeTag(tag) {
     .toLowerCase()
     .trim()
     .replace('/', ' ')
-    .replace(/[\s_]+/g, '-')
+    .replace(/[\s_]+/g, '')
 }
 
 function normalizeLang(langDir) {
