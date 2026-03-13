@@ -37,12 +37,12 @@
     font-size: 1.1em;
 }
 
-.profile-download {
+.profile-portfolio-btn {
     color: var(--accent-color);
     font-weight: 500;
     font-size: 0.7em;
 }
 
-.profile-download:hover {
+.profile-portfolio-btn:hover {
     color: var(--action-color);
 }

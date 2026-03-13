@@ -5,4 +5,9 @@ declare module '*.svg?react' {
   export default src
 }
 
+declare module '*.pdf' {
+  const src: string
+  export default src
+}
+
 declare module '*.css'

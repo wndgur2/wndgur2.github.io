@@ -2,6 +2,7 @@ import './Profile.css'
 
 import { useRecoilValue } from 'recoil'
 
+import portfolio from '@/assets/portfolio.pdf'
 import { postsAtom } from '@/store'
 import { getTagsWithCounts } from '@/utils/tag'
 import TagCountList from '../../common/TagCountList'
@@ -17,8 +18,7 @@ export default function Profile() {
   const tags = getTagsWithCounts(posts)
 
   const openPortfolio = () => {
-    const portfolioUrl = '/pdf/portfolio.pdf'
-    window.open(portfolioUrl, '_blank')
+    window.open(portfolio, '_blank')
   }
 
   return (
@@ -28,7 +28,7 @@ export default function Profile() {
         <h2 className='profile-name'>
           이중혁
           <button
-            className='profile-download clickable small'
+            className='profile-portfolio-btn clickable small'
             onClick={openPortfolio}
           >
             포트폴리오.pdf
