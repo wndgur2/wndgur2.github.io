@@ -2,7 +2,6 @@ import './Profile.css'
 
 import { useRecoilValue } from 'recoil'
 
-import portfolio from '@/assets/portfolio.pdf'
 import { postsAtom } from '@/store'
 import { getTagsWithCounts } from '@/utils/tag'
 import TagCountList from '../../common/TagCountList'
@@ -18,7 +17,7 @@ export default function Profile() {
   const tags = getTagsWithCounts(posts)
 
   const openPortfolio = () => {
-    window.open(portfolio, '_blank')
+    window.open(`/pdf/portfolio.pdf`, '_blank', 'noopener,noreferrer')
   }
 
   return (
