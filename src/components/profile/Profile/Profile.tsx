@@ -2,6 +2,8 @@ import './Profile.css'
 
 import { useRecoilValue } from 'recoil'
 
+import Toast from '@/components/common/Toast'
+import useToast from '@/hooks/useToast'
 import { postsAtom } from '@/store'
 import { getTagsWithCounts } from '@/utils/tag'
 import TagCountList from '../../common/TagCountList'
@@ -15,6 +17,11 @@ import ProfileImage from '../ProfileImage'
 export default function Profile() {
   const posts = useRecoilValue(postsAtom)
   const tags = getTagsWithCounts(posts)
+  const {
+    isMounted: showDownloadToast,
+    isVisible: isDownloadToastVisible,
+    showToast: handlePortfolioDownload,
+  } = useToast({ duration: 3000 })
 
   return (
     <div className='profile'>
@@ -28,6 +35,7 @@ export default function Profile() {
             target='_blank'
             rel='noopener noreferrer'
             download
+            onClick={handlePortfolioDownload}
           >
             포트폴리오.pdf
           </a>
@@ -36,6 +44,12 @@ export default function Profile() {
           <TagCountList tags={tags} />
         </div>
       </div>
+      {showDownloadToast ? (
+        <Toast
+          message='다운로드 진행중...'
+          isVisible={isDownloadToastVisible}
+        />
+      ) : null}
     </div>
   )
 }

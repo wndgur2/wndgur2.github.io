@@ -283,3 +283,51 @@ input:focus {
 .hidden {
     display: none;
 }
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 3.5rem;
+    transform: translateX(-50%);
+    z-index: 20;
+    padding: 0.65rem 1rem;
+    border: 1px solid var(--dimmed-border-color);
+    border-radius: 999px;
+    background: var(--fg-color);
+    color: var(--content-color);
+    font-size: 0.9rem;
+    letter-spacing: 0.03em;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
+}
+
+.toast--enter {
+    animation: toast-fade-in 0.18s ease-out forwards;
+}
+
+.toast--exit {
+    animation: toast-fade-out 0.18s ease-in forwards;
+}
+
+@keyframes toast-fade-in {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes toast-fade-out {
+    from {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateX(-50%) translateY(8px);
+    }
+}
