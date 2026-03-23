@@ -37,12 +37,14 @@
     font-size: 1.1em;
 }
 
-.profile-portfolio-btn {
+.profile-portfolio {
+    display: block;
     color: var(--accent-color);
     font-weight: 500;
     font-size: 0.7em;
+    letter-spacing: 0.1em;
 }
 
-.profile-portfolio-btn:hover {
+.profile-portfolio:hover {
     color: var(--action-color);
 }

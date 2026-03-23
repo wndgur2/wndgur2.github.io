@@ -21,10 +21,10 @@ export default function Profile() {
       <ProfileImage />
       <div className='profile-content'>
         <h2 className='profile-name'>
-          이중혁
+          이중혁 <br />
           <a
-            className='profile-portfolio-btn clickable small'
-            href={`/pdf/portfolio.pdf`}
+            className='profile-portfolio clickable small'
+            href={`/pdf/LeeJunghyeok_Portfolio.pdf`}
             target='_blank'
             rel='noopener noreferrer'
             download
