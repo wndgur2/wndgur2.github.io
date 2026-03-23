@@ -57,27 +57,67 @@ role: FE
 └── vite.config.ts
 ```
 
-**작동 방식**
+### 콘텐츠 생성 워크플로우 (GitHub API 중심)
 
-콘텐츠 생성 워크플로우:
+```markdown
+git push  
+↓  
+GitHub Actions (CI/CD)  
+↓  
+scripts/fetch-content.js 실행  
+↓  
+[ GitHub API 호출 ]  
+↓  
+├─ BlogDB repo → posts/ 마크다운 조회  
+├─ Public repos → README / topics 조회  
+└─ Algorithm repo → 코드/파일 조회  
+↓  
+데이터 가공 (파싱 & 메타데이터 추출)  
+↓  
+JSON 생성 (posts.json / projects.json / algorithms.json)  
+↓  
+public/meta/ 저장  
+↓  
+src/api/post.ts 로드  
+↓  
+Recoil 전역 상태 병합  
+↓  
+홈 / 검색 / 상세 페이지 렌더링
+```
 
-- git push를 통해 workflow가 trigger됩니다. (ci-cd)
-- `scripts/fetch-content.js`가 GitHub에서 마크다운을 수집하고
-  `public/meta/*.json`을 생성합니다.
-- 생성된 JSON은 앱 초기 로딩 시 `src/api/post.ts`에서 읽고 Recoil 상태에
-  합쳐집니다.
-- 홈/검색/상세 페이지는 이 전역 상태를 기반으로 렌더링됩니다.
+### GitHub API 기반 데이터 수집
 
-스크립트 동작 요약:
+```markdown
+# GitHub API 기반 데이터 수집
 
-- BlogDB 저장소의 `posts/` 하위 마크다운을 읽어 `posts.json` 생성
-- 지정된 GitHub 계정의 공개 저장소에서 README와 토픽을 분석해 `projects.json`
-  생성
-- 알고리즘 풀이 저장소를 스캔해 `algorithms.json` 생성
-- 기본 스크립트 실행은 현재 알고리즘 생성만 활성화되어 있습니다. (`fetchPosts`,
-  `fetchProjects`는 주석 처리됨)
-- 기본값은 스크립트 상단의 환경 변수로 제어합니다. (예: `BLOG_DB_REPO`,
-  `PROJECTS_OWNER`, `ALGO_REPO`)
+fetch-content.js  
+ ↓  
+GitHub API 요청  
+ ↓  
+ ├─ GET /repos/{owner}/BlogDB/contents/posts  
+ │ ↓  
+ │ 마크다운 파일 목록  
+ │ ↓  
+ │ 파일 내용 fetch (raw)  
+ │ ↓  
+ │ posts.json 생성  
+ │  
+ ├─ GET /users/{owner}/repos  
+ │ ↓  
+ │ repo 리스트  
+ │ ↓  
+ │ README.md + topics 조회  
+ │ ↓  
+ │ projects.json 생성  
+ │  
+ └─ GET /repos/{owner}/AlgorithmRepo/contents  
+ ↓  
+ 알고리즘 파일 스캔  
+ ↓  
+ 문제/언어/경로 파싱  
+ ↓  
+ algorithms.json 생성
+```
 
 실행 스크립트:
 
