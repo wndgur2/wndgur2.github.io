@@ -16,22 +16,21 @@ export default function Profile() {
   const posts = useRecoilValue(postsAtom)
   const tags = getTagsWithCounts(posts)
 
-  const openPortfolio = () => {
-    window.open(`/pdf/portfolio.pdf`, '_blank', 'noopener,noreferrer')
-  }
-
   return (
     <div className='profile'>
       <ProfileImage />
       <div className='profile-content'>
         <h2 className='profile-name'>
           이중혁
-          <button
+          <a
             className='profile-portfolio-btn clickable small'
-            onClick={openPortfolio}
+            href={`/pdf/portfolio.pdf`}
+            target='_blank'
+            rel='noopener noreferrer'
+            download
           >
             포트폴리오.pdf
-          </button>
+          </a>
         </h2>
         <div className='profile-tags'>
           <TagCountList tags={tags} />
