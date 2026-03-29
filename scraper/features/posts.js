@@ -28,7 +28,6 @@ export async function fetchPosts() {
       mapper: async file => {
         try {
           const raw = await getFileText(owner, repo, file, BLOG_DB_REF)
-          if (!raw) return null
 
           const { data: fm, content } = matter(raw)
 
@@ -51,12 +50,10 @@ export async function fetchPosts() {
               : []
 
           const id = file.replace(/^posts\//, '').replace(/\.(md|mdx)$/, '')
-          const category = fm.category?.toLowerCase()
-          if (!category) {
-            return console.warn(
-              `\n⚠️  Skipping ${file} due to missing category`,
-            )
-          }
+
+          if (!fm.category) throw new Error(`Missing category`)
+
+          const category = fm.category.toLowerCase()
 
           return {
             id,
