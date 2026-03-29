@@ -53,7 +53,7 @@ jobs:
           BLOG_DB_REPO: wndgur2/dev-log
           BLOG_DB_REF: main
           POSTS_DIR: posts
-        run: pnpm exec node scrapper/scripts/fetch-content.js
+        run: pnpm exec node scraper/scripts/fetch-content.js
 
       # 6) Build your site
       - name: Build site
