@@ -1,4 +1,4 @@
-import { type PostTypes } from '@/types'
+import type { PostTypes } from '@/types'
 
 export const filterPostsBySearchKey = (
   posts: PostTypes[],

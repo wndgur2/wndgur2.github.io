@@ -37,12 +37,15 @@ jobs:
         with:
           node-version: 20
           cache: pnpm
-
-      # 3) Install deps (pnpm CI defaults to frozen lockfile on CI; explicit flag is fine)
+      # 3) Install deps
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 4) Generate static content with Octokit (build-time fetch)
+      # 4) Run tests (Vitest)
+      - name: Run tests
+        run: pnpm test
+
+      # 5) Generate static content
       - name: Generate static content (Octokit)
         env:
           GH_PAT: ${{ secrets.GH_PAT }}
@@ -52,11 +55,11 @@ jobs:
           POSTS_DIR: posts
         run: pnpm exec node scripts/fetch-content.js
 
-      # 5) Build your site (Vite, etc.)
+      # 6) Build your site
       - name: Build site
         run: pnpm build
 
-      # 6) Deploy to GitHub Pages
+      # 7) Deploy to GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
