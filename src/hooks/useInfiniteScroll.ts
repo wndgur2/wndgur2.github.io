@@ -28,7 +28,7 @@ const useInfiniteScroll = <T>({
 
     setIsLoading(true)
 
-    // 자연스러운 로딩 효과 (Recoil에 이미 있으므로 fake delay)
+    // 자연스러운 로딩 효과를 위한 짧은 지연
     setTimeout(() => {
       setVisibleCount(prev =>
         prev + pageSize > items.length ? items.length : prev + pageSize,

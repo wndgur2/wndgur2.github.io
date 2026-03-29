@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 export function useIntersectionObserver<T extends HTMLElement>(
-  ref: React.RefObject<T>,
+  ref: React.RefObject<T | null>,
   options?: IntersectionObserverInit,
 ) {
   const [isVisible, setIsVisible] = useState(false)

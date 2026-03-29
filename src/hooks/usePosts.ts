@@ -1,11 +1,10 @@
 import { useEffect } from 'react'
-import { useSetRecoilState } from 'recoil'
 
 import { getAlgorithms, getPosts, getProjects } from '@/api/post'
-import { postsAtom } from '@/store'
+import { useStore } from '@/store'
 
 export default function usePosts() {
-  const setPosts = useSetRecoilState(postsAtom)
+  const setPosts = useStore(state => state.setPosts)
 
   useEffect(() => {
     getPosts(setPosts)

@@ -4,10 +4,9 @@ import { FiSearch } from 'react-icons/fi'
 import './SearchBar.css'
 
 import { useNavigate } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
 
 import { ROUTES } from '@/router'
-import { searchKeyAtom } from '@/store/atoms/searchAtom'
+import { useStore } from '@/store'
 
 /**
  * 검색바 컴포넌트
@@ -18,7 +17,7 @@ export default function SearchBar() {
   const inputRef = useRef<HTMLInputElement>(null)
   const [searchText, setSearchText] = useState<string>('')
 
-  const searchKey = useRecoilValue(searchKeyAtom)
+  const searchKey = useStore(state => state.searchKey)
 
   useEffect(() => {
     setSearchText(searchKey)

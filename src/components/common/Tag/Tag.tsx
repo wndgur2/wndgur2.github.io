@@ -1,10 +1,9 @@
 import './Tag.css'
 
 import { useNavigate } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
 
 import { ROUTES } from '@/router'
-import { searchKeyAtom } from '@/store/atoms/searchAtom'
+import { useStore } from '@/store'
 
 /**
  * 태그 아이템 컴포넌트
@@ -23,7 +22,7 @@ export default function Tag({ tag, count }: Props) {
   const navigate = useNavigate()
 
   // 현재 검색 상태와 비교해 활성 태그 스타일 적용
-  const searchKey = useRecoilValue(searchKeyAtom)
+  const searchKey = useStore(state => state.searchKey)
   const isActive = searchKey.replaceAll('#', '').split(' ').includes(tag)
 
   return (

@@ -1,14 +1,13 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
 
-import { getPostsBySearchKey } from '@/store'
-import { searchKeyAtom } from '@/store/atoms/searchAtom'
+import { getPostsBySearchKey, useStore } from '@/store'
 
 export default function useSearchedPosts() {
   const params = useParams()
-  const searchKeyStored = useRecoilValue(searchKeyAtom)
-  const setSearchKey = useSetRecoilState(searchKeyAtom)
+  const posts = useStore(state => state.posts)
+  const searchKeyStored = useStore(state => state.searchKey)
+  const setSearchKey = useStore(state => state.setSearchKey)
 
   const searchKey = params.searchKey || searchKeyStored
 
@@ -18,7 +17,7 @@ export default function useSearchedPosts() {
     }
   }, [searchKey, setSearchKey])
 
-  const searchedPosts = useRecoilValue(getPostsBySearchKey({ searchKey }))
+  const searchedPosts = getPostsBySearchKey(posts, searchKey)
 
   return { searchedPosts, searchKey }
 }

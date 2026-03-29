@@ -1,10 +1,8 @@
 import './Profile.css'
 
-import { useRecoilValue } from 'recoil'
-
 import Toast from '@/components/common/Toast'
 import useToast from '@/hooks/useToast'
-import { postsAtom } from '@/store'
+import { useStore } from '@/store'
 import { getTagsWithCounts } from '@/utils/tag'
 import TagCountList from '../../common/TagCountList'
 import ProfileImage from '../ProfileImage'
@@ -15,7 +13,7 @@ import ProfileImage from '../ProfileImage'
  * - 전체 게시글 기준 태그 카운트 노출
  */
 export default function Profile() {
-  const posts = useRecoilValue(postsAtom)
+  const posts = useStore(state => state.posts)
   const tags = getTagsWithCounts(posts)
   const {
     isMounted: showDownloadToast,

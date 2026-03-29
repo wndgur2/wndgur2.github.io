@@ -2,14 +2,13 @@ import './PostDetailPage.css'
 
 import { IoLogoGithub } from 'react-icons/io'
 import { Link, useParams } from 'react-router-dom'
-import { useRecoilValue } from 'recoil'
 
 import IconLink from '@/components/common/IconLink'
 import TagList from '@/components/common/TagList'
 import MarkdownView from '@/components/post/MarkdownView'
 import useResetScroll from '@/hooks/useResetScroll'
 import { ROUTES } from '@/router'
-import { getPostByTitle } from '@/store'
+import { getPostByTitle, useStore } from '@/store'
 import { getNextPost, getPrevPost } from '@/store/selectors/postsSelector'
 
 /**
@@ -21,9 +20,10 @@ import { getNextPost, getPrevPost } from '@/store/selectors/postsSelector'
 export default function PostDetailPage() {
   // 현재 게시글 및 이전/다음 게시글 조회
   const title = useParams().title
-  const post = useRecoilValue(getPostByTitle({ title }))
-  const prevPost = useRecoilValue(getPrevPost({ title }))
-  const nextPost = useRecoilValue(getNextPost({ title }))
+  const posts = useStore(state => state.posts)
+  const post = getPostByTitle(posts, title)
+  const prevPost = getPrevPost(posts, title)
+  const nextPost = getNextPost(posts, title)
 
   useResetScroll(title)
 

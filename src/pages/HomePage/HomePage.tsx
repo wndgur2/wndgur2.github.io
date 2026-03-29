@@ -1,7 +1,6 @@
 import './HomePage.css'
 
 import { useEffect } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import Loading from '@/components/common/Spinner'
 import PostListItem from '@/components/post/PostListItem'
@@ -10,8 +9,7 @@ import Profile from '@/components/profile/Profile'
 import CATEGORIES from '@/consts/CATEGORIES'
 import usePostsByCategory from '@/hooks/usePostsByCategory'
 import useRestoreLostUrl from '@/hooks/useRestoreLostUrl'
-import { postsAtom } from '@/store'
-import { searchKeyAtom } from '@/store/atoms/searchAtom'
+import { useStore } from '@/store'
 import type { IPost } from '@/types'
 import HomeCategory from '../../components/post/HomeCategory'
 
@@ -24,13 +22,13 @@ export default function HomePage() {
   useRestoreLostUrl()
 
   // 검색어 초기화
-  const setSearchKey = useSetRecoilState(searchKeyAtom)
+  const setSearchKey = useStore(state => state.setSearchKey)
   useEffect(() => {
     setSearchKey('')
   }, [setSearchKey])
 
   // 카테고리별 게시글 10개 추출
-  const posts = useRecoilValue(postsAtom)
+  const posts = useStore(state => state.posts)
   const { projects, algorithms, studies } = usePostsByCategory(posts, 10)
 
   return (
