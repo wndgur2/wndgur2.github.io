@@ -99,9 +99,6 @@ importers:
       path:
         specifier: ^0.12.7
         version: 0.12.7
-      speed-measure-webpack-plugin:
-        specifier: ^1.5.0
-        version: 1.5.0(webpack@5.103.0)
       typescript:
         specifier: ~5.9.2
         version: 5.9.3
@@ -5624,12 +5621,6 @@ packages:
   spdy@4.0.2:
     resolution: {integrity: sha512-r46gZQZQV+Kl9oItvl1JZZqJKGr+oEkB08A6BzkiR7593/7IbtuncXHd2YoYeTsG4157ZssMu9KYvUHLcjcDoA==}
     engines: {node: '>=6.0.0'}
-
-  speed-measure-webpack-plugin@1.5.0:
-    resolution: {integrity: sha512-Re0wX5CtM6gW7bZA64ONOfEPEhwbiSF/vz6e2GvadjuaPrQcHTQdRGsD8+BE7iUOysXH8tIenkPCQBEcspXsNg==}
-    engines: {node: '>=6.0.0'}
-    peerDependencies:
-      webpack: ^1 || ^2 || ^3 || ^4 || ^5
 
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
@@ -12933,11 +12924,6 @@ snapshots:
       spdy-transport: 3.0.0
     transitivePeerDependencies:
       - supports-color
-
-  speed-measure-webpack-plugin@1.5.0(webpack@5.103.0):
-    dependencies:
-      chalk: 4.1.2
-      webpack: 5.103.0
 
   sprintf-js@1.0.3: {}
 
