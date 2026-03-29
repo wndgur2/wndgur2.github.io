@@ -32,7 +32,7 @@ export default function Footer() {
           <small>Email</small>
           <small>dkandjsl@gmail.com</small>
         </div>
-        <div className='footer-item col'>
+        {/* <div className='footer-item col'>
           <IconLink
             icon={<FaYoutube size={30} />}
             url={'https://www.youtube.com/@junghyeok_lee6710'}
@@ -40,7 +40,7 @@ export default function Footer() {
           <div className='seperator' />
           <small>Youtube</small>
           <small>@junghyeok_lee6710</small>
-        </div>
+        </div> */}
       </div>
     </footer>
   )
