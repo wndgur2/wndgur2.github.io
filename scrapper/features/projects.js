@@ -6,7 +6,7 @@ import { config } from '../config/index.js'
 import { limit } from '../lib/concurrency.js'
 import { OUT_DIR_META } from '../lib/fs.js'
 import { octokit } from '../lib/github.js'
-import { createProgressLogger } from '../lib/logger.js'
+import { mapWithProgress } from '../lib/logger.js'
 import { normalizeTag, normalizeTitle } from '../lib/normalize.js'
 
 function yyyymmddFromDotDate(dot) {
@@ -44,67 +44,64 @@ export async function fetchProjects() {
 
   console.log(`📚 Found ${repos.length} repositories`)
 
-  const logProgress = createProgressLogger(repos.length, 'Projects')
-
   const projects = (
-    await Promise.all(
-      repos.map(r =>
-        limit(async () => {
-          try {
-            const owner = r.owner.login
-            const repo = r.name
+    await mapWithProgress(repos, {
+      label: 'Projects',
+      batchSize: 20,
+      limit,
+      mapper: async r => {
+        try {
+          const owner = r.owner.login
+          const repo = r.name
 
-            const readme = await fetchReadme(owner, repo)
-            if (!readme) return null // only include repos that have a README
+          const readme = await fetchReadme(owner, repo)
+          if (!readme) return null // only include repos that have a README
 
-            const { data: fm, content } = matter(readme)
+          const { data: fm, content } = matter(readme)
 
-            const tags = Array.isArray(fm.tags)
-              ? [...fm.tags]
-              : typeof fm.tags === 'string'
-                ? fm.tags
-                    .replaceAll('"', '')
-                    .replaceAll("'", '')
-                    .split(',')
-                    .map(normalizeTag)
-                    .filter(Boolean)
-                : Array.isArray(r.topics)
-                  ? r.topics.filter(t => t.toLowerCase() !== 'ljh') // exclude 'ljh' topic
-                  : []
+          const tags = Array.isArray(fm.tags)
+            ? [...fm.tags]
+            : typeof fm.tags === 'string'
+              ? fm.tags
+                  .replaceAll('"', '')
+                  .replaceAll("'", '')
+                  .split(',')
+                  .map(normalizeTag)
+                  .filter(Boolean)
+              : Array.isArray(r.topics)
+                ? r.topics.filter(t => t.toLowerCase() !== 'ljh') // exclude 'ljh' topic
+                : []
 
-            // Prefer front-matter dates; fallback to repo created_at in YYYY.MM.DD
-            const createdDot = r.created_at
-              ? new Date(r.created_at)
-                  .toISOString()
-                  .slice(0, 10)
-                  .replace(/-/g, '.')
-              : '-'
+          // Prefer front-matter dates; fallback to repo created_at in YYYY.MM.DD
+          const createdDot = r.created_at
+            ? new Date(r.created_at)
+                .toISOString()
+                .slice(0, 10)
+                .replace(/-/g, '.')
+            : '-'
 
-            const dateStarted = fm.date_started ?? createdDot
+          const dateStarted = fm.date_started ?? createdDot
 
-            return {
-              id: repo,
-              category: 'project',
-              title: normalizeTitle(fm.title ?? repo),
-              description: fm.description ?? r.description ?? '',
-              tags,
-              date_started: dateStarted,
-              date_finished: fm.date_finished ?? '',
-              head_count: fm.head_count ?? '',
-              role: fm.role ?? '',
-              github: r.html_url,
-              content, // README body without front-matter
-              thumbnail: `/images/${repo.toLowerCase()}.jpeg`,
-            }
-          } catch (err) {
-            console.error(`\n❌ Error processing ${r.name}:`, err.message)
-            return null
-          } finally {
-            logProgress()
+          return {
+            id: repo,
+            category: 'project',
+            title: normalizeTitle(fm.title ?? repo),
+            description: fm.description ?? r.description ?? '',
+            tags,
+            date_started: dateStarted,
+            date_finished: fm.date_finished ?? '',
+            head_count: fm.head_count ?? '',
+            role: fm.role ?? '',
+            github: r.html_url,
+            content, // README body without front-matter
+            thumbnail: `/images/${repo.toLowerCase()}.jpeg`,
           }
-        }),
-      ),
-    )
+        } catch (err) {
+          console.error(`\n❌ Error processing ${r.name}:`, err.message)
+          return null
+        }
+      },
+    })
   ).filter(Boolean)
 
   // Sort newest first by date_started (dot format), then title

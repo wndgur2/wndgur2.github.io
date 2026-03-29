@@ -5,7 +5,7 @@ import matter from 'gray-matter'
 import { limit } from '../lib/concurrency.js'
 import { OUT_DIR_META } from '../lib/fs.js'
 import { getFileText, listTreeRecursive, safeBlobUrl } from '../lib/github.js'
-import { createProgressLogger } from '../lib/logger.js'
+import { mapWithProgress } from '../lib/logger.js'
 import { normalizeTag, normalizeTitle } from '../lib/normalize.js'
 
 const POSTS_DIR = process.env.POSTS_DIR ?? 'posts'
@@ -18,60 +18,61 @@ export async function fetchPosts() {
   const [owner, repo] = BLOG_DB_REPO.split('/')
   const files = await findPostFiles(owner, repo, BLOG_DB_REF)
 
-  const logProgress = createProgressLogger(files.length, 'Posts')
-
   console.log(`📚 Found ${files.length} posts`)
 
   const posts = (
-    await Promise.all(
-      files.map(file =>
-        limit(async () => {
-          try {
-            const raw = await getFileText(owner, repo, file, BLOG_DB_REF)
-            if (!raw) return null
+    await mapWithProgress(files, {
+      label: 'Posts',
+      batchSize: 20,
+      limit,
+      mapper: async file => {
+        try {
+          const raw = await getFileText(owner, repo, file, BLOG_DB_REF)
+          if (!raw) return null
 
-            const { data: fm, content } = matter(raw)
+          const { data: fm, content } = matter(raw)
 
-            const htmlUrl = safeBlobUrl({
-              owner,
-              repo,
-              ref: BLOG_DB_REF,
-              path: file,
-            })
+          const htmlUrl = safeBlobUrl({
+            owner,
+            repo,
+            ref: BLOG_DB_REF,
+            path: file,
+          })
 
-            const tags = Array.isArray(fm.tags)
-              ? [...fm.tags]
-              : typeof fm.tags === 'string'
-                ? fm.tags
-                    .replaceAll('"', '')
-                    .replaceAll("'", '')
-                    .split(',')
-                    .map(normalizeTag)
-                    .filter(Boolean)
-                : []
+          const tags = Array.isArray(fm.tags)
+            ? [...fm.tags]
+            : typeof fm.tags === 'string'
+              ? fm.tags
+                  .replaceAll('"', '')
+                  .replaceAll("'", '')
+                  .split(',')
+                  .map(normalizeTag)
+                  .filter(Boolean)
+              : []
 
-            const id = file.replace(/^posts\//, '').replace(/\.(md|mdx)$/, '')
-            const category = fm.category.toLowerCase()
-            if (!category) return null
-
-            return {
-              id,
-              category,
-              title: normalizeTitle(fm.title ?? id),
-              content,
-              tags: tags.sort(),
-              date_started: fm.date_started ?? 'No date found.',
-              github: htmlUrl,
-            }
-          } catch (err) {
-            console.error(`\n❌ Error processing ${file}:`, err.message)
-            return null
-          } finally {
-            logProgress()
+          const id = file.replace(/^posts\//, '').replace(/\.(md|mdx)$/, '')
+          const category = fm.category?.toLowerCase()
+          if (!category) {
+            return console.warn(
+              `\n⚠️  Skipping ${file} due to missing category`,
+            )
           }
-        }),
-      ),
-    )
+
+          return {
+            id,
+            category,
+            title: normalizeTitle(fm.title ?? id),
+            content,
+            tags: tags.sort(),
+            date_started: fm.date_started ?? 'No date found.',
+            github: htmlUrl,
+          }
+        } catch (err) {
+          console.error(`\n❌ Error processing ${file}:`, err.message)
+          return null
+        }
+      },
+    })
   ).filter(Boolean)
 
   posts.sort(
