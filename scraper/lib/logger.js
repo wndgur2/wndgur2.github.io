@@ -1,3 +1,5 @@
+import { limit } from './concurrency.js'
+
 export function createProgressLogger(total, label, options = {}) {
   const batchSize = Number.isFinite(options.batchSize)
     ? Math.max(1, Math.floor(options.batchSize))
@@ -16,7 +18,7 @@ export function createProgressLogger(total, label, options = {}) {
     const elapsed = ((Date.now() - start) / 1000).toFixed(1)
 
     process.stdout.write(
-      `\r${label}: ${completed}/${total} (${percent}%) | ${elapsed}s`,
+      `\r🚀 ${label}: ${completed}/${total} (${percent}%) | ${elapsed}s`,
     )
 
     if (completed === total) process.stdout.write('\n')
@@ -24,19 +26,24 @@ export function createProgressLogger(total, label, options = {}) {
 }
 
 export async function mapWithProgress(items, options) {
-  const { label, batchSize = 20, limit: limiter, mapper } = options
-  const runLimited = typeof limiter === 'function' ? limiter : fn => fn()
+  const { label, mapper } = options
+  const batchSize = 20
   const logProgress = createProgressLogger(items.length, label, { batchSize })
+  let errors = []
 
-  return Promise.all(
-    items.map(item =>
-      runLimited(async () => {
+  const res = await Promise.all(
+    items.map(file =>
+      limit(async () => {
         try {
-          return await mapper(item)
+          return await mapper(file)
+        } catch (err) {
+          errors.push({ file, error: err.message })
+          return null
         } finally {
           logProgress()
         }
       }),
     ),
   )
+  return [res, errors]
 }

@@ -15,6 +15,7 @@ import Footer from '../../components/layout/Footer'
  */
 export default function DefaultLayout() {
   const { isDark } = useTheme()
+
   return (
     <div id='container' data-theme={isDark ? 'dark' : 'light'}>
       <Header />

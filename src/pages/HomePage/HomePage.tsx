@@ -1,17 +1,11 @@
 import './HomePage.css'
 
-import { useEffect } from 'react'
+import { Suspense } from 'react'
 
-import Loading from '@/components/common/Spinner'
-import PostListItem from '@/components/post/PostListItem'
-import ProjectListItem from '@/components/post/ProjectListItem'
+import Spinner from '@/components/common/Spinner'
+import CategoryList from '@/components/post/CategoryList'
 import Profile from '@/components/profile/Profile'
-import CATEGORIES from '@/consts/CATEGORIES'
-import usePostsByCategory from '@/hooks/usePostsByCategory'
 import useRestoreLostUrl from '@/hooks/useRestoreLostUrl'
-import { useStore } from '@/store'
-import type { IPost } from '@/types'
-import HomeCategory from '../../components/post/HomeCategory'
 
 /**
  * 홈 페이지 컴포넌트
@@ -21,50 +15,13 @@ import HomeCategory from '../../components/post/HomeCategory'
 export default function HomePage() {
   useRestoreLostUrl()
 
-  // 검색어 초기화
-  const setSearchKey = useStore(state => state.setSearchKey)
-  useEffect(() => {
-    setSearchKey('')
-  }, [setSearchKey])
-
-  // 카테고리별 게시글 10개 추출
-  const posts = useStore(state => state.posts)
-  const { projects, algorithms, studies } = usePostsByCategory(posts, 10)
-
   return (
     <div id='home'>
       <Profile />
-      <main>
-        <HomeCategory label='Projects' category={CATEGORIES.PROJECT}>
-          {projects.length > 0 ? (
-            projects.map((project: IPost) => (
-              <ProjectListItem key={project.id} post={project} />
-            ))
-          ) : (
-            <Loading phrase='loading projects' />
-          )}
-        </HomeCategory>
 
-        <HomeCategory label='Studies' category={CATEGORIES.STUDY}>
-          {studies.length ? (
-            studies.map((post: IPost) => (
-              <PostListItem key={post.id} post={post} />
-            ))
-          ) : (
-            <Loading phrase={`loading studies`} />
-          )}
-        </HomeCategory>
-
-        <HomeCategory label='Algorithms' category={CATEGORIES.ALGORITHM}>
-          {algorithms.length ? (
-            algorithms.map((post: IPost) => (
-              <PostListItem key={post.id} post={post} />
-            ))
-          ) : (
-            <Loading phrase={`loading algorithms`} />
-          )}
-        </HomeCategory>
-      </main>
+      <Suspense fallback={<Spinner phrase='게시글 로딩중...' />}>
+        <CategoryList />
+      </Suspense>
     </div>
   )
 }

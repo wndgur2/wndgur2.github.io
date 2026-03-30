@@ -1,44 +1,20 @@
-import { type IAlgorithm, type IPost, type PostTypes } from '@/types'
-import { sortedInsert } from '@/utils/sortedInsert'
+import { useSuspenseQuery } from '@tanstack/react-query'
 
-export async function getPosts(
-  setPosts: React.Dispatch<React.SetStateAction<IPost[]>>,
-) {
-  try {
-    const res = await fetch('/meta/posts.json')
-    const posts: IPost[] = await res.json()
-    posts.forEach(p => {
-      setPosts(prev => sortedInsert(prev, p))
-    })
-  } catch (e) {
-    console.error('Failed to load posts.json', e)
-  }
-}
+import type { IAlgorithm, IPost } from '@/types'
+import { fetchJSON } from '@/utils/fetch'
 
-export async function getAlgorithms(
-  setPosts: React.Dispatch<React.SetStateAction<PostTypes[]>>,
-) {
-  try {
-    const res = await fetch('/meta/algorithms.json')
-    const solves: IAlgorithm[] = await res.json()
-    solves.forEach(s => {
-      setPosts(prev => sortedInsert(prev, s))
-    })
-  } catch (e) {
-    console.error('Failed to load algorithms.json', e)
-  }
-}
+export function useGetAllPosts() {
+  return useSuspenseQuery({
+    queryKey: ['posts'],
+    queryFn: async () => {
+      const [projects, posts, algorithms] = await Promise.all([
+        fetchJSON<IPost[]>('/meta/projects.json'),
+        fetchJSON<IPost[]>('/meta/posts.json'),
+        fetchJSON<IAlgorithm[]>('/meta/algorithms.json'),
+      ])
 
-export async function getProjects(
-  setPosts: React.Dispatch<React.SetStateAction<PostTypes[]>>,
-) {
-  try {
-    const res = await fetch('/meta/projects.json')
-    const projects: IPost[] = await res.json()
-    projects.forEach(project => {
-      setPosts(prev => sortedInsert(prev, project))
-    })
-  } catch (e) {
-    console.error('Failed to load projects.json', e)
-  }
+      return [...projects, ...posts, ...algorithms]
+    },
+    staleTime: 1000 * 60 * 5,
+  })
 }

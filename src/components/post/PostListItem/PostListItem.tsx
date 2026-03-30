@@ -34,7 +34,7 @@ export default function PostListItem({ post }: Props) {
   return (
     <Link
       className='post-list-item link clickable'
-      to={ROUTES.POST_DETAIL(post.title)}
+      to={ROUTES.POST_DETAIL(post.id)}
     >
       <header className='content'>
         <h3>

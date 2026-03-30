@@ -39,7 +39,7 @@ export default function ImageSkeleton({ attrs }: Props) {
 
   return (
     <var className='image-container'>
-      <canvas className='image-skeleton' ref={skeletonRef} />
+      <canvas className='image-skeleton skeleton' ref={skeletonRef} />
       <var className='image-wrapper'>
         {isError ? (
           <var className='no-image-container'>

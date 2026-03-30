@@ -6,7 +6,7 @@ import './SearchBar.css'
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/router'
-import { useStore } from '@/store'
+import { usePostStore } from '@/store/post'
 
 /**
  * 검색바 컴포넌트
@@ -17,7 +17,7 @@ export default function SearchBar() {
   const inputRef = useRef<HTMLInputElement>(null)
   const [searchText, setSearchText] = useState<string>('')
 
-  const searchKey = useStore(state => state.searchKey)
+  const searchKey = usePostStore(state => state.searchKey)
 
   useEffect(() => {
     setSearchText(searchKey)

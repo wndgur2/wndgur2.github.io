@@ -1,13 +1,13 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getPostsBySearchKey, useStore } from '@/store'
+import { usePostStore } from '@/store/post'
+import { useSearchPosts } from './usePosts'
 
 export default function useSearchedPosts() {
   const params = useParams()
-  const posts = useStore(state => state.posts)
-  const searchKeyStored = useStore(state => state.searchKey)
-  const setSearchKey = useStore(state => state.setSearchKey)
+  const searchKeyStored = usePostStore(state => state.searchKey)
+  const setSearchKey = usePostStore(state => state.setSearchKey)
 
   const searchKey = params.searchKey || searchKeyStored
 
@@ -17,7 +17,7 @@ export default function useSearchedPosts() {
     }
   }, [searchKey, setSearchKey])
 
-  const searchedPosts = getPostsBySearchKey(posts, searchKey)
+  const searchedPosts = useSearchPosts(searchKey)
 
   return { searchedPosts, searchKey }
 }

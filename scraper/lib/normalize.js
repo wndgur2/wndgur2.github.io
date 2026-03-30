@@ -2,6 +2,16 @@ export function normalizeTitle(title) {
   return title.replace('?', '')
 }
 
+export function normalizeTagsString(tagsString) {
+  return tagsString
+    .replaceAll('"', '')
+    .replaceAll("'", '')
+    .split(',')
+    .map(normalizeTag)
+    .filter(Boolean)
+    .sort()
+}
+
 export function normalizeTag(tag) {
   return tag
     .toLowerCase()

@@ -2,7 +2,7 @@ import './SearchResultPage.css'
 
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 
-import Loading from '@/components/common/Spinner'
+import Spinner from '@/components/common/Spinner'
 import TagCountList from '@/components/common/TagCountList'
 import PostListItem from '@/components/post/PostListItem'
 import ProjectListItem from '@/components/post/ProjectListItem'
@@ -85,7 +85,7 @@ export default function SearchResultPage() {
           <span>검색 결과가 없습니다. 검색어를 확인해주세요.</span>
         )}
       </ul>
-      {isLoading && <Loading />}
+      {isLoading && <Spinner />}
     </main>
   )
 }

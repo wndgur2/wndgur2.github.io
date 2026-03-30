@@ -1,0 +1,17 @@
+.text-container {
+  display: block;
+}
+
+.text-skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+
+
+  background-size: 400% 100%;
+}

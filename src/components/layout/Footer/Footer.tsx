@@ -1,6 +1,6 @@
 import './Footer.css'
 
-import { FaYoutube } from 'react-icons/fa'
+// import { FaYoutube } from 'react-icons/fa'
 import { HiOutlineMail } from 'react-icons/hi'
 import { IoLogoGithub } from 'react-icons/io'
 

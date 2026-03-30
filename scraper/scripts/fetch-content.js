@@ -8,7 +8,9 @@ import { ensureDirs } from '../lib/fs.js'
 async function main() {
   await ensureDirs()
 
-  await Promise.all([fetchProjects(), fetchPosts(), fetchAlgorithms()])
+  await fetchProjects()
+  await fetchPosts()
+  await fetchAlgorithms()
 
   console.log('✅ Static content generated under public/meta')
 }

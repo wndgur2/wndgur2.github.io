@@ -1,11 +1,12 @@
 import './Profile.css'
 
+import { Suspense } from 'react'
+
+import TagList from '@/components/common/TagList'
 import Toast from '@/components/common/Toast'
 import useToast from '@/hooks/useToast'
-import { useStore } from '@/store'
-import { getTagsWithCounts } from '@/utils/tag'
-import TagCountList from '../../common/TagCountList'
 import ProfileImage from '../ProfileImage'
+import ProfileTagCountList from '../ProfileTagCountList'
 
 /**
  * 프로필 영역 컴포넌트
@@ -13,8 +14,6 @@ import ProfileImage from '../ProfileImage'
  * - 전체 게시글 기준 태그 카운트 노출
  */
 export default function Profile() {
-  const posts = useStore(state => state.posts)
-  const tags = getTagsWithCounts(posts)
   const {
     isMounted: showDownloadToast,
     isVisible: isDownloadToastVisible,
@@ -39,7 +38,9 @@ export default function Profile() {
           </a>
         </h2>
         <div className='profile-tags'>
-          <TagCountList tags={tags} />
+          <Suspense fallback={<TagList tags={[]} />}>
+            <ProfileTagCountList />
+          </Suspense>
         </div>
       </div>
       {showDownloadToast ? (

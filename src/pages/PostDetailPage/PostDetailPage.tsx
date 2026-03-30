@@ -1,15 +1,14 @@
 import './PostDetailPage.css'
 
 import { IoLogoGithub } from 'react-icons/io'
-import { Link, useParams } from 'react-router-dom'
+import { Link, Navigate, useParams } from 'react-router-dom'
 
 import IconLink from '@/components/common/IconLink'
 import TagList from '@/components/common/TagList'
 import MarkdownView from '@/components/post/MarkdownView'
+import { usePostDetail } from '@/hooks/usePosts'
 import useResetScroll from '@/hooks/useResetScroll'
 import { ROUTES } from '@/router'
-import { getPostByTitle, useStore } from '@/store'
-import { getNextPost, getPrevPost } from '@/store/selectors/postsSelector'
 
 /**
  * 게시글 상세 페이지 컴포넌트
@@ -19,48 +18,32 @@ import { getNextPost, getPrevPost } from '@/store/selectors/postsSelector'
  */
 export default function PostDetailPage() {
   // 현재 게시글 및 이전/다음 게시글 조회
-  const title = useParams().title
-  const posts = useStore(state => state.posts)
-  const post = getPostByTitle(posts, title)
-  const prevPost = getPrevPost(posts, title)
-  const nextPost = getNextPost(posts, title)
+  const id = useParams().id
+  useResetScroll(id)
 
-  useResetScroll(title)
+  const { postId, post, prevPost, nextPost } = usePostDetail(id)
 
-  if (!post) {
-    return (
-      <div className='post'>
-        <p>{title} 게시글을 찾을 수 없어요.</p>
-        <Link to={ROUTES.HOME} className='clickable'>
-          <b>홈으로 돌아가기</b>
-        </Link>
-      </div>
-    )
-  }
+  if (!postId || !post) return <Navigate to='/404' replace />
 
   return (
     <article className='post'>
       <header>
         <section className='post-title'>
-          {post && (
-            <Link
-              to={ROUTES.SEARCH(`@${post.category}`)}
-              className='minor post-category'
-            >
-              {post.category[0].toUpperCase() + post.category.slice(1)}
-            </Link>
-          )}
-          <h2>{title}</h2>
-          <TagList tags={post?.tags || []} />
+          <Link
+            to={ROUTES.SEARCH(`@${post.category}`)}
+            className='minor post-category'
+          >
+            {post.category[0].toUpperCase() + post.category.slice(1)}
+          </Link>
+          <h2>{post.title}</h2>
+          <TagList tags={post.tags} />
         </section>
-        {post && (
-          <section className='post-meta'>
-            <IconLink icon={<IoLogoGithub size={42} />} url={post.github} />
-            <small>
-              {post.date_started} ~ {post.date_finished}
-            </small>
-          </section>
-        )}
+        <section className='post-meta'>
+          <IconLink icon={<IoLogoGithub size={42} />} url={post.github} />
+          <small>
+            {post.date_started} ~ {post.date_finished}
+          </small>
+        </section>
       </header>
       <main className='post-content'>
         <MarkdownView post={post} />
@@ -68,7 +51,7 @@ export default function PostDetailPage() {
       <nav>
         {
           <Link
-            to={nextPost ? `/post/${nextPost.title}` : '#'}
+            to={nextPost ? `/post/${nextPost.id}` : '#'}
             className={nextPost ? 'clickable next' : 'disabled next'}
           >
             <small>&lt; next</small>
@@ -81,7 +64,7 @@ export default function PostDetailPage() {
           <div>목록으로</div>
         </Link>
         <Link
-          to={prevPost ? `/post/${prevPost.title}` : '#'}
+          to={prevPost ? `/post/${prevPost.id}` : '#'}
           className={prevPost ? 'clickable prev' : 'disabled prev'}
         >
           <small>previous &gt; </small>

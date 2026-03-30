@@ -1,14 +1,80 @@
-import { useEffect } from 'react'
+import { useMemo } from 'react'
 
-import { getAlgorithms, getPosts, getProjects } from '@/api/post'
-import { useStore } from '@/store'
+import { useGetAllPosts } from '@/api/post'
+import type CATEGORIES from '@/consts/CATEGORIES'
 
-export default function usePosts() {
-  const setPosts = useStore(state => state.setPosts)
+export function usePost(id: string) {
+  const { data: posts } = useGetAllPosts()
 
-  useEffect(() => {
-    getPosts(setPosts)
-    getAlgorithms(setPosts)
-    getProjects(setPosts)
-  }, [setPosts])
+  return posts.find(post => post.id === id) ?? null
+}
+
+export function useAdjacentPosts(id: string) {
+  const { data: posts } = useGetAllPosts()
+
+  const index = posts.findIndex(p => p.id === id)
+
+  if (index === -1) {
+    return { prev: null, next: null }
+  }
+
+  return {
+    prev: posts[index + 1] ?? null,
+    next: posts[index - 1] ?? null,
+  }
+}
+
+export function useSearchPosts(searchKey: string) {
+  const { data: posts } = useGetAllPosts()
+
+  if (!searchKey) return []
+
+  const words = searchKey.toLowerCase().split(' ')
+
+  return posts.filter(post => {
+    const title = post.title.toLowerCase()
+    const content = post.content.toLowerCase()
+    const tags = post.tags.map(tag => tag.toLowerCase())
+    const category = post.category.toLowerCase()
+
+    return words.every(word => {
+      if (!word) return true
+
+      switch (word.charAt(0)) {
+        case '#':
+          return tags.includes(word.slice(1))
+        case '@':
+          return category === word.slice(1)
+        default:
+          return title.includes(word) || content.includes(word)
+      }
+    })
+  })
+}
+
+export function usePostsByCategory(
+  category: (typeof CATEGORIES)[keyof typeof CATEGORIES],
+  limit?: number,
+) {
+  const { data: posts } = useGetAllPosts()
+
+  const filtered = posts.filter(p => p.category === category)
+
+  return limit ? filtered.slice(0, limit) : filtered
+}
+
+export function usePostDetail(idParam: string | undefined) {
+  const postId = useMemo(() => {
+    return idParam || ''
+  }, [idParam])
+
+  const post = usePost(postId)
+  const { prev, next } = useAdjacentPosts(postId)
+
+  return {
+    postId: post?.id ?? null,
+    post,
+    prevPost: prev,
+    nextPost: next,
+  }
 }

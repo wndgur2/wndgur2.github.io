@@ -3,7 +3,7 @@ import './Tag.css'
 import { useNavigate } from 'react-router-dom'
 
 import { ROUTES } from '@/router'
-import { useStore } from '@/store'
+import { usePostStore } from '@/store/post'
 
 /**
  * 태그 아이템 컴포넌트
@@ -22,7 +22,7 @@ export default function Tag({ tag, count }: Props) {
   const navigate = useNavigate()
 
   // 현재 검색 상태와 비교해 활성 태그 스타일 적용
-  const searchKey = useStore(state => state.searchKey)
+  const searchKey = usePostStore(state => state.searchKey)
   const isActive = searchKey.replaceAll('#', '').split(' ').includes(tag)
 
   return (

@@ -23,7 +23,7 @@ interface Props {
 export default function ProjectListItem({ post }: Props) {
   return (
     <Link
-      to={ROUTES.POST_DETAIL(post.title)}
+      to={ROUTES.POST_DETAIL(post.id)}
       className='post-list-item project link clickable'
     >
       <section>

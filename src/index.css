@@ -308,6 +308,13 @@ input:focus {
     animation: toast-fade-out 0.18s ease-in forwards;
 }
 
+.skeleton {
+    background: linear-gradient(90deg, var(--dimmed-bg-color) 25%, var(--dimmed-fg-color) 50%, var(--dimmed-bg-color) 75%);
+    animation: load 1.5s infinite;
+}
+
+
+
 @keyframes toast-fade-in {
     from {
         opacity: 0;
@@ -329,5 +336,15 @@ input:focus {
     to {
         opacity: 0;
         transform: translateX(-50%) translateY(8px);
+    }
+}
+
+@keyframes load {
+    0% {
+        background-position-x: 0%;
+    }
+
+    100% {
+        background-position-x: -200%;
     }
 }
