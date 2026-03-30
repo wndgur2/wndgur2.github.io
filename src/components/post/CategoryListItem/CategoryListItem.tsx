@@ -10,6 +10,7 @@ import CATEGORIES from '@/consts/CATEGORIES'
 import { usePostsByCategory } from '@/hooks/usePosts'
 import { ROUTES } from '@/router'
 import PostListItem from '../PostListItem'
+import ProjectListItem from '../ProjectListItem'
 
 /**
  * 홈 카테고리 섹션 컴포넌트
@@ -95,9 +96,13 @@ export default function CategoryListItem({ category }: Props) {
         </div>
       </header>
       <ul className='posts' ref={postsRef} onScroll={updateScrollButtons}>
-        {posts.map(post => (
-          <PostListItem key={post.id} post={post} />
-        ))}
+        {posts.map(post =>
+          category === CATEGORIES.PROJECT ? (
+            <ProjectListItem key={post.id} post={post} />
+          ) : (
+            <PostListItem key={post.id} post={post} />
+          ),
+        )}
       </ul>
     </section>
   )
