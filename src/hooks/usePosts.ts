@@ -78,3 +78,16 @@ export function usePostDetail(idParam: string | undefined) {
     nextPost: next,
   }
 }
+
+export function usePostsTags() {
+  const { data: posts } = useGetAllPosts()
+  const tagCounts = new Map<string, number>()
+  posts.forEach(post => {
+    post.tags.forEach(tag => {
+      tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1)
+    })
+  })
+  return Array.from(tagCounts, ([tag, count]) => ({ tag, count })).sort(
+    (a, b) => b.count - a.count,
+  )
+}

@@ -1,11 +1,8 @@
-import { useGetAllPosts } from '@/api/post'
 import TagCountList from '@/components/common/TagCountList'
-import { getTagsWithCounts } from '@/utils/tag'
+import { usePostsTags } from '@/hooks/usePosts'
 
 export default function ProfileTagCountList() {
-  const { data: posts } = useGetAllPosts()
-
-  const tags = getTagsWithCounts(posts)
+  const tags = usePostsTags()
 
   return <TagCountList tags={tags} />
 }

@@ -12,7 +12,7 @@ import useResetScroll from '@/hooks/useResetScroll'
 import useSearchedPosts from '@/hooks/useSearchedPosts'
 import useSortedPosts from '@/hooks/useSortedPosts'
 import { type IPost } from '@/types'
-import { getTagsWithCounts } from '@/utils/tag'
+import { getCountedValuesInArray } from '@/utils/accumulate'
 
 /**
  * 검색 결과 페이지 컴포넌트
@@ -44,7 +44,9 @@ export default function SearchResultPage() {
   })
 
   useResetScroll(searchKey)
-  const relatedTags = getTagsWithCounts(searchedPosts)
+  const relatedTags = getCountedValuesInArray(searchedPosts, 'tags').map(
+    ({ value: tag, count }) => ({ tag, count }),
+  )
 
   return (
     <main className='search-result'>
