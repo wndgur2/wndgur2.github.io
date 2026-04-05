@@ -33,6 +33,7 @@ export default function ProfileImage() {
         className={`profile-img ${videoPlaying ? 'hidden' : 'visible'}`}
         src={`/images/profile/${imgIndex}.jpeg`}
         alt='profile'
+        draggable={false}
       />
     </button>
   )

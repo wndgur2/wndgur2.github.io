@@ -8,6 +8,9 @@ export default function useProfileImage() {
   const [videoPlaying, setVideoPlaying] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
+  const clickCountRef = useRef(0)
+  const maxClickCountRef = useRef(Math.random() * 2 + 1)
+
   useEffect(() => {
     for (let i = 0; i < IMG_AMOUNT; i++) {
       const img = new Image()
@@ -24,34 +27,38 @@ export default function useProfileImage() {
       return
     }
 
-    switch (Math.floor(Math.random() * 4)) {
-      case 0:
-        profileRef.current.style.animation = 'spinLeft 0.3s'
-        setImgIndex((imgIndex + 1) % IMG_AMOUNT)
-        break
-      case 1:
-        profileRef.current.style.animation = 'spinRight 0.3s'
-        setImgIndex((imgIndex + 2) % IMG_AMOUNT)
-        break
-      case 2:
-        profileRef.current.style.animation = 'shake 0.3s'
-        break
-      case 3:
-        if (videoRef.current) {
-          videoRef.current.src = `/videos/profile/${imgIndex}.mp4`
-          videoRef.current.onplay = () => {
-            setVideoPlaying(true)
+    if (clickCountRef.current++ < maxClickCountRef.current) {
+      profileRef.current.style.animation = 'shake 0.3s'
+    } else {
+      switch (Math.floor(Math.random() * 2)) {
+        case 0:
+          profileRef.current.style.animation = 'spinLeft 0.3s'
+          setImgIndex((imgIndex + 1) % IMG_AMOUNT)
+          break
+        case 1:
+          if (videoRef.current) {
+            videoRef.current.src = `/videos/profile/${imgIndex}.mp4`
+            videoRef.current.onplay = () => {
+              setVideoPlaying(true)
+            }
+            profileRef.current.disabled = true
           }
-        }
-        break
+          break
+      }
+
+      clickCountRef.current = 0
+      maxClickCountRef.current = Math.random() * 2 + 2
     }
-    profileRef.current.disabled = true
     setTimeout(() => {
       if (profileRef.current) {
         profileRef.current.style.animation = ''
-        profileRef.current.disabled = false
       }
     }, 300)
+    setTimeout(() => {
+      if (profileRef.current) {
+        profileRef.current.disabled = false
+      }
+    }, 1000)
   }
 
   return {

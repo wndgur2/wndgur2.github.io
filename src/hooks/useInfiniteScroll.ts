@@ -11,16 +11,16 @@ const useInfiniteScroll = <T>({
   pageSize = 10,
   deps = [],
 }: UseInfiniteScrollProps<T>) => {
-  const [visibleCount, setVisibleCount] = useState(pageSize)
+  const [loadedCount, setLoadedCount] = useState(pageSize)
   const [isLoading, setIsLoading] = useState(false)
   const observerRef = useRef<HTMLDivElement | null>(null)
   const observerInstance = useRef<IntersectionObserver | null>(null)
 
-  const hasMore = visibleCount < items.length
+  const hasMore = loadedCount < items.length
 
   // 🔥 초기화
   useEffect(() => {
-    setVisibleCount(pageSize)
+    setLoadedCount(pageSize)
   }, [pageSize, ...deps])
 
   const loadMore = useCallback(() => {
@@ -30,7 +30,7 @@ const useInfiniteScroll = <T>({
 
     // 자연스러운 로딩 효과를 위한 짧은 지연
     setTimeout(() => {
-      setVisibleCount(prev =>
+      setLoadedCount(prev =>
         prev + pageSize > items.length ? items.length : prev + pageSize,
       )
       setIsLoading(false)
@@ -60,12 +60,12 @@ const useInfiniteScroll = <T>({
     return () => {
       observerInstance.current?.disconnect()
     }
-  }, [handleObserver, visibleCount]) // 🔥 visibleCount 변화 시 재연결
+  }, [handleObserver, loadedCount])
 
-  const visibleItems = items.slice(0, visibleCount)
+  const loadedItems = items.slice(0, loadedCount)
 
   return {
-    visibleItems,
+    loadedItems,
     observerRef,
     isLoading,
     hasMore,

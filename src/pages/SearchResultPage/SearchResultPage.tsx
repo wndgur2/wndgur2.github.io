@@ -33,7 +33,7 @@ export default function SearchResultPage() {
 
   // 무한 스크롤
   const {
-    visibleItems: posts,
+    loadedItems: posts,
     observerRef,
     hasMore,
     isLoading,

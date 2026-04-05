@@ -39,6 +39,23 @@ export default [
       // 'react/no-unknown-property': ['error', { ignore: ['css'] }],
       'react/no-unknown-property': ['error'],
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-restricted-imports': [
+        'warn',
+        {
+          patterns: [
+            {
+              group: [
+                '../../*',
+                '../../../*',
+                '../../../../*',
+                '../../../../../*',
+              ],
+              message:
+                'Use @ alias for cross-feature imports. Keep relative imports local to nearby files.',
+            },
+          ],
+        },
+      ],
     },
   },
 ]
