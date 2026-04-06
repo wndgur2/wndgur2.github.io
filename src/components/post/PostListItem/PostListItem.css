@@ -14,6 +14,8 @@
 
     border: 1px solid var(--border-color);
     background-color: var(--fg-color);
+
+    transition: box-shadow 0.2s, scale 0.2s;
 }
 
 .post-list-item>section {
@@ -82,4 +84,8 @@
 .preview * {
     font-size: 0.9rem;
     color: var(--content-color);
+}
+
+.post-list-item:hover {
+    box-shadow: var(--hover-shadow);
 }

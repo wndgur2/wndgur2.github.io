@@ -9,6 +9,8 @@
     border-radius: var(--radius-pill);
     box-shadow: 0 0 0 1.5px var(--accent-color);
     background-color: var(--fg-color);
+    transition: color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, transform 0.1s ease;
+
 
 
 }
@@ -22,4 +24,7 @@
 .tag-active {
     box-shadow: 0 0 0 1.5px var(--action-color);
     color: var(--action-color);
+}
+.tag:active {
+    transform: scale(0.96);
 }

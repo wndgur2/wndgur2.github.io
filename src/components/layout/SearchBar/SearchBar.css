@@ -18,6 +18,8 @@
 
 
 .search-bar:focus-within {
+    box-shadow: var(--hover-shadow);
+    border-color: var(--accent-color);
     width: 768px;
 }
 
@@ -75,6 +77,8 @@
     }
 
     .search-bar:focus-within {
+    box-shadow: var(--hover-shadow);
+    border-color: var(--accent-color);
         flex-grow: 1;
         width: 100%;
         flex-shrink: 0;

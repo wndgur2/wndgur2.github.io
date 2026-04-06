@@ -3,6 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", "Noto Sans KR", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     scrollbar-width: none;
     -webkit-tap-highlight-color: transparent;
 }
@@ -16,10 +18,10 @@
     --ko-unicode: U+AC00-D7A3;
     --en-unicode: U+0041-005A, U+0061-007A;
 
-    --radius: 0.5em;
-    --radius-sm: 0.2em;
-    --radius-lg: 0.8em;
-    --radius-pill: 1em;
+    --radius-sm: 0.4em;
+    --radius: 0.8em;
+    --radius-lg: 1em;
+    --radius-pill: 1.2em;
     --radius-circle: 50%;
 
     --light-fg-color: #fcfcfc;
@@ -41,6 +43,8 @@
     --light-border-color: #ccc;
     --light-dimmed-border-color: #e4e4e4;
     --light-light-only-border-color: #ff50aa;
+    --light-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --light-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 
     --dark-fg-color: #24242a;
     --dark-dimmed-fg-color: #333;
@@ -60,6 +64,8 @@
     --dark-dimmed-icon-color: #dfdfdf22;
     --dark-border-color: #323232;
     --dark-dimmed-border-color: #212121;
+    --dark-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --dark-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 [data-theme="light"] {
@@ -82,6 +88,8 @@
     --border-color: var(--light-border-color);
     --dimmed-border-color: var(--light-dimmed-border-color);
     --light-only-border-color: var(--light-light-only-border-color);
+    --shadow: var(--light-shadow);
+    --hover-shadow: var(--light-hover-shadow);
 }
 
 [data-theme="dark"] {
@@ -104,6 +112,8 @@
     --border-color: var(--dark-border-color);
     --dimmed-border-color: var(--dark-dimmed-border-color);
     --light-only-border-color: none;
+    --shadow: var(--dark-shadow);
+    --hover-shadow: var(--dark-hover-shadow);
 }
 
 li {
@@ -127,6 +137,7 @@ small {
 .link {
     color: var(--accent-color);
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 .link:hover header {
@@ -168,6 +179,7 @@ button {
     background-color: transparent;
 
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
 }
 
 button:hover * {
@@ -192,6 +204,7 @@ button.accent:hover {
 
 .clickable {
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
     transition: scale 0.2s;
 }
 
@@ -206,11 +219,12 @@ button.accent:hover {
 
 .clickable.small {
     cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
     transition: scale 0.2s;
 }
 
 .clickable.small:hover {
-    scale: 1.08;
+    scale: 1.1;
 }
 
 .clickable.small:active {

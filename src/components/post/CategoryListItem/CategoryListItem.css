@@ -3,8 +3,9 @@
 
     margin: 0px;
     margin-top: calc(2em);
-    margin-bottom: 1.8em;
+    margin-bottom: 1.4em;
 
+    overflow: visible;
 
     transition: flex-grow 0.2s;
 }
@@ -43,10 +44,10 @@
 }
 
 .posts {
+    padding: 1.2em 0px;
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
-    overflow-y: visible;
 }
 
 

@@ -14,7 +14,7 @@
 
     background-color: var(--transparent-fg-color);
     backdrop-filter: blur(1em);
-    box-shadow: 0 0 1px var(--border-color);
+    box-shadow: var(--shadow);
 
     overflow: hidden;
     transition: background-color 0.2s, transform 0.2s;

@@ -33,6 +33,8 @@ export default function CategoryListItem({ category }: Props) {
 
   const posts = usePostsByCategory(category, 10)
 
+  console.log('category list item rendered')
+
   const scroll = (direction: 'backward' | 'forward') => {
     if (postsRef.current) {
       postsRef.current.scrollBy({
@@ -80,14 +82,14 @@ export default function CategoryListItem({ category }: Props) {
         </Link>
         <div className='scroll-buttons'>
           <button
-            className='icon'
+            className='small clickable'
             onClick={() => scroll('backward')}
             disabled={isBackwardDisabled}
           >
             <RiArrowLeftSLine size={26} />
           </button>
           <button
-            className='icon'
+            className='small clickable'
             onClick={() => scroll('forward')}
             disabled={isForwardDisabled}
           >
