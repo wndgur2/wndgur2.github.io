@@ -1,7 +1,7 @@
 import './PostDetailPage.css'
 
 import { IoLogoGithub } from 'react-icons/io'
-import { Link, Navigate, useParams } from 'react-router-dom'
+import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 
 import IconLink from '@/components/common/IconLink'
 import TagList from '@/components/common/TagList'
@@ -17,6 +17,7 @@ import { ROUTES } from '@/router'
  * - 본문 마크다운 렌더링
  */
 export default function PostDetailPage() {
+  const location = useLocation()
   // 현재 게시글 및 이전/다음 게시글 조회
   const id = useParams().id
   useResetScroll(id)
@@ -25,12 +26,18 @@ export default function PostDetailPage() {
 
   if (!postId || !post) return <Navigate to='/404' replace />
 
+  const fallbackSearchKey = `@${post.category}`
+  const locationState = location.state as { fromSearchKey?: string } | null
+  const listTargetSearchKey = locationState?.fromSearchKey || fallbackSearchKey
+  const encodedCategorySearchKey = encodeURIComponent(`@${post.category}`)
+  const encodedListTargetSearchKey = encodeURIComponent(listTargetSearchKey)
+
   return (
     <article className='post'>
       <header>
         <section className='post-title'>
           <Link
-            to={ROUTES.SEARCH(`@${post.category}`)}
+            to={ROUTES.SEARCH(encodedCategorySearchKey)}
             className='minor post-category'
           >
             {post.category[0].toUpperCase() + post.category.slice(1)}
@@ -60,7 +67,7 @@ export default function PostDetailPage() {
             </div>
           </Link>
         }
-        <Link to={`/search`} className='clickable list'>
+        <Link to={ROUTES.SEARCH(encodedListTargetSearchKey)} className='clickable list'>
           <div>목록으로</div>
         </Link>
         <Link

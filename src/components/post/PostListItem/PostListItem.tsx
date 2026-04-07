@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom'
 import MarkdownView from '@/components/post/MarkdownView'
 import TagList from '@/components/common/TagList'
 import CATEGORIES from '@/consts/CATEGORIES'
+import useSearchKey from '@/features/search/useSearchKey'
 import { ROUTES } from '@/router'
 import { type IPost } from '@/types'
 
@@ -22,6 +23,8 @@ interface Props {
 }
 
 export default function PostListItem({ post }: Props) {
+  const searchKey = useSearchKey()
+
   // 리스트 미리보기용 마크다운 태그 오버라이드
   const overrides: MarkdownToJSX.Overrides = {
     a: {
@@ -35,6 +38,7 @@ export default function PostListItem({ post }: Props) {
     <Link
       className='post-list-item link clickable'
       to={ROUTES.POST_DETAIL(post.id)}
+      state={{ fromSearchKey: searchKey }}
     >
       <header className='content'>
         <h3>

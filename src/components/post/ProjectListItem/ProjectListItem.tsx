@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import TagList from '@/components/common/TagList'
 import ImageSkeleton from '@/components/post/ImageSkeleton'
+import useSearchKey from '@/features/search/useSearchKey'
 import { ROUTES } from '@/router'
 import { type IPost } from '@/types'
 
@@ -21,10 +22,13 @@ interface Props {
 }
 
 export default function ProjectListItem({ post }: Props) {
+  const searchKey = useSearchKey()
+
   return (
     <Link
       to={ROUTES.POST_DETAIL(post.id)}
       className='post-list-item project link clickable'
+      state={{ fromSearchKey: searchKey }}
     >
       <section>
         <div className='project-image-wrapper'>
