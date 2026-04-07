@@ -33,8 +33,6 @@ export default function CategoryListItem({ category }: Props) {
 
   const posts = usePostsByCategory(category, 10)
 
-  console.log('category list item rendered')
-
   const scroll = (direction: 'backward' | 'forward') => {
     if (postsRef.current) {
       postsRef.current.scrollBy({

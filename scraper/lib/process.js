@@ -31,7 +31,7 @@ export async function fetchAndProcess({
         return true
       }
     })
-    .sort()
+    .sort((a, b) => new Date(b.date_started) - new Date(a.date_started))
 
   for (const fn of postProcessors) {
     fn(items)

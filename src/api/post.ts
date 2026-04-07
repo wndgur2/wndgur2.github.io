@@ -15,7 +15,11 @@ export function useGetAllPosts() {
         fetchJSON<IAlgorithm[]>(META_PATHS.ALGORITHMS),
       ])
 
-      return [...projects, ...posts, ...algorithms]
+      return [...projects, ...posts, ...algorithms].sort((a, b) => {
+        const dateA = new Date(a.date_started).getTime()
+        const dateB = new Date(b.date_started).getTime()
+        return dateB - dateA
+      })
     },
     staleTime: 1000 * 60 * 5,
   })
