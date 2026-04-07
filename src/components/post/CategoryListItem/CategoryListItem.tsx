@@ -9,8 +9,8 @@ import { Link } from 'react-router-dom'
 import CATEGORIES from '@/consts/CATEGORIES'
 import { usePostsByCategory } from '@/hooks/usePosts'
 import { ROUTES } from '@/router'
-import PostListItem from '../PostListItem'
-import ProjectListItem from '../ProjectListItem'
+import PostListItem from '@/components/post/PostListItem'
+import ProjectListItem from '@/components/post/ProjectListItem'
 
 /**
  * 홈 카테고리 섹션 컴포넌트

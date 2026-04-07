@@ -48,10 +48,8 @@ describe('useSortedPosts', () => {
   const createMockStoreState = (
     overrides: Partial<StoreState> = {},
   ): StoreState => ({
-    searchKey: '',
     sortAttribute: 'date_started',
     sortOrder: 'desc',
-    setSearchKey: vi.fn(),
     setSortAttribute: vi.fn(),
     setSortOrder: vi.fn(),
     toggleSortOrder: vi.fn(),

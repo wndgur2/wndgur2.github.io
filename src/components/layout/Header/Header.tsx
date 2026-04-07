@@ -1,15 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 
 import Logo from '@/assets/logo.svg?react'
-
-import './Header.css'
-
-import { Link } from 'react-router-dom'
-
 import useTheme from '@/hooks/useTheme'
 import { ROUTES } from '@/router'
-import SearchBar from '../SearchBar'
-import ThemeToggler from '../ThemeToggler'
+import { Link } from 'react-router-dom'
+
+import SearchBar from '@/components/layout/SearchBar'
+import ThemeToggler from '@/components/layout/ThemeToggler'
+import styles from './Header.module.css'
 
 /**
  * 헤더 컴포넌트
@@ -24,7 +22,7 @@ export default function Header() {
   useEffect(() => {
     // 스크롤 위치를 비교해 헤더 노출 상태 제어
     let lastScrollTop = 0
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
       if (!headerRef.current) return
       const currentScroll =
         window.pageYOffset || document.documentElement.scrollTop
@@ -34,16 +32,20 @@ export default function Header() {
         setIsHidden(false)
       }
       lastScrollTop = currentScroll
-    })
+    }
+    window.addEventListener('scroll', handleScroll)
 
     return () => {
-      window.removeEventListener('scroll', () => {})
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
   return (
-    <div id='header' ref={headerRef} className={isHidden ? 'hide' : 'top'}>
-      <Link to={ROUTES.HOME} className='logo clickable small'>
+    <div
+      ref={headerRef}
+      className={`${styles.header} ${isHidden ? styles.hide : styles.top}`}
+    >
+      <Link to={ROUTES.HOME} className={`${styles.logo} clickable small`}>
         <Logo />
       </Link>
       <SearchBar />

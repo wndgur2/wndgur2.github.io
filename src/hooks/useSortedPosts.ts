@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 
+import { sortPosts } from '@/features/post/selectors'
 import { usePostStore } from '@/store/post'
 import { type IPost } from '@/types'
 
@@ -9,16 +10,7 @@ export default function useSortedPosts(posts: IPost[]) {
   const toggleSortOrder = usePostStore(state => state.toggleSortOrder)
 
   const sortedPosts = useMemo(
-    () =>
-      [...posts].sort((a, b) =>
-        sortOrder === 'desc'
-          ? a[sortAttribute] < b[sortAttribute]
-            ? 1
-            : -1
-          : a[sortAttribute] > b[sortAttribute]
-            ? 1
-            : -1,
-      ),
+    () => sortPosts(posts, sortAttribute, sortOrder),
     [posts, sortAttribute, sortOrder],
   )
 

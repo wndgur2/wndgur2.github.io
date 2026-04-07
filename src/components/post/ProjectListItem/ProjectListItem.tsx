@@ -3,10 +3,10 @@ import './ProjectListItem.css'
 import { CiImageOff } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
 
+import TagList from '@/components/common/TagList'
+import ImageSkeleton from '@/components/post/ImageSkeleton'
 import { ROUTES } from '@/router'
 import { type IPost } from '@/types'
-import TagList from '../../common/TagList'
-import ImageSkeleton from '../ImageSkeleton'
 
 /**
  * 프로젝트 목록 아이템 컴포넌트

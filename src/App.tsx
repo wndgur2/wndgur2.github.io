@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router-dom'
 
-import { ThemeProvider } from './contexts/ThemeProvider'
-import { router } from './router'
+import { ThemeProvider } from '@/contexts/ThemeProvider'
+import { router } from '@/router'
 
 /**
  * 애플리케이션 루트 컴포넌트

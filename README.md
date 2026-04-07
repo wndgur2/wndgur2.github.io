@@ -17,10 +17,11 @@ role: FE
 
 **사용 기술**
 
-- React 18, TypeScript
+- React 19, TypeScript
 - Vite 7
 - React Router
-- Recoil (전역 상태)
+- Zustand (정렬 상태 저장)
+- TanStack Query (서버/메타 데이터 캐시)
 - markdown-to-jsx, html-react-parser (마크다운/HTML 렌더)
 - highlight.js (코드 하이라이팅)
 - Octokit, gray-matter (콘텐츠 수집/파싱 스크립트)
@@ -43,15 +44,17 @@ role: FE
 │   ├── meta/              # 생성된 콘텐츠 메타(JSON)
 │   ├── images/            # 정적 이미지
 │   └── manifest.webmanifest
-├── scripts/
-│   └── fetch-content.js   # GitHub에서 콘텐츠 수집/가공 스크립트
+├── scraper/
+│   └── scripts/
+│       └── fetch-content.js   # GitHub에서 콘텐츠 수집/가공 스크립트
 ├── src/
-│   ├── api/               # JSON 로딩 API
-│   ├── components/        # 공용 컴포넌트
+│   ├── api/               # JSON 로딩 API (TanStack Query)
+│   ├── components/        # UI 컴포넌트
 │   ├── contexts/          # 테마 컨텍스트
+│   ├── features/          # 도메인별 selector / search hook
 │   ├── hooks/             # 데이터/검색/정렬 훅
 │   ├── pages/             # 라우트별 화면
-│   ├── recoil/            # 전역 상태/셀렉터
+│   ├── store/             # 전역 UI 상태 (zustand)
 │   ├── types/             # 타입 정의
 │   └── utils/             # 유틸 함수
 └── vite.config.ts
@@ -64,7 +67,7 @@ git push
 ↓  
 GitHub Actions (CI/CD)  
 ↓  
-scripts/fetch-content.js 실행  
+scraper/scripts/fetch-content.js 실행  
 ↓  
 [ GitHub API 호출 ]  
 ↓  
@@ -80,7 +83,7 @@ public/meta/ 저장
 ↓  
 src/api/post.ts 로드  
 ↓  
-Recoil 전역 상태 병합  
+클라이언트 상태(zustand) + URL state 결합  
 ↓  
 홈 / 검색 / 상세 페이지 렌더링
 ```
@@ -90,7 +93,7 @@ Recoil 전역 상태 병합
 ```markdown
 # GitHub API 기반 데이터 수집
 
-fetch-content.js  
+scraper/scripts/fetch-content.js  
  ↓  
 GitHub API 요청  
  ↓  
@@ -125,4 +128,4 @@ GitHub API 요청
 - `pnpm build`: 타입 체크 후 프로덕션 빌드
 - `pnpm preview`: 빌드 결과 미리보기
 - `pnpm lint`: ESLint 실행
-- `node scripts/fetch-content.js`: 콘텐츠 메타 생성
+- `pnpm exec node scraper/scripts/fetch-content.js`: 콘텐츠 메타 생성

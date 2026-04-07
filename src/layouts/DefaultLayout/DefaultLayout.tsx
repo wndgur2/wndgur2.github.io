@@ -1,11 +1,10 @@
 import { Outlet } from 'react-router-dom'
 
-import Header from '../../components/layout/Header'
-
 import './DefaultLayout.css'
 
+import Footer from '@/components/layout/Footer'
+import Header from '@/components/layout/Header'
 import useTheme from '@/hooks/useTheme'
-import Footer from '../../components/layout/Footer'
 
 /**
  * 기본 레이아웃 컴포넌트

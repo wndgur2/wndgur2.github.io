@@ -1,7 +1,7 @@
 import './TagCountList.css'
 
-import InterssectionObserverWrapper from '../IntersectionObserverWrapper'
-import Tag from '../Tag'
+import InterssectionObserverWrapper from '@/components/common/IntersectionObserverWrapper'
+import Tag from '@/components/common/Tag'
 
 /**
  * 태그 카운트 목록 컴포넌트

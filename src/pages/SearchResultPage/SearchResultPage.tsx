@@ -7,12 +7,12 @@ import TagCountList from '@/components/common/TagCountList'
 import PostListItem from '@/components/post/PostListItem'
 import ProjectListItem from '@/components/post/ProjectListItem'
 import CATEGORIES from '@/consts/CATEGORIES'
+import { getTagCounts } from '@/features/post/selectors'
 import useInfiniteScroll from '@/hooks/useInfiniteScroll'
 import useResetScroll from '@/hooks/useResetScroll'
 import useSearchedPosts from '@/hooks/useSearchedPosts'
 import useSortedPosts from '@/hooks/useSortedPosts'
 import { type IPost } from '@/types'
-import { getCountedValuesInArray } from '@/utils/accumulate'
 
 /**
  * 검색 결과 페이지 컴포넌트
@@ -44,9 +44,7 @@ export default function SearchResultPage() {
   })
 
   useResetScroll(searchKey)
-  const relatedTags = getCountedValuesInArray(searchedPosts, 'tags').map(
-    ({ value: tag, count }) => ({ tag, count }),
-  )
+  const relatedTags = getTagCounts(searchedPosts)
 
   return (
     <main className='search-result'>

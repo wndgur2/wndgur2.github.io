@@ -1,5 +1,5 @@
 import CATEGORIES from '@/consts/CATEGORIES'
-import CategoryListItem from '../CategoryListItem'
+import CategoryListItem from '@/components/post/CategoryListItem'
 
 export default function CategoryList() {
   return (

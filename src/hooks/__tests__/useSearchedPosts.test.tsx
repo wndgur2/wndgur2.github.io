@@ -6,20 +6,13 @@ import {
 } from 'react-router-dom'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 
-import type { StoreState } from '@/store/post'
-import { usePostStore } from '@/store/post'
 import { useSearchPosts } from '../usePosts'
 import useSearchedPosts from '../useSearchedPosts'
-
-vi.mock('@/store/post', () => ({
-  usePostStore: vi.fn(),
-}))
 
 vi.mock('../usePosts', () => ({
   useSearchPosts: vi.fn(),
 }))
 
-const mockUsePostStore = vi.mocked(usePostStore)
 const mockUseSearchPosts = vi.mocked(useSearchPosts)
 
 function HookProbe() {
@@ -35,31 +28,12 @@ function HookProbe() {
   )
 }
 
-function createMockStoreState(overrides: Partial<StoreState> = {}): StoreState {
-  return {
-    searchKey: '',
-    sortAttribute: 'date_started',
-    sortOrder: 'desc',
-    setSearchKey: vi.fn(),
-    setSortAttribute: vi.fn(),
-    setSortOrder: vi.fn(),
-    toggleSortOrder: vi.fn(),
-    ...overrides,
-  }
-}
-
 describe('useSearchedPosts', () => {
   beforeEach(() => {
     vi.clearAllMocks()
   })
 
-  it('uses URL param as the source of truth and syncs store from URL', async () => {
-    const setSearchKey = vi.fn()
-
-    mockUsePostStore.mockImplementation(selector =>
-      selector(createMockStoreState({ searchKey: 'stored-key', setSearchKey })),
-    )
-
+  it('uses URL param as the source of truth', async () => {
     mockUseSearchPosts.mockImplementation(searchKey =>
       searchKey ? [{ id: 'p1' } as never] : [],
     )
@@ -80,19 +54,10 @@ describe('useSearchedPosts', () => {
       expect(screen.getByTestId('result-count').textContent).toBe('1')
     })
 
-    expect(setSearchKey).toHaveBeenCalledWith('url-key')
     expect(mockUseSearchPosts).toHaveBeenCalledWith('url-key')
   })
 
-  it('redirects to stored key when URL key is missing', async () => {
-    const setSearchKey = vi.fn()
-
-    mockUsePostStore.mockImplementation(selector =>
-      selector(
-        createMockStoreState({ searchKey: 'saved query', setSearchKey }),
-      ),
-    )
-
+  it('returns empty key when URL key is missing', async () => {
     mockUseSearchPosts.mockImplementation(searchKey =>
       searchKey ? [{ id: 'p1' } as never] : [],
     )
@@ -108,11 +73,10 @@ describe('useSearchedPosts', () => {
     render(<RouterProvider router={router} />)
 
     await waitFor(() => {
-      expect(screen.getByTestId('search-key').textContent).toBe('saved query')
-      expect(screen.getByTestId('result-count').textContent).toBe('1')
+      expect(screen.getByTestId('search-key').textContent).toBe('')
+      expect(screen.getByTestId('result-count').textContent).toBe('0')
     })
 
-    expect(setSearchKey).toHaveBeenCalledWith('saved query')
-    expect(mockUseSearchPosts).toHaveBeenCalledWith('saved query')
+    expect(mockUseSearchPosts).toHaveBeenCalledWith('')
   })
 })

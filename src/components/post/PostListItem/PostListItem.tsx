@@ -4,10 +4,10 @@ import { type MarkdownToJSX } from 'markdown-to-jsx'
 import { Link } from 'react-router-dom'
 
 import MarkdownView from '@/components/post/MarkdownView'
+import TagList from '@/components/common/TagList'
 import CATEGORIES from '@/consts/CATEGORIES'
 import { ROUTES } from '@/router'
 import { type IPost } from '@/types'
-import TagList from '../../common/TagList'
 
 /**
  * 게시글 목록 아이템 컴포넌트

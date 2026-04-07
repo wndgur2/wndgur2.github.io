@@ -6,7 +6,7 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default [
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'dev-dist'] },
 
   {
     files: ['**/*.{ts,tsx}'],
@@ -15,6 +15,10 @@ export default [
       parserOptions: {
         ecmaVersion: 'latest',
         sourceType: 'module',
+        projectService: {
+          allowDefaultProject: ['*.js', 'vite-env.d.ts', 'vitest.config.ts'],
+        },
+        tsconfigRootDir: import.meta.dirname,
       },
       globals: globals.browser,
     },
@@ -40,7 +44,7 @@ export default [
       'react/no-unknown-property': ['error'],
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
       'no-restricted-imports': [
-        'warn',
+        'error',
         {
           patterns: [
             {

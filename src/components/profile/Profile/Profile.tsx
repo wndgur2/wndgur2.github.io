@@ -5,8 +5,8 @@ import { Suspense } from 'react'
 import TagList from '@/components/common/TagList'
 import Toast from '@/components/common/Toast'
 import useToast from '@/hooks/useToast'
-import ProfileImage from '../ProfileImage'
-import ProfileTagCountList from '../ProfileTagCountList'
+import ProfileImage from '@/components/profile/ProfileImage'
+import ProfileTagCountList from '@/components/profile/ProfileTagCountList'
 
 /**
  * 프로필 영역 컴포넌트

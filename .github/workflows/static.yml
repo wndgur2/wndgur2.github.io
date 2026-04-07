@@ -41,7 +41,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 4) Run tests (Vitest)
+      # 4) Lint + typecheck + tests
+      - name: Run lint
+        run: pnpm lint
+
+      - name: Run typecheck
+        run: pnpm exec tsc --noEmit
+
       - name: Run tests
         run: pnpm test
 
