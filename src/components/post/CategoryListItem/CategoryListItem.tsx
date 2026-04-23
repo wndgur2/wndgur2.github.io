@@ -6,11 +6,11 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
+import PostListItem from '@/components/post/PostListItem'
+import ProjectListItem from '@/components/post/ProjectListItem'
 import CATEGORIES from '@/consts/CATEGORIES'
 import { usePostsByCategory } from '@/hooks/usePosts'
 import { ROUTES } from '@/router'
-import PostListItem from '@/components/post/PostListItem'
-import ProjectListItem from '@/components/post/ProjectListItem'
 
 /**
  * 홈 카테고리 섹션 컴포넌트
@@ -31,7 +31,7 @@ export default function CategoryListItem({ category }: Props) {
   const [isBackwardDisabled, setIsBackwardDisabled] = useState(true)
   const [isForwardDisabled, setIsForwardDisabled] = useState(false)
 
-  const posts = usePostsByCategory(category, 10)
+  const posts = usePostsByCategory(category, 6)
 
   const scroll = (direction: 'backward' | 'forward') => {
     if (postsRef.current) {
@@ -50,8 +50,7 @@ export default function CategoryListItem({ category }: Props) {
     }
 
     if (
-      postsRef.current.scrollLeft +
-        postsRef.current.getBoundingClientRect().width >=
+      postsRef.current.scrollLeft + postsRef.current.clientWidth >=
       postsRef.current.scrollWidth * 0.99
     ) {
       setIsForwardDisabled(true)
@@ -80,14 +79,14 @@ export default function CategoryListItem({ category }: Props) {
         </Link>
         <div className='scroll-buttons'>
           <button
-            className='small clickable'
+            className='small clickable icon'
             onClick={() => scroll('backward')}
             disabled={isBackwardDisabled}
           >
             <RiArrowLeftSLine size={26} />
           </button>
           <button
-            className='small clickable'
+            className='small clickable icon'
             onClick={() => scroll('forward')}
             disabled={isForwardDisabled}
           >

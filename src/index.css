@@ -2,11 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto", "Noto Sans KR", sans-serif;
+    font-family: "Roboto", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "Helvetica Neue", Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scrollbar-width: none;
     -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    text-rendering: optimizeLegibility;
 }
 
 *::selection {

@@ -29,12 +29,22 @@ export default function ProfileImage() {
         onEnded={() => setVideoPlaying(false)}
         ref={videoRef}
       />
-      <img
-        className={`profile-img ${videoPlaying ? 'hidden' : 'visible'}`}
-        src={`/images/profile/${imgIndex}.jpeg`}
-        alt='profile'
-        draggable={false}
-      />
+      <picture className={`profile-img ${videoPlaying ? 'hidden' : 'visible'}`}>
+        <source
+          srcSet={`/images/profile/${imgIndex}.webp`}
+          type='image/webp'
+        />
+        <img
+          src={`/images/profile/${imgIndex}.jpeg`}
+          width={304}
+          height={304}
+          loading='eager'
+          fetchPriority='high'
+          decoding='async'
+          alt='profile'
+          draggable={false}
+        />
+      </picture>
     </button>
   )
 }

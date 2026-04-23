@@ -1,7 +1,6 @@
 import './MarkdownView.css'
 
 import { useEffect } from 'react'
-import hljs from 'highlight.js'
 import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx'
 
 import ImageSkeleton from '@/components/post/ImageSkeleton'
@@ -65,11 +64,25 @@ export default function MarkdownView({ post, overrides }: Props) {
   // 렌더링된 코드 블록에 highlight.js 적용
   useEffect(() => {
     if (!post) return
-    const nodes = document.querySelectorAll('pre code')
-    nodes.forEach(node => {
-      if (node.hasAttribute('data-highlighted')) return
-      hljs.highlightElement(node as HTMLElement)
-    })
+
+    let isMounted = true
+
+    const highlight = async () => {
+      const { default: hljs } = await import('highlight.js')
+      if (!isMounted) return
+
+      const nodes = document.querySelectorAll('pre code')
+      nodes.forEach(node => {
+        if (node.hasAttribute('data-highlighted')) return
+        hljs.highlightElement(node as HTMLElement)
+      })
+    }
+
+    highlight()
+
+    return () => {
+      isMounted = false
+    }
   }, [post])
 
   // 프로젝트 게시글의 code 필드는 본문 하단에 별도 섹션으로 병합

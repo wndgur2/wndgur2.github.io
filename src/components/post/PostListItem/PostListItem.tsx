@@ -1,9 +1,7 @@
 import './PostListItem.css'
 
-import { type MarkdownToJSX } from 'markdown-to-jsx'
 import { Link } from 'react-router-dom'
 
-import MarkdownView from '@/components/post/MarkdownView'
 import TagList from '@/components/common/TagList'
 import CATEGORIES from '@/consts/CATEGORIES'
 import useSearchKey from '@/features/search/useSearchKey'
@@ -25,15 +23,14 @@ interface Props {
 export default function PostListItem({ post }: Props) {
   const searchKey = useSearchKey()
 
-  // 리스트 미리보기용 마크다운 태그 오버라이드
-  const overrides: MarkdownToJSX.Overrides = {
-    a: {
-      component: (props: any) => <strong {...props} />,
-    },
-    div: {
-      component: (props: any) => <span {...props} />,
-    },
-  }
+  const preview = post.content
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, ' ')
+    .replace(/\[[^\]]*\]\([^)]+\)/g, ' ')
+    .replace(/[#>*_`~-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 170)
+
   return (
     <Link
       className='post-list-item link clickable'
@@ -52,7 +49,7 @@ export default function PostListItem({ post }: Props) {
         </small>
       </header>
       <section className='preview'>
-        <MarkdownView post={post} overrides={overrides} />
+        <p className='content'>{preview}...</p>
       </section>
       <TagList tags={post.tags} />
     </Link>

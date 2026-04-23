@@ -19,13 +19,16 @@ export default function ImageSkeleton({ attrs }: Props) {
   const skeletonRef = useRef<HTMLCanvasElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const [isError, setIsError] = useState(false)
+  const src = attrs.src || ''
+  const optimizedSrc = src.replace(/\.jpe?g(\?.*)?$/i, '.webp$1')
+  const hasOptimizedSource = optimizedSrc !== src
 
   // 이미지 로드 성공/실패 상태에 따라 스켈레톤 및 표시 상태 전환
   useEffect(() => {
     if (!imgRef.current) return
     const image = imgRef.current
 
-    image.src = attrs.src || ''
+    image.src = src
     imgRef.current.classList.add('loading')
     image.onload = () => {
       skeletonRef.current?.remove()
@@ -35,7 +38,7 @@ export default function ImageSkeleton({ attrs }: Props) {
       skeletonRef.current?.remove()
       setIsError(true)
     }
-  }, [attrs.src])
+  }, [src])
 
   return (
     <var className='image-container'>
@@ -48,7 +51,19 @@ export default function ImageSkeleton({ attrs }: Props) {
             <small>{attrs.src}</small>
           </var>
         ) : (
-          <img alt='' {...attrs} ref={imgRef} />
+          <picture>
+            {hasOptimizedSource ? (
+              <source srcSet={optimizedSrc} type='image/webp' />
+            ) : null}
+            <img
+              alt=''
+              {...attrs}
+              loading={attrs.loading ?? 'lazy'}
+              decoding='async'
+              fetchPriority={attrs.fetchPriority ?? 'auto'}
+              ref={imgRef}
+            />
+          </picture>
         )}
       </var>
     </var>

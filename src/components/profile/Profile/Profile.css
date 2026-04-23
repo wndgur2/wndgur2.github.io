@@ -23,6 +23,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 0.4em;
+    min-height: 9.5rem;
 }
 
 .profile-tags {

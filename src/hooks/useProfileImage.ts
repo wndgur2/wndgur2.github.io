@@ -13,8 +13,10 @@ export default function useProfileImage() {
 
   useEffect(() => {
     for (let i = 0; i < IMG_AMOUNT; i++) {
-      const img = new Image()
-      img.src = `/images/profile/${i}.jpeg`
+      const optimizedImg = new Image()
+      optimizedImg.src = `/images/profile/${i}.webp`
+      const fallbackImg = new Image()
+      fallbackImg.src = `/images/profile/${i}.jpeg`
     }
   })
 
