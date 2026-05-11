@@ -4,7 +4,9 @@ import { createBrowserRouter } from 'react-router-dom'
 import Spinner from '@/components/common/Spinner'
 
 const DefaultLayout = lazy(() => import('@/layouts/DefaultLayout'))
-const PostDetailLayout = lazy(() => import('@/layouts/PostDetailLayout/PostDetailLayout'))
+const PostDetailLayout = lazy(
+  () => import('@/layouts/PostDetailLayout/PostDetailLayout'),
+)
 const HomePage = lazy(() => import('@/pages/HomePage'))
 const NoPage = lazy(() => import('@/pages/NoPage'))
 const PostDetailPage = lazy(() => import('@/pages/PostDetailPage'))
