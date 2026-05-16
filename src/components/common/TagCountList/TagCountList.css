@@ -1,9 +1,4 @@
-.tag-list {
-  display: flex;
-  flex-flow: row wrap;
-  padding: 1em 0.4em;
-  align-items: center;
-}
+@import '../TagList/TagList.css';
 
 .tag-item>.intersection-observer-children-wrapper {
   transform: scale(0.0);

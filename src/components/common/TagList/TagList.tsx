@@ -1,3 +1,5 @@
+import './TagList.css'
+
 import Tag from '../Tag'
 
 /**

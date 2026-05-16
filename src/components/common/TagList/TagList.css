@@ -1,0 +1,9 @@
+.tag-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 1em 0.4em;
+  align-items: center;
+
+  margin: 0;
+  list-style: none;
+}
