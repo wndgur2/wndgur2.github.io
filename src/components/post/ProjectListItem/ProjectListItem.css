@@ -15,6 +15,7 @@
 }
 
 .project-image-wrapper .image-container {
+    --image-max-height: 18em;
     width: 100%;
     margin: 0;
     padding: 0;
