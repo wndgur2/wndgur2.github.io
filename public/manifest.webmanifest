@@ -4,6 +4,10 @@
   "description": "이중혁 블로그",
   "theme_color": "#3366ff",
   "background_color": "#fafafa",
+  "color_scheme_dark": {
+    "theme_color": "#7755ff",
+    "background_color": "#161619"
+  },
   "display": "standalone",
   "icons": [
     {
