@@ -48,6 +48,14 @@
     display: flex;
     flex-flow: row nowrap;
     overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0.8em;
+}
+
+.home-category .posts>.post-list-item {
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    scroll-margin-inline: 0.6em;
 }
 
 
