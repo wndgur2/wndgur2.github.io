@@ -10,3 +10,4 @@ node_modules
 dist
 dev-dist
 public/meta
+scraper/scripts/public/meta

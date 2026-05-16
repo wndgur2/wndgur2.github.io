@@ -26,6 +26,8 @@ export async function fetchPosts() {
         path: file,
       })
 
+      if (fm.isDraft) return null
+
       const tags = Array.isArray(fm.tags)
         ? [...fm.tags]
         : typeof fm.tags === 'string'
