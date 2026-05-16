@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
-
-import Logo from '@/assets/logo.svg?react'
-import useTheme from '@/hooks/useTheme'
-import { ROUTES } from '@/router'
 import { Link } from 'react-router-dom'
 
+import Logo from '@/assets/logo.svg?react'
 import SearchBar from '@/components/layout/SearchBar'
 import ThemeToggler from '@/components/layout/ThemeToggler'
+import useTheme from '@/hooks/useTheme'
+import { ROUTES } from '@/router'
 import styles from './Header.module.css'
 
 /**
@@ -42,6 +41,7 @@ export default function Header() {
 
   return (
     <div
+      id='header'
       ref={headerRef}
       className={`${styles.header} ${isHidden ? styles.hide : styles.top}`}
     >

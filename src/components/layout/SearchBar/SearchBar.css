@@ -29,6 +29,7 @@
 
 .search-bar input {
     width: 96%;
+    min-width: 0;
 
     font-size: medium;
 
@@ -77,11 +78,11 @@
     }
 
     .search-bar:focus-within {
-    box-shadow: var(--hover-shadow);
-    border-color: var(--accent-color);
-        flex-grow: 1;
-        width: 100%;
-        flex-shrink: 0;
+        box-shadow: var(--hover-shadow);
+        border-color: var(--accent-color);
+        flex: 1 1 0%;
+        min-width: 0;
+        width: auto;
         max-width: none;
         padding: 0 0.5em 0 1em;
         border-radius: var(--radius-pill);
@@ -90,6 +91,7 @@
 
     .search-bar:focus-within>form {
         max-width: 100%;
+        min-width: 0;
     }
 
 }
