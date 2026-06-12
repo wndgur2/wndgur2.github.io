@@ -12,6 +12,12 @@ export default defineConfig({
         enabled: true,
       },
       manifest: false,
+      workbox: {
+        // Let the Loop project Pages (wndgur2.github.io/loop/*) be served from the
+        // network instead of this blog's SPA shell — otherwise the SW's navigation
+        // fallback hijacks /loop/* and renders the blog's 404.
+        navigateFallbackDenylist: [/^\/loop\//],
+      },
     }),
     tsconfigPaths(),
     react(),
