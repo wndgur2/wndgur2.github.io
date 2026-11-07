@@ -35,6 +35,7 @@ role: FE
 - 태그 목록/관련 태그 표시
 - 다크/라이트 테마 전환 및 테마별 파비콘/하이라이트 테마 적용
 - 게시글 이전/다음 이동 및 404 처리
+- 빌드 시 게시글/프로젝트별 정적 HTML, `sitemap.xml`, `robots.txt` 생성 (SEO)
 
 **디렉토리 구조**
 
@@ -46,7 +47,8 @@ role: FE
 │   └── manifest.webmanifest
 ├── scraper/
 │   └── scripts/
-│       └── fetch-content.js   # GitHub에서 콘텐츠 수집/가공 스크립트
+│       ├── fetch-content.js         # GitHub에서 콘텐츠 수집/가공 스크립트
+│       └── generate-static-pages.js # 빌드 결과물에 SEO용 정적 페이지 생성
 ├── src/
 │   ├── api/               # JSON 로딩 API (TanStack Query)
 │   ├── components/        # UI 컴포넌트
@@ -125,7 +127,7 @@ GitHub API 요청
 실행 스크립트:
 
 - `pnpm dev`: 개발 서버 실행
-- `pnpm build`: 타입 체크 후 프로덕션 빌드
+- `pnpm build`: 타입 체크 후 프로덕션 빌드, 정적 페이지 생성 (`public/meta`가 있어야 생성됨)
 - `pnpm preview`: 빌드 결과 미리보기
 - `pnpm lint`: ESLint 실행
 - `pnpm exec node scraper/scripts/fetch-content.js`: 콘텐츠 메타 생성
