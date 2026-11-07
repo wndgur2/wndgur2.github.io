@@ -131,3 +131,10 @@ GitHub API 요청
 - `pnpm preview`: 빌드 결과 미리보기
 - `pnpm lint`: ESLint 실행
 - `pnpm exec node scraper/scripts/fetch-content.js`: 콘텐츠 메타 생성
+
+### PR 프리뷰
+
+운영 배포는 GitHub Pages가 담당하고, Vercel은 PR 프리뷰 전용으로 사용합니다 (`vercel.json`에서 `main` 배포 비활성화).
+
+- Vercel 프로젝트 환경 변수에 `GH_PAT`를 등록해야 합니다.
+- 프리뷰는 없는 경로도 앱 화면을 200으로 응답하므로, GitHub Pages의 404 동작은 검증할 수 없습니다.
