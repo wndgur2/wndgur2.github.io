@@ -129,3 +129,5 @@ GitHub API 요청
 - `pnpm preview`: 빌드 결과 미리보기
 - `pnpm lint`: ESLint 실행
 - `pnpm exec node scraper/scripts/fetch-content.js`: 콘텐츠 메타 생성
+
+디자인 시스템 규칙은 [DESIGN.md](DESIGN.md)를 참고하세요.
