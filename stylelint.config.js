@@ -3,7 +3,15 @@ import { readFileSync } from 'node:fs'
 const TOKENS_FILE = 'src/styles/tokens.css'
 
 // tokens.css 밖에서 쓰는 커스텀 프로퍼티. 컴포넌트가 직접 값을 넣는 지역 변수만 둔다.
-const LOCAL_CUSTOM_PROPERTIES = ['image-max-height', 'img-nw', 'img-nh']
+const LOCAL_CUSTOM_PROPERTIES = [
+  'image-max-height',
+  'image-width',
+  'image-margin',
+  'img-nw',
+  'img-nh',
+  'preview-max-height',
+  'preview-aspect-ratio',
+]
 
 const tokenNames = Array.from(
   readFileSync(new URL(TOKENS_FILE, import.meta.url), 'utf8').matchAll(
