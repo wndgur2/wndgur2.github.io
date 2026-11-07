@@ -1,4 +1,5 @@
 .tag {
+    display: block;
     width: fit-content;
 
     padding: var(--space-3) var(--space-5);
@@ -32,4 +33,9 @@
 }
 .tag:active {
     transform: scale(0.96);
+}
+
+.tag:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-accent);
+    outline-offset: var(--focus-ring-offset);
 }

@@ -18,7 +18,9 @@ export default function TagList({ tags, className = '' }: Props) {
   return (
     <ol className={`${styles.tagList} ${className}`}>
       {tags.map((tag: string, index: number) => (
-        <Tag key={index} tag={tag} />
+        <li key={index}>
+          <Tag tag={tag} />
+        </li>
       ))}
     </ol>
   )

@@ -19,15 +19,16 @@ export default function TagCountList({ tags, className = '' }: Props) {
   return (
     <ol className={`${styles.tagList} ${className}`}>
       {tags.map(({ tag, count }, index: number) => (
-        <InterssectionObserverWrapper
-          key={`${tag}${count}${index}`}
-          className={styles.tagItem}
-          visibleClassName={styles.tagVisible}
-          childrenClassName={styles.tagContent}
-          threshold={1}
-        >
-          <Tag tag={tag} count={count} />
-        </InterssectionObserverWrapper>
+        <li key={`${tag}${count}${index}`}>
+          <InterssectionObserverWrapper
+            className={styles.tagItem}
+            visibleClassName={styles.tagVisible}
+            childrenClassName={styles.tagContent}
+            threshold={1}
+          >
+            <Tag tag={tag} count={count} />
+          </InterssectionObserverWrapper>
+        </li>
       ))}
     </ol>
   )

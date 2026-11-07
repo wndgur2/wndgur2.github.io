@@ -1,5 +1,7 @@
+/* isolation: 내부 z-index가 밖으로 새면 카드의 CardLink를 덮어 클릭을 막는다. */
 .imageContainer {
     position: relative;
+    isolation: isolate;
 
     display: grid;
     grid-template: 1fr / 1fr;

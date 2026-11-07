@@ -1,9 +1,8 @@
-import cardStyles from '@/components/post/PostCard.module.css'
 import styles from './ProjectListItem.module.css'
 
 import { CiImageOff } from 'react-icons/ci'
-import { Link } from 'react-router-dom'
 
+import Card, { CardLink } from '@/components/common/Card'
 import TagList from '@/components/common/TagList'
 import ImageSkeleton from '@/components/post/ImageSkeleton'
 import useSearchKey from '@/features/search/useSearchKey'
@@ -16,7 +15,7 @@ import { type IPost } from '@/types'
  * - 클릭 시 상세 페이지로 이동
  *
  * @param post 목록에서 표시할 프로젝트 게시글 데이터
- * @param className 링크에 추가할 클래스
+ * @param className 카드에 추가할 클래스
  */
 
 interface Props {
@@ -28,11 +27,7 @@ export default function ProjectListItem({ post, className = '' }: Props) {
   const searchKey = useSearchKey()
 
   return (
-    <Link
-      to={ROUTES.POST_DETAIL(post.id)}
-      className={`${cardStyles.card} ${styles.project} link clickable ${className}`}
-      state={{ fromSearchKey: searchKey }}
-    >
+    <Card className={`${styles.project} ${className}`}>
       <section>
         <div className={styles.projectImageWrapper}>
           {post.thumbnail ? (
@@ -51,7 +46,14 @@ export default function ProjectListItem({ post, className = '' }: Props) {
           )}
         </div>
         <header className='content'>
-          <h2 className={styles.projectTitle}>{post.title}</h2>
+          <h2 className={styles.projectTitle}>
+            <CardLink
+              to={ROUTES.POST_DETAIL(post.id)}
+              state={{ fromSearchKey: searchKey }}
+            >
+              {post.title}
+            </CardLink>
+          </h2>
           <p>{post.description}</p>
           <div className={styles.projectInfoFooter}>
             <small>
@@ -65,6 +67,6 @@ export default function ProjectListItem({ post, className = '' }: Props) {
         </header>
       </section>
       <TagList tags={post.tags} />
-    </Link>
+    </Card>
   )
 }
