@@ -82,7 +82,7 @@
 }
 
 
-span.hljs-property {
+:where(.markdown) :global(span.hljs-property) {
   color: var(--color-text-accent);
 }
 
@@ -98,11 +98,11 @@ span.hljs-property {
   color: var(--color-text-muted)
 }
 
-.hljs-params {
+:where(.markdown) :global(.hljs-params) {
   color: inherit;
 }
 
-.markdown code:not(.hljs) {
+.markdown code:not(:global(.hljs)) {
   font-size: var(--font-size-sm);
   padding: var(--space-2) var(--space-4);
   line-height: 2em;

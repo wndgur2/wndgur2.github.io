@@ -1,6 +1,4 @@
-.image-container {
-    --image-max-height: 90vh;
-
+.imageContainer {
     position: relative;
 
     display: grid;
@@ -9,29 +7,29 @@
     justify-self: center;
 
     max-width: 100%;
-    margin: var(--space-10) auto;
+    margin: var(--image-margin, var(--space-10) auto);
 
     border-radius: var(--radius);
     overflow: hidden;
 }
 
-.image-container>* {
+.imageContainer>* {
     grid-area: 1 / 1;
 }
 
-.image-container[data-has-dims='true'] {
+.imageContainer[data-has-dims='true'] {
     aspect-ratio: var(--img-nw) / var(--img-nh);
-    width: min(100%, calc(var(--img-nw) * 1px), calc(var(--image-max-height) * var(--img-nw) / var(--img-nh)));
-    max-height: var(--image-max-height);
+    width: var(--image-width, min(100%, calc(var(--img-nw) * 1px), calc(var(--image-max-height, 90vh) * var(--img-nw) / var(--img-nh))));
+    max-height: var(--image-max-height, 90vh);
 }
 
-.image-container[data-has-dims='false'] {
+.imageContainer[data-has-dims='false'] {
     width: 100%;
     aspect-ratio: 16 / 9;
-    max-height: var(--image-max-height);
+    max-height: var(--image-max-height, 90vh);
 }
 
-.image-skeleton {
+.imageSkeleton {
     z-index: var(--z-base);
 
     width: 100%;
@@ -43,7 +41,7 @@
     background-size: 200%;
 }
 
-.image-wrapper {
+.imageWrapper {
     z-index: var(--z-raised);
 
     display: flex;
@@ -57,7 +55,7 @@
     overflow: hidden;
 }
 
-.image-wrapper picture {
+.imageWrapper picture {
     display: contents;
 }
 
@@ -82,12 +80,12 @@
     transition: opacity var(--duration-slow);
 }
 
-.image-wrapper .no-image {
+.imageWrapper .noImage {
     margin: var(--space-5) 0;
     fill: var(--color-text-subtle);
 }
 
-.no-image-container {
+.noImageContainer {
     width: 100%;
     display: flex;
     flex-direction: column;

@@ -1,4 +1,5 @@
-import './ProjectListItem.css'
+import cardStyles from '@/components/post/PostCard.module.css'
+import styles from './ProjectListItem.module.css'
 
 import { CiImageOff } from 'react-icons/ci'
 import { Link } from 'react-router-dom'
@@ -15,23 +16,25 @@ import { type IPost } from '@/types'
  * - 클릭 시 상세 페이지로 이동
  *
  * @param post 목록에서 표시할 프로젝트 게시글 데이터
+ * @param className 링크에 추가할 클래스
  */
 
 interface Props {
   post: IPost
+  className?: string
 }
 
-export default function ProjectListItem({ post }: Props) {
+export default function ProjectListItem({ post, className = '' }: Props) {
   const searchKey = useSearchKey()
 
   return (
     <Link
       to={ROUTES.POST_DETAIL(post.id)}
-      className='post-list-item project link clickable'
+      className={`${cardStyles.card} ${styles.project} link clickable ${className}`}
       state={{ fromSearchKey: searchKey }}
     >
       <section>
-        <div className='project-image-wrapper'>
+        <div className={styles.projectImageWrapper}>
           {post.thumbnail ? (
             <ImageSkeleton
               attrs={{
@@ -39,20 +42,22 @@ export default function ProjectListItem({ post }: Props) {
                 alt: post.title,
                 loading: 'eager',
                 fetchPriority: 'high',
+                className: styles.thumbnail,
               }}
+              noImageClassName={styles.noImage}
             />
           ) : (
-            <CiImageOff className='no-image' size={32} />
+            <CiImageOff className={styles.noImage} size={32} />
           )}
         </div>
-        <header className='project-info content'>
-          <h2 className='project-title'>{post.title}</h2>
+        <header className='content'>
+          <h2 className={styles.projectTitle}>{post.title}</h2>
           <p>{post.description}</p>
-          <div className='project-info-footer'>
+          <div className={styles.projectInfoFooter}>
             <small>
               {post.date_started}~ {post.date_finished}
             </small>
-            <div className='project-meta'>
+            <div className={styles.projectMeta}>
               <small>{post.role}</small>
               <small>{post.head_count}인</small>
             </div>

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 
-import './CategoryListItem.css'
+import styles from './CategoryListItem.module.css'
 
 import { IoIosArrowForward } from 'react-icons/io'
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
@@ -69,15 +69,15 @@ export default function CategoryListItem({ category }: Props) {
           : ''
 
   return (
-    <section className='home-category'>
+    <section className={styles.homeCategory}>
       <header>
-        <Link className='link' to={ROUTES.SEARCH(`@${category}`)}>
+        <Link className={`${styles.categoryLink} link`} to={ROUTES.SEARCH(`@${category}`)}>
           <header>
             <h1>{label}</h1>
             <IoIosArrowForward size={20} />
           </header>
         </Link>
-        <div className='scroll-buttons'>
+        <div className={styles.scrollButtons}>
           <button
             className='small clickable icon'
             onClick={() => scroll('backward')}
@@ -94,12 +94,20 @@ export default function CategoryListItem({ category }: Props) {
           </button>
         </div>
       </header>
-      <ul className='posts' ref={postsRef} onScroll={updateScrollButtons}>
+      <ul className={styles.posts} ref={postsRef} onScroll={updateScrollButtons}>
         {posts.map(post =>
           category === CATEGORIES.PROJECT ? (
-            <ProjectListItem key={post.id} post={post} />
+            <ProjectListItem
+              key={post.id}
+              post={post}
+              className={styles.postItem}
+            />
           ) : (
-            <PostListItem key={post.id} post={post} />
+            <PostListItem
+              key={post.id}
+              post={post}
+              className={styles.postItem}
+            />
           ),
         )}
       </ul>

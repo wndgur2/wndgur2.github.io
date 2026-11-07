@@ -1,4 +1,5 @@
-import './PostListItem.css'
+import cardStyles from '@/components/post/PostCard.module.css'
+import styles from './PostListItem.module.css'
 
 import { Link } from 'react-router-dom'
 
@@ -14,13 +15,15 @@ import { type IPost } from '@/types'
  * - 클릭 시 상세 페이지로 이동
  *
  * @param post 목록에서 표시할 게시글 데이터
+ * @param className 링크에 추가할 클래스
  */
 
 interface Props {
   post: IPost
+  className?: string
 }
 
-export default function PostListItem({ post }: Props) {
+export default function PostListItem({ post, className = '' }: Props) {
   const searchKey = useSearchKey()
 
   const preview = post.content
@@ -33,7 +36,7 @@ export default function PostListItem({ post }: Props) {
 
   return (
     <Link
-      className='post-list-item link clickable'
+      className={`${cardStyles.card} ${styles.postListItem} link clickable ${className}`}
       to={ROUTES.POST_DETAIL(post.id)}
       state={{ fromSearchKey: searchKey }}
     >
@@ -48,7 +51,7 @@ export default function PostListItem({ post }: Props) {
           {post.category === CATEGORIES.PROJECT && `~ ${post.date_finished}`}
         </small>
       </header>
-      <section className='preview'>
+      <section className={styles.preview}>
         <p className='content'>{preview}...</p>
       </section>
       <TagList tags={post.tags} />

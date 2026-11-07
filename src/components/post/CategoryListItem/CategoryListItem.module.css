@@ -1,4 +1,4 @@
-.home-category {
+.homeCategory {
     width: 100%;
 
     margin: 0px;
@@ -10,7 +10,7 @@
     transition: flex-grow var(--duration-base);
 }
 
-.home-category>header {
+.homeCategory>header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -19,14 +19,14 @@
     padding-bottom: var(--space-2);
 }
 
-.home-category>header>.link {
+.homeCategory>header>.categoryLink {
     padding: var(--space-4) 0px;
 
     border-radius: var(--radius-pill);
     transition: padding var(--duration-base);
 }
 
-.home-category>header>.link>header {
+.homeCategory>header>.categoryLink>header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -34,12 +34,12 @@
     gap: calc(0.4em + 0.7vw);
 }
 
-.home-category>header>.link:hover {
+.homeCategory>header>.categoryLink:hover {
     padding: var(--space-4) var(--space-8);
     border: 1px solid var(--color-action);
 }
 
-.home-category button:disabled {
+.homeCategory button:disabled {
     opacity: 0.5;
 }
 
@@ -52,37 +52,22 @@
     scroll-padding-inline: var(--space-8);
 }
 
-.home-category .posts>.post-list-item {
+.postItem {
     flex-shrink: 0;
     scroll-snap-align: start;
     scroll-margin-inline: var(--space-6);
 }
 
 
-.scroll-buttons {
+.scrollButtons {
     display: flex;
     gap: var(--space-10);
 }
 
-.scroll-buttons button {
+.scrollButtons button {
     border-radius: var(--radius-circle);
     aspect-ratio: 1/1;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.more {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: var(--space-10);
-    padding: var(--space-10) var(--space-20);
-    background-color: var(--color-surface);
-    border-radius: var(--radius);
-}
-
-.more>p {
-    text-align: center;
-    width: 4em;
 }
