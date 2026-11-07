@@ -10,7 +10,7 @@
     overflow: hidden;
     border: 0.2em solid var(--color-accent);
     border-radius: var(--radius-circle);
-    /* 사진과 영상의 바탕이라 테마와 무관하게 흰색으로 고정한다. */
+    /* stylelint-disable-next-line color-no-hex -- 사진과 영상의 바탕이라 테마와 무관하게 흰색으로 고정한다. */
     background-color: #fff;
 
     transition: width var(--duration-slow), border var(--duration-slow), scale var(--duration-slow);
@@ -20,7 +20,7 @@
     width: calc(7.1em + 5.2vw);
     cursor: pointer;
     border: 0.4em solid var(--color-action);
-    /* 이 요소는 button이므로 button:hover의 배경을 다시 덮어써야 한다. */
+    /* stylelint-disable-next-line color-no-hex -- 이 요소는 button이므로 button:hover의 배경을 다시 덮어써야 한다. */
     background-color: #fff;
 }
 

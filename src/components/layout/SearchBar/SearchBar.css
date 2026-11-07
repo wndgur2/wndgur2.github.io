@@ -63,7 +63,7 @@
         padding: 0;
         margin-left: auto;
 
-        border-radius: 50%;
+        border-radius: var(--radius-circle);
 
         justify-content: center;
         align-items: center;

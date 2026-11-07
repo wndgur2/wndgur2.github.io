@@ -14,7 +14,7 @@
 .spinner,
 .spinner:before,
 .spinner:after {
-    border-radius: 50%;
+    border-radius: var(--radius-circle);
     width: 2em;
     height: 2em;
     animation-fill-mode: both;
@@ -23,7 +23,7 @@
 
 .spinner {
     color: var(--color-accent-80);
-    /* 점의 크기와 간격을 em으로 정하는 기준값이라 글자 크기 토큰을 쓰지 않는다. */
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 점의 크기와 간격을 em으로 정하는 기준값이라 글자 크기 토큰을 쓰지 않는다. */
     font-size: 7px;
     position: relative;
     text-indent: -9999em;
@@ -52,10 +52,12 @@
     0%,
     80%,
     100% {
+        /* stylelint-disable-next-line declaration-property-value-allowed-list -- 그림자가 아니라 점의 크기를 바꾸는 애니메이션 값이다. */
         box-shadow: 0 2.5em 0 -1.3em
     }
 
     40% {
+        /* stylelint-disable-next-line declaration-property-value-allowed-list -- 그림자가 아니라 점의 크기를 바꾸는 애니메이션 값이다. */
         box-shadow: 0 2.5em 0 0
     }
 }

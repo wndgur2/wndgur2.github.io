@@ -21,6 +21,7 @@
     content: '';
     height: calc(2.4em - 2px);
     aspect-ratio: 3.8/2.2;
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 토글 트랙과 손잡이 모양에 맞춘 값이고 대응하는 토큰이 없다. */
     border-radius: 2em;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -31,8 +32,10 @@
 
     width: 2em;
     aspect-ratio: 1;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치를 맞추는 배치 값이다. */
     margin-left: calc(-3.85em);
 
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 토글 트랙과 손잡이 모양에 맞춘 값이고 대응하는 토큰이 없다. */
     border-radius: 2em;
     background-color: var(--color-accent);
     transition: transform var(--duration-slow), background-color var(--duration-slower), color var(--duration-slow);
@@ -41,8 +44,9 @@
 .icons {
     display: flex;
     align-items: center;
-    /* 토글 손잡이 위치와 맞물린 배치 값이라 토큰을 쓰지 않는다. */
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치와 맞물린 배치 값이라 토큰을 쓰지 않는다. */
     gap: 0.25em;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치와 맞물린 배치 값이라 토큰을 쓰지 않는다. */
     margin-left: calc(-1.9em + 2px);
     pointer-events: none;
 }
@@ -51,7 +55,7 @@
     z-index: var(--z-overlay);
     background-color: transparent;
     pointer-events: none;
-    /* 해와 달 아이콘의 고유 색이라 두 테마에서 같은 값으로 고정한다. */
+    /* stylelint-disable-next-line color-no-hex -- 해와 달 아이콘의 고유 색이라 두 테마에서 같은 값으로 고정한다. */
     fill: #FFBB33;
     font-size: var(--font-size-icon);
     transition: opacity var(--duration-slow);
@@ -80,14 +84,17 @@
 
     .toggle+label::after {
         width: 2.6em;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치를 맞추는 배치 값이다. */
         margin-left: calc(-2.85em);
     }
 
     .icons {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치를 맞추는 배치 값이다. */
         margin-left: calc(-2.1em);
     }
 
     .moon {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치를 맞추는 배치 값이다. */
         margin-left: calc(-1.2em);
     }
 
