@@ -63,28 +63,6 @@ small {
     color: var(--color-text-muted);
 }
 
-button {
-    padding: var(--space-5);
-
-    display: flex;
-
-    border-radius: var(--radius-pill);
-    border: none;
-    background-color: transparent;
-
-    cursor: pointer;
-    transition: background-color var(--duration-base) ease, transform var(--duration-base) ease;
-}
-
-button:hover * {
-    color: var(--color-icon);
-    stroke: var(--color-icon);
-}
-
-button:hover {
-    background-color: var(--color-icon-muted);
-}
-
 .clickable {
     cursor: pointer;
     transition: background-color var(--duration-base) ease, transform var(--duration-base) ease;
@@ -116,11 +94,6 @@ button:hover {
 
 .clickable:active:has(.clickable:hover) {
     scale: 1.04;
-}
-
-button:disabled {
-    pointer-events: none;
-    opacity: 0.9;
 }
 
 input {

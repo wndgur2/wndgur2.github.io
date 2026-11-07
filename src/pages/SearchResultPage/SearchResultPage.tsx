@@ -2,6 +2,7 @@ import styles from './SearchResultPage.module.css'
 
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 
+import Button from '@/components/common/Button'
 import Spinner from '@/components/common/Spinner'
 import TagCountList from '@/components/common/TagCountList'
 import PostListItem from '@/components/post/PostListItem'
@@ -54,7 +55,7 @@ export default function SearchResultPage() {
           <p className={`dimmed content ${styles.searchResultText}`}> &nbsp; 검색 결과</p>
         </div>
         <div>{searchKey && <TagCountList tags={relatedTags} />}</div>
-        <button
+        <Button
           className={`clickable ${styles.btnSearchResultSort}`}
           onClick={toggleSortOrder}
         >
@@ -66,7 +67,7 @@ export default function SearchResultPage() {
           ) : (
             <FaSortAmountUp className='icon' />
           )}
-        </button>
+        </Button>
       </header>
       <ul className={styles.results}>
         {posts.length ? (

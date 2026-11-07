@@ -1,0 +1,7 @@
+/* Button과 같은 이유로 우선순위를 요소 선택자로 유지한다. */
+button:where(.iconButton) {
+    justify-content: center;
+    align-items: center;
+
+    aspect-ratio: 1/1;
+}

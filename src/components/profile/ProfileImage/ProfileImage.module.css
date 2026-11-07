@@ -1,11 +1,6 @@
 .profileImgWrapper {
     width: calc(6.8em + 4.8vw);
-    aspect-ratio: 1/1;
     padding: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     overflow: hidden;
     border: 0.2em solid var(--color-accent);
@@ -20,7 +15,7 @@
     width: calc(7.1em + 5.2vw);
     cursor: pointer;
     border: 0.4em solid var(--color-action);
-    /* stylelint-disable-next-line color-no-hex -- 이 요소는 button이므로 button:hover의 배경을 다시 덮어써야 한다. */
+    /* stylelint-disable-next-line color-no-hex -- Button의 hover 배경을 다시 덮어써야 한다. */
     background-color: #fff;
 }
 

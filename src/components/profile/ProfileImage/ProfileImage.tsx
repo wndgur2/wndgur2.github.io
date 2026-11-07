@@ -1,3 +1,4 @@
+import IconButton from '@/components/common/IconButton'
 import useProfileImage from '@/hooks/useProfileImage'
 
 import styles from './ProfileImage.module.css'
@@ -18,7 +19,8 @@ export default function ProfileImage() {
   } = useProfileImage()
 
   return (
-    <button
+    <IconButton
+      label='프로필 사진'
       className={styles.profileImgWrapper}
       onClick={profileClickHandler}
       ref={profileRef}
@@ -47,6 +49,6 @@ export default function ProfileImage() {
           draggable={false}
         />
       </picture>
-    </button>
+    </IconButton>
   )
 }

@@ -5,6 +5,7 @@ import styles from './SearchBar.module.css'
 
 import { useNavigate } from 'react-router-dom'
 
+import IconButton from '@/components/common/IconButton'
 import useSearchKey from '@/features/search/useSearchKey'
 import { ROUTES } from '@/router'
 
@@ -57,9 +58,9 @@ export default function SearchBar({ className = '' }: Props) {
           onChange={e => setSearchText(e.target.value)}
           autoComplete='false'
         />
-        <button type='submit' className={`${styles.btnSubmit} ${styles.pc}`}>
+        <IconButton type='submit' label='검색' className={styles.pc}>
           <FiSearch className='minor' size={24} />
-        </button>
+        </IconButton>
       </form>
       <FiSearch className={`minor ${styles.mobile}`} size={24} />
     </search>

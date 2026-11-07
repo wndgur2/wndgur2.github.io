@@ -6,6 +6,7 @@ import { IoIosArrowForward } from 'react-icons/io'
 import { RiArrowLeftSLine, RiArrowRightSLine } from 'react-icons/ri'
 import { Link } from 'react-router-dom'
 
+import IconButton from '@/components/common/IconButton'
 import PostListItem from '@/components/post/PostListItem'
 import ProjectListItem from '@/components/post/ProjectListItem'
 import CATEGORIES from '@/consts/CATEGORIES'
@@ -78,20 +79,22 @@ export default function CategoryListItem({ category }: Props) {
           </header>
         </Link>
         <div className={styles.scrollButtons}>
-          <button
-            className='small clickable icon'
+          <IconButton
+            label={`${label} 이전 목록`}
+            className={`${styles.scrollButton} small clickable icon`}
             onClick={() => scroll('backward')}
             disabled={isBackwardDisabled}
           >
             <RiArrowLeftSLine size={26} />
-          </button>
-          <button
-            className='small clickable icon'
+          </IconButton>
+          <IconButton
+            label={`${label} 다음 목록`}
+            className={`${styles.scrollButton} small clickable icon`}
             onClick={() => scroll('forward')}
             disabled={isForwardDisabled}
           >
             <RiArrowRightSLine size={26} />
-          </button>
+          </IconButton>
         </div>
       </header>
       <ul className={styles.posts} ref={postsRef} onScroll={updateScrollButtons}>

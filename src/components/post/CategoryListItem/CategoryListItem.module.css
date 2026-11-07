@@ -39,10 +39,6 @@
     border: 1px solid var(--color-action);
 }
 
-.homeCategory button:disabled {
-    opacity: 0.5;
-}
-
 .posts {
     padding: var(--space-12) 0px;
     display: flex;
@@ -64,10 +60,10 @@
     gap: var(--space-10);
 }
 
-.scrollButtons button {
+.scrollButton {
     border-radius: var(--radius-circle);
-    aspect-ratio: 1/1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+}
+
+.scrollButton:disabled {
+    opacity: 0.5;
 }
