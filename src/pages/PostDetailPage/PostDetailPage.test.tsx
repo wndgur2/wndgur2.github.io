@@ -123,6 +123,15 @@ describe('PostDetailPage SEO', () => {
     expect(router.state.historyAction).toBe('REPLACE')
   })
 
+  it('redirects a .html url to the clean url', async () => {
+    const router = renderPost('/post/web-performance.html')
+
+    await waitFor(() =>
+      expect(router.state.location.pathname).toBe('/post/web-performance'),
+    )
+    expect(router.state.historyAction).toBe('REPLACE')
+  })
+
   it('renders the title as h1 and syncs the document title', () => {
     renderPost('/post/web-performance')
 
