@@ -7,17 +7,21 @@ import {
   getTagCounts,
   searchPosts,
 } from '@/features/post/selectors'
+import type { IPost } from '@/types'
+
+const matchesPostId = (post: IPost, id: string) =>
+  post.id === id || post.legacy_id === id
 
 export function usePost(id: string) {
   const { data: posts } = useGetAllPosts()
 
-  return posts.find(post => post.id === id) ?? null
+  return posts.find(post => matchesPostId(post, id)) ?? null
 }
 
 export function useAdjacentPosts(id: string) {
   const { data: posts } = useGetAllPosts()
 
-  const index = posts.findIndex(p => p.id === id)
+  const index = posts.findIndex(p => matchesPostId(p, id))
 
   if (index === -1) {
     return { prev: null, next: null }

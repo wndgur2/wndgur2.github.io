@@ -2,6 +2,14 @@ export function normalizeTitle(title) {
   return title.replace('?', '')
 }
 
+export function slugify(value) {
+  return String(value)
+    .normalize('NFC')
+    .toLowerCase()
+    .replace(/[^\p{L}\p{N}]+/gu, '-')
+    .replace(/^-+|-+$/g, '')
+}
+
 export function normalizeTagsString(tagsString) {
   return tagsString
     .replaceAll('"', '')

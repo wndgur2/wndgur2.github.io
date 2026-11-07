@@ -3,6 +3,7 @@ import type CATEGORIES from '@/consts/CATEGORIES'
 export interface IPost {
   [index: string]: number | string | string[] | undefined
   id: string
+  legacy_id?: string
   category: (typeof CATEGORIES)[keyof typeof CATEGORIES]
   title: string
   content: string

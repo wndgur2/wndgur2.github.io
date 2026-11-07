@@ -2,7 +2,7 @@ import matter from 'gray-matter'
 
 import { config } from '../config/index.js'
 import { octokit } from '../lib/github.js'
-import { normalizeTag, normalizeTitle } from '../lib/normalize.js'
+import { normalizeTag, normalizeTitle, slugify } from '../lib/normalize.js'
 import { fetchAndProcess } from '../lib/process.js'
 
 export async function fetchProjects() {
@@ -36,6 +36,7 @@ export async function fetchProjects() {
       const dateStarted = fm.date_started ?? createdDot
 
       return {
+        slug: slugify(`project-${repo}`),
         category: 'project',
         title: normalizeTitle(fm.title ?? repo),
         description: fm.description ?? repository.description ?? '',

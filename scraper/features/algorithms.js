@@ -6,8 +6,11 @@ import {
   normalizeTag,
   normalizeTagsString,
   normalizeTitle,
+  slugify,
 } from '../lib/normalize.js'
 import { fetchAndProcess } from '../lib/process.js'
+
+const SITE_SLUGS = { 백준: 'boj', 프로그래머스: 'programmers' }
 
 export async function fetchAlgorithms() {
   const [owner, repo] = config.algorithms.repo.split('/')
@@ -81,6 +84,10 @@ export async function fetchAlgorithms() {
         : ''
 
       return {
+        // 같은 문제를 여러 언어로 풀 수 있어 원본 언어 디렉토리까지 포함한다.
+        slug: slugify(
+          `${SITE_SLUGS[site] ?? site}-${problemNumber}-${langDir}`,
+        ),
         category: 'algorithm',
         title,
         tags,
