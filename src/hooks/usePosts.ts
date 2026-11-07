@@ -50,8 +50,9 @@ export function usePostsByCategory(
 }
 
 export function usePostDetail(idParam: string | undefined) {
+  // 정적 페이지 파일 경로(/post/x.html)로 들어와도 같은 글을 찾는다
   const postId = useMemo(() => {
-    return idParam || ''
+    return idParam?.replace(/\.html$/, '') || ''
   }, [idParam])
 
   const post = usePost(postId)
