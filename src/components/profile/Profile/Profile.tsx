@@ -1,4 +1,4 @@
-import './Profile.css'
+import styles from './Profile.module.css'
 
 import { Suspense } from 'react'
 
@@ -21,13 +21,13 @@ export default function Profile() {
   } = useToast({ duration: 3000 })
 
   return (
-    <div className='profile'>
+    <div className={styles.profile}>
       <ProfileImage />
-      <div className='profile-content'>
-        <h2 className='profile-name'>
+      <div className={styles.profileContent}>
+        <h2 className={styles.profileName}>
           이중혁 <br />
           <a
-            className='profile-portfolio clickable small'
+            className={`${styles.profilePortfolio} clickable small`}
             href={`/pdf/LeeJunghyeok_Portfolio.pdf`}
             target='_blank'
             rel='noopener noreferrer'
@@ -37,9 +37,11 @@ export default function Profile() {
             포트폴리오.pdf
           </a>
         </h2>
-        <div className='profile-tags'>
-          <Suspense fallback={<TagList tags={[]} />}>
-            <ProfileTagCountList />
+        <div className={styles.profileTags}>
+          <Suspense
+            fallback={<TagList tags={[]} className={styles.profileTagList} />}
+          >
+            <ProfileTagCountList className={styles.profileTagList} />
           </Suspense>
         </div>
       </div>

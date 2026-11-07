@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
+import styles from '@/components/profile/ProfileImage/ProfileImage.module.css'
+
 const IMG_AMOUNT = 5
 
 export default function useProfileImage() {
@@ -30,11 +32,11 @@ export default function useProfileImage() {
     }
 
     if (clickCountRef.current++ < maxClickCountRef.current) {
-      profileRef.current.style.animation = 'shake 0.3s'
+      profileRef.current.style.animation = `${styles.shake} 0.3s`
     } else {
       switch (Math.floor(Math.random() * 2)) {
         case 0:
-          profileRef.current.style.animation = 'spinLeft 0.3s'
+          profileRef.current.style.animation = `${styles.spinLeft} 0.3s`
           setImgIndex((imgIndex + 1) % IMG_AMOUNT)
           break
         case 1:

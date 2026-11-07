@@ -1,4 +1,4 @@
-.profile-img-wrapper {
+.profileImgWrapper {
     width: calc(6.8em + 4.8vw);
     aspect-ratio: 1/1;
     padding: 0;
@@ -16,7 +16,7 @@
     transition: width var(--duration-slow), border var(--duration-slow), scale var(--duration-slow);
 }
 
-.profile-img-wrapper:hover {
+.profileImgWrapper:hover {
     width: calc(7.1em + 5.2vw);
     cursor: pointer;
     border: 0.4em solid var(--color-action);
@@ -24,8 +24,8 @@
     background-color: #fff;
 }
 
-.profile-img,
-.profile-video {
+.profileImg,
+.profileVideo {
     width: 100%;
     aspect-ratio: 1/1;
 
@@ -33,7 +33,7 @@
     object-fit: cover;
 }
 
-.profile-img img {
+.profileImg img {
     width: 100%;
     height: 100%;
     border-radius: var(--radius-pill);
@@ -41,6 +41,7 @@
 }
 
 .hidden {
+    display: none;
     width: calc(9em + 5vw);
     border: 0.4em solid var(--color-text-subtle);
     filter: brightness(0.9);
@@ -105,15 +106,5 @@
 
     100% {
         transform: rotate(360deg);
-    }
-}
-
-@keyframes spinRight {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(-360deg);
     }
 }

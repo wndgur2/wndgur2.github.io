@@ -11,13 +11,13 @@
     color: var(--color-text);
 }
 
-.profile-name {
+.profileName {
     margin: var(--space-1) 0 var(--space-18) 0;
     letter-spacing: 0.2em;
     text-align: center;
 }
 
-.profile-content {
+.profileContent {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,19 +26,19 @@
     min-height: 9.5rem;
 }
 
-.profile-tags {
+.profileTags {
     max-height: 25vh;
     overflow-y: scroll;
     background: radial-gradient(var(--color-border-muted) 0%,
             transparent 72%)
 }
 
-.profile-tags ol {
+.profileTagList {
     justify-content: center;
     font-size: var(--font-size-lg);
 }
 
-.profile-portfolio {
+.profilePortfolio {
     display: block;
     color: var(--color-accent);
     font-weight: 500;
@@ -46,6 +46,6 @@
     letter-spacing: 0.1em;
 }
 
-.profile-portfolio:hover {
+.profilePortfolio:hover {
     color: var(--color-action);
 }
