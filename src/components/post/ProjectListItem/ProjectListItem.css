@@ -11,7 +11,7 @@
     border-radius: var(--radius);
     overflow: hidden;
 
-    background-color: var(--dimmed-bg-color);
+    background-color: var(--color-bg-muted);
 }
 
 .project-image-wrapper .image-container {
@@ -37,28 +37,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--fg-color);
+    background-color: var(--color-surface);
 }
 
 .project-title {
-    margin: 0.6em 0px 0px 0px;
+    margin: var(--space-6) 0px 0px 0px;
 }
 
 a:hover.project-title {
-    color: var(--action-color);
+    color: var(--color-action);
 }
 
 .project-info-footer {
-    margin: 1em 0 0.5em 0;
+    margin: var(--space-10) 0 var(--space-5) 0;
 
     display: flex;
     flex-direction: column;
-    gap: 0.3em;
+    gap: var(--space-3);
 }
 
 .project-meta {
     display: flex;
-    gap: 1em;
+    gap: var(--space-10);
 }
 
 .project-info-footer small,

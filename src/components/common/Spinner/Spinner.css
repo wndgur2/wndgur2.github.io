@@ -2,13 +2,13 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    gap: 0.6em;
+    gap: var(--space-6);
     overflow: visible;
     width: 100%;
 }
 
 .spinner-wrapper>span {
-    margin-top: 1.6em;
+    margin-top: var(--space-15);
 }
 
 .spinner,
@@ -18,11 +18,12 @@
     width: 2em;
     height: 2em;
     animation-fill-mode: both;
-    animation: bblFadInOut 1.2s infinite ease-in-out;
+    animation: bblFadInOut var(--duration-spinner) infinite ease-in-out;
 }
 
 .spinner {
-    color: var(--accent-color-80);
+    color: var(--color-accent-80);
+    /* 점의 크기와 간격을 em으로 정하는 기준값이라 글자 크기 토큰을 쓰지 않는다. */
     font-size: 7px;
     position: relative;
     text-indent: -9999em;

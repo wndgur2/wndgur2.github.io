@@ -22,8 +22,8 @@
     height: calc(2.4em - 2px);
     aspect-ratio: 3.8/2.2;
     border-radius: 2em;
-    background-color: var(--fg-color);
-    border: 1px solid var(--border-color);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
 }
 
 .toggle+label::after {
@@ -34,25 +34,27 @@
     margin-left: calc(-3.85em);
 
     border-radius: 2em;
-    background-color: var(--accent-color);
-    transition: transform 0.3s, background-color 0.5s, color 0.3s;
+    background-color: var(--color-accent);
+    transition: transform var(--duration-slow), background-color var(--duration-slower), color var(--duration-slow);
 }
 
 .icons {
     display: flex;
     align-items: center;
+    /* 토글 손잡이 위치와 맞물린 배치 값이라 토큰을 쓰지 않는다. */
     gap: 0.25em;
     margin-left: calc(-1.9em + 2px);
     pointer-events: none;
 }
 
 .theme-icon {
-    z-index: 2;
+    z-index: var(--z-overlay);
     background-color: transparent;
     pointer-events: none;
+    /* 해와 달 아이콘의 고유 색이라 두 테마에서 같은 값으로 고정한다. */
     fill: #FFBB33;
-    font-size: 1.5em;
-    transition: opacity 0.3s;
+    font-size: var(--font-size-icon);
+    transition: opacity var(--duration-slow);
 }
 
 
@@ -90,6 +92,6 @@
     }
 
     .theme-icon {
-        font-size: 1.6em;
+        font-size: var(--font-size-icon-lg);
     }
 }

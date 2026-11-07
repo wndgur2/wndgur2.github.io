@@ -3,15 +3,15 @@ footer {
 
     width: 100%;
     height: 14em;
-    padding-top: 3em;
+    padding-top: var(--space-30);
 
     display: flex;
     justify-content: center;
     align-items: flex-start;
 
-    font-size: smaller;
+    font-size: var(--font-size-xs);
 
-    background-color: var(--dimmed-bg-color);
+    background-color: var(--color-bg-muted);
 }
 
 .links {

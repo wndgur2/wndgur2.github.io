@@ -4,6 +4,7 @@ interface UseToastOptions {
   duration?: number
 }
 
+// styles/tokens.css의 --duration-toast와 같은 값을 유지한다.
 const TOAST_FADE_DURATION_MS = 180
 
 export default function useToast({ duration = 3000 }: UseToastOptions = {}) {

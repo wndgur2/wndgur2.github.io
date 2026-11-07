@@ -1,7 +1,7 @@
 .tag-list {
   display: flex;
   flex-flow: row wrap;
-  padding: 1em 0.4em;
+  padding: var(--space-10) var(--space-4);
   align-items: center;
 
   margin: 0;

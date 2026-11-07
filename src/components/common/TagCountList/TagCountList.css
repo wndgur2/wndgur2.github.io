@@ -2,7 +2,7 @@
 
 .tag-item>.intersection-observer-children-wrapper {
   transform: scale(0.0);
-  transition: transform 0.3s ease;
+  transition: transform var(--duration-slow) ease;
 }
 
 .tag-visible>.intersection-observer-children-wrapper {

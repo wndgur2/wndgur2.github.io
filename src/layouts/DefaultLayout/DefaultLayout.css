@@ -1,11 +1,11 @@
 #container {
     width: 100vw;
     min-height: 100vh;
-    padding-top: 5em;
+    padding-top: var(--space-50);
 
     overflow: hidden;
-    background-color: var(--bg-color);
-    transition: background-color 0.8s;
+    background-color: var(--color-bg);
+    transition: background-color var(--duration-slowest);
 }
 
 #body-container {
@@ -19,7 +19,7 @@
     #body-container {
         width: 100vw;
         margin: 0;
-        margin-bottom: 4em;
+        margin-bottom: var(--space-40);
     }
 
 }

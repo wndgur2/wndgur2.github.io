@@ -8,17 +8,19 @@
     align-items: center;
 
     overflow: hidden;
-    border: 0.2em solid var(--accent-color);
+    border: 0.2em solid var(--color-accent);
     border-radius: var(--radius-circle);
+    /* 사진과 영상의 바탕이라 테마와 무관하게 흰색으로 고정한다. */
     background-color: #fff;
 
-    transition: width 0.3s, border 0.3s, scale 0.3s;
+    transition: width var(--duration-slow), border var(--duration-slow), scale var(--duration-slow);
 }
 
 .profile-img-wrapper:hover {
     width: calc(7.1em + 5.2vw);
     cursor: pointer;
-    border: 0.4em solid var(--action-color);
+    border: 0.4em solid var(--color-action);
+    /* 이 요소는 button이므로 button:hover의 배경을 다시 덮어써야 한다. */
     background-color: #fff;
 }
 
@@ -40,14 +42,14 @@
 
 .hidden {
     width: calc(9em + 5vw);
-    border: 0.4em solid var(--minor-color);
+    border: 0.4em solid var(--color-text-subtle);
     filter: brightness(0.9);
 }
 
 .hidden:hover {
     width: calc(9.5em + 5.5vw);
     cursor: default;
-    border: 0.4em solid var(--minor-color);
+    border: 0.4em solid var(--color-text-subtle);
 }
 
 @keyframes shake {

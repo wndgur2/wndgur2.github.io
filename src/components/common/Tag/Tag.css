@@ -1,17 +1,17 @@
 .tag {
     width: fit-content;
 
-    padding: 0.3em 0.5em;
-    margin: 0.3em;
+    padding: var(--space-3) var(--space-5);
+    margin: var(--space-3);
 
-    color: var(--accent-color);
-    font-size: 0.9em;
+    color: var(--color-accent);
+    font-size: var(--font-size-sm);
     line-height: 1.2em;
 
     border-radius: var(--radius-pill);
-    box-shadow: 0 0 0 1.5px var(--accent-color);
-    background-color: var(--fg-color);
-    transition: color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 0 0 1.5px var(--color-accent);
+    background-color: var(--color-surface);
+    transition: color var(--duration-base) ease, box-shadow var(--duration-base) ease, background-color var(--duration-base) ease, transform var(--duration-fast) ease;
 
 
 
@@ -19,13 +19,13 @@
 
 
 .tag:hover {
-    box-shadow: 0 0 0 1.5px var(--action-color);
-    color: var(--action-color);
+    box-shadow: 0 0 0 1.5px var(--color-action);
+    color: var(--color-action);
 }
 
 .tag-active {
-    box-shadow: 0 0 0 1.5px var(--action-color);
-    color: var(--action-color);
+    box-shadow: 0 0 0 1.5px var(--color-action);
+    color: var(--color-action);
 }
 .tag:active {
     transform: scale(0.96);
