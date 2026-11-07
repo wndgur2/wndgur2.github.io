@@ -62,6 +62,10 @@
     --z-raised: 1;
     --z-overlay: 2;
     --z-toast: 20;
+
+    /* 키보드 포커스 표시. 색은 --color-accent를 쓴다. */
+    --focus-ring-width: 2px;
+    --focus-ring-offset: 2px;
 }
 
 [data-theme="light"] {
@@ -79,7 +83,6 @@
 
     --color-accent: #36f;
     --color-accent-80: #3366ffcc;
-    --color-accent-muted: #13f2;
     --color-action: #ff50aa;
     --color-link: #0074ff;
 
@@ -109,7 +112,6 @@
 
     --color-accent: #75f;
     --color-accent-80: #7755ffcc;
-    --color-accent-muted: #64f2;
     --color-action: #adf;
     --color-link: #0074ff;
 
