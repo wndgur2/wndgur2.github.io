@@ -7,6 +7,7 @@ interface Props {
   threshold?: number | number[]
   className?: string
   visibleClassName: string
+  childrenClassName?: string
 }
 
 export default function IntersectionObserverWrapper({
@@ -14,6 +15,7 @@ export default function IntersectionObserverWrapper({
   threshold = 0,
   className,
   visibleClassName,
+  childrenClassName,
 }: Props) {
   const wrapperDivRef = useRef<HTMLDivElement>(null)
   const isVisible = useIntersectionObserver(wrapperDivRef, {
@@ -24,7 +26,7 @@ export default function IntersectionObserverWrapper({
       ref={wrapperDivRef}
       className={`${className} ${isVisible ? visibleClassName : undefined}`}
     >
-      <div className='intersection-observer-children-wrapper'>{children}</div>
+      <div className={childrenClassName}>{children}</div>
     </div>
   )
 }

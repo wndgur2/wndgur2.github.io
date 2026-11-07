@@ -1,4 +1,4 @@
-.icon-link {
+.iconLink {
     aspect-ratio: 1/1;
     padding: var(--space-2);
 
@@ -12,12 +12,7 @@
     overflow: hidden;
 }
 
-.icon-link img {
+.iconLink img {
     object-fit: cover;
     border-radius: var(--radius-pill);
-}
-
-footer .icon-link {
-    width: 4em;
-    margin-bottom: var(--space-10);
 }

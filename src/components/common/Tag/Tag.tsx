@@ -1,4 +1,4 @@
-import './Tag.css'
+import styles from './Tag.module.css'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -27,7 +27,7 @@ export default function Tag({ tag, count }: Props) {
 
   return (
     <div
-      className={`tag clickable small ${isActive ? 'tag-active' : ''}`}
+      className={`${styles.tag} clickable small ${isActive ? styles.tagActive : ''}`}
       onClick={e => {
         e.preventDefault()
         e.stopPropagation()

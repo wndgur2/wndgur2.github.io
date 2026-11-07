@@ -1,4 +1,4 @@
-import './TagCountList.css'
+import styles from './TagCountList.module.css'
 
 import InterssectionObserverWrapper from '@/components/common/IntersectionObserverWrapper'
 import Tag from '@/components/common/Tag'
@@ -8,19 +8,22 @@ import Tag from '@/components/common/Tag'
  * - 태그명과 해당 태그가 사용된 게시글 수를 리스트 형태로 표시
  *
  * @param tags 태그명과 해당 태그가 사용된 게시글 수를 담은 객체 배열
+ * @param className 목록(ol)에 추가할 클래스
  */
 interface Props {
   tags: { tag: string; count: number }[]
+  className?: string
 }
 
-export default function TagCountList({ tags }: Props) {
+export default function TagCountList({ tags, className = '' }: Props) {
   return (
-    <ol className='tag-list'>
+    <ol className={`${styles.tagList} ${className}`}>
       {tags.map(({ tag, count }, index: number) => (
         <InterssectionObserverWrapper
           key={`${tag}${count}${index}`}
-          className='tag-item'
-          visibleClassName='tag-visible'
+          className={styles.tagItem}
+          visibleClassName={styles.tagVisible}
+          childrenClassName={styles.tagContent}
           threshold={1}
         >
           <Tag tag={tag} count={count} />

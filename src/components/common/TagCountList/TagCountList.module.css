@@ -1,0 +1,12 @@
+.tagList {
+  composes: tagList from '../TagList/TagList.module.css';
+}
+
+.tagItem>.tagContent {
+  transform: scale(0.0);
+  transition: transform var(--duration-slow) ease;
+}
+
+.tagVisible>.tagContent {
+  transform: scale(1);
+}

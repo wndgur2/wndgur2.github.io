@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 
-import './IconLink.css'
+import styles from './IconLink.module.css'
 
 import { type IconType } from 'react-icons'
 
@@ -10,18 +10,20 @@ import { type IconType } from 'react-icons'
  *
  * @param icon 아이콘 (react-icons)
  * @param url 링크 URL
+ * @param className 링크에 추가할 클래스
  */
 
 interface Props {
   icon: ReactElement<IconType>
   url: string
+  className?: string
 }
 
-export default function IconLink({ icon, url }: Props) {
+export default function IconLink({ icon, url, className = '' }: Props) {
   return (
     <a
       href={url}
-      className='icon-link clickable small content'
+      className={`${styles.iconLink} clickable small content ${className}`}
       target='_blank'
       rel='noreferrer'
     >

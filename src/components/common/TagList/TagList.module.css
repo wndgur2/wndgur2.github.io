@@ -1,4 +1,4 @@
-.tag-list {
+.tagList {
   display: flex;
   flex-flow: row wrap;
   padding: var(--space-10) var(--space-4);

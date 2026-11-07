@@ -1,14 +1,14 @@
-.text-container {
+.textContainer {
   display: block;
 }
 
-.text-skeleton {
+.textSkeleton {
   display: flex;
   flex-direction: column;
   gap: var(--space-5);
 }
 
-.skeleton-line {
+.skeletonLine {
   height: 12px;
   /* stylelint-disable-next-line declaration-property-value-allowed-list -- 높이 12px 줄의 양 끝을 둥글게 하는 값이다. --radius-*는 em 단위라 같은 값이 없다. */
   border-radius: 6px;
