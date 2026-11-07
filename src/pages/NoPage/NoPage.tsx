@@ -1,6 +1,6 @@
 import { ROUTES } from '@/router'
 
-import './NoPage.css'
+import styles from './NoPage.module.css'
 
 import { Link } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
  */
 export default function NoPage() {
   return (
-    <div className='no-page-container'>
+    <div className={styles.noPageContainer}>
       <h2>없는 페이지입니다. (404)</h2>
       <Link to={ROUTES.HOME}>홈으로</Link>
     </div>

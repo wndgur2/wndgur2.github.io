@@ -41,14 +41,13 @@ export default function Header() {
 
   return (
     <div
-      id='header'
       ref={headerRef}
       className={`${styles.header} ${isHidden ? styles.hide : styles.top}`}
     >
       <Link to={ROUTES.HOME} className={`${styles.logo} clickable small`}>
         <Logo />
       </Link>
-      <SearchBar />
+      <SearchBar className={styles.search} />
       <ThemeToggler
         isChecked={isDark}
         handleChange={() => {

@@ -1,4 +1,4 @@
-footer {
+.footer {
     bottom: 0px;
 
     width: 100%;
@@ -23,7 +23,26 @@ footer {
     gap: 8vw;
 }
 
-.footer-item {
+.footerItem {
     width: 8em;
     overflow: visible;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.seperator {
+    height: 0.5em;
+    margin-bottom: var(--space-5);
+    width: 4em;
+    border-bottom: var(--color-text-subtle) 1px solid;
+}
+
+.iconLink {
+    width: 4em;
+    margin-bottom: var(--space-10);
 }

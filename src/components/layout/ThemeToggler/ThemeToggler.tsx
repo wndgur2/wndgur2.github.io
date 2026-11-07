@@ -2,7 +2,7 @@ import type { ChangeEvent } from 'react'
 import { IoMdMoon } from 'react-icons/io'
 import { PiSunDimFill } from 'react-icons/pi'
 
-import './ThemeToggler.css'
+import styles from './ThemeToggler.module.css'
 
 /**
  * 테마 토글러 컴포넌트
@@ -19,18 +19,18 @@ interface Props {
 
 export default function ThemeToggler({ handleChange, isChecked }: Props) {
   return (
-    <div className='theme clickable'>
+    <div className={`${styles.theme} clickable`}>
       <input
         type='checkbox'
-        className='toggle'
+        className={styles.toggle}
         id='check'
         onChange={handleChange}
         checked={isChecked}
       />
       <label htmlFor='check'></label>
-      <div className='icons'>
-        <PiSunDimFill className='sun theme-icon' />
-        <IoMdMoon className='moon theme-icon' />
+      <div className={styles.icons}>
+        <PiSunDimFill className={`${styles.sun} ${styles.themeIcon}`} />
+        <IoMdMoon className={`${styles.moon} ${styles.themeIcon}`} />
       </div>
     </div>
   )

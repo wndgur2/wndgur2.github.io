@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { FiSearch } from 'react-icons/fi'
 
-import './SearchBar.css'
+import styles from './SearchBar.module.css'
 
 import { useNavigate } from 'react-router-dom'
 
@@ -11,8 +11,15 @@ import { ROUTES } from '@/router'
 /**
  * 검색바 컴포넌트
  * - 검색어 입력 및 검색 결과 페이지 이동
+ *
+ * @param className 루트 요소에 추가할 클래스
  */
-export default function SearchBar() {
+
+interface Props {
+  className?: string
+}
+
+export default function SearchBar({ className = '' }: Props) {
   const navigate = useNavigate()
   const inputRef = useRef<HTMLInputElement>(null)
   const [searchText, setSearchText] = useState<string>('')
@@ -39,19 +46,22 @@ export default function SearchBar() {
   }
 
   return (
-    <search onClick={focusInput} className='search-bar clickable'>
-      <form className='search-form dimmed content' onSubmit={search}>
+    <search
+      onClick={focusInput}
+      className={`${styles.searchBar} clickable ${className}`}
+    >
+      <form className={`${styles.searchForm} dimmed content`} onSubmit={search}>
         <input
           ref={inputRef}
           value={searchText}
           onChange={e => setSearchText(e.target.value)}
           autoComplete='false'
         />
-        <button type='submit' className='btn-submit pc'>
-          <FiSearch className='search-icon minor' size={24} />
+        <button type='submit' className={`${styles.btnSubmit} ${styles.pc}`}>
+          <FiSearch className='minor' size={24} />
         </button>
       </form>
-      <FiSearch className='search-icon minor mobile' size={24} />
+      <FiSearch className={`minor ${styles.mobile}`} size={24} />
     </search>
   )
 }

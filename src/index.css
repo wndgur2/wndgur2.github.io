@@ -118,20 +118,6 @@ button:hover {
     scale: 1.04;
 }
 
-.col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.seperator {
-    height: 0.5em;
-    margin-bottom: var(--space-5);
-    width: 4em;
-    border-bottom: var(--color-text-subtle) 1px solid;
-}
-
 button:disabled {
     pointer-events: none;
     opacity: 0.9;
@@ -145,85 +131,12 @@ input:focus {
     outline: none;
 }
 
-@media screen and (max-width: 768px) {
-    .mobile {
-        display: block;
-    }
-
-    .pc {
-        display: none !important;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .mobile {
-        display: none !important;
-    }
-
-    .pc {
-        display: block;
-    }
-}
-
-.hidden {
-    display: none;
-}
-
-.toast {
-    position: fixed;
-    left: 50%;
-    bottom: 3.5rem;
-    transform: translateX(-50%);
-    z-index: var(--z-toast);
-    padding: var(--space-8) var(--space-12);
-    border: 1px solid var(--color-border-muted);
-    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 토스트는 완전한 알약 모양이다. --radius-pill(1.2em)은 값이 달라 쓰지 않는다. */
-    border-radius: 999px;
-    background: var(--color-surface);
-    color: var(--color-text);
-    font-size: var(--font-size-root-sm);
-    letter-spacing: 0.03em;
-    box-shadow: var(--shadow-toast);
-}
-
-.toast--enter {
-    animation: toast-fade-in var(--duration-toast) ease-out forwards;
-}
-
-.toast--exit {
-    animation: toast-fade-out var(--duration-toast) ease-in forwards;
-}
-
 .skeleton {
     background: linear-gradient(90deg, var(--color-bg-muted) 25%, var(--color-surface-muted) 50%, var(--color-bg-muted) 75%);
     animation: load var(--duration-skeleton) infinite;
 }
 
 
-
-@keyframes toast-fade-in {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
-
-@keyframes toast-fade-out {
-    from {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translateX(-50%) translateY(8px);
-    }
-}
 
 @keyframes load {
     0% {

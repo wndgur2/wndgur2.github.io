@@ -5,21 +5,22 @@ import { Outlet } from 'react-router-dom'
 import IconLink from '@/components/common/IconLink'
 import Spinner from '@/components/common/Spinner'
 import TextSkeleton from '@/components/common/TextSkeleton'
+import styles from '@/pages/PostDetailPage/PostDetailPage.module.css'
 
 export default function PostDetailLayout() {
   return (
     <Suspense
       fallback={
-        <article className='post'>
+        <article className={styles.post}>
           <header>
-            <section className='post-title'>
+            <section className={styles.postTitle}>
               <TextSkeleton width={'30%'} />
               <h2>
                 <TextSkeleton height={24} width={'55%'} />
               </h2>
               <TextSkeleton width={'80%'} height={'40px'} />
             </section>
-            <section className='post-meta'>
+            <section className={styles.postMeta}>
               <IconLink icon={<IoLogoGithub size={42} />} url={''} />
               <small>
                 <TextSkeleton width={'80px'} />
@@ -27,7 +28,7 @@ export default function PostDetailLayout() {
             </section>
           </header>
           <main
-            className='post-content'
+            className={styles.postContent}
             style={{
               height: '420px',
               display: 'flex',
@@ -39,7 +40,7 @@ export default function PostDetailLayout() {
           </main>
           <nav>
             {
-              <p className={'disabled next'}>
+              <p className={`${styles.disabled} ${styles.next}`}>
                 <small>&lt; next</small>
                 <div>
                   <p>
@@ -48,10 +49,10 @@ export default function PostDetailLayout() {
                 </div>
               </p>
             }
-            <p className='clickable list'>
+            <p className={`clickable ${styles.list}`}>
               <div>목록으로</div>
             </p>
-            <p className={'disabled prev'}>
+            <p className={`${styles.disabled} ${styles.prev}`}>
               <small>previous &gt; </small>
               <div>
                 <p>

@@ -21,11 +21,11 @@
     font-size: var(--font-size-root-xl);
 }
 
-.post-category {
+.postCategory {
     width: fit-content;
 }
 
-.post-title {
+.postTitle {
     max-width: 70%;
 
     display: flex;
@@ -34,7 +34,7 @@
     gap: var(--space-5);
 }
 
-.post-meta {
+.postMeta {
     height: 100%;
     padding-bottom: var(--space-5);
 
@@ -44,7 +44,7 @@
     gap: var(--space-6);
 }
 
-.post-meta small {
+.postMeta small {
     text-align: end;
 }
 
@@ -52,7 +52,7 @@
     align-items: flex-end;
 }
 
-.post-content {
+.postContent {
     padding: calc(1em + 1vw);
     margin-top: -2px;
 

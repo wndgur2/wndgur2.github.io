@@ -1,4 +1,4 @@
-import './SearchResultPage.css'
+import styles from './SearchResultPage.module.css'
 
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 
@@ -47,15 +47,15 @@ export default function SearchResultPage() {
   const relatedTags = getTagCounts(searchedPosts)
 
   return (
-    <main className='search-result'>
+    <main className={styles.searchResult}>
       <header>
-        <div className='search-info'>
+        <div className={styles.searchInfo}>
           <h3 className='content'>{searchKey}</h3>
-          <p className='dimmed content search-result-text'> &nbsp; 검색 결과</p>
+          <p className={`dimmed content ${styles.searchResultText}`}> &nbsp; 검색 결과</p>
         </div>
         <div>{searchKey && <TagCountList tags={relatedTags} />}</div>
         <button
-          className='clickable btn-search-result-sort'
+          className={`clickable ${styles.btnSearchResultSort}`}
           onClick={toggleSortOrder}
         >
           <p className='dimmed content'>
@@ -68,18 +68,26 @@ export default function SearchResultPage() {
           )}
         </button>
       </header>
-      <ul>
+      <ul className={styles.results}>
         {posts.length ? (
           <>
             {posts.map((post: IPost, i) =>
               post.category === CATEGORIES.PROJECT ? (
-                <ProjectListItem key={post.id ?? i} post={post} />
+                <ProjectListItem
+                  key={post.id ?? i}
+                  post={post}
+                  className={styles.listItem}
+                />
               ) : (
-                <PostListItem key={post.id ?? i} post={post} />
+                <PostListItem
+                  key={post.id ?? i}
+                  post={post}
+                  className={styles.listItem}
+                />
               ),
             )}
 
-            {hasMore && <div ref={observerRef} className='infinite-trigger' />}
+            {hasMore && <div ref={observerRef} />}
           </>
         ) : (
           <span>검색 결과가 없습니다. 검색어를 확인해주세요.</span>

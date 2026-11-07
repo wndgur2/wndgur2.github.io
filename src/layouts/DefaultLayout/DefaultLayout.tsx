@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
-import './DefaultLayout.css'
+import styles from './DefaultLayout.module.css'
 
 import Footer from '@/components/layout/Footer'
 import Header from '@/components/layout/Header'
@@ -16,9 +16,9 @@ export default function DefaultLayout() {
   const { isDark } = useTheme()
 
   return (
-    <div id='container' data-theme={isDark ? 'dark' : 'light'}>
+    <div className={styles.container} data-theme={isDark ? 'dark' : 'light'}>
       <Header />
-      <div id='body-container'>
+      <div className={styles.bodyContainer}>
         <Outlet />
       </div>
       <Footer />

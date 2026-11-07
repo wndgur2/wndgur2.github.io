@@ -52,4 +52,8 @@
     padding: 0 var(--space-15);
     gap: var(--space-5);
   }
+
+  .header:has(.search:focus-within)>*:not(.search) {
+    display: none;
+  }
 }

@@ -2,7 +2,7 @@
  * 디자인 토큰
  *
  * - 테마와 무관한 값은 :root, 테마별 값은 [data-theme] 블록에 둔다.
- * - data-theme은 #container에 붙으므로 색상과 shadow는 그 안에서만 정의된다.
+ * - data-theme은 DefaultLayout의 최상위 요소에 붙으므로 색상과 shadow는 그 안에서만 정의된다.
  * - em 단위 토큰은 사용 위치의 font-size를 기준으로 계산된다.
  *
  * 브레이크포인트: 768px

@@ -1,11 +1,10 @@
-#home {
+.home {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
 }
 
-
-#home main {
+.categoryList {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
