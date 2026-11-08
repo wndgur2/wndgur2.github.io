@@ -81,4 +81,41 @@ describe('buildGraph', () => {
       graph.nodes.filter(n => n.kind === 'concept').map(n => n.label),
     ).toEqual(['heap', 'js'])
   })
+
+  it('applies merge aliases to concepts and relations', () => {
+    const a = post('a', [], 'agent')
+    const b = post('b', [], 'agent too')
+    const cache = {
+      merge: { aliases: { aiagent: 'LLM Agent', sse: 'Server-Sent Events' } },
+      posts: {
+        a: {
+          hash: postHash(a),
+          summary: '',
+          concepts: [
+            { name: 'AI Agent', type: 'concept', importance: 3 },
+            { name: 'SSE', type: 'concept', importance: 2 },
+          ],
+          relations: [{ source: 'AI Agent', target: 'SSE', relation: 'uses' }],
+        },
+        b: {
+          hash: postHash(b),
+          summary: '',
+          concepts: [{ name: 'LLM Agent', type: 'concept', importance: 3 }],
+          relations: [],
+        },
+      },
+    }
+
+    const graph = buildGraph([a, b], cache)
+    const concepts = graph.nodes.filter(n => n.kind === 'concept')
+
+    expect(concepts.map(n => [n.label, n.count])).toEqual([
+      ['LLM Agent', 2],
+      ['Server-Sent Events', 1],
+    ])
+    expect(graph.links.find(l => l.kind === 'relation')).toMatchObject({
+      source: 'concept:llmagent',
+      target: 'concept:serversentevents',
+    })
+  })
 })

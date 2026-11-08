@@ -42,6 +42,39 @@ export function conceptKey(name) {
     .replace(/[^\p{L}\p{N}+#]+/gu, '')
 }
 
+/**
+ * 병합 단계가 정한 별칭을 대표 이름으로 바꾼다.
+ * aliases: { [conceptKey(별칭)]: 대표 이름 } — scraper/cache 의 merge.aliases
+ */
+export function resolveConceptName(name, aliases = {}) {
+  return aliases[conceptKey(name)] ?? name
+}
+
+/** 추출된 개념 이름을 키별로 하나씩 모은다 (병합 단계의 입력). */
+export function collectConcepts(posts, cache) {
+  const byKey = new Map()
+  for (const post of posts) {
+    const fresh = getFreshExtraction(cache, post)
+    if (!fresh) continue
+    for (const { name, type } of fresh.concepts) {
+      const key = conceptKey(name)
+      if (!key) continue
+      const entry = byKey.get(key) ?? { name, type, count: 0 }
+      entry.count += 1
+      byKey.set(key, entry)
+    }
+  }
+  return byKey
+}
+
+/** 개념 목록이 바뀌었을 때만 다시 병합하도록 쓰는 해시 */
+export function vocabularyHash(keys) {
+  return createHash('sha256')
+    .update([...keys].sort().join('\n'))
+    .digest('hex')
+    .slice(0, 16)
+}
+
 /** 본문이 바뀌었을 때만 다시 추출하도록 쓰는 해시 */
 export function postHash(post) {
   return createHash('sha256')
@@ -99,7 +132,7 @@ function tagsAsExtraction(post) {
 
 /**
  * 글별 추출 결과를 하나의 그래프로 합친다.
- * - 노드: 글(post) + 개념(concept). 개념은 conceptKey로 병합한다.
+ * - 노드: 글(post) + 개념(concept). 별칭을 대표 이름으로 바꾼 뒤 conceptKey로 병합한다.
  * - 링크: 글→개념(mentions), 개념→개념(relation)
  */
 export function buildGraph(posts, cache) {
@@ -108,6 +141,8 @@ export function buildGraph(posts, cache) {
   const relationKeys = new Set()
   const nodes = []
   let extracted = 0
+  const aliases = cache.merge?.aliases ?? {}
+  const resolve = name => resolveConceptName(name, aliases)
 
   const ensureConcept = (name, type) => {
     const key = conceptKey(name)
@@ -140,7 +175,7 @@ export function buildGraph(posts, cache) {
 
     const linked = new Set()
     for (const { name, type, importance } of extraction.concepts) {
-      const concept = ensureConcept(name, type)
+      const concept = ensureConcept(resolve(name), type)
       if (!concept || linked.has(concept.key)) continue
       linked.add(concept.key)
       concept.posts.add(post.id)
@@ -153,8 +188,8 @@ export function buildGraph(posts, cache) {
     }
 
     for (const { source, target, relation } of extraction.relations) {
-      const a = conceptKey(source)
-      const b = conceptKey(target)
+      const a = conceptKey(resolve(source))
+      const b = conceptKey(resolve(target))
       if (!a || !b || a === b || !linked.has(a) || !linked.has(b)) continue
       const key = `${a}|${b}|${relation}`
       if (relationKeys.has(key)) continue

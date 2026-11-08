@@ -6505,5 +6505,62 @@
       ],
       "model": "claude-opus-5-5"
     }
+  },
+  "merge": {
+    "hash": "952370eed90bfa5c",
+    "model": "claude-opus-5-5",
+    "groups": [
+      {
+        "canonical": "백준",
+        "aliases": [
+          "Baekjoon"
+        ]
+      },
+      {
+        "canonical": "LLM Agent",
+        "aliases": [
+          "AI Agent"
+        ]
+      },
+      {
+        "canonical": "Prime Number",
+        "aliases": [
+          "소수"
+        ]
+      },
+      {
+        "canonical": "Zephyr RTOS",
+        "aliases": [
+          "Zephyr"
+        ]
+      },
+      {
+        "canonical": "Bundler",
+        "aliases": [
+          "Module Bundler"
+        ]
+      },
+      {
+        "canonical": "Supabase Edge Functions",
+        "aliases": [
+          "Edge Functions"
+        ]
+      },
+      {
+        "canonical": "Counting Array",
+        "aliases": [
+          "Counting"
+        ]
+      }
+    ],
+    "aliases": {
+      "baekjoon": "백준",
+      "aiagent": "LLM Agent",
+      "소수": "Prime Number",
+      "zephyr": "Zephyr RTOS",
+      "modulebundler": "Bundler",
+      "edgefunctions": "Supabase Edge Functions",
+      "counting": "Counting Array"
+    }
   }
 }

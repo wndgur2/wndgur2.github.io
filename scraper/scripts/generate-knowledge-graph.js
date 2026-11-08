@@ -1,8 +1,9 @@
 /**
  * Claude로 글마다 개념/관계를 추출해 지식 그래프를 만든다.
  *
- *   pnpm graph            # 바뀐 글만 추출
- *   pnpm graph --force    # 전부 다시 추출
+ *   pnpm graph              # 바뀐 글만 추출하고, 개념 목록이 바뀌었으면 중복 개념을 다시 병합
+ *   pnpm graph --force      # 전부 다시 추출하고 다시 병합
+ *   pnpm graph --remerge    # 추출은 그대로 두고 병합만 다시
  *
  * - 입력: public/meta/{projects,posts}.json (먼저 fetch-content.js 실행)
  * - 캐시: scraper/cache/knowledge-graph.json (커밋 대상 — CI는 이 캐시로만 그래프를 만든다)
@@ -16,6 +17,7 @@ import pLimit from 'p-limit'
 
 import {
   buildGraph,
+  collectConcepts,
   CONCEPT_TYPES,
   conceptKey,
   getFreshExtraction,
@@ -24,6 +26,7 @@ import {
   postHash,
   RELATION_TYPES,
   saveCache,
+  vocabularyHash,
   writeGraph,
 } from '../lib/knowledge-graph.js'
 
@@ -31,6 +34,7 @@ const MODEL = process.env.KG_MODEL ?? 'claude-opus-5-5'
 const EFFORT = process.env.KG_EFFORT ?? 'medium'
 const CONCURRENCY = Number(process.env.KG_CONCURRENCY ?? 4)
 const FORCE = process.argv.includes('--force')
+const REMERGE = FORCE || process.argv.includes('--remerge')
 
 const SCHEMA = {
   type: 'object',
@@ -89,7 +93,8 @@ ${post.content}
 </post>`
 }
 
-async function extract(client, post, vocabulary) {
+/** 구조화 출력(JSON schema)으로 한 번 호출하고 파싱한 결과를 돌려준다. */
+async function callJSON(client, { system, user, schema }) {
   const response = await client.beta.messages.create({
     model: MODEL,
     max_tokens: 16000,
@@ -97,10 +102,10 @@ async function extract(client, post, vocabulary) {
     fallbacks: 'default',
     output_config: {
       effort: EFFORT,
-      format: { type: 'json_schema', schema: SCHEMA },
+      format: { type: 'json_schema', schema },
     },
-    system: SYSTEM,
-    messages: [{ role: 'user', content: buildPrompt(post, vocabulary) }],
+    system,
+    messages: [{ role: 'user', content: user }],
   })
 
   if (response.stop_reason === 'refusal') {
@@ -113,6 +118,101 @@ async function extract(client, post, vocabulary) {
   const text = response.content.findLast(block => block.type === 'text')?.text
   if (!text) throw new Error('no text in response')
   return { ...JSON.parse(text), model: response.model }
+}
+
+function extract(client, post, vocabulary) {
+  return callJSON(client, {
+    system: SYSTEM,
+    user: buildPrompt(post, vocabulary),
+    schema: SCHEMA,
+  })
+}
+
+const MERGE_SCHEMA = {
+  type: 'object',
+  properties: {
+    groups: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          canonical: { type: 'string' },
+          aliases: { type: 'array', items: { type: 'string' } },
+        },
+        required: ['canonical', 'aliases'],
+        additionalProperties: false,
+      },
+    },
+  },
+  required: ['groups'],
+  additionalProperties: false,
+}
+
+const MERGE_SYSTEM = `You clean up the concept list of a knowledge graph built from a Korean developer's blog. Find concepts that are the same thing under different names and group them.
+
+Merge when two names mean the same concept in this blog:
+- spelling or casing variants, with or without a suffix ("Socket.io" / "Socket.IO", "React" / "React.js")
+- Korean and English names for the same thing ("스택" / "Stack", "동적 계획법" / "Dynamic Programming")
+- abbreviations and full names ("SSE" / "Server-Sent Events", "DP" / "Dynamic Programming")
+- near-synonyms used interchangeably here ("LLM Agent" / "AI Agent")
+
+Do not merge:
+- a broader and a narrower concept ("Graph" / "BFS", "WebSocket" / "Socket.io", "Database" / "MySQL")
+- related but distinct concepts ("Streaming" / "Server-Sent Events", "Retry" / "Error Handling")
+
+For each group, pick as canonical the clearest common name, preferring the standard English term, and copy it exactly from the list. List the other names, copied exactly, as aliases. Only output groups that have at least one alias.`
+
+/**
+ * 개념 목록에서 같은 개념의 다른 이름을 묶는다.
+ * 결과는 cache.merge = { hash, model, groups, aliases } 로 남기고, buildGraph가 aliases를 적용한다.
+ */
+async function mergeConcepts(getClient, posts, cache) {
+  const concepts = collectConcepts(posts, cache)
+  const hash = vocabularyHash(concepts.keys())
+  if (!REMERGE && cache.merge?.hash === hash) {
+    console.log('🔗 Concept list unchanged, keeping the previous merge')
+    return
+  }
+
+  const list = [...concepts.values()]
+    .sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
+    .map(c => `${c.name} (${c.type}, ${c.count})`)
+  console.log(`🔗 Merging duplicates among ${list.length} concepts`)
+
+  const result = await callJSON(getClient(), {
+    system: MERGE_SYSTEM,
+    user: `Concepts as "name (type, number of posts)":\n${list.join('\n')}`,
+    schema: MERGE_SCHEMA,
+  })
+
+  // 목록에 없는 이름은 버리고, 별칭 → 대표 이름 표를 만든다.
+  const aliases = {}
+  const groups = []
+  for (const { canonical, aliases: names } of result.groups) {
+    const canonicalKey = conceptKey(canonical)
+    if (!concepts.has(canonicalKey)) continue
+    const valid = names.filter(name => {
+      const key = conceptKey(name)
+      return concepts.has(key) && key !== canonicalKey
+    })
+    if (!valid.length) continue
+    groups.push({ canonical, aliases: valid })
+    for (const name of valid) aliases[conceptKey(name)] = canonical
+  }
+  // 대표 이름이 다른 묶음의 별칭이면 끝까지 따라가 한 이름으로 모은다.
+  for (const key of Object.keys(aliases)) {
+    let name = aliases[key]
+    for (let i = 0; i < 5 && aliases[conceptKey(name)]; i += 1) {
+      name = aliases[conceptKey(name)]
+    }
+    aliases[key] = name
+  }
+
+  cache.merge = { hash, model: result.model, groups, aliases }
+  const merged = Object.keys(aliases).length
+  console.log(`   ${groups.length} groups, ${merged} names merged`)
+  for (const g of groups)
+    console.log(`   ${g.canonical} ← ${g.aliases.join(', ')}`)
 }
 
 async function main() {
@@ -133,8 +233,11 @@ async function main() {
     `🧠 ${posts.length} posts, ${todo.length} to extract with ${MODEL} (effort ${EFFORT})`,
   )
 
+  let client
+  const getClient = () => (client ??= new Anthropic())
+
   if (todo.length > 0) {
-    const client = new Anthropic()
+    getClient()
     const limit = pLimit(CONCURRENCY)
     let done = 0
     const failures = []
@@ -172,6 +275,11 @@ async function main() {
   const ids = new Set(posts.map(post => post.id))
   for (const id of Object.keys(cache.posts)) {
     if (!ids.has(id)) delete cache.posts[id]
+  }
+  try {
+    await mergeConcepts(getClient, posts, cache)
+  } catch (err) {
+    console.warn(`⚠️  merge failed, keeping the previous merge: ${err.message}`)
   }
   await saveCache(cache)
 
