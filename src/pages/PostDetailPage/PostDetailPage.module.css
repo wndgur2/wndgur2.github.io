@@ -1,0 +1,131 @@
+.post {
+    color: var(--color-text);
+    max-width: 80vw;
+    margin: var(--space-20) auto 0 auto;
+}
+
+.post header {
+    padding: calc(0.8em + 1.2vw) calc(1em + 1.4vw);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.post header h1 {
+    font-size: var(--font-size-xl);
+}
+
+.postCategory {
+    width: fit-content;
+}
+
+.postTitle {
+    max-width: 70%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    flex-grow: 1;
+    gap: var(--space-5);
+}
+
+.postMeta {
+    height: 100%;
+    padding-bottom: var(--space-5);
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-end;
+    gap: var(--space-6);
+}
+
+.postMeta small {
+    text-align: end;
+}
+
+.post header>section:last-child {
+    align-items: flex-end;
+}
+
+.postContent {
+    padding: calc(1em + 1vw);
+    margin-top: -2px;
+
+    text-wrap: pretty;
+
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    border-radius: 0em 0em var(--radius) var(--radius);
+}
+
+.post nav {
+    margin-top: var(--space-20);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: var(--font-size-lg);
+    font-weight: 500;
+}
+
+.post nav a {
+    min-width: calc(160px + 8%);
+    height: 108px;
+    padding: var(--space-14);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: var(--space-6);
+
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    border-radius: var(--radius);
+}
+
+.post nav .disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.post nav a>div {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+}
+
+.post nav .prev {
+    margin-left: auto;
+    align-items: flex-end;
+}
+
+.post nav .list {
+    align-items: center;
+    text-align: center;
+}
+
+.post nav .next {
+    margin-right: auto;
+    align-items: flex-start;
+}
+
+@media (max-width: 768px) {
+    .post {
+        max-width: 100vw;
+    }
+
+    .post nav {
+        height: fit-content;
+        flex-direction: column;
+        gap: var(--space-5);
+    }
+
+    .post nav a {
+        width: 100%;
+    }
+}

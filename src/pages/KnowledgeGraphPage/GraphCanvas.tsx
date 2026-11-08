@@ -17,6 +17,7 @@ import {
   type SimLink,
   type SimNode,
 } from '@/features/knowledgeGraph/graph'
+import styles from './GraphCanvas.module.css'
 
 export interface GraphCanvasHandle {
   zoomBy: (_factor: number) => void
@@ -53,13 +54,13 @@ const clamp01 = (v: number) => Math.min(1, Math.max(0, v))
 function readColors(el: HTMLElement): Colors {
   const style = getComputedStyle(el)
   const v = (name: string) => style.getPropertyValue(name).trim()
-  // 색은 두 가지만 쓴다: 글 = 강조색, 개념 = 무채색
+  // 색은 두 가지만 쓴다: 글 = 강조색, 개념 = 무채색 (src/styles/tokens.css)
   return {
-    post: v('--accent-color'),
-    concept: v('--minor-color'),
-    label: v('--content-color'),
-    halo: v('--fg-color'),
-    accent: v('--accent-color'),
+    post: v('--color-accent'),
+    concept: v('--color-text-subtle'),
+    label: v('--color-text'),
+    halo: v('--color-surface'),
+    accent: v('--color-accent'),
     font: style.fontFamily,
   }
 }
@@ -487,7 +488,7 @@ export default function GraphCanvas({
   }, [])
 
   return (
-    <div className='kg-canvas-wrapper' ref={wrapperRef}>
+    <div className={styles.wrapper} ref={wrapperRef}>
       <canvas ref={canvasRef} />
     </div>
   )

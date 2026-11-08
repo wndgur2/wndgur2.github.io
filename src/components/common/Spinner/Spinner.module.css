@@ -1,0 +1,63 @@
+.spinnerWrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: var(--space-6);
+    overflow: visible;
+    width: 100%;
+}
+
+.spinnerWrapper>span {
+    margin-top: var(--space-15);
+}
+
+.spinner,
+.spinner:before,
+.spinner:after {
+    border-radius: var(--radius-circle);
+    width: 2em;
+    height: 2em;
+    animation-fill-mode: both;
+    animation: bblFadInOut var(--duration-spinner) infinite ease-in-out;
+}
+
+.spinner {
+    color: var(--color-accent-80);
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 점의 크기와 간격을 em으로 정하는 기준값이라 글자 크기 토큰을 쓰지 않는다. */
+    font-size: 7px;
+    position: relative;
+    text-indent: -9999em;
+    transform: translateZ(0);
+    animation-delay: -0.24s;
+}
+
+.spinner:before,
+.spinner:after {
+    content: '';
+    position: absolute;
+    top: 0;
+}
+
+.spinner:before {
+    left: -3.5em;
+    animation-delay: -0.48s;
+}
+
+.spinner:after {
+    left: 3.5em;
+}
+
+@keyframes bblFadInOut {
+
+    0%,
+    80%,
+    100% {
+        /* stylelint-disable-next-line declaration-property-value-allowed-list -- 그림자가 아니라 점의 크기를 바꾸는 애니메이션 값이다. */
+        box-shadow: 0 2.5em 0 -1.3em
+    }
+
+    40% {
+        /* stylelint-disable-next-line declaration-property-value-allowed-list -- 그림자가 아니라 점의 크기를 바꾸는 애니메이션 값이다. */
+        box-shadow: 0 2.5em 0 0
+    }
+}

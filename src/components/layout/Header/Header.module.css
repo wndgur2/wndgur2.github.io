@@ -1,6 +1,6 @@
 .header {
   position: fixed;
-  z-index: 2;
+  z-index: var(--z-overlay);
   top: 0;
   height: 3.5em;
   width: 100%;
@@ -8,12 +8,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1em;
-  background-color: var(--transparent-fg-color);
+  gap: var(--space-10);
+  background-color: var(--color-surface-translucent);
   backdrop-filter: blur(1em);
   box-shadow: var(--shadow);
   overflow: hidden;
-  transition: background-color 0.2s, transform 0.2s;
+  transition: background-color var(--duration-base), transform var(--duration-base);
 }
 
 .top {
@@ -28,7 +28,7 @@
 
 .logo {
   width: fit-content;
-  padding: 0.4em;
+  padding: var(--space-4);
   display: flex;
 }
 
@@ -38,18 +38,22 @@
 }
 
 .logo svg * {
-  fill: var(--icon-color);
-  transition: fill 0.2s;
+  fill: var(--color-icon);
+  transition: fill var(--duration-base);
 }
 
 .logo:hover svg * {
-  fill: var(--action-color);
+  fill: var(--color-action);
 }
 
 @media screen and (max-width: 768px) {
   .header {
     height: 3.8em;
-    padding: 0 1.5em;
-    gap: 0.5em;
+    padding: 0 var(--space-15);
+    gap: var(--space-5);
+  }
+
+  .header:has(.search:focus-within)>*:not(.search) {
+    display: none;
   }
 }

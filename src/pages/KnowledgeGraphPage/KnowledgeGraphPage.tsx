@@ -1,12 +1,11 @@
-import '@/components/common/Tag/Tag.css'
-import './KnowledgeGraphPage.css'
-
 import { useMemo, useRef, useState } from 'react'
 import { IoClose, IoSearch } from 'react-icons/io5'
 import { LuMaximize, LuMinus, LuPlus } from 'react-icons/lu'
 import { Link } from 'react-router-dom'
 
 import { useGetKnowledgeGraph } from '@/api/knowledgeGraph'
+import Button from '@/components/common/Button'
+import IconButton from '@/components/common/IconButton'
 import {
   endId,
   filterGraph,
@@ -16,6 +15,7 @@ import useDocumentTitle from '@/hooks/useDocumentTitle'
 import useTheme from '@/hooks/useTheme'
 import { ROUTES } from '@/router'
 import GraphCanvas, { type GraphCanvasHandle } from './GraphCanvas'
+import styles from './KnowledgeGraphPage.module.css'
 
 const CATEGORY_LABELS: Record<string, string> = {
   project: 'Projects',
@@ -136,20 +136,20 @@ export default function KnowledgeGraphPage() {
 
   const conceptTags = (concepts: { id: string; label: string }[]) =>
     concepts.length > 0 && (
-      <ul className='kg-tags'>
+      <ul className={styles.chips}>
         {concepts.map(n => (
           <li key={n.id}>
-            <button type='button' className='tag' onClick={() => select(n.id)}>
+            <Button className={styles.chip} onClick={() => select(n.id)}>
               {n.label}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>
     )
 
   return (
-    <main className='knowledge-graph'>
-      <header className='kg-header'>
+    <main className={styles.page}>
+      <header className={styles.header}>
         <h1 className='content'>Knowledge Graph</h1>
         <small>
           글 {stats.posts} · 개념 {stats.concepts}
@@ -158,7 +158,7 @@ export default function KnowledgeGraphPage() {
         </small>
       </header>
 
-      <section className='kg-stage'>
+      <section className={styles.stage} aria-label='지식 그래프'>
         <GraphCanvas
           ref={graphRef}
           nodes={nodes}
@@ -171,89 +171,94 @@ export default function KnowledgeGraphPage() {
           onSelect={select}
         />
 
-        <div className='kg-controls'>
+        <div className={styles.controls}>
           <form
-            className='kg-search'
+            className={styles.search}
+            role='search'
             onSubmit={e => {
               e.preventDefault()
               const first = matches && [...matches][0]
               if (first) select(first)
             }}
           >
-            <IoSearch className='minor' size={16} />
+            <IoSearch className='minor' size={16} aria-hidden />
             <input
               className='content'
               type='search'
+              aria-label='개념이나 글 찾기'
               placeholder='개념이나 글 찾기'
               value={query}
               onChange={e => setQuery(e.target.value)}
             />
           </form>
-          <div className='kg-filter'>
-            {categories.map(category => (
-              <button
-                key={category}
-                type='button'
-                className={`tag kg-pill ${hiddenCategories.has(category) ? 'off' : ''}`}
-                aria-pressed={!hiddenCategories.has(category)}
-                onClick={() => toggleCategory(category)}
-              >
-                {CATEGORY_LABELS[category] ?? category}
-              </button>
-            ))}
+          <div className={styles.filters}>
+            {categories.map(category => {
+              const on = !hiddenCategories.has(category)
+              return (
+                <Button
+                  key={category}
+                  className={`${styles.pill} ${on ? '' : styles.off}`}
+                  aria-pressed={on}
+                  onClick={() => toggleCategory(category)}
+                >
+                  {CATEGORY_LABELS[category] ?? category}
+                </Button>
+              )
+            })}
           </div>
-          <div className='kg-filter' role='radiogroup' aria-label='개념 표시'>
-            {DENSITY.map(option => (
-              <button
-                key={option.minCount}
-                type='button'
-                role='radio'
-                aria-checked={minCount === option.minCount}
-                className={`tag kg-pill ${minCount === option.minCount ? '' : 'off'}`}
-                onClick={() => setMinCount(option.minCount)}
-              >
-                {option.label} 개념
-              </button>
-            ))}
+          <div className={styles.filters} role='group' aria-label='개념 표시'>
+            {DENSITY.map(option => {
+              const on = minCount === option.minCount
+              return (
+                <Button
+                  key={option.minCount}
+                  className={`${styles.pill} ${on ? '' : styles.off}`}
+                  aria-pressed={on}
+                  onClick={() => setMinCount(option.minCount)}
+                >
+                  {option.label} 개념
+                </Button>
+              )
+            })}
           </div>
         </div>
 
-        <div className='kg-zoom'>
-          <button
-            className='small clickable icon'
-            aria-label='확대'
+        <div className={styles.zoom}>
+          <IconButton
+            label='확대'
+            className={`${styles.zoomButton} small clickable icon`}
             onClick={() => graphRef.current?.zoomBy(1.4)}
           >
-            <LuPlus size={18} />
-          </button>
-          <button
-            className='small clickable icon'
-            aria-label='축소'
+            <LuPlus size={18} aria-hidden />
+          </IconButton>
+          <IconButton
+            label='축소'
+            className={`${styles.zoomButton} small clickable icon`}
             onClick={() => graphRef.current?.zoomBy(1 / 1.4)}
           >
-            <LuMinus size={18} />
-          </button>
-          <button
-            className='small clickable icon'
-            aria-label='전체 보기'
+            <LuMinus size={18} aria-hidden />
+          </IconButton>
+          <IconButton
+            label='전체 보기'
+            className={`${styles.zoomButton} small clickable icon`}
             onClick={() => graphRef.current?.fit()}
           >
-            <LuMaximize size={16} />
-          </button>
+            <LuMaximize size={16} aria-hidden />
+          </IconButton>
         </div>
-        <small className='kg-hint'>
+        <small className={styles.hint}>
           드래그로 이동 · ⌘/Ctrl + 스크롤 또는 핀치로 확대
         </small>
 
         {selectedNode && detail && (
-          <aside className='kg-panel'>
-            <button
-              className='kg-close small clickable icon'
-              aria-label='닫기'
+          <aside className={styles.panel}>
+            <IconButton
+              label='닫기'
+              className={`${styles.close} small clickable icon`}
               onClick={() => setSelected(null)}
             >
-              <IoClose size={18} />
-            </button>
+              <IoClose size={18} aria-hidden />
+            </IconButton>
             {selectedNode.kind === 'post' ? (
               <>
                 <small>
@@ -261,12 +266,16 @@ export default function KnowledgeGraphPage() {
                     selectedNode.category}{' '}
                   · {selectedNode.date}
                 </small>
-                <h3 className='content'>{selectedNode.label}</h3>
+                <h2 className={`${styles.panelTitle} content`}>
+                  {selectedNode.label}
+                </h2>
                 {selectedNode.summary && (
-                  <p className='dimmed content'>{selectedNode.summary}</p>
+                  <p className={`${styles.summary} dimmed content`}>
+                    {selectedNode.summary}
+                  </p>
                 )}
                 <Link
-                  className='kg-open'
+                  className={styles.open}
                   to={ROUTES.POST_DETAIL(selectedNode.postId)}
                 >
                   글 읽기 →
@@ -279,9 +288,11 @@ export default function KnowledgeGraphPage() {
                   {TYPE_LABELS[selectedNode.type] ?? selectedNode.type} · 글{' '}
                   {selectedNode.count}개
                 </small>
-                <h3 className='content'>{selectedNode.label}</h3>
+                <h2 className={`${styles.panelTitle} content`}>
+                  {selectedNode.label}
+                </h2>
                 {detail.relations.length > 0 && (
-                  <ul className='kg-relations'>
+                  <ul className={styles.relations}>
                     {detail.relations.map(r => (
                       <li
                         key={`${r.from}-${r.to}-${r.relation}`}
@@ -297,14 +308,14 @@ export default function KnowledgeGraphPage() {
                     ))}
                   </ul>
                 )}
-                <ul className='kg-posts'>
+                <ul className={styles.posts}>
                   {detail.posts.map(n => (
                     <li key={n.id}>
                       <Link
-                        className='kg-post'
+                        className={styles.post}
                         to={ROUTES.POST_DETAIL(n.postId)}
                       >
-                        <i />
+                        <span className={styles.dot} aria-hidden />
                         <span>{n.label}</span>
                       </Link>
                     </li>

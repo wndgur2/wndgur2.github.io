@@ -8,9 +8,13 @@ const KnowledgeGraphPreview = lazy(
   () => import('@/components/post/KnowledgeGraphPreview'),
 )
 
-export default function CategoryList() {
+interface Props {
+  className?: string
+}
+
+export default function CategoryList({ className }: Props) {
   return (
-    <main>
+    <main className={className}>
       <CategoryListItem category={CATEGORIES.PROJECT} />
       <CategoryListItem category={CATEGORIES.STUDY} />
       <CategoryListItem category={CATEGORIES.ALGORITHM} />

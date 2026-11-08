@@ -1,6 +1,7 @@
+import IconButton from '@/components/common/IconButton'
 import useProfileImage from '@/hooks/useProfileImage'
 
-import './ProfileImage.css'
+import styles from './ProfileImage.module.css'
 
 /**
  * 프로필 이미지 컴포넌트
@@ -18,18 +19,21 @@ export default function ProfileImage() {
   } = useProfileImage()
 
   return (
-    <button
-      className='profile-img-wrapper'
+    <IconButton
+      label='프로필 사진'
+      className={styles.profileImgWrapper}
       onClick={profileClickHandler}
       ref={profileRef}
     >
       <video
-        className={`profile-video ${videoPlaying ? 'visible' : 'hidden'}`}
+        className={`${styles.profileVideo} ${videoPlaying ? '' : styles.hidden}`}
         autoPlay
         onEnded={() => setVideoPlaying(false)}
         ref={videoRef}
       />
-      <picture className={`profile-img ${videoPlaying ? 'hidden' : 'visible'}`}>
+      <picture
+        className={`${styles.profileImg} ${videoPlaying ? styles.hidden : ''}`}
+      >
         <source
           srcSet={`/images/profile/${imgIndex}.webp`}
           type='image/webp'
@@ -45,6 +49,6 @@ export default function ProfileImage() {
           draggable={false}
         />
       </picture>
-    </button>
+    </IconButton>
   )
 }

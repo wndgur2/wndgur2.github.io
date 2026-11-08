@@ -1,4 +1,4 @@
-import './TextSkeleton.css'
+import styles from './TextSkeleton.module.css'
 
 interface Props {
   lines?: number
@@ -17,10 +17,10 @@ export default function TextSkeleton({
   height = '16px',
 }: Props) {
   return (
-    <div className='text-container' style={{ width }}>
-      <div className='text-skeleton'>
+    <div className={styles.textContainer} style={{ width }}>
+      <div className={styles.textSkeleton}>
         {Array.from({ length: lines }).map((_, i) => (
-          <div key={i} className='skeleton-line skeleton' style={{ height }} />
+          <div key={i} className={`${styles.skeletonLine} skeleton`} style={{ height }} />
         ))}
       </div>
     </div>

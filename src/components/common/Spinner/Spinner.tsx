@@ -1,4 +1,4 @@
-import './Spinner.css'
+import styles from './Spinner.module.css'
 
 /**
  * 로딩 스피너 컴포넌트
@@ -13,8 +13,8 @@ interface Props {
 
 export default function Spinner({ phrase }: Props) {
   return (
-    <div className='spinner-wrapper'>
-      <div className='spinner' />
+    <div className={styles.spinnerWrapper}>
+      <div className={styles.spinner} />
       <span className='minor'>{phrase}</span>
     </div>
   )

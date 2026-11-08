@@ -1,10 +1,9 @@
-import './KnowledgeGraphPreview.css'
-
 import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { IoIosArrowForward } from 'react-icons/io'
 import { Link } from 'react-router-dom'
 
+import Card, { CardLink } from '@/components/common/Card'
 import { META_PATHS } from '@/consts/meta'
 import { QUERY_KEYS } from '@/consts/query'
 import {
@@ -17,6 +16,7 @@ import {
 import { ROUTES } from '@/router'
 import type { KnowledgeGraph } from '@/types/knowledgeGraph'
 import { fetchJSON } from '@/utils/fetch'
+import styles from './KnowledgeGraphPreview.module.css'
 
 const PADDING = 16
 
@@ -62,62 +62,68 @@ export default function KnowledgeGraphPreview() {
   if (!data || !preview) return null
 
   return (
-    <section className='home-category kg-preview'>
-      <header>
-        <Link className='link' to={ROUTES.GRAPH}>
+    <section className={styles.section}>
+      <header className={styles.header}>
+        <Link className={`${styles.headerLink} link`} to={ROUTES.GRAPH}>
           <header>
             <h1>Knowledge Graph</h1>
-            <IoIosArrowForward size={20} />
+            <IoIosArrowForward size={20} aria-hidden />
           </header>
         </Link>
       </header>
-      <Link to={ROUTES.GRAPH} className='kg-preview-card link clickable'>
-        <svg
-          className='kg-preview-thumb'
-          viewBox={preview.viewBox}
-          preserveAspectRatio='xMidYMid meet'
-          aria-hidden
-        >
-          <g className='kg-preview-links'>
-            {preview.links.map(({ kind, s, t }, i) => {
-              const dx = t.x! - s.x!
-              const dy = t.y! - s.y!
-              return (
-                <path
-                  key={i}
-                  className={kind}
-                  d={`M${s.x},${s.y} Q${(s.x! + t.x!) / 2 - dy * 0.12},${(s.y! + t.y!) / 2 + dx * 0.12} ${t.x},${t.y}`}
-                />
-              )
-            })}
-          </g>
-          <g>
-            {preview.nodes.map(n => (
-              <circle
-                key={n.id}
-                className={n.kind}
-                cx={n.x}
-                cy={n.y}
-                r={nodeRadius(n)}
-              />
-            ))}
-          </g>
-        </svg>
-        <div className='kg-preview-info content'>
-          <h2>글과 개념의 연결 지도</h2>
-          <p className='dimmed content'>
-            글 {data.stats.posts}개에서 뽑은 개념 {data.stats.concepts}개가 서로
-            어떻게 이어지는지 한눈에 살펴보세요.
-          </p>
-          <ul className='kg-preview-concepts'>
-            {preview.topConcepts.map(n => (
-              <li key={n.id} className='minor'>
-                #{n.label}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Link>
+      <ul className={styles.list}>
+        <Card>
+          <div className={styles.body}>
+            <svg
+              className={styles.thumb}
+              viewBox={preview.viewBox}
+              preserveAspectRatio='xMidYMid meet'
+              aria-hidden
+            >
+              <g className={styles.links}>
+                {preview.links.map(({ kind, s, t }, i) => {
+                  const dx = t.x! - s.x!
+                  const dy = t.y! - s.y!
+                  return (
+                    <path
+                      key={i}
+                      className={kind === 'relation' ? styles.relation : ''}
+                      d={`M${s.x},${s.y} Q${(s.x! + t.x!) / 2 - dy * 0.12},${(s.y! + t.y!) / 2 + dx * 0.12} ${t.x},${t.y}`}
+                    />
+                  )
+                })}
+              </g>
+              <g>
+                {preview.nodes.map(n => (
+                  <circle
+                    key={n.id}
+                    className={n.kind === 'post' ? styles.post : styles.concept}
+                    cx={n.x}
+                    cy={n.y}
+                    r={nodeRadius(n)}
+                  />
+                ))}
+              </g>
+            </svg>
+            <div className={`${styles.info} content`}>
+              <h2 className={styles.title}>
+                <CardLink to={ROUTES.GRAPH}>글과 개념의 연결 지도</CardLink>
+              </h2>
+              <p className='dimmed content'>
+                글 {data.stats.posts}개에서 뽑은 개념 {data.stats.concepts}개가
+                서로 어떻게 이어지는지 한눈에 살펴보세요.
+              </p>
+              <ul className={styles.concepts}>
+                {preview.topConcepts.map(n => (
+                  <li key={n.id} className='minor'>
+                    #{n.label}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Card>
+      </ul>
     </section>
   )
 }

@@ -1,5 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
+import styles from '@/components/profile/ProfileImage/ProfileImage.module.css'
+
 const IMG_AMOUNT = 5
 
 export default function useProfileImage() {
@@ -11,6 +13,7 @@ export default function useProfileImage() {
   const clickCountRef = useRef(0)
   const maxClickCountRef = useRef(Math.random() * 2 + 1)
 
+  // 다음 프로필 이미지를 미리 받아 둔다. 마운트할 때 한 번만 하면 된다.
   useEffect(() => {
     for (let i = 0; i < IMG_AMOUNT; i++) {
       const optimizedImg = new Image()
@@ -18,7 +21,7 @@ export default function useProfileImage() {
       const fallbackImg = new Image()
       fallbackImg.src = `/images/profile/${i}.jpeg`
     }
-  })
+  }, [])
 
   const profileClickHandler = () => {
     if (!profileRef.current) return
@@ -30,11 +33,11 @@ export default function useProfileImage() {
     }
 
     if (clickCountRef.current++ < maxClickCountRef.current) {
-      profileRef.current.style.animation = 'shake 0.3s'
+      profileRef.current.style.animation = `${styles.shake} 0.3s`
     } else {
       switch (Math.floor(Math.random() * 2)) {
         case 0:
-          profileRef.current.style.animation = 'spinLeft 0.3s'
+          profileRef.current.style.animation = `${styles.spinLeft} 0.3s`
           setImgIndex((imgIndex + 1) % IMG_AMOUNT)
           break
         case 1:

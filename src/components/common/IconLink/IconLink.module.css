@@ -1,0 +1,18 @@
+.iconLink {
+    aspect-ratio: 1/1;
+    padding: var(--space-2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+
+.iconLink img {
+    object-fit: cover;
+    border-radius: var(--radius-pill);
+}

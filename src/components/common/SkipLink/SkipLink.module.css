@@ -1,0 +1,33 @@
+/*
+ * a:where()는 우선순위가 요소 선택자와 같아서 className으로 위치를 덮어쓸 수 있다.
+ * 기본 위치는 헤더 위에 뜨고 레이아웃을 밀지 않도록 fixed다.
+ */
+a:where(.skipLink) {
+    position: fixed;
+    top: var(--space-5);
+    left: var(--space-5);
+    z-index: var(--z-skip-link);
+
+    padding: var(--space-5) var(--space-10);
+
+    color: var(--color-text);
+    white-space: nowrap;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-hover);
+}
+
+/* 포커스가 없을 때는 보이지 않게 잘라 두되 Tab 순서와 접근성 트리에는 남긴다. */
+a:where(.skipLink):not(:focus) {
+    clip-path: inset(50%);
+}
+
+a:where(.skipLink):hover {
+    color: var(--color-text);
+}
+
+a:where(.skipLink):focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-accent);
+    outline-offset: var(--focus-ring-offset);
+}

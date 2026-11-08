@@ -1,0 +1,116 @@
+/* CategoryListItem 섹션과 같은 간격·헤더 모양 */
+.section {
+  width: 100%;
+  margin-top: var(--space-20);
+  margin-bottom: var(--space-14);
+}
+
+.header {
+  margin: 0 0 var(--space-4) var(--space-8);
+  padding-bottom: var(--space-2);
+}
+
+.headerLink {
+  display: inline-block;
+  padding: var(--space-4) 0;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  transition: padding var(--duration-base);
+}
+
+.headerLink > header {
+  display: flex;
+  align-items: center;
+  gap: calc(0.4em + 0.7vw);
+}
+
+.headerLink:hover {
+  padding: var(--space-4) var(--space-8);
+  border-color: var(--color-action);
+}
+
+.list {
+  padding: var(--space-12) 0;
+}
+
+/* Card가 정한 속성은 건드리지 않고 안쪽 래퍼로 가로 배치한다. */
+.body {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-5);
+}
+
+.thumb {
+  flex: 3;
+  min-width: 0;
+  height: 18em;
+
+  border-radius: var(--radius);
+  background-color: var(--color-bg-muted);
+}
+
+.links path {
+  fill: none;
+  stroke: var(--color-text-subtle);
+  stroke-width: 0.8;
+  opacity: 0.35;
+  transition: opacity var(--duration-slow);
+}
+
+.links path.relation {
+  stroke-dasharray: 3 3;
+}
+
+.body:hover .links path {
+  opacity: 0.6;
+}
+
+.concept {
+  fill: var(--color-text-subtle);
+  fill-opacity: 0.35;
+  stroke: var(--color-text-subtle);
+  stroke-width: 1.2;
+}
+
+.post {
+  fill: var(--color-accent);
+}
+
+.info {
+  flex: 2;
+  min-width: 0;
+  padding: var(--space-8);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-8);
+}
+
+.info p {
+  line-height: 1.6;
+}
+
+.title {
+  font-size: var(--font-size-xl);
+}
+
+.concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-8);
+
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+  .body {
+    flex-direction: column;
+  }
+
+  .thumb {
+    flex: none;
+    height: 14em;
+  }
+}

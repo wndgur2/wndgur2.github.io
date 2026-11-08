@@ -1,0 +1,121 @@
+.theme {
+    width: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    order: 4;
+}
+
+/* display: none이면 포커스를 받지 못하므로 보이지 않게만 숨긴다. */
+.toggle,
+.labelText {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.toggle {
+    margin: 0;
+    opacity: 0;
+}
+
+.toggle:focus-visible+label::before {
+    outline: var(--focus-ring-width) solid var(--color-accent);
+    outline-offset: var(--focus-ring-offset);
+}
+
+.toggle+label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle+label::before {
+    content: '';
+    height: calc(2.4em - 2px);
+    aspect-ratio: 3.8/2.2;
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 토글 트랙과 손잡이 모양에 맞춘 값이고 대응하는 토큰이 없다. */
+    border-radius: 2em;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+}
+
+.toggle+label::after {
+    content: '';
+
+    width: 2em;
+    aspect-ratio: 1;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치를 맞추는 배치 값이다. */
+    margin-left: calc(-3.85em);
+
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 토글 트랙과 손잡이 모양에 맞춘 값이고 대응하는 토큰이 없다. */
+    border-radius: 2em;
+    background-color: var(--color-accent);
+    transition: transform var(--duration-slow), background-color var(--duration-slower), color var(--duration-slow);
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치와 맞물린 배치 값이라 토큰을 쓰지 않는다. */
+    gap: 0.25em;
+    /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치와 맞물린 배치 값이라 토큰을 쓰지 않는다. */
+    margin-left: calc(-1.9em + 2px);
+    pointer-events: none;
+}
+
+.themeIcon {
+    z-index: var(--z-overlay);
+    background-color: transparent;
+    pointer-events: none;
+    /* stylelint-disable-next-line color-no-hex -- 해와 달 아이콘의 고유 색이라 두 테마에서 같은 값으로 고정한다. */
+    fill: #FFBB33;
+    font-size: var(--font-size-icon);
+    transition: opacity var(--duration-slow);
+}
+
+
+@media screen and (width > 768px) {
+    .toggle:checked+label::after {
+        transform: translateX(82%);
+    }
+}
+
+.toggle:checked~.icons>.sun {
+    opacity: 0;
+}
+
+.toggle:not(:checked)~.icons>.moon {
+    opacity: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .toggle+label::before {
+        height: 3em;
+        aspect-ratio: 1;
+    }
+
+    .toggle+label::after {
+        width: 2.6em;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치를 맞추는 배치 값이다. */
+        margin-left: calc(-2.85em);
+    }
+
+    .icons {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치를 맞추는 배치 값이다. */
+        margin-left: calc(-2.1em);
+    }
+
+    .moon {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 토글 손잡이 위치를 맞추는 배치 값이다. */
+        margin-left: calc(-1.2em);
+    }
+
+    .themeIcon {
+        font-size: var(--font-size-icon-lg);
+    }
+}
