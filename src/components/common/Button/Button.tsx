@@ -12,7 +12,14 @@ import styles from './Button.module.css'
 
 export type ButtonProps = Pick<
   ComponentProps<'button'>,
-  'type' | 'className' | 'onClick' | 'disabled' | 'ref' | 'aria-label' | 'children'
+  | 'type'
+  | 'className'
+  | 'onClick'
+  | 'disabled'
+  | 'ref'
+  | 'aria-label'
+  | 'aria-pressed'
+  | 'children'
 >
 
 export default function Button({
