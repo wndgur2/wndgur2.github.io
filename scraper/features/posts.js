@@ -1,7 +1,9 @@
+import path from 'node:path'
+
 import matter from 'gray-matter'
 
 import { getFileText, listTreeRecursive, safeBlobUrl } from '../lib/github.js'
-import { normalizeTagsString, normalizeTitle } from '../lib/normalize.js'
+import { normalizeTagsString, normalizeTitle, slugify } from '../lib/normalize.js'
 import { fetchAndProcess } from '../lib/process.js'
 
 const POSTS_DIR = process.env.POSTS_DIR ?? 'posts'
@@ -37,10 +39,12 @@ export async function fetchPosts() {
       if (!fm.category) throw new Error(`Missing category`)
 
       const category = fm.category.toLowerCase()
+      const slug = slugify(path.parse(file).name)
 
       return {
+        slug,
         category,
-        title: normalizeTitle(fm.title ?? id),
+        title: normalizeTitle(fm.title ?? slug),
         content,
         tags: tags.sort(),
         date_started: fm.date_started ?? 'No date found.',

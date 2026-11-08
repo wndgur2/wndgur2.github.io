@@ -35,6 +35,7 @@ role: FE
 - 태그 목록/관련 태그 표시
 - 다크/라이트 테마 전환 및 테마별 파비콘/하이라이트 테마 적용
 - 게시글 이전/다음 이동 및 404 처리
+- 빌드 시 게시글/프로젝트별 정적 HTML, `sitemap.xml`, `robots.txt` 생성 (SEO)
 
 **디렉토리 구조**
 
@@ -46,7 +47,8 @@ role: FE
 │   └── manifest.webmanifest
 ├── scraper/
 │   └── scripts/
-│       └── fetch-content.js   # GitHub에서 콘텐츠 수집/가공 스크립트
+│       ├── fetch-content.js         # GitHub에서 콘텐츠 수집/가공 스크립트
+│       └── generate-static-pages.js # 빌드 결과물에 SEO용 정적 페이지 생성
 ├── src/
 │   ├── api/               # JSON 로딩 API (TanStack Query)
 │   ├── components/        # UI 컴포넌트
@@ -125,9 +127,17 @@ GitHub API 요청
 실행 스크립트:
 
 - `pnpm dev`: 개발 서버 실행
-- `pnpm build`: 타입 체크 후 프로덕션 빌드
+- `pnpm build`: 타입 체크 후 프로덕션 빌드, 정적 페이지 생성 (`public/meta`가 있어야 생성됨)
 - `pnpm preview`: 빌드 결과 미리보기
 - `pnpm lint`: ESLint 실행
+- `pnpm lint:css`: Stylelint 실행
 - `pnpm exec node scraper/scripts/fetch-content.js`: 콘텐츠 메타 생성
 
 디자인 시스템 규칙은 [DESIGN.md](DESIGN.md)를 참고하세요.
+
+### PR 프리뷰
+
+운영 배포는 GitHub Pages가 담당하고, Vercel은 PR 프리뷰 전용으로 사용합니다 (`vercel.json`에서 `main` 배포 비활성화).
+
+- Vercel 프로젝트 환경 변수에 `GH_PAT`를 등록해야 합니다.
+- 프리뷰는 없는 경로도 앱 화면을 200으로 응답하므로, GitHub Pages의 404 동작은 검증할 수 없습니다.

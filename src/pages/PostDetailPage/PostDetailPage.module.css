@@ -17,8 +17,7 @@
 }
 
 .post header h1 {
-    margin-left: 4px;
-    font-size: var(--font-size-root-xl);
+    font-size: var(--font-size-xl);
 }
 
 .postCategory {

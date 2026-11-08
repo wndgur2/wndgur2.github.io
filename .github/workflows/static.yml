@@ -57,7 +57,8 @@ jobs:
       # 5) Generate static content
       - name: Generate static content (Octokit)
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          # 콘텐츠 레포가 모두 공개라 자동 발급 토큰으로 충분하다 (만료 관리 불필요)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PROJECTS_OWNER: wndgur2
           BLOG_DB_REPO: wndgur2/dev-log
           BLOG_DB_REF: main

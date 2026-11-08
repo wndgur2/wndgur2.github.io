@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { createMemoryRouter, RouterProvider } from 'react-router-dom'
 import { describe, expect, it, vi } from 'vitest'
 
@@ -87,5 +87,67 @@ describe('PostDetailPage list navigation', () => {
 
     expect(await screen.findByText('Search Result')).toBeTruthy()
     expect(router.state.location.pathname).toBe('/search/%40frontend')
+  })
+})
+
+describe('PostDetailPage SEO', () => {
+  const renderPost = (pathname: string) => {
+    mockUsePostDetail.mockReturnValue({
+      postId: 'web-performance',
+      post: {
+        id: 'web-performance',
+        category: 'study',
+        title: 'Post Title',
+        tags: [],
+        github: '',
+        date_started: '2024-01-01',
+      } as never,
+      prevPost: null,
+      nextPost: null,
+    })
+
+    const router = createMemoryRouter(
+      [{ path: '/post/:id', element: <PostDetailPage /> }],
+      { initialEntries: [pathname] },
+    )
+    render(<RouterProvider router={router} />)
+    return router
+  }
+
+  it('redirects a legacy hash url to the slug url', async () => {
+    const router = renderPost('/post/legacy-hash')
+
+    await waitFor(() =>
+      expect(router.state.location.pathname).toBe('/post/web-performance'),
+    )
+    expect(router.state.historyAction).toBe('REPLACE')
+  })
+
+  it('redirects a .html url to the clean url', async () => {
+    const router = renderPost('/post/web-performance.html')
+
+    await waitFor(() =>
+      expect(router.state.location.pathname).toBe('/post/web-performance'),
+    )
+    expect(router.state.historyAction).toBe('REPLACE')
+  })
+
+  it('renders the title as h1 and syncs the document title', () => {
+    renderPost('/post/web-performance')
+
+    expect(
+      screen.getByRole('heading', { level: 1, name: 'Post Title' }),
+    ).toBeTruthy()
+    expect(document.title).toBe('Post Title | 이중혁 블로그')
+  })
+
+  it('removes the prerendered content once the page is ready', () => {
+    const prerender = document.createElement('div')
+    prerender.id = 'prerender'
+    document.body.appendChild(prerender)
+
+    renderPost('/post/web-performance')
+
+    expect(document.getElementById('prerender')).toBeNull()
   })
 })

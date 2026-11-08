@@ -21,7 +21,7 @@
   },
   "scripts": {
     "dev": "vite --host --open",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && NODE_ENV=production node scraper/scripts/generate-static-pages.js",
     "lint": "eslint .",
     "lint:css": "stylelint \"src/**/*.css\"",
     "preview": "vite preview",

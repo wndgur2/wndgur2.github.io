@@ -6,13 +6,15 @@ import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
 import IconLink from '@/components/common/IconLink'
 import TagList from '@/components/common/TagList'
 import MarkdownView from '@/components/post/MarkdownView'
+import useDocumentTitle from '@/hooks/useDocumentTitle'
 import { usePostDetail } from '@/hooks/usePosts'
+import useRemovePrerender from '@/hooks/useRemovePrerender'
 import useResetScroll from '@/hooks/useResetScroll'
 import { ROUTES } from '@/router'
 
 /**
  * 게시글 상세 페이지 컴포넌트
- * - URL 파라미터(title)로 게시글 조회
+ * - URL 파라미터(id)로 게시글 조회, 기존 해시 URL은 slug URL로 이동
  * - 이전글/다음글 네비게이션 제공
  * - 본문 마크다운 렌더링
  */
@@ -21,10 +23,13 @@ export default function PostDetailPage() {
   // 현재 게시글 및 이전/다음 게시글 조회
   const id = useParams().id
   useResetScroll(id)
+  useRemovePrerender()
 
   const { postId, post, prevPost, nextPost } = usePostDetail(id)
+  useDocumentTitle(post?.title)
 
   if (!postId || !post) return <Navigate to='/404' replace />
+  if (postId !== id) return <Navigate to={ROUTES.POST_DETAIL(postId)} replace />
 
   const fallbackSearchKey = `@${post.category}`
   const locationState = location.state as { fromSearchKey?: string } | null
@@ -42,7 +47,7 @@ export default function PostDetailPage() {
           >
             {post.category[0].toUpperCase() + post.category.slice(1)}
           </Link>
-          <h2>{post.title}</h2>
+          <h1>{post.title}</h1>
           <TagList tags={post.tags} />
         </section>
         <section className={styles.postMeta}>
