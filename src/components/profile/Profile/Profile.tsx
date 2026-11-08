@@ -2,11 +2,15 @@ import styles from './Profile.module.css'
 
 import { Suspense } from 'react'
 
+import SkipLink from '@/components/common/SkipLink'
 import TagList from '@/components/common/TagList'
 import Toast from '@/components/common/Toast'
 import useToast from '@/hooks/useToast'
 import ProfileImage from '@/components/profile/ProfileImage'
 import ProfileTagCountList from '@/components/profile/ProfileTagCountList'
+
+// 태그가 많아 Tab으로 지나기 어려우므로 건너뛰기 링크가 이 지점으로 포커스를 옮긴다.
+const TAGS_END_ID = 'profile-tags-end'
 
 /**
  * 프로필 영역 컴포넌트
@@ -37,12 +41,18 @@ export default function Profile() {
             포트폴리오.pdf
           </a>
         </h2>
-        <div className={styles.profileTags}>
-          <Suspense
-            fallback={<TagList tags={[]} className={styles.profileTagList} />}
-          >
-            <ProfileTagCountList className={styles.profileTagList} />
-          </Suspense>
+        <div className={styles.tagsArea}>
+          <SkipLink targetId={TAGS_END_ID} className={styles.tagsSkipLink}>
+            태그 목록 건너뛰기
+          </SkipLink>
+          <div className={styles.profileTags}>
+            <Suspense
+              fallback={<TagList tags={[]} className={styles.profileTagList} />}
+            >
+              <ProfileTagCountList className={styles.profileTagList} />
+            </Suspense>
+          </div>
+          <div id={TAGS_END_ID} tabIndex={-1} className={styles.tagsEnd} />
         </div>
       </div>
       {showDownloadToast ? (

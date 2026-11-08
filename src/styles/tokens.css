@@ -2,7 +2,9 @@
  * 디자인 토큰
  *
  * - 테마와 무관한 값은 :root, 테마별 값은 [data-theme] 블록에 둔다.
- * - data-theme은 DefaultLayout의 최상위 요소에 붙으므로 색상과 shadow는 그 안에서만 정의된다.
+ * - data-theme은 html 요소에 붙는다. index.html의 인라인 스크립트가 첫 렌더 전에 정하고 ThemeProvider가 갱신한다.
+ * - --color-bg를 바꾸면 index.html의 첫 화면 배경도 같은 값으로 바꾼다. theme.test.ts가 검사한다.
+ * - 작은 글자에 쓰는 색은 --color-bg와 --color-surface 위에서 4.5:1 이상을 유지한다.
  * - em 단위 토큰은 사용 위치의 font-size를 기준으로 계산된다.
  *
  * 브레이크포인트: 768px
@@ -63,6 +65,7 @@
     --z-raised: 1;
     --z-overlay: 2;
     --z-toast: 20;
+    --z-skip-link: 30;
 
     /* 키보드 포커스 표시. 색은 --color-accent를 쓴다. */
     --focus-ring-width: 2px;
@@ -79,13 +82,13 @@
 
     --color-text: #242424;
     --color-text-muted: #505050;
-    --color-text-subtle: #888;
-    --color-text-accent: #00a57b;
+    --color-text-subtle: #616161;
+    --color-text-accent: #00815f;
 
-    --color-accent: #36f;
-    --color-accent-80: #3366ffcc;
-    --color-action: #ff50aa;
-    --color-link: #0074ff;
+    --color-accent: #2e5cf0;
+    --color-accent-80: #2e5cf0cc;
+    --color-action: #d1287c;
+    --color-link: #0066e0;
 
     --color-icon: #444;
     --color-icon-muted: #4442;
@@ -108,13 +111,13 @@
 
     --color-text: #fafafc;
     --color-text-muted: #cacaca;
-    --color-text-subtle: #888;
+    --color-text-subtle: #959595;
     --color-text-accent: #e6d874;
 
-    --color-accent: #75f;
-    --color-accent-80: #7755ffcc;
+    --color-accent: #8f7aff;
+    --color-accent-80: #8f7affcc;
     --color-action: #adf;
-    --color-link: #0074ff;
+    --color-link: #4a90ff;
 
     --color-icon: #ddd;
     --color-icon-muted: #dfdfdf22;

@@ -9,6 +9,10 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html {
+    background-color: var(--color-bg);
+}
+
 body {
     text-rendering: optimizeLegibility;
 }
@@ -118,5 +122,20 @@ input:focus {
 
     100% {
         background-position-x: -200%;
+    }
+}
+
+/* 움직임을 줄이는 설정이면 전환과 애니메이션을 즉시 끝낸다. 인라인 style로 넣은 애니메이션도 덮는다. */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 0으로 두면 animationend가 생략되는 브라우저가 있어 사실상 0인 값을 쓴다. */
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 0으로 두면 transitionend가 생략되는 브라우저가 있어 사실상 0인 값을 쓴다. */
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }

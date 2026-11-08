@@ -15,6 +15,11 @@
     margin-bottom: 10vh;
 }
 
+/* 건너뛰기 링크로 받은 포커스는 표시하지 않는다. 다음 Tab의 시작점일 뿐이다. */
+.bodyContainer:focus {
+    outline: none;
+}
+
 @media screen and (max-width: 768px) {
     .bodyContainer {
         width: 100vw;

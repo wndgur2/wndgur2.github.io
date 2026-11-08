@@ -33,6 +33,23 @@
             transparent 72%)
 }
 
+/* .profile이 z-index로 쌓임 맥락을 만들어 fixed 건너뛰기 링크가 헤더 아래에 깔리므로 태그 영역 위에 띄운다. */
+.tagsArea {
+    position: relative;
+}
+
+.tagsSkipLink {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+}
+
+/* 건너뛰기 링크의 도착점. 다음 Tab의 시작점일 뿐이라 포커스를 표시하지 않는다. */
+.tagsEnd:focus {
+    outline: none;
+}
+
 .profileTagList {
     justify-content: center;
     font-size: var(--font-size-lg);
