@@ -21,7 +21,9 @@ export interface GraphFilter {
 }
 
 export const nodeRadius = (node: KGNode) =>
-  node.kind === 'post' ? 4.5 : 3 + Math.sqrt(node.count) * 1.8
+  node.kind === 'post'
+    ? Math.max(4.5, 3 + Math.sqrt(node.count ?? 0) * 1.8)
+    : 3 + Math.sqrt(node.count) * 1.8
 
 /** force-graph 계열 라이브러리처럼 링크 끝점은 문자열 id 또는 노드 객체다. */
 export const endId = (end: SimLink['source']) =>

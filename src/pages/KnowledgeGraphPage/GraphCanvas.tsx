@@ -231,9 +231,11 @@ export default function GraphCanvas({
       ctx.lineJoin = 'round'
       for (const n of nodes) {
         if (n.x === undefined) continue
+        // 개념을 흡수해 여러 글과 이어진 글은 개념처럼 일찍 라벨을 보인다.
+        const hub = n.kind === 'concept' ? n.count : (n.count ?? 0)
         let visibility =
-          n.kind === 'concept'
-            ? clamp01((k * (0.6 + 0.25 * n.count) - 1.1) / 0.5)
+          hub > 0
+            ? clamp01((k * (0.6 + 0.25 * hub) - 1.1) / 0.5)
             : clamp01((k - 1.8) / 0.6)
         if (focusSet) visibility = focusSet.has(n.id) ? 1 : 0
         else if (matches) visibility = matches.has(n.id) ? 1 : 0

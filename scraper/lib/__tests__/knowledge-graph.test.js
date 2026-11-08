@@ -118,4 +118,51 @@ describe('buildGraph', () => {
       target: 'concept:serversentevents',
     })
   })
+
+  it('folds a concept into the post with the same title', () => {
+    const owl = { ...post('owl', []), title: 'Owl', category: 'project' }
+    const ble = { ...post('ble', [], 'bonding'), title: 'BLE 본딩 정리' }
+    const cache = {
+      posts: {
+        owl: {
+          hash: postHash(owl),
+          summary: '',
+          concepts: [
+            { name: 'Owl', type: 'domain', importance: 3 },
+            { name: 'BLE', type: 'concept', importance: 3 },
+          ],
+          relations: [{ source: 'Owl', target: 'BLE', relation: 'uses' }],
+        },
+        ble: {
+          hash: postHash(ble),
+          summary: '',
+          concepts: [
+            { name: 'Owl', type: 'domain', importance: 2 },
+            { name: 'BLE', type: 'concept', importance: 3 },
+          ],
+          relations: [],
+        },
+      },
+    }
+
+    const graph = buildGraph([owl, ble], cache)
+
+    expect(graph.nodes.find(n => n.id === 'concept:owl')).toBeUndefined()
+    expect(graph.nodes.find(n => n.id === 'post:owl')).toMatchObject({
+      count: 1,
+    })
+    expect(graph.stats.concepts).toBe(1)
+    // 자기 자신을 가리키던 링크는 없어지고, 다른 글의 언급은 글 노드로 간다
+    expect(graph.links).toContainEqual(
+      expect.objectContaining({ source: 'post:ble', target: 'post:owl' }),
+    )
+    expect(graph.links).toContainEqual(
+      expect.objectContaining({
+        source: 'post:owl',
+        target: 'concept:ble',
+        kind: 'relation',
+      }),
+    )
+    expect(graph.links.some(l => l.source === l.target)).toBe(false)
+  })
 })

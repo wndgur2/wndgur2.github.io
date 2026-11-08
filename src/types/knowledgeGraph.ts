@@ -7,6 +7,8 @@ export interface KGPostNode {
   category: string
   date: string
   summary?: string
+  /** 같은 이름의 개념을 흡수한 글이면, 이 글을 언급한 다른 글 수 */
+  count?: number
 }
 
 export interface KGConceptNode {

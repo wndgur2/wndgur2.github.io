@@ -206,9 +206,43 @@ export function buildGraph(posts, cache) {
   const mostCommon = counts =>
     [...counts.entries()].sort((x, y) => y[1] - x[1])[0][0]
 
+  // 제목이 개념 이름과 같은 글(프로젝트 "Owl", 문제 "Flatten", 노트 "React")은 그 개념 자체다.
+  // 개념 노드를 따로 두면 같은 이름이 두 번 보이므로, 개념을 그 글 노드에 흡수한다.
+  const postByTitle = new Map()
+  for (const post of posts) {
+    const key = conceptKey(post.title)
+    postByTitle.set(key, postByTitle.has(key) ? null : `post:${post.id}`)
+  }
+  const absorbed = new Map()
   for (const concept of concepts.values()) {
+    const postNodeId = postByTitle.get(concept.key)
+    if (postNodeId) absorbed.set(`concept:${concept.key}`, postNodeId)
+  }
+
+  const finalLinks = []
+  const linkKeys = new Set()
+  for (const link of links) {
+    const source = absorbed.get(link.source) ?? link.source
+    const target = absorbed.get(link.target) ?? link.target
+    if (source === target) continue
+    const key = `${source}|${target}|${link.kind}|${link.relation ?? ''}`
+    if (linkKeys.has(key)) continue
+    linkKeys.add(key)
+    finalLinks.push({ ...link, source, target })
+  }
+
+  for (const concept of concepts.values()) {
+    const id = `concept:${concept.key}`
+    const postNodeId = absorbed.get(id)
+    if (postNodeId) {
+      // 흡수한 글 노드는 자기를 언급한 다른 글 수만큼 커진다.
+      const node = nodes.find(n => n.id === postNodeId)
+      const selfId = postNodeId.slice('post:'.length)
+      node.count = concept.posts.size - (concept.posts.has(selfId) ? 1 : 0)
+      continue
+    }
     nodes.push({
-      id: `concept:${concept.key}`,
+      id,
       kind: 'concept',
       label: mostCommon(concept.names),
       type: mostCommon(concept.types),
@@ -221,10 +255,10 @@ export function buildGraph(posts, cache) {
     stats: {
       posts: posts.length,
       extracted,
-      concepts: concepts.size,
+      concepts: concepts.size - absorbed.size,
     },
     nodes,
-    links,
+    links: finalLinks,
   }
 }
 

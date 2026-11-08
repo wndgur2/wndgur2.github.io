@@ -147,6 +147,20 @@ export default function KnowledgeGraphPage() {
       </ul>
     )
 
+  const postLinks = (posts: { id: string; label: string; postId: string }[]) =>
+    posts.length > 0 && (
+      <ul className={styles.posts}>
+        {posts.map(n => (
+          <li key={n.id}>
+            <Link className={styles.post} to={ROUTES.POST_DETAIL(n.postId)}>
+              <span className={styles.dot} aria-hidden />
+              <span>{n.label}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    )
+
   return (
     <main className={styles.page}>
       <header className={styles.header}>
@@ -281,6 +295,7 @@ export default function KnowledgeGraphPage() {
                   글 읽기 →
                 </Link>
                 {conceptTags(detail.concepts)}
+                {postLinks(detail.posts)}
               </>
             ) : (
               <>
@@ -308,19 +323,7 @@ export default function KnowledgeGraphPage() {
                     ))}
                   </ul>
                 )}
-                <ul className={styles.posts}>
-                  {detail.posts.map(n => (
-                    <li key={n.id}>
-                      <Link
-                        className={styles.post}
-                        to={ROUTES.POST_DETAIL(n.postId)}
-                      >
-                        <span className={styles.dot} aria-hidden />
-                        <span>{n.label}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+                {postLinks(detail.posts)}
                 {conceptTags(detail.concepts)}
               </>
             )}
