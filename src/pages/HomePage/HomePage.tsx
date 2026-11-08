@@ -1,4 +1,4 @@
-import './HomePage.css'
+import styles from './HomePage.module.css'
 
 import { Suspense } from 'react'
 
@@ -16,11 +16,11 @@ export default function HomePage() {
   useRestoreLostUrl()
 
   return (
-    <div id='home'>
+    <div className={styles.home}>
       <Profile />
 
       <Suspense fallback={<Spinner phrase='게시글 로딩중...' />}>
-        <CategoryList />
+        <CategoryList className={styles.categoryList} />
       </Suspense>
     </div>
   )

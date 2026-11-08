@@ -55,6 +55,13 @@ export async function fetchPosts() {
           ref: BLOG_DB_REF,
           dir: path.posix.dirname(file),
         },
+        // dev-log에 직접 쓴 프로젝트 글(category: Project)도 프로젝트 카드 정보를 갖게 한다.
+        ...(category === 'project' && {
+          description: fm.description ?? '',
+          date_finished: fm.date_finished ?? '',
+          head_count: fm.head_count ?? '',
+          role: fm.role ?? '',
+        }),
       }
     },
     label: 'POST',

@@ -5,6 +5,7 @@ import { fetchPosts } from '../features/posts.js'
 import { fetchProjects } from '../features/projects.js'
 import { ensureDirs } from '../lib/fs.js'
 import { pruneMirroredImages } from '../lib/images.js'
+import { buildGraphFromCache } from '../lib/knowledge-graph.js'
 
 async function main() {
   await ensureDirs()
@@ -13,6 +14,7 @@ async function main() {
   await fetchPosts()
   await fetchAlgorithms()
   await pruneMirroredImages()
+  await buildGraphFromCache()
 
   console.log('✅ Static content generated under public/meta')
 }

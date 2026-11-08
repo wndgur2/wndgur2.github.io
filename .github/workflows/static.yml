@@ -45,6 +45,9 @@ jobs:
       - name: Run lint
         run: pnpm lint
 
+      - name: Run CSS lint
+        run: pnpm lint:css
+
       - name: Run typecheck
         run: pnpm exec tsc --noEmit
 

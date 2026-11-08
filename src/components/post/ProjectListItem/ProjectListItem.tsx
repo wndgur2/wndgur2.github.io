@@ -1,8 +1,8 @@
-import './ProjectListItem.css'
+import styles from './ProjectListItem.module.css'
 
 import { CiImageOff } from 'react-icons/ci'
-import { Link } from 'react-router-dom'
 
+import Card, { CardLink } from '@/components/common/Card'
 import TagList from '@/components/common/TagList'
 import ImageSkeleton from '@/components/post/ImageSkeleton'
 import useSearchKey from '@/features/search/useSearchKey'
@@ -15,23 +15,21 @@ import { type IPost } from '@/types'
  * - 클릭 시 상세 페이지로 이동
  *
  * @param post 목록에서 표시할 프로젝트 게시글 데이터
+ * @param className 카드에 추가할 클래스
  */
 
 interface Props {
   post: IPost
+  className?: string
 }
 
-export default function ProjectListItem({ post }: Props) {
+export default function ProjectListItem({ post, className = '' }: Props) {
   const searchKey = useSearchKey()
 
   return (
-    <Link
-      to={ROUTES.POST_DETAIL(post.id)}
-      className='post-list-item project link clickable'
-      state={{ fromSearchKey: searchKey }}
-    >
+    <Card className={`${styles.project} ${className}`}>
       <section>
-        <div className='project-image-wrapper'>
+        <div className={styles.projectImageWrapper}>
           {post.thumbnail ? (
             <ImageSkeleton
               attrs={{
@@ -39,20 +37,29 @@ export default function ProjectListItem({ post }: Props) {
                 alt: post.title,
                 loading: 'eager',
                 fetchPriority: 'high',
+                className: styles.thumbnail,
               }}
+              noImageClassName={styles.noImage}
             />
           ) : (
-            <CiImageOff className='no-image' size={32} />
+            <CiImageOff className={styles.noImage} size={32} />
           )}
         </div>
-        <header className='project-info content'>
-          <h2 className='project-title'>{post.title}</h2>
+        <header className='content'>
+          <h2 className={styles.projectTitle}>
+            <CardLink
+              to={ROUTES.POST_DETAIL(post.id)}
+              state={{ fromSearchKey: searchKey }}
+            >
+              {post.title}
+            </CardLink>
+          </h2>
           <p>{post.description}</p>
-          <div className='project-info-footer'>
+          <div className={styles.projectInfoFooter}>
             <small>
               {post.date_started}~ {post.date_finished}
             </small>
-            <div className='project-meta'>
+            <div className={styles.projectMeta}>
               <small>{post.role}</small>
               <small>{post.head_count}인</small>
             </div>
@@ -60,6 +67,6 @@ export default function ProjectListItem({ post }: Props) {
         </header>
       </section>
       <TagList tags={post.tags} />
-    </Link>
+    </Card>
   )
 }

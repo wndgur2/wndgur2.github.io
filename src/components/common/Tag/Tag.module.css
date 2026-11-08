@@ -1,0 +1,41 @@
+.tag {
+    display: block;
+    width: fit-content;
+
+    padding: var(--space-3) var(--space-5);
+    margin: var(--space-3);
+
+    color: var(--color-accent);
+    font-size: var(--font-size-sm);
+    line-height: 1.2em;
+
+    border-radius: var(--radius-pill);
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 그림자가 아니라 테두리 역할의 링이고 대응하는 토큰이 없다. */
+    box-shadow: 0 0 0 1.5px var(--color-accent);
+    background-color: var(--color-surface);
+    transition: color var(--duration-base) ease, box-shadow var(--duration-base) ease, background-color var(--duration-base) ease, transform var(--duration-fast) ease;
+
+
+
+}
+
+
+.tag:hover {
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 그림자가 아니라 테두리 역할의 링이고 대응하는 토큰이 없다. */
+    box-shadow: 0 0 0 1.5px var(--color-action);
+    color: var(--color-action);
+}
+
+.tagActive {
+    /* stylelint-disable-next-line declaration-property-value-allowed-list -- 그림자가 아니라 테두리 역할의 링이고 대응하는 토큰이 없다. */
+    box-shadow: 0 0 0 1.5px var(--color-action);
+    color: var(--color-action);
+}
+.tag:active {
+    transform: scale(0.96);
+}
+
+.tag:focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-accent);
+    outline-offset: var(--focus-ring-offset);
+}

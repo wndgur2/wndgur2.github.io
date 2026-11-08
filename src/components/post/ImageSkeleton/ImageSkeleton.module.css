@@ -1,0 +1,96 @@
+/* isolation: 내부 z-index가 밖으로 새면 카드의 CardLink를 덮어 클릭을 막는다. */
+.imageContainer {
+    position: relative;
+    isolation: isolate;
+
+    display: grid;
+    grid-template: 1fr / 1fr;
+
+    justify-self: center;
+
+    max-width: 100%;
+    margin: var(--image-margin, var(--space-10) auto);
+
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.imageContainer>* {
+    grid-area: 1 / 1;
+}
+
+.imageContainer[data-has-dims='true'] {
+    aspect-ratio: var(--img-nw) / var(--img-nh);
+    width: var(--image-width, min(100%, calc(var(--img-nw) * 1px), calc(var(--image-max-height, 90vh) * var(--img-nw) / var(--img-nh))));
+    max-height: var(--image-max-height, 90vh);
+}
+
+.imageContainer[data-has-dims='false'] {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: var(--image-max-height, 90vh);
+}
+
+.imageSkeleton {
+    z-index: var(--z-base);
+
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+
+    border-radius: var(--radius);
+
+    background-size: 200%;
+}
+
+.imageWrapper {
+    z-index: var(--z-raised);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 0;
+
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.imageWrapper picture {
+    display: contents;
+}
+
+.loaded {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: top center;
+
+    opacity: 1;
+
+    transition: opacity var(--duration-slow);
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity var(--duration-slow);
+}
+
+.imageWrapper .noImage {
+    margin: var(--space-5) 0;
+    fill: var(--color-text-subtle);
+}
+
+.noImageContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,17 @@
+.tagList {
+  composes: tagList from '../TagList/TagList.module.css';
+}
+
+/* li 안에서도 태그의 margin을 포함한 높이를 유지한다. IntersectionObserver가 이 높이로 등장 시점을 판단한다. */
+.tagItem {
+  display: flow-root;
+}
+
+.tagItem>.tagContent {
+  transform: scale(0.0);
+  transition: transform var(--duration-slow) ease;
+}
+
+.tagVisible>.tagContent {
+  transform: scale(1);
+}

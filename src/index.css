@@ -9,115 +9,17 @@
     -webkit-tap-highlight-color: transparent;
 }
 
+html {
+    background-color: var(--color-bg);
+}
+
 body {
     text-rendering: optimizeLegibility;
 }
 
 *::selection {
-    color: var(--action-color);
-    background-color: var(--bg-color);
-}
-
-:root {
-    --ko-unicode: U+AC00-D7A3;
-    --en-unicode: U+0041-005A, U+0061-007A;
-
-    --radius-sm: 0.4em;
-    --radius: 0.8em;
-    --radius-lg: 1em;
-    --radius-pill: 1.2em;
-    --radius-circle: 50%;
-
-    --light-fg-color: #fcfcfc;
-    --light-dimmed-fg-color: #eaeaea;
-    --light-transparent-fg-color: #fcfcfcaf;
-    --light-bg-color: #fafafa;
-    --light-dimmed-bg-color: #e3e3e3;
-    --light-hover-bg-color: #fcfcfc;
-    --light-accent-color: #36f;
-    --light-accent-color-80: #3366ffcc;
-    --light-dimmed-accent-color: #13f2;
-    --light-action-color: #ff50aa;
-    --light-content-color: #242424;
-    --light-dimmed-content-color: #505050;
-    --light-accent-content-color: #00a57b;
-    --light-minor-color: #888;
-    --light-icon-color: #444;
-    --light-dimmed-icon-color: #4442;
-    --light-border-color: #ccc;
-    --light-dimmed-border-color: #e4e4e4;
-    --light-light-only-border-color: #ff50aa;
-    --light-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    --light-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-
-    --dark-fg-color: #24242a;
-    --dark-dimmed-fg-color: #333;
-    --dark-transparent-fg-color: #202022af;
-    --dark-bg-color: #161619;
-    --dark-dimmed-bg-color: #222;
-    --dark-hover-bg-color: #161616;
-    --dark-accent-color: #75f;
-    --dark-accent-color-80: #7755ffcc;
-    --dark-dimmed-accent-color: #64f2;
-    --dark-action-color: #adf;
-    --dark-minor-color: #888;
-    --dark-content-color: #fafafc;
-    --dark-dimmed-content-color: #cacaca;
-    --dark-accent-content-color: #e6d874;
-    --dark-icon-color: #ddd;
-    --dark-dimmed-icon-color: #dfdfdf22;
-    --dark-border-color: #323232;
-    --dark-dimmed-border-color: #212121;
-    --dark-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    --dark-hover-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-}
-
-[data-theme="light"] {
-    --fg-color: var(--light-fg-color);
-    --dimmed-fg-color: var(--light-dimmed-fg-color);
-    --transparent-fg-color: var(--light-transparent-fg-color);
-    --bg-color: var(--light-bg-color);
-    --dimmed-bg-color: var(--light-dimmed-bg-color);
-    --hover-bg-color: var(--light-hover-bg-color);
-    --dimmed-accent-color: var(--light-dimmed-accent-color);
-    --accent-color-80: var(--light-accent-color-80);
-    --accent-content-color: var(--light-accent-content-color);
-    --accent-color: var(--light-accent-color);
-    --action-color: var(--light-action-color);
-    --content-color: var(--light-content-color);
-    --dimmed-content-color: var(--light-dimmed-content-color);
-    --minor-color: var(--light-minor-color);
-    --icon-color: var(--light-icon-color);
-    --dimmed-icon-color: var(--light-dimmed-icon-color);
-    --border-color: var(--light-border-color);
-    --dimmed-border-color: var(--light-dimmed-border-color);
-    --light-only-border-color: var(--light-light-only-border-color);
-    --shadow: var(--light-shadow);
-    --hover-shadow: var(--light-hover-shadow);
-}
-
-[data-theme="dark"] {
-    --fg-color: var(--dark-fg-color);
-    --dimmed-fg-color: var(--dark-dimmed-fg-color);
-    --transparent-fg-color: var(--dark-transparent-fg-color);
-    --bg-color: var(--dark-bg-color);
-    --dimmed-bg-color: var(--dark-dimmed-bg-color);
-    --hover-bg-color: var(--dark-hover-bg-color);
-    --action-color: var(--dark-action-color);
-    --accent-color: var(--dark-accent-color);
-    --accent-color-80: var(--dark-accent-color-80);
-    --dimmed-accent-color: var(--dark-dimmed-accent-color);
-    --accent-content-color: var(--dark-accent-content-color);
-    --content-color: var(--dark-content-color);
-    --dimmed-content-color: var(--dark-dimmed-content-color);
-    --minor-color: var(--dark-minor-color);
-    --icon-color: var(--dark-icon-color);
-    --dimmed-icon-color: var(--dark-dimmed-icon-color);
-    --border-color: var(--dark-border-color);
-    --dimmed-border-color: var(--dark-dimmed-border-color);
-    --light-only-border-color: none;
-    --shadow: var(--dark-shadow);
-    --hover-shadow: var(--dark-hover-shadow);
+    color: var(--color-action);
+    background-color: var(--color-bg);
 }
 
 li {
@@ -126,90 +28,49 @@ li {
 
 
 a {
-    color: var(--accent-color);
+    color: var(--color-accent);
     text-decoration: none;
 }
 
 a:hover {
-    color: var(--action-color);
+    color: var(--color-action);
 }
 
 small {
-    color: var(--minor-color);
+    color: var(--color-text-subtle);
 }
 
 .link {
-    color: var(--accent-color);
+    color: var(--color-accent);
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
+    transition: background-color var(--duration-base) ease, transform var(--duration-base) ease;
 }
 
 .link:hover header {
-    color: var(--action-color);
+    color: var(--color-action);
 }
 
 
 .minor {
-    color: var(--minor-color);
+    color: var(--color-text-subtle);
 }
 
 .icon {
-    color: var(--icon-color);
+    color: var(--color-icon);
 }
 
 .content {
-    color: var(--content-color);
+    color: var(--color-text);
 }
 
 .dimmed.content {
-    color: var(--dimmed-content-color);
-}
-
-.action {
-    color: var(--action-color);
-}
-
-.accent {
-    color: var(--accent-color);
-}
-
-button {
-    padding: 0.5em;
-
-    display: flex;
-
-    border-radius: var(--radius-pill);
-    border: none;
-    background-color: transparent;
-
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-button:hover * {
-    color: var(--icon-color);
-    stroke: var(--icon-color);
-}
-
-button:hover {
-    background-color: var(--dimmed-icon-color);
-}
-
-button.accent * {
-    color: var(--accent-color);
-    fill: var(--accent-color);
-    stroke: var(--accent-color);
-}
-
-button.accent:hover {
-    background-color: var(--dimmed-accent-color);
-    --dimmed-accent-color: ;
+    color: var(--color-text-muted);
 }
 
 .clickable {
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    transition: scale 0.2s;
+    transition: background-color var(--duration-base) ease, transform var(--duration-base) ease;
+    transition: scale var(--duration-base);
 }
 
 .clickable:hover {
@@ -223,8 +84,8 @@ button.accent:hover {
 
 .clickable.small {
     cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.2s ease;
-    transition: scale 0.2s;
+    transition: background-color var(--duration-base) ease, transform var(--duration-base) ease;
+    transition: scale var(--duration-base);
 }
 
 .clickable.small:hover {
@@ -239,25 +100,6 @@ button.accent:hover {
     scale: 1.04;
 }
 
-.col {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.seperator {
-    height: 0.5em;
-    margin-bottom: 0.5em;
-    width: 4em;
-    border-bottom: var(--minor-color) 1px solid;
-}
-
-button:disabled {
-    pointer-events: none;
-    opacity: 0.9;
-}
-
 input {
     color: inherit;
 }
@@ -266,96 +108,12 @@ input:focus {
     outline: none;
 }
 
-@media screen and (max-width: 768px) {
-    .mobile {
-        display: block;
-    }
-
-    .pc {
-        display: none !important;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .mobile {
-        display: none !important;
-    }
-
-    .pc {
-        display: block;
-    }
-}
-
-.d-flex {
-    display: flex;
-}
-
-.align-center {
-    align-items: center;
-}
-
-.align-end {
-    align-items: flex-end;
-}
-
-.hidden {
-    display: none;
-}
-
-.toast {
-    position: fixed;
-    left: 50%;
-    bottom: 3.5rem;
-    transform: translateX(-50%);
-    z-index: 20;
-    padding: 0.65rem 1rem;
-    border: 1px solid var(--dimmed-border-color);
-    border-radius: 999px;
-    background: var(--fg-color);
-    color: var(--content-color);
-    font-size: 0.9rem;
-    letter-spacing: 0.03em;
-    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14);
-}
-
-.toast--enter {
-    animation: toast-fade-in 0.18s ease-out forwards;
-}
-
-.toast--exit {
-    animation: toast-fade-out 0.18s ease-in forwards;
-}
-
 .skeleton {
-    background: linear-gradient(90deg, var(--dimmed-bg-color) 25%, var(--dimmed-fg-color) 50%, var(--dimmed-bg-color) 75%);
-    animation: load 1.5s infinite;
+    background: linear-gradient(90deg, var(--color-bg-muted) 25%, var(--color-surface-muted) 50%, var(--color-bg-muted) 75%);
+    animation: load var(--duration-skeleton) infinite;
 }
 
 
-
-@keyframes toast-fade-in {
-    from {
-        opacity: 0;
-        transform: translateX(-50%) translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-}
-
-@keyframes toast-fade-out {
-    from {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-    }
-
-    to {
-        opacity: 0;
-        transform: translateX(-50%) translateY(8px);
-    }
-}
 
 @keyframes load {
     0% {
@@ -364,5 +122,20 @@ input:focus {
 
     100% {
         background-position-x: -200%;
+    }
+}
+
+/* 움직임을 줄이는 설정이면 전환과 애니메이션을 즉시 끝낸다. 인라인 style로 넣은 애니메이션도 덮는다. */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 0으로 두면 animationend가 생략되는 브라우저가 있어 사실상 0인 값을 쓴다. */
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        /* stylelint-disable-next-line declaration-property-value-disallowed-list -- 0으로 두면 transitionend가 생략되는 브라우저가 있어 사실상 0인 값을 쓴다. */
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }

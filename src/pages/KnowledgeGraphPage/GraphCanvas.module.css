@@ -1,0 +1,10 @@
+.wrapper {
+  position: absolute;
+  inset: 0;
+}
+
+/* 한 손가락 끌기를 페이지 스크롤 대신 그래프 이동으로 쓴다. */
+.wrapper canvas {
+  display: block;
+  touch-action: none;
+}

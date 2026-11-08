@@ -1,7 +1,8 @@
-import './SearchResultPage.css'
+import styles from './SearchResultPage.module.css'
 
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa'
 
+import Button from '@/components/common/Button'
 import Spinner from '@/components/common/Spinner'
 import TagCountList from '@/components/common/TagCountList'
 import PostListItem from '@/components/post/PostListItem'
@@ -47,44 +48,49 @@ export default function SearchResultPage() {
   const relatedTags = getTagCounts(searchedPosts)
 
   return (
-    <main className='search-result'>
+    <main className={styles.searchResult}>
       <header>
-        <div className='search-info'>
+        <div className={styles.searchInfo}>
           <h3 className='content'>{searchKey}</h3>
-          <p className='dimmed content search-result-text'> &nbsp; 검색 결과</p>
+          <p className={`dimmed content ${styles.searchResultText}`}> &nbsp; 검색 결과</p>
         </div>
         <div>{searchKey && <TagCountList tags={relatedTags} />}</div>
-        <button
-          className='clickable btn-search-result-sort'
+        <Button
+          className={`clickable ${styles.btnSearchResultSort}`}
           onClick={toggleSortOrder}
         >
-          <p className='dimmed content'>
+          <span className='dimmed content'>
             {sortOrder === 'desc' ? '최근글순' : '오랜글순'}
-          </p>
+          </span>
           {sortOrder === 'desc' ? (
             <FaSortAmountDown className='icon' />
           ) : (
             <FaSortAmountUp className='icon' />
           )}
-        </button>
+        </Button>
       </header>
-      <ul>
-        {posts.length ? (
-          <>
-            {posts.map((post: IPost, i) =>
-              post.category === CATEGORIES.PROJECT ? (
-                <ProjectListItem key={post.id ?? i} post={post} />
-              ) : (
-                <PostListItem key={post.id ?? i} post={post} />
-              ),
-            )}
-
-            {hasMore && <div ref={observerRef} className='infinite-trigger' />}
-          </>
-        ) : (
-          <span>검색 결과가 없습니다. 검색어를 확인해주세요.</span>
-        )}
-      </ul>
+      {posts.length ? (
+        <ul className={styles.results}>
+          {posts.map((post: IPost, i) =>
+            post.category === CATEGORIES.PROJECT ? (
+              <ProjectListItem
+                key={post.id ?? i}
+                post={post}
+                className={styles.listItem}
+              />
+            ) : (
+              <PostListItem
+                key={post.id ?? i}
+                post={post}
+                className={styles.listItem}
+              />
+            ),
+          )}
+        </ul>
+      ) : (
+        <p>검색 결과가 없습니다. 검색어를 확인해주세요.</p>
+      )}
+      {hasMore && <div ref={observerRef} />}
       {isLoading && <Spinner />}
     </main>
   )
