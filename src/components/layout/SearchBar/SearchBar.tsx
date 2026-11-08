@@ -56,13 +56,18 @@ export default function SearchBar({ className = '' }: Props) {
           ref={inputRef}
           value={searchText}
           onChange={e => setSearchText(e.target.value)}
-          autoComplete='false'
+          aria-label='검색어'
+          autoComplete='off'
         />
         <IconButton type='submit' label='검색' className={styles.pc}>
           <FiSearch className='minor' size={24} />
         </IconButton>
       </form>
-      <FiSearch className={`minor ${styles.mobile}`} size={24} />
+      <FiSearch
+        className={`minor ${styles.mobile}`}
+        size={24}
+        aria-hidden='true'
+      />
     </search>
   )
 }

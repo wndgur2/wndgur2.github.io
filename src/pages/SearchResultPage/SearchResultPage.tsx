@@ -59,9 +59,9 @@ export default function SearchResultPage() {
           className={`clickable ${styles.btnSearchResultSort}`}
           onClick={toggleSortOrder}
         >
-          <p className='dimmed content'>
+          <span className='dimmed content'>
             {sortOrder === 'desc' ? '최근글순' : '오랜글순'}
-          </p>
+          </span>
           {sortOrder === 'desc' ? (
             <FaSortAmountDown className='icon' />
           ) : (
@@ -69,31 +69,28 @@ export default function SearchResultPage() {
           )}
         </Button>
       </header>
-      <ul className={styles.results}>
-        {posts.length ? (
-          <>
-            {posts.map((post: IPost, i) =>
-              post.category === CATEGORIES.PROJECT ? (
-                <ProjectListItem
-                  key={post.id ?? i}
-                  post={post}
-                  className={styles.listItem}
-                />
-              ) : (
-                <PostListItem
-                  key={post.id ?? i}
-                  post={post}
-                  className={styles.listItem}
-                />
-              ),
-            )}
-
-            {hasMore && <div ref={observerRef} />}
-          </>
-        ) : (
-          <span>검색 결과가 없습니다. 검색어를 확인해주세요.</span>
-        )}
-      </ul>
+      {posts.length ? (
+        <ul className={styles.results}>
+          {posts.map((post: IPost, i) =>
+            post.category === CATEGORIES.PROJECT ? (
+              <ProjectListItem
+                key={post.id ?? i}
+                post={post}
+                className={styles.listItem}
+              />
+            ) : (
+              <PostListItem
+                key={post.id ?? i}
+                post={post}
+                className={styles.listItem}
+              />
+            ),
+          )}
+        </ul>
+      ) : (
+        <p>검색 결과가 없습니다. 검색어를 확인해주세요.</p>
+      )}
+      {hasMore && <div ref={observerRef} />}
       {isLoading && <Spinner />}
     </main>
   )

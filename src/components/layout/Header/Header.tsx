@@ -44,8 +44,12 @@ export default function Header() {
       ref={headerRef}
       className={`${styles.header} ${isHidden ? styles.hide : styles.top}`}
     >
-      <Link to={ROUTES.HOME} className={`${styles.logo} clickable small`}>
-        <Logo />
+      <Link
+        to={ROUTES.HOME}
+        className={`${styles.logo} clickable small`}
+        aria-label='홈'
+      >
+        <Logo aria-hidden='true' />
       </Link>
       <SearchBar className={styles.search} />
       <ThemeToggler

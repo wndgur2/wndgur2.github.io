@@ -51,7 +51,11 @@ export default function PostDetailPage() {
           <TagList tags={post.tags} />
         </section>
         <section className={styles.postMeta}>
-          <IconLink icon={<IoLogoGithub size={42} />} url={post.github} />
+          <IconLink
+            icon={<IoLogoGithub size={42} />}
+            label='Github 저장소'
+            url={post.github}
+          />
           <small>
             {post.date_started} ~ {post.date_finished}
           </small>

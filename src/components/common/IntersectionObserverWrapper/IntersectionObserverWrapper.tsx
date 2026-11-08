@@ -24,7 +24,9 @@ export default function IntersectionObserverWrapper({
   return (
     <div
       ref={wrapperDivRef}
-      className={`${className} ${isVisible ? visibleClassName : undefined}`}
+      className={[className, isVisible && visibleClassName]
+        .filter(Boolean)
+        .join(' ')}
     >
       <div className={childrenClassName}>{children}</div>
     </div>
