@@ -10,4 +10,5 @@ node_modules
 dist
 dev-dist
 public/meta
+public/media
 scraper/scripts/public/meta

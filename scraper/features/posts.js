@@ -49,6 +49,12 @@ export async function fetchPosts() {
         tags: tags.sort(),
         date_started: fm.date_started ?? 'No date found.',
         github: htmlUrl,
+        imageBase: {
+          owner,
+          repo,
+          ref: BLOG_DB_REF,
+          dir: path.posix.dirname(file),
+        },
       }
     },
     label: 'POST',

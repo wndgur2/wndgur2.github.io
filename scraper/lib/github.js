@@ -25,11 +25,13 @@ export async function getFileText(owner, repo, path, ref) {
   return Buffer.from(data.content, 'base64').toString('utf8')
 }
 
-export async function getRawFile(owner, repo, ref, filePath) {
+export function rawFileUrl(owner, repo, ref, filePath) {
   const encoded = filePath.split('/').map(encodeURIComponent).join('/')
-  const url = `https://raw.githubusercontent.com/${owner}/${repo}/${ref}/${encoded}`
+  return `https://raw.githubusercontent.com/${owner}/${repo}/${ref}/${encoded}`
+}
 
-  const res = await fetch(url)
+export async function getRawFile(owner, repo, ref, filePath) {
+  const res = await fetch(rawFileUrl(owner, repo, ref, filePath))
   if (!res.ok) return null
   return await res.text()
 }

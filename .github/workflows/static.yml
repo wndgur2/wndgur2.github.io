@@ -51,7 +51,15 @@ jobs:
       - name: Run tests
         run: pnpm test
 
-      # 5) Generate static content
+      # 5) Restore mirrored images so unchanged ones are not downloaded again
+      - name: Restore mirrored images
+        uses: actions/cache@v4
+        with:
+          path: public/media
+          key: post-media-${{ github.run_id }}
+          restore-keys: post-media-
+
+      # 6) Generate static content
       - name: Generate static content (Octokit)
         env:
           # 콘텐츠 레포가 모두 공개라 자동 발급 토큰으로 충분하다 (만료 관리 불필요)
@@ -62,11 +70,11 @@ jobs:
           POSTS_DIR: posts
         run: pnpm exec node scraper/scripts/fetch-content.js
 
-      # 6) Build your site
+      # 7) Build your site
       - name: Build site
         run: pnpm build
 
-      # 7) Deploy to GitHub Pages
+      # 8) Deploy to GitHub Pages
       - name: Setup Pages
         uses: actions/configure-pages@v5
 

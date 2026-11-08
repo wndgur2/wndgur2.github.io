@@ -46,6 +46,7 @@ export default function ImageSkeleton({ attrs }: Props) {
       setDims(fromAttrs)
       return
     }
+    if (!src) return
 
     let cancelled = false
     setDims(null)
@@ -97,6 +98,8 @@ export default function ImageSkeleton({ attrs }: Props) {
       setIsError(true)
     }
   }, [src])
+
+  if (!src) return null
 
   return (
     <var

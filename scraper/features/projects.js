@@ -48,6 +48,7 @@ export async function fetchProjects() {
         github: repository.html_url,
         content, // README body without front-matter
         thumbnail: `/images/${repo.toLowerCase()}.jpeg`,
+        imageBase: { owner, repo, ref: repository.default_branch, dir: '.' },
       }
     },
     label: 'PROJECT',
