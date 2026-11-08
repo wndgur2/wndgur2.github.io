@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { FaRegFaceSadCry } from 'react-icons/fa6'
 
-import './ImageSkeleton.css'
+import styles from './ImageSkeleton.module.css'
 
 /**
  * 이미지 스켈레톤 컴포넌트
@@ -9,10 +9,12 @@ import './ImageSkeleton.css'
  * - 로드 실패 시 대체 UI 렌더링
  *
  * @param attrs img 태그에 전달할 속성 객체
+ * @param noImageClassName 로드 실패 아이콘에 추가할 클래스
  */
 
 interface Props {
   attrs: React.ImgHTMLAttributes<HTMLImageElement>
+  noImageClassName?: string
 }
 
 function intrinsicSizeFromAttrs(
@@ -26,7 +28,7 @@ function intrinsicSizeFromAttrs(
   return { w, h }
 }
 
-export default function ImageSkeleton({ attrs }: Props) {
+export default function ImageSkeleton({ attrs, noImageClassName = '' }: Props) {
   const skeletonRef = useRef<HTMLCanvasElement>(null)
   const imgRef = useRef<HTMLImageElement>(null)
   const [isError, setIsError] = useState(false)
@@ -87,10 +89,10 @@ export default function ImageSkeleton({ attrs }: Props) {
     const image = imgRef.current
 
     image.src = src
-    imgRef.current.classList.add('loading')
+    imgRef.current.classList.add(styles.loading)
     image.onload = () => {
       skeletonRef.current?.remove()
-      imgRef.current?.classList.replace('loading', 'loaded')
+      imgRef.current?.classList.replace(styles.loading, styles.loaded)
     }
     image.onerror = () => {
       skeletonRef.current?.remove()
@@ -100,19 +102,22 @@ export default function ImageSkeleton({ attrs }: Props) {
 
   return (
     <var
-      className='image-container'
+      className={styles.imageContainer}
       style={containerStyle}
       data-has-dims={hasDims ? 'true' : 'false'}
     >
       <canvas
         key={src}
-        className='image-skeleton skeleton'
+        className={`${styles.imageSkeleton} skeleton`}
         ref={skeletonRef}
       />
-      <var className='image-wrapper'>
+      <var className={styles.imageWrapper}>
         {isError ? (
-          <var className='no-image-container'>
-            <FaRegFaceSadCry className='no-image minor' size={48} />
+          <var className={styles.noImageContainer}>
+            <FaRegFaceSadCry
+              className={`${styles.noImage} minor ${noImageClassName}`}
+              size={48}
+            />
             <small>이미지를 못 가져왔어요.</small>
             <small>{attrs.src}</small>
           </var>

@@ -1,0 +1,38 @@
+.postListItem {
+    min-width: 20em;
+    width: 20em;
+}
+
+.postListItem>header {
+    min-width: 16rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-10);
+    padding: var(--space-3);
+    transition: padding var(--duration-base);
+}
+
+.postListItem>header>h3 {
+    display: flex;
+    align-items: flex-end;
+
+    text-wrap: nowrap;
+    overflow: hidden;
+}
+
+.postListItem>header>h3>small {
+    margin-left: var(--space-5);
+}
+
+.preview {
+    width: 100%;
+    max-height: var(--preview-max-height, 12em);
+    aspect-ratio: var(--preview-aspect-ratio, auto);
+    overflow: hidden;
+}
+
+.preview * {
+    font-size: var(--font-size-root-sm);
+    color: var(--color-text);
+}

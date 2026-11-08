@@ -1,4 +1,4 @@
-import './MarkdownView.css'
+import styles from './MarkdownView.module.css'
 
 import { useEffect } from 'react'
 import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx'
@@ -92,7 +92,7 @@ export default function MarkdownView({ post, overrides }: Props) {
   }
 
   return (
-    <Markdown options={mdOption} className='markdown'>
+    <Markdown options={mdOption} className={styles.markdown}>
       {content}
     </Markdown>
   )

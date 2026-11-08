@@ -1,0 +1,12 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.categoryList {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

@@ -1,4 +1,4 @@
-import './PostDetailPage.css'
+import styles from './PostDetailPage.module.css'
 
 import { IoLogoGithub } from 'react-icons/io'
 import { Link, Navigate, useLocation, useParams } from 'react-router-dom'
@@ -38,33 +38,37 @@ export default function PostDetailPage() {
   const encodedListTargetSearchKey = encodeURIComponent(listTargetSearchKey)
 
   return (
-    <article className='post'>
+    <article className={styles.post}>
       <header>
-        <section className='post-title'>
+        <section className={styles.postTitle}>
           <Link
             to={ROUTES.SEARCH(encodedCategorySearchKey)}
-            className='minor post-category'
+            className={`minor ${styles.postCategory}`}
           >
             {post.category[0].toUpperCase() + post.category.slice(1)}
           </Link>
           <h1>{post.title}</h1>
           <TagList tags={post.tags} />
         </section>
-        <section className='post-meta'>
-          <IconLink icon={<IoLogoGithub size={42} />} url={post.github} />
+        <section className={styles.postMeta}>
+          <IconLink
+            icon={<IoLogoGithub size={42} />}
+            label='Github 저장소'
+            url={post.github}
+          />
           <small>
             {post.date_started} ~ {post.date_finished}
           </small>
         </section>
       </header>
-      <main className='post-content'>
+      <main className={styles.postContent}>
         <MarkdownView post={post} />
       </main>
       <nav>
         {
           <Link
             to={nextPost ? `/post/${nextPost.id}` : '#'}
-            className={nextPost ? 'clickable next' : 'disabled next'}
+            className={`${nextPost ? 'clickable' : styles.disabled} ${styles.next}`}
           >
             <small>&lt; next</small>
             <div>
@@ -72,12 +76,15 @@ export default function PostDetailPage() {
             </div>
           </Link>
         }
-        <Link to={ROUTES.SEARCH(encodedListTargetSearchKey)} className='clickable list'>
+        <Link
+          to={ROUTES.SEARCH(encodedListTargetSearchKey)}
+          className={`clickable ${styles.list}`}
+        >
           <div>목록으로</div>
         </Link>
         <Link
           to={prevPost ? `/post/${prevPost.id}` : '#'}
-          className={prevPost ? 'clickable prev' : 'disabled prev'}
+          className={`${prevPost ? 'clickable' : styles.disabled} ${styles.prev}`}
         >
           <small>previous &gt; </small>
           <div>

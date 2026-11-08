@@ -1,0 +1,35 @@
+/*
+ * button:where()는 우선순위가 요소 선택자와 같다.
+ * className으로 넘긴 규칙이 청크 로드 순서와 무관하게 이 기본값을 덮어쓴다.
+ */
+button:where(.button) {
+    padding: var(--space-5);
+
+    display: flex;
+
+    border-radius: var(--radius-pill);
+    border: none;
+    background-color: transparent;
+
+    cursor: pointer;
+    transition: background-color var(--duration-base) ease, transform var(--duration-base) ease;
+}
+
+button:where(.button):hover * {
+    color: var(--color-icon);
+    stroke: var(--color-icon);
+}
+
+button:where(.button):hover {
+    background-color: var(--color-icon-muted);
+}
+
+button:where(.button):focus-visible {
+    outline: var(--focus-ring-width) solid var(--color-accent);
+    outline-offset: var(--focus-ring-offset);
+}
+
+button:where(.button):disabled {
+    pointer-events: none;
+    opacity: 0.9;
+}
