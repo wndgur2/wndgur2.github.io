@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="480" viewBox="0 0 800 480" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .life{stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 5}
+  .dash{stroke-dasharray:6 4}
+  .ev{stroke:var(--sub);stroke-width:1.5;stroke-dasharray:2 4;fill:none}
+  .b{font-weight:600}
+</style>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sub)"/></marker>
+  <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/></marker>
+</defs>
+<rect class="bg" width="800" height="480" rx="16"/>
+
+<!-- lifelines -->
+<line class="life" x1="130" y1="76" x2="130" y2="456"/>
+<line class="life" x1="400" y1="76" x2="400" y2="456"/>
+<line class="life" x1="670" y1="76" x2="670" y2="456"/>
+
+<!-- headers -->
+<rect class="box" x="45" y="24" width="170" height="52" rx="10"/>
+<text class="t b" x="130" y="56" font-size="15" text-anchor="middle">탭 화면</text>
+<rect class="box" x="300" y="24" width="200" height="52" rx="10"/>
+<text class="t b" x="400" y="56" font-size="15" text-anchor="middle">TanStack Query 캐시</text>
+<rect class="box" x="585" y="24" width="170" height="52" rx="10"/>
+<text class="t b" x="670" y="56" font-size="15" text-anchor="middle">Supabase (RLS)</text>
+
+<!-- step 1 -->
+<rect class="box" x="40" y="96" width="180" height="56" rx="10"/>
+<text class="t" x="130" y="120" font-size="15" text-anchor="middle">세션 null로 마운트</text>
+<text class="s" x="130" y="141" font-size="13" text-anchor="middle">리다이렉트 한 프레임 전</text>
+
+<!-- step 2 -->
+<line class="ln" x1="130" y1="186" x2="396" y2="186" marker-end="url(#arr)"/>
+<text class="s" x="265" y="177" font-size="13" text-anchor="middle">쿼리</text>
+<line class="ln" x1="400" y1="186" x2="666" y2="186" marker-end="url(#arr)"/>
+<text class="s" x="535" y="177" font-size="13" text-anchor="middle">세션 없이 조회</text>
+
+<!-- step 3 -->
+<line class="al dash" x1="670" y1="220" x2="404" y2="220" marker-end="url(#arrA)"/>
+<text class="a" x="535" y="211" font-size="13" text-anchor="middle">[] · 에러 아님</text>
+<rect class="hl" x="325" y="236" width="150" height="40" rx="10"/>
+<text class="t b" x="400" y="261" font-size="15" text-anchor="middle">[] 캐시</text>
+<text class="s" x="680" y="240" font-size="13">매칭되는 행 없음</text>
+
+<!-- login event -->
+<line class="ev" x1="32" y1="310" x2="768" y2="310"/>
+<rect class="box" x="40" y="296" width="76" height="28" rx="14"/>
+<text class="t" x="78" y="315" font-size="13" text-anchor="middle">로그인</text>
+
+<!-- after login -->
+<line class="ln" x1="130" y1="350" x2="396" y2="350" marker-end="url(#arr)"/>
+<text class="s" x="265" y="341" font-size="13" text-anchor="middle">쿼리</text>
+<text class="s" x="535" y="355" font-size="13" text-anchor="middle">데이터가 있어 재요청 안 함</text>
+<line class="ln dash" x1="400" y1="384" x2="134" y2="384" marker-end="url(#arr)"/>
+<text class="s" x="265" y="375" font-size="13" text-anchor="middle">캐시된 []</text>
+<rect class="hl" x="55" y="404" width="150" height="40" rx="10"/>
+<text class="t b" x="130" y="429" font-size="15" text-anchor="middle">빈 목록</text>
+</svg>

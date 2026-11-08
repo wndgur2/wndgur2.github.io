@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="376" viewBox="0 0 800 376" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--line);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .sl{stroke:var(--sub);stroke-width:1.5;fill:none}
+  .dash{stroke-dasharray:5 4} .ghost{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 4}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+  text{font-size:15px} .sm{font-size:13px} .ti{font-size:17px;font-weight:700} .b{font-weight:600}
+</style>
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ms"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ma"/></marker>
+</defs>
+<rect class="bg" width="800" height="376" rx="16"/>
+<text x="32" y="46" class="t ti" text-anchor="start">항목 하나의 delivery 상태 머신</text><text x="32" y="70" class="s sm" text-anchor="start">턴이 이미 시작됐을지 모르는 단계는 자동 재시도하지 않는다</text><rect x="40" y="100" width="156" height="80" rx="11" class="box" /><text x="118" y="126" class="t b" text-anchor="middle">가져오기</text><text x="118" y="145" class="s sm" text-anchor="middle">항목 조회</text><text x="118" y="164" class="s sm" text-anchor="middle">필터 재판정</text><rect x="228" y="100" width="156" height="80" rx="11" class="box" /><text x="306" y="126" class="t b" text-anchor="middle">올리기</text><text x="306" y="145" class="s sm" text-anchor="middle">첨부를 파일로</text><text x="306" y="164" class="s sm" text-anchor="middle">업로드</text><rect x="416" y="100" width="156" height="80" rx="11" class="box" /><text x="494" y="126" class="t b" text-anchor="middle">대화 시작</text><text x="494" y="145" class="s sm" text-anchor="middle">대화 id 먼저 기록</text><text x="494" y="164" class="s sm" text-anchor="middle">→ 턴 시작</text><rect x="604" y="100" width="156" height="80" rx="11" class="box" /><text x="682" y="145" class="t b" text-anchor="middle">넘김 완료</text><line x1="198" y1="140" x2="225" y2="140" class="sl" marker-end="url(#ar)"/><line x1="386" y1="140" x2="413" y2="140" class="sl" marker-end="url(#ar)"/><line x1="574" y1="140" x2="601" y2="140" class="sl" marker-end="url(#ar)"/><line x1="306" y1="182" x2="306" y2="247" class="sl" marker-end="url(#ar)"/><text x="316" y="220" class="s sm" text-anchor="start">리스 만료</text><line x1="494" y1="182" x2="494" y2="247" class="al" marker-end="url(#aa)"/><text x="504" y="220" class="a sm" text-anchor="start">리스 만료</text><rect x="150" y="250" width="246" height="96" rx="11" class="box" /><text x="273" y="293.5" class="t b" text-anchor="middle">다시 대기열에 넣는다</text><text x="273" y="312.5" class="s sm" text-anchor="middle">업로드 단계였다면</text><rect x="420" y="250" width="340" height="96" rx="11" class="hl" /><text x="590" y="284" class="t b" text-anchor="middle">자동 재시도하지 않는다</text><text x="590" y="303" class="s sm" text-anchor="middle">턴이 이미 시작됐는지 모른다</text><text x="590" y="322" class="s sm" text-anchor="middle">다시 돌리면 같은 메일로 대화가 두 번 열린다</text>
+</svg>

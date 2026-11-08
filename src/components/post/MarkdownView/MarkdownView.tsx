@@ -1,11 +1,11 @@
-import styles from './MarkdownView.module.css'
-
 import { useEffect } from 'react'
 import Markdown, { type MarkdownToJSX } from 'markdown-to-jsx'
 
 import ImageSkeleton from '@/components/post/ImageSkeleton'
 import useTheme from '@/hooks/useTheme'
+import useThemedSvgSrc from '@/hooks/useThemedSvgSrc'
 import type { PostTypes } from '@/types'
+import styles from './MarkdownView.module.css'
 
 /**
  * 마크다운 렌더링 컴포넌트
@@ -16,6 +16,16 @@ import type { PostTypes } from '@/types'
  * @param post 렌더링할 게시글 데이터
  * @param overrides markdown-to-jsx 오버라이드 옵션 (선택적)
  */
+
+/** 본문 이미지. 블로그에 올린 SVG는 현재 테마 색으로 바꿔 보여준다. */
+function ThemedImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  const { isDark } = useTheme()
+  const src = useThemedSvgSrc(props.src, isDark)
+  // ImageSkeleton은 src가 바뀌는 것을 견디지 못하므로(스켈레톤을 직접 지운다),
+  // 준비된 뒤에만 그리고 테마가 바뀌면 key로 새로 만든다.
+  if (!src) return null
+  return <ImageSkeleton key={src} attrs={{ ...props, src }} />
+}
 
 interface Props {
   post: PostTypes
@@ -29,7 +39,7 @@ export default function MarkdownView({ post, overrides }: Props) {
     overrides: {
       ...overrides,
       img: {
-        component: (props: any) => <ImageSkeleton attrs={props} />,
+        component: ThemedImage,
       },
     },
   } as MarkdownToJSX.Options

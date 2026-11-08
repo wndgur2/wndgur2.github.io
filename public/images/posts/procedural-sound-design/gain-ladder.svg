@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .ln{stroke:var(--sub);stroke-width:1.5;fill:none}
+    .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+  </style>
+  <rect class="bg" width="800" height="360" rx="16"/>
+
+  <text class="t" x="24" y="46" font-size="17" font-weight="600">음량 사다리</text>
+  <text class="s" x="128" y="46" font-size="13">gain 토큰 여섯 칸</text>
+
+  <!-- 축: 기준선 y=284, 0.5 = 200px -->
+  <line class="grid" x1="72" y1="84" x2="520" y2="84"/>
+  <line class="grid" x1="72" y1="184" x2="520" y2="184"/>
+  <text class="s" x="60" y="89" font-size="13" text-anchor="end">0.5</text>
+  <text class="s" x="60" y="189" font-size="13" text-anchor="end">0.25</text>
+  <text class="s" x="60" y="289" font-size="13" text-anchor="end">0</text>
+
+  <!-- 막대 (값: tokens/base.json audio.gain) -->
+  <rect class="hl" x="88"  y="256" width="48" height="28"  rx="6"/>
+  <rect class="hl" x="160" y="228" width="48" height="56"  rx="6"/>
+  <rect class="hl" x="232" y="204" width="48" height="80"  rx="6"/>
+  <rect class="hl" x="304" y="172" width="48" height="112" rx="6"/>
+  <rect class="hl" x="376" y="124" width="48" height="160" rx="6"/>
+  <rect class="hl" x="448" y="84"  width="48" height="200" rx="6"/>
+  <line class="ln" x1="72" y1="284" x2="520" y2="284"/>
+
+  <text class="t" x="112" y="246" font-size="13" text-anchor="middle">0.07</text>
+  <text class="t" x="472" y="74"  font-size="13" text-anchor="middle">0.5</text>
+
+  <g font-size="15" text-anchor="middle">
+    <text class="t" x="112" y="310">hush</text>
+    <text class="t" x="184" y="310">faint</text>
+    <text class="t" x="256" y="310">soft</text>
+    <text class="t" x="328" y="310">mid</text>
+    <text class="t" x="400" y="310">loud</text>
+    <text class="t" x="472" y="310">peak</text>
+  </g>
+
+  <!-- 설명 -->
+  <rect class="box" x="560" y="84" width="216" height="200" rx="12"/>
+  <text class="s" x="580" y="118" font-size="13">전에는</text>
+  <text class="t" x="580" y="142" font-size="15">0.14~0.5에 흩어진</text>
+  <text class="t" x="580" y="164" font-size="15">임의 float 16개</text>
+  <line class="ln" x1="580" y1="184" x2="756" y2="184" stroke-dasharray="3 4"/>
+  <text class="s" x="580" y="212" font-size="13">지금은</text>
+  <text class="a" x="580" y="236" font-size="15" font-weight="600">토큰 6칸에서 고른다</text>
+  <text class="s" x="580" y="260" font-size="13">조용하게 = 토큰 하나 수정</text>
+</svg>

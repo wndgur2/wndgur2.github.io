@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="424" viewBox="0 0 800 424" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+    .dash{stroke:var(--sub);stroke-width:1.5;fill:none;stroke-dasharray:6 5}
+    .ah{fill:var(--sub)} .aah{fill:var(--accent)}
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aah" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="424" rx="16"/>
+
+  <!-- 1행: 입력 → 모델 -->
+  <rect class="box" x="49" y="40" width="150" height="64" rx="10"/>
+  <text class="t" x="124" y="67" font-size="15" text-anchor="middle">타임라인 기록</text>
+  <text class="s" x="124" y="88" font-size="13" text-anchor="middle">STT 전사</text>
+
+  <rect class="box" x="233" y="40" width="150" height="64" rx="10"/>
+  <text class="t" x="308" y="67" font-size="15" text-anchor="middle">2분 윈도우</text>
+  <text class="s" x="308" y="88" font-size="13" text-anchor="middle">구간 나누기</text>
+
+  <rect class="box" x="417" y="40" width="150" height="64" rx="10"/>
+  <text class="t" x="492" y="67" font-size="15" text-anchor="middle">state 구성</text>
+  <text class="s" x="492" y="88" font-size="13" text-anchor="middle">전사 · 발화 통계 · 메타</text>
+
+  <rect class="hl" x="601" y="40" width="150" height="64" rx="10"/>
+  <text class="t" x="676" y="67" font-size="15" font-weight="600" text-anchor="middle">Laya 분류</text>
+  <text class="s" x="676" y="88" font-size="13" text-anchor="middle">INT8 ONNX</text>
+
+  <line class="ln" x1="199" y1="72" x2="231" y2="72" marker-end="url(#arr)"/>
+  <line class="ln" x1="383" y1="72" x2="415" y2="72" marker-end="url(#arr)"/>
+  <line class="ln" x1="567" y1="72" x2="599" y2="72" marker-end="url(#arr)"/>
+  <line class="ln" x1="676" y1="104" x2="676" y2="174" marker-end="url(#arr)"/>
+
+  <!-- 2행: 보정 → 판정 → 확정 -->
+  <rect class="box" x="601" y="176" width="150" height="64" rx="10"/>
+  <text class="t" x="676" y="203" font-size="15" text-anchor="middle">temperature 보정</text>
+  <text class="s" x="676" y="224" font-size="13" text-anchor="middle">logit ÷ T</text>
+
+  <rect class="box" x="417" y="176" width="150" height="64" rx="10"/>
+  <text class="t" x="492" y="203" font-size="15" text-anchor="middle">확신 ≥ 0.7 ?</text>
+  <text class="s" x="492" y="224" font-size="13" text-anchor="middle">보정된 최대 확률</text>
+
+  <rect class="box" x="233" y="176" width="150" height="64" rx="10"/>
+  <text class="t" x="308" y="203" font-size="15" text-anchor="middle">스무딩 · 병합</text>
+  <text class="s" x="308" y="224" font-size="13" text-anchor="middle">튀는 윈도우 정리</text>
+
+  <rect class="box" x="49" y="168" width="150" height="80" rx="10"/>
+  <text class="t" x="124" y="194" font-size="15" text-anchor="middle">상황 라벨</text>
+  <text class="s" x="124" y="215" font-size="13" text-anchor="middle">독백 · 일상 대화</text>
+  <text class="s" x="124" y="234" font-size="13" text-anchor="middle">강의 · 일 · 기타</text>
+
+  <line class="ln" x1="601" y1="208" x2="569" y2="208" marker-end="url(#arr)"/>
+  <line class="ln" x1="417" y1="208" x2="385" y2="208" marker-end="url(#arr)"/>
+  <text class="s" x="400" y="198" font-size="13" text-anchor="middle">예</text>
+  <line class="ln" x1="233" y1="208" x2="201" y2="208" marker-end="url(#arr)"/>
+
+  <!-- 3행: 낮은 확신 → 사용자 -->
+  <line class="al" x1="492" y1="240" x2="492" y2="318" marker-end="url(#arrA)"/>
+  <text class="a" x="480" y="284" font-size="13" text-anchor="end" font-weight="600">아니오 → 불확실</text>
+
+  <rect class="hl" x="417" y="320" width="150" height="64" rx="10"/>
+  <text class="t" x="492" y="347" font-size="15" text-anchor="middle">사용자 확인</text>
+  <text class="s" x="492" y="368" font-size="13" text-anchor="middle">하루 돌아보기에서</text>
+
+  <rect class="box" x="601" y="320" width="150" height="64" rx="10"/>
+  <text class="t" x="676" y="347" font-size="15" text-anchor="middle">교정 데이터</text>
+  <text class="s" x="676" y="368" font-size="13" text-anchor="middle">(state, 정답)</text>
+
+  <line class="ln" x1="567" y1="352" x2="599" y2="352" marker-end="url(#arr)"/>
+  <line class="dash" x1="676" y1="320" x2="676" y2="242" marker-end="url(#arr)"/>
+  <text class="s" x="664" y="284" font-size="13" text-anchor="end">재보정 · 재학습</text>
+</svg>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="432" viewBox="0 0 800 432" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .bar{fill:var(--line)} .base{stroke:var(--line);stroke-width:1.5}
+    .thr{stroke:var(--sub);stroke-width:1.5;stroke-dasharray:5 5}
+  </style>
+  <rect class="bg" width="800" height="432" rx="16"/>
+
+  <!-- 왼쪽: 보정 전 -->
+  <rect class="box" x="32" y="28" width="356" height="348" rx="12"/>
+  <text class="t" x="52" y="60" font-size="17" font-weight="600">보정 전 · T = 1</text>
+  <text class="s" x="52" y="84" font-size="13">최대 확률 0.79 → 그대로 확정</text>
+
+  <line class="thr" x1="48" y1="190" x2="372" y2="190"/>
+  <text class="s" x="372" y="182" font-size="13" text-anchor="end">임계값 0.7</text>
+
+  <rect class="bar" x="62" y="318" width="36" height="12"/>
+  <rect class="a" x="126" y="172" width="36" height="158"/>
+  <rect class="bar" x="190" y="322" width="36" height="8"/>
+  <rect class="bar" x="254" y="312" width="36" height="18"/>
+  <rect class="bar" x="318" y="326" width="36" height="4"/>
+  <text class="s" x="80" y="310" font-size="13" text-anchor="middle">0.06</text>
+  <text class="a" x="144" y="164" font-size="13" font-weight="600" text-anchor="middle">0.79</text>
+  <text class="s" x="208" y="314" font-size="13" text-anchor="middle">0.04</text>
+  <text class="s" x="272" y="304" font-size="13" text-anchor="middle">0.09</text>
+  <text class="s" x="336" y="318" font-size="13" text-anchor="middle">0.02</text>
+  <line class="base" x1="48" y1="330" x2="372" y2="330"/>
+  <text class="s" x="80" y="352" font-size="13" text-anchor="middle">독백</text>
+  <text class="t" x="144" y="352" font-size="13" text-anchor="middle">일상 대화</text>
+  <text class="s" x="208" y="352" font-size="13" text-anchor="middle">강의</text>
+  <text class="s" x="272" y="352" font-size="13" text-anchor="middle">일</text>
+  <text class="s" x="336" y="352" font-size="13" text-anchor="middle">기타</text>
+
+  <!-- 오른쪽: 보정 후 -->
+  <rect class="box" x="412" y="28" width="356" height="348" rx="12"/>
+  <text class="t" x="432" y="60" font-size="17" font-weight="600">보정 후 · T = 2</text>
+  <text class="s" x="432" y="84" font-size="13">최대 확률 0.50 → 불확실, 사용자 확인</text>
+
+  <line class="thr" x1="428" y1="190" x2="752" y2="190"/>
+  <text class="s" x="752" y="182" font-size="13" text-anchor="end">임계값 0.7</text>
+
+  <rect class="bar" x="442" y="302" width="36" height="28"/>
+  <rect class="a" x="506" y="230" width="36" height="100"/>
+  <rect class="bar" x="570" y="308" width="36" height="22"/>
+  <rect class="bar" x="634" y="296" width="36" height="34"/>
+  <rect class="bar" x="698" y="314" width="36" height="16"/>
+  <text class="s" x="460" y="294" font-size="13" text-anchor="middle">0.14</text>
+  <text class="a" x="524" y="222" font-size="13" font-weight="600" text-anchor="middle">0.50</text>
+  <text class="s" x="588" y="300" font-size="13" text-anchor="middle">0.11</text>
+  <text class="s" x="652" y="288" font-size="13" text-anchor="middle">0.17</text>
+  <text class="s" x="716" y="306" font-size="13" text-anchor="middle">0.08</text>
+  <line class="base" x1="428" y1="330" x2="752" y2="330"/>
+  <text class="s" x="460" y="352" font-size="13" text-anchor="middle">독백</text>
+  <text class="t" x="524" y="352" font-size="13" text-anchor="middle">일상 대화</text>
+  <text class="s" x="588" y="352" font-size="13" text-anchor="middle">강의</text>
+  <text class="s" x="652" y="352" font-size="13" text-anchor="middle">일</text>
+  <text class="s" x="716" y="352" font-size="13" text-anchor="middle">기타</text>
+
+  <text class="t" x="400" y="408" font-size="15" text-anchor="middle">같은 logit을 T로 나눌 뿐이라 1등(일상 대화)은 그대로, 분포만 평평해진다</text>
+</svg>

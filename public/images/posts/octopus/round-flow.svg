@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="330" viewBox="0 0 800 330" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ms" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ma" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<rect class="bg" width="800" height="330" rx="16"/>
+
+<!-- row 1 -->
+<rect class="box" x="40" y="96" width="140" height="56" rx="12"/>
+<text class="t" x="110" y="120" font-size="15" text-anchor="middle">역할·제시어 확인</text>
+<text class="s" x="110" y="140" font-size="13" text-anchor="middle">오징어 / 문어</text>
+<line class="ln" x1="180" y1="124" x2="226" y2="124" marker-end="url(#ah)"/>
+
+<rect class="box" x="230" y="96" width="140" height="56" rx="12"/>
+<text class="t" x="300" y="120" font-size="15" text-anchor="middle">그림 그리기</text>
+<text class="s" x="300" y="140" font-size="13" text-anchor="middle">차례대로 캔버스에</text>
+<line class="ln" x1="370" y1="124" x2="416" y2="124" marker-end="url(#ah)"/>
+
+<rect class="box" x="420" y="96" width="140" height="56" rx="12"/>
+<text class="t" x="490" y="120" font-size="15" text-anchor="middle">토론</text>
+<text class="s" x="490" y="140" font-size="13" text-anchor="middle">그림 보고 추리</text>
+<line class="ln" x1="560" y1="124" x2="606" y2="124" marker-end="url(#ah)"/>
+
+<rect class="box" x="610" y="96" width="140" height="56" rx="12"/>
+<text class="t" x="680" y="120" font-size="15" text-anchor="middle">투표</text>
+<text class="s" x="680" y="140" font-size="13" text-anchor="middle">문어로 의심되는 사람</text>
+
+<!-- revote loop -->
+<path class="al" d="M655,96 C655,54 705,54 705,92" marker-end="url(#aa)"/>
+<text class="a" x="680" y="46" font-size="13" text-anchor="middle" font-weight="600">동점이면 재투표</text>
+
+<!-- vote -> vote result -->
+<line class="ln" x1="680" y1="152" x2="680" y2="232" marker-end="url(#ah)"/>
+<text class="s" x="640" y="72" font-size="13" text-anchor="end">다시 동점이면 문어 승리</text>
+
+<!-- row 2 (right to left) -->
+<rect class="box" x="610" y="236" width="140" height="56" rx="12"/>
+<text class="t" x="680" y="260" font-size="15" text-anchor="middle">투표 결과</text>
+<text class="s" x="680" y="280" font-size="13" text-anchor="middle">문어 정체 공개</text>
+<line class="ln" x1="610" y1="264" x2="564" y2="264" marker-end="url(#ah)"/>
+
+<rect class="hl" x="420" y="236" width="140" height="56" rx="12"/>
+<text class="t" x="490" y="260" font-size="15" text-anchor="middle">문어 추측</text>
+<text class="s" x="490" y="280" font-size="13" text-anchor="middle">맞히면 문어 승리</text>
+<line class="ln" x1="420" y1="264" x2="374" y2="264" marker-end="url(#ah)"/>
+
+<rect class="box" x="230" y="236" width="140" height="56" rx="12"/>
+<text class="t" x="300" y="260" font-size="15" text-anchor="middle">라운드 결과</text>
+<text class="s" x="300" y="280" font-size="13" text-anchor="middle">승리 팀 · 점수</text>
+<line class="ln" x1="230" y1="264" x2="184" y2="264" marker-end="url(#ah)"/>
+<text class="s" x="207" y="308" font-size="13" text-anchor="middle">마지막 라운드</text>
+
+<rect class="box" x="40" y="236" width="140" height="56" rx="12"/>
+<text class="t" x="110" y="260" font-size="15" text-anchor="middle">최종 순위</text>
+<text class="s" x="110" y="280" font-size="13" text-anchor="middle">누적 점수</text>
+
+<!-- next round loop -->
+<polyline class="ln" points="270,236 270,194 110,194 110,156" marker-end="url(#ah)"/>
+<text class="s" x="190" y="186" font-size="13" text-anchor="middle">다음 라운드</text>
+</svg>

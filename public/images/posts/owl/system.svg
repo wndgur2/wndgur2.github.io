@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="448" viewBox="0 0 800 448" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .lane{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:5 5}
+    .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+    .ah{fill:var(--sub)} .aah{fill:var(--accent)}
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aah" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="448" rx="16"/>
+
+  <!-- 목걸이 -->
+  <rect class="lane" x="24" y="24" width="752" height="148" rx="12"/>
+  <text class="t" x="44" y="54" font-size="17" font-weight="600">목걸이</text>
+  <text class="s" x="104" y="54" font-size="13">녹음하고 쌓기만 한다</text>
+
+  <rect class="box" x="48" y="80" width="132" height="64" rx="10"/>
+  <text class="t" x="114" y="107" font-size="15" text-anchor="middle">마이크</text>
+  <text class="s" x="114" y="128" font-size="13" text-anchor="middle">PDM</text>
+
+  <rect class="box" x="220" y="80" width="132" height="64" rx="10"/>
+  <text class="t" x="286" y="107" font-size="15" text-anchor="middle">VAD</text>
+  <text class="s" x="286" y="128" font-size="13" text-anchor="middle">말할 때만 저장</text>
+
+  <rect class="box" x="392" y="80" width="132" height="64" rx="10"/>
+  <text class="t" x="458" y="107" font-size="15" text-anchor="middle">Opus 인코딩</text>
+  <text class="s" x="458" y="128" font-size="13" text-anchor="middle">16kHz · 16kbps</text>
+
+  <rect class="box" x="564" y="80" width="132" height="64" rx="10"/>
+  <text class="t" x="630" y="107" font-size="15" text-anchor="middle">플래시</text>
+  <text class="s" x="630" y="128" font-size="13" text-anchor="middle">16MB · 약 2시간</text>
+
+  <line class="ln" x1="180" y1="112" x2="218" y2="112" marker-end="url(#arr)"/>
+  <line class="ln" x1="352" y1="112" x2="390" y2="112" marker-end="url(#arr)"/>
+  <line class="ln" x1="524" y1="112" x2="562" y2="112" marker-end="url(#arr)"/>
+
+  <!-- BLE 구간 -->
+  <line class="al" x1="610" y1="146" x2="610" y2="330" marker-end="url(#arrA)"/>
+  <line class="al" x1="650" y1="330" x2="650" y2="146" marker-end="url(#arrA)"/>
+  <text class="a" x="596" y="214" font-size="15" text-anchor="end" font-weight="600">BLE · 폰이 15분마다 요청</text>
+  <text class="s" x="596" y="236" font-size="13" text-anchor="end">세그먼트를 DATA 청크로 받음</text>
+  <text class="a" x="664" y="214" font-size="15" font-weight="600">ACK</text>
+  <text class="s" x="664" y="236" font-size="13">CRC 맞으면 삭제</text>
+
+  <!-- 폰 -->
+  <rect class="lane" x="24" y="268" width="752" height="156" rx="12"/>
+  <text class="t" x="44" y="298" font-size="17" font-weight="600">폰</text>
+  <text class="s" x="72" y="298" font-size="13">판단은 전부 폰에서, 기록은 폰 밖으로 나가지 않음</text>
+
+  <rect class="box" x="564" y="332" width="132" height="64" rx="10"/>
+  <text class="t" x="630" y="359" font-size="15" text-anchor="middle">저장</text>
+  <text class="s" x="630" y="380" font-size="13" text-anchor="middle">디스크에 먼저</text>
+
+  <rect class="box" x="392" y="332" width="132" height="64" rx="10"/>
+  <text class="t" x="458" y="359" font-size="15" text-anchor="middle">STT</text>
+  <text class="s" x="458" y="380" font-size="13" text-anchor="middle">온디바이스</text>
+
+  <rect class="hl" x="220" y="332" width="132" height="64" rx="10"/>
+  <text class="t" x="286" y="359" font-size="15" text-anchor="middle">타임라인</text>
+  <text class="s" x="286" y="380" font-size="13" text-anchor="middle">시각 · 장소 · 텍스트</text>
+
+  <rect class="box" x="48" y="332" width="132" height="64" rx="10"/>
+  <text class="t" x="114" y="359" font-size="15" text-anchor="middle">폰 GPS</text>
+  <text class="s" x="114" y="380" font-size="13" text-anchor="middle">위치</text>
+
+  <line class="ln" x1="564" y1="364" x2="526" y2="364" marker-end="url(#arr)"/>
+  <line class="ln" x1="392" y1="364" x2="354" y2="364" marker-end="url(#arr)"/>
+  <line class="ln" x1="180" y1="364" x2="218" y2="364" marker-end="url(#arr)"/>
+</svg>

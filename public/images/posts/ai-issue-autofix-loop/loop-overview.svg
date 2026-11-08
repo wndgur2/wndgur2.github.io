@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--line);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .sl{stroke:var(--sub);stroke-width:1.5;fill:none}
+  .dash{stroke-dasharray:5 4} .ghost{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 4}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+  text{font-size:15px} .sm{font-size:13px} .ti{font-size:17px;font-weight:700} .b{font-weight:600}
+</style>
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ms"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ma"/></marker>
+</defs>
+<rect class="bg" width="800" height="600" rx="16"/>
+<text x="32" y="46" class="t ti" text-anchor="start">이슈 분류·자동 수정 루프</text><text x="32" y="70" class="s sm" text-anchor="start">각 단계는 도구와 권한을 따로 정한 별도의 에이전트 세션이다</text><rect x="50" y="92" width="350" height="60" rx="11" class="box" /><text x="225" y="117.5" class="t b" text-anchor="middle">입력</text><text x="225" y="136.5" class="s sm" text-anchor="middle">코드 스캔 · 사용자 제보 · 알람 · 채팅 스레드</text><line x1="225" y1="154" x2="225" y2="189" class="sl" marker-end="url(#ar)"/><text x="237" y="177" class="s sm" text-anchor="start">이슈 등록</text><rect x="50" y="192" width="350" height="60" rx="11" class="box" /><text x="225" y="217.5" class="t b" text-anchor="middle">분류 세션</text><text x="225" y="236.5" class="s sm" text-anchor="middle">영향도 + 조치 성격 판정</text><line x1="225" y1="254" x2="225" y2="299" class="al" marker-end="url(#aa)"/><text x="237" y="282" class="a sm" text-anchor="start">자동 수정 후보 + 낮은 영향도만</text><rect x="50" y="302" width="350" height="60" rx="11" class="box" /><text x="225" y="327.5" class="t b" text-anchor="middle">수정 세션</text><text x="225" y="346.5" class="s sm" text-anchor="middle">브랜치 → 커밋 → PR</text><line x1="225" y1="364" x2="225" y2="409" class="sl" marker-end="url(#ar)"/><rect x="50" y="412" width="350" height="60" rx="11" class="hl" /><text x="225" y="437.5" class="t b" text-anchor="middle">머지 게이트</text><text x="225" y="456.5" class="s sm" text-anchor="middle">CI 대기 → 리뷰·검증 → 자동 머지</text><line x1="225" y1="474" x2="225" y2="509" class="sl" marker-end="url(#ar)"/><rect x="50" y="512" width="350" height="60" rx="11" class="box" /><text x="225" y="537.5" class="t b" text-anchor="middle">리포트</text><text x="225" y="556.5" class="s sm" text-anchor="middle">하루 단위 활동 요약</text><line x1="402" y1="222" x2="467" y2="222" class="sl" marker-end="url(#ar)"/><rect x="470" y="192" width="306" height="60" rx="11" class="box" /><text x="623" y="217.5" class="t b" text-anchor="middle">사람 승인 필요 · 조치 불가</text><text x="623" y="236.5" class="s sm" text-anchor="middle">자동 수정 경로로 들어가지 않는다</text><rect x="470" y="374" width="306" height="136" rx="11" class="box" /><text x="490" y="402" class="a b" text-anchor="start">스스로 고치는 라운드</text><text x="490" y="428" class="s sm" text-anchor="start">· 커밋으로 고칠 수 있는 실패만</text><text x="490" y="448" class="s sm" text-anchor="start">· PR head 커밋이 바뀌었는지 확인</text><text x="490" y="468" class="s sm" text-anchor="start">· 리뷰·검증을 처음부터 다시</text><text x="490" y="488" class="s sm" text-anchor="start">· 라운드 수에 상한</text><line x1="402" y1="428" x2="467" y2="428" class="al" marker-end="url(#aa)"/><text x="435" y="420" class="a sm" text-anchor="middle">실패</text><line x1="468" y1="458" x2="403" y2="458" class="al" marker-end="url(#aa)"/><text x="435" y="478" class="a sm" text-anchor="middle">새 커밋</text>
+</svg>

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="370" viewBox="0 0 800 370" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .b{font-weight:600}
+</style>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sub)"/></marker>
+</defs>
+<rect class="bg" width="800" height="370" rx="16"/>
+
+<!-- client -->
+<rect class="box" x="32" y="40" width="180" height="280" rx="12"/>
+<text class="t b" x="122" y="168" font-size="17" text-anchor="middle">Expo 앱</text>
+<text class="s" x="122" y="192" font-size="13" text-anchor="middle">비밀값 없음</text>
+
+<!-- path 1 -->
+<rect class="hl" x="300" y="44" width="180" height="72" rx="10"/>
+<text class="t b" x="390" y="74" font-size="15" text-anchor="middle">RLS 정책</text>
+<text class="s" x="390" y="97" font-size="13" text-anchor="middle">user_id = auth.uid()</text>
+<rect class="box" x="572" y="44" width="196" height="72" rx="10"/>
+<text class="t b" x="670" y="74" font-size="15" text-anchor="middle">Postgres</text>
+<text class="s" x="670" y="97" font-size="13" text-anchor="middle">사용자 데이터</text>
+<line class="ln" x1="212" y1="80" x2="296" y2="80" marker-end="url(#arr)"/>
+<text class="s" x="256" y="71" font-size="13" text-anchor="middle">CRUD</text>
+<line class="ln" x1="480" y1="80" x2="568" y2="80" marker-end="url(#arr)"/>
+<text class="s" x="300" y="146" font-size="13">① 일반 CRUD는 클라이언트가 직접 한다. 권한은 DB의 RLS가 지킨다.</text>
+
+<!-- path 2 -->
+<rect class="hl" x="300" y="222" width="180" height="96" rx="10"/>
+<text class="t b" x="390" y="252" font-size="15" text-anchor="middle">Edge Function</text>
+<text class="s" x="390" y="276" font-size="13" text-anchor="middle">LLM API 키</text>
+<text class="s" x="390" y="298" font-size="13" text-anchor="middle">service_role 키</text>
+<rect class="box" x="572" y="234" width="196" height="72" rx="10"/>
+<text class="t b" x="670" y="264" font-size="15" text-anchor="middle">LLM 프로바이더</text>
+<text class="s" x="670" y="287" font-size="13" text-anchor="middle">Gemini · Anthropic · OpenAI</text>
+<line class="ln" x1="212" y1="270" x2="296" y2="270" marker-end="url(#arr)"/>
+<text class="s" x="256" y="261" font-size="13" text-anchor="middle">채팅</text>
+<line class="ln" x1="480" y1="270" x2="568" y2="270" marker-end="url(#arr)"/>
+<text class="s" x="300" y="346" font-size="13">② 비밀값이 필요한 일만 Edge Function으로 보낸다.</text>
+</svg>

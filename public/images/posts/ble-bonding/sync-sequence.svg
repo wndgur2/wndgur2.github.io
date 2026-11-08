@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .life{stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 5;fill:none}
+    .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+    .dash{stroke:var(--sub);stroke-width:1.5;fill:none;stroke-dasharray:6 5}
+    .ah{fill:var(--sub)} .aah{fill:var(--accent)}
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aah" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="600" rx="16"/>
+
+  <!-- 참여자 -->
+  <rect class="box" x="130" y="24" width="140" height="44" rx="10"/>
+  <text class="t" x="200" y="52" font-size="17" font-weight="600" text-anchor="middle">폰</text>
+  <rect class="box" x="530" y="24" width="140" height="44" rx="10"/>
+  <text class="t" x="600" y="52" font-size="17" font-weight="600" text-anchor="middle">목걸이</text>
+  <line class="life" x1="200" y1="68" x2="200" y2="576"/>
+  <line class="life" x1="600" y1="68" x2="600" y2="576"/>
+
+  <!-- 연결 준비 -->
+  <rect class="box" x="140" y="90" width="520" height="40" rx="10"/>
+  <text class="s" x="400" y="115" font-size="13" text-anchor="middle">연결 · 본딩 키로 암호화 · 구독 · TIME_SYNC</text>
+
+  <!-- LIST -->
+  <text class="t" x="400" y="160" font-size="15" text-anchor="middle">LIST_SEGMENTS(after)</text>
+  <line class="ln" x1="200" y1="170" x2="598" y2="170" marker-end="url(#arr)"/>
+  <text class="t" x="400" y="206" font-size="15" text-anchor="middle">세그먼트 목록 (빈 응답이 끝)</text>
+  <line class="ln" x1="600" y1="216" x2="202" y2="216" marker-end="url(#arr)"/>
+
+  <!-- FETCH / DATA -->
+  <text class="t" x="400" y="252" font-size="15" text-anchor="middle">FETCH_SEGMENT(id, offset)</text>
+  <line class="ln" x1="200" y1="262" x2="598" y2="262" marker-end="url(#arr)"/>
+  <text class="t" x="400" y="298" font-size="15" text-anchor="middle">DATA [id][offset][bytes] × N</text>
+  <line class="ln" x1="600" y1="308" x2="202" y2="308" marker-end="url(#arr)"/>
+  <text class="s" x="400" y="330" font-size="13" text-anchor="middle">MTU 247이면 청크당 236바이트</text>
+
+  <!-- 이어받기 -->
+  <text class="t" x="400" y="370" font-size="15" text-anchor="middle">빈 곳 · 끊김 → FETCH(id, 빈 offset)</text>
+  <line class="dash" x1="200" y1="380" x2="598" y2="380" marker-end="url(#arr)"/>
+  <text class="s" x="400" y="402" font-size="13" text-anchor="middle">받은 데까지는 두고, 거기서부터 이어받기</text>
+
+  <!-- 저장 후 ACK -->
+  <rect class="hl" x="110" y="420" width="180" height="52" rx="10"/>
+  <text class="t" x="200" y="442" font-size="15" text-anchor="middle">디스크에 먼저 저장</text>
+  <text class="s" x="200" y="462" font-size="13" text-anchor="middle">그다음 CRC32 계산</text>
+
+  <text class="a" x="400" y="500" font-size="15" font-weight="600" text-anchor="middle">ACK_SEGMENT(id, crc32)</text>
+  <path class="al" d="M200,472 V510 H598" marker-end="url(#arrA)"/>
+
+  <rect class="box" x="510" y="524" width="180" height="52" rx="10"/>
+  <text class="t" x="600" y="546" font-size="15" text-anchor="middle">CRC가 맞을 때만</text>
+  <text class="s" x="600" y="566" font-size="13" text-anchor="middle">플래시에서 삭제</text>
+</svg>

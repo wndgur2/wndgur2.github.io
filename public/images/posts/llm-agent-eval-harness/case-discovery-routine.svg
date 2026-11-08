@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="428" viewBox="0 0 800 428" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--line);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .sl{stroke:var(--sub);stroke-width:1.5;fill:none}
+  .dash{stroke-dasharray:5 4} .ghost{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 4}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+  text{font-size:15px} .sm{font-size:13px} .ti{font-size:17px;font-weight:700} .b{font-weight:600}
+</style>
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ms"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ma"/></marker>
+</defs>
+<rect class="bg" width="800" height="428" rx="16"/>
+<text x="32" y="46" class="t ti" text-anchor="start">케이스를 찾는 정기 루틴</text><text x="32" y="70" class="s sm" text-anchor="start">지금 실패를 드러내는(red) 케이스만 남기고, 기대값은 사람이 본다</text><rect x="25" y="100" width="165" height="68" rx="11" class="box" /><text x="107.5" y="129.5" class="t b" text-anchor="middle">중복 확인</text><text x="107.5" y="148.5" class="s sm" text-anchor="middle">최신 기준 브랜치로</text><rect x="220" y="100" width="165" height="68" rx="11" class="box" /><text x="302.5" y="129.5" class="t b" text-anchor="middle">시나리오 찾기</text><text x="302.5" y="148.5" class="s sm" text-anchor="middle">피드백·대화 채널</text><rect x="415" y="100" width="165" height="68" rx="11" class="box" /><text x="497.5" y="129.5" class="t b" text-anchor="middle">케이스 초안</text><text x="497.5" y="148.5" class="s sm" text-anchor="middle">루틴이 쓴다</text><rect x="610" y="100" width="165" height="68" rx="11" class="box" /><text x="692.5" y="129.5" class="t b" text-anchor="middle">반복 실행</text><text x="692.5" y="148.5" class="s sm" text-anchor="middle">테스트 환경에서</text><line x1="192" y1="134" x2="217" y2="134" class="sl" marker-end="url(#ar)"/><line x1="387" y1="134" x2="412" y2="134" class="sl" marker-end="url(#ar)"/><line x1="582" y1="134" x2="607" y2="134" class="sl" marker-end="url(#ar)"/><line x1="692" y1="170" x2="692" y2="227" class="sl" marker-end="url(#ar)"/><rect x="610" y="230" width="165" height="68" rx="11" class="box" /><text x="692.5" y="259.5" class="t b" text-anchor="middle">결과</text><text x="692.5" y="278.5" class="s sm" text-anchor="middle">red 케이스가 있나</text><rect x="415" y="230" width="165" height="68" rx="11" class="hl" /><text x="497.5" y="259.5" class="t b" text-anchor="middle">리뷰용 PR</text><text x="497.5" y="278.5" class="s sm" text-anchor="middle">결과 + 리포트</text><rect x="220" y="230" width="165" height="68" rx="11" class="box" /><text x="302.5" y="259.5" class="t b" text-anchor="middle">사람이 리뷰</text><text x="302.5" y="278.5" class="s sm" text-anchor="middle">기대값이 맞는지</text><rect x="25" y="230" width="165" height="68" rx="11" class="box" /><text x="107.5" y="259.5" class="t b" text-anchor="middle">코퍼스에 추가</text><text x="107.5" y="278.5" class="s sm" text-anchor="middle">리뷰 통과 시</text><line x1="608" y1="264" x2="583" y2="264" class="al" marker-end="url(#aa)"/><text x="595" y="255" class="a sm" text-anchor="middle">red</text><line x1="413" y1="264" x2="388" y2="264" class="sl" marker-end="url(#ar)"/><line x1="218" y1="264" x2="193" y2="264" class="sl" marker-end="url(#ar)"/><line x1="692" y1="300" x2="692" y2="347" class="sl" marker-end="url(#ar)"/><text x="702" y="328" class="s sm" text-anchor="start">전부 통과</text><rect x="610" y="350" width="165" height="52" rx="11" class="box dash"/><text x="692" y="381" class="s" text-anchor="middle">버린다</text><path d="M107,228 L107,172" class="sl dash" marker-end="url(#ar)"/><text x="117" y="205" class="s sm" text-anchor="start">다음 회차</text>
+</svg>

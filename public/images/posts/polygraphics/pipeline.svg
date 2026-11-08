@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="392" viewBox="0 0 800 392" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+    .ah{fill:var(--sub)} .aah{fill:var(--accent)}
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aah" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="392" rx="16"/>
+
+  <!-- 작성 -->
+  <text class="s" x="24" y="44" font-size="13">작성</text>
+  <rect class="box" x="24" y="100" width="152" height="64" rx="10"/>
+  <text class="t" x="100" y="127" font-size="15" text-anchor="middle">에셋 문서</text>
+  <text class="s" x="100" y="148" font-size="13" text-anchor="middle">JSON · parts · variants</text>
+
+  <rect class="box" x="24" y="212" width="152" height="64" rx="10"/>
+  <text class="t" x="100" y="239" font-size="15" text-anchor="middle">tokens · themes</text>
+  <text class="s" x="100" y="260" font-size="13" text-anchor="middle">$blood, ice.json</text>
+
+  <!-- 검증 -->
+  <text class="s" x="216" y="44" font-size="13">검증</text>
+  <rect class="box" x="216" y="156" width="128" height="64" rx="10"/>
+  <text class="t" x="280" y="183" font-size="15" text-anchor="middle">validate · lint</text>
+  <text class="s" x="280" y="204" font-size="13" text-anchor="middle">npm run check</text>
+
+  <path class="ln" d="M176 132 H196 V178 H214" marker-end="url(#arr)"/>
+  <path class="ln" d="M176 244 H196 V198 H214" marker-end="url(#arr)"/>
+
+  <!-- 컴파일 -->
+  <text class="s" x="384" y="44" font-size="13">컴파일</text>
+  <rect class="hl" x="384" y="156" width="136" height="64" rx="10"/>
+  <text class="t" x="452" y="183" font-size="15" text-anchor="middle" font-weight="600">compiled IR</text>
+  <text class="s" x="452" y="204" font-size="13" text-anchor="middle">토큰 → [r,g,b,a]</text>
+  <line class="ln" x1="344" y1="188" x2="382" y2="188" marker-end="url(#arr)"/>
+
+  <!-- 출력 -->
+  <text class="s" x="576" y="44" font-size="13">출력</text>
+  <path class="al" d="M520 188 H548"/>
+  <path class="al" d="M548 92 V332"/>
+  <line class="al" x1="548" y1="92" x2="574" y2="92" marker-end="url(#arrA)"/>
+  <line class="al" x1="548" y1="172" x2="574" y2="172" marker-end="url(#arrA)"/>
+  <line class="al" x1="548" y1="252" x2="574" y2="252" marker-end="url(#arrA)"/>
+  <line class="al" x1="548" y1="332" x2="574" y2="332" marker-end="url(#arrA)"/>
+
+  <rect class="box" x="576" y="60" width="200" height="64" rx="10"/>
+  <text class="t" x="676" y="87" font-size="15" text-anchor="middle">SVG · 갤러리</text>
+  <text class="s" x="676" y="108" font-size="13" text-anchor="middle">사람과 AI가 보고 고치는 곳</text>
+
+  <rect class="box" x="576" y="140" width="200" height="64" rx="10"/>
+  <text class="t" x="676" y="167" font-size="15" text-anchor="middle">PNG · WAV bake</text>
+  <text class="s" x="676" y="188" font-size="13" text-anchor="middle">회귀 테스트 baseline</text>
+
+  <rect class="box" x="576" y="220" width="200" height="64" rx="10"/>
+  <text class="t" x="676" y="247" font-size="15" text-anchor="middle">dist 번들</text>
+  <text class="s" x="676" y="268" font-size="13" text-anchor="middle">게임이 import하는 JSON</text>
+
+  <rect class="box" x="576" y="300" width="200" height="64" rx="10"/>
+  <text class="t" x="676" y="327" font-size="15" text-anchor="middle">엔진 어댑터</text>
+  <text class="s" x="676" y="348" font-size="13" text-anchor="middle">Phaser · Godot · WebAudio</text>
+</svg>

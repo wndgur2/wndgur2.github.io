@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="336" viewBox="0 0 800 336" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+    .ah{fill:var(--sub)} .aah{fill:var(--accent)}
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aah" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="336" rx="16"/>
+
+  <text class="s" x="232" y="44" font-size="13">에셋별 bake 출력 (PNG · WAV)</text>
+  <text class="s" x="576" y="44" font-size="13">npm run regress</text>
+
+  <!-- 1행: baseline -->
+  <text class="t" x="24" y="88" font-size="15" font-weight="600">baseline</text>
+  <text class="s" x="24" y="110" font-size="13">승인해서 커밋한 bake</text>
+  <rect class="box" x="232" y="72" width="40" height="40" rx="8"/>
+  <rect class="box" x="284" y="72" width="40" height="40" rx="8"/>
+  <rect class="box" x="336" y="72" width="40" height="40" rx="8"/>
+  <rect class="box" x="388" y="72" width="40" height="40" rx="8"/>
+  <rect class="box" x="440" y="72" width="40" height="40" rx="8"/>
+  <rect class="box" x="492" y="72" width="40" height="40" rx="8"/>
+
+  <!-- 2행: 아무것도 안 바꿈 -->
+  <text class="t" x="24" y="168" font-size="15" font-weight="600">변경 없음</text>
+  <text class="s" x="24" y="190" font-size="13">같은 입력 → 같은 바이트</text>
+  <g font-size="17" text-anchor="middle">
+    <rect class="box" x="232" y="152" width="40" height="40" rx="8"/><text class="s" x="252" y="178">=</text>
+    <rect class="box" x="284" y="152" width="40" height="40" rx="8"/><text class="s" x="304" y="178">=</text>
+    <rect class="box" x="336" y="152" width="40" height="40" rx="8"/><text class="s" x="356" y="178">=</text>
+    <rect class="box" x="388" y="152" width="40" height="40" rx="8"/><text class="s" x="408" y="178">=</text>
+    <rect class="box" x="440" y="152" width="40" height="40" rx="8"/><text class="s" x="460" y="178">=</text>
+    <rect class="box" x="492" y="152" width="40" height="40" rx="8"/><text class="s" x="512" y="178">=</text>
+  </g>
+  <line class="ln" x1="540" y1="172" x2="574" y2="172" marker-end="url(#arr)"/>
+  <rect class="box" x="576" y="144" width="200" height="56" rx="10"/>
+  <text class="t" x="676" y="178" font-size="15" text-anchor="middle">전부 통과</text>
+
+  <!-- 3행: 토큰 한 자리 변경 -->
+  <text class="t" x="24" y="248" font-size="15" font-weight="600">토큰 한 자리 변경</text>
+  <text class="s" x="24" y="270" font-size="13">ff9b3d → ff9d3c</text>
+  <g font-size="17" text-anchor="middle">
+    <rect class="box" x="232" y="232" width="40" height="40" rx="8"/><text class="s" x="252" y="258">=</text>
+    <rect class="hl" x="284" y="232" width="40" height="40" rx="8"/><text class="a" x="304" y="258" font-weight="600">≠</text>
+    <rect class="box" x="336" y="232" width="40" height="40" rx="8"/><text class="s" x="356" y="258">=</text>
+    <rect class="box" x="388" y="232" width="40" height="40" rx="8"/><text class="s" x="408" y="258">=</text>
+    <rect class="hl" x="440" y="232" width="40" height="40" rx="8"/><text class="a" x="460" y="258" font-weight="600">≠</text>
+    <rect class="box" x="492" y="232" width="40" height="40" rx="8"/><text class="s" x="512" y="258">=</text>
+  </g>
+  <line class="al" x1="540" y1="252" x2="574" y2="252" marker-end="url(#arrA)"/>
+  <rect class="hl" x="576" y="224" width="200" height="56" rx="10"/>
+  <text class="t" x="676" y="248" font-size="15" text-anchor="middle">exit 1</text>
+  <text class="s" x="676" y="268" font-size="13" text-anchor="middle">그 토큰을 쓰는 에셋만 실패</text>
+
+  <text class="s" x="232" y="308" font-size="13">출력이 매번 같으니, 바뀐 칸이 곧 변경의 범위다</text>
+</svg>

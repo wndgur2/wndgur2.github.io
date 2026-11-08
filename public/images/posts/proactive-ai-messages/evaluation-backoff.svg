@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="340" viewBox="0 0 800 340" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--line);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .axis{stroke:var(--sub);stroke-width:1.5;fill:none}
+  .dsh{stroke:var(--sub);stroke-width:1.5;fill:none;stroke-dasharray:4 4}
+  .dot{fill:var(--surface);stroke:var(--sub);stroke-width:1.5}
+  .ev{fill:var(--text)}
+  .ma{fill:var(--accent)}
+</style>
+<defs>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path class="ma" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<rect class="bg" width="800" height="340" rx="16"/>
+
+<text class="t" x="40" y="48" font-size="17" font-weight="600">평가 간격: 반응이 없을수록 두 배로</text>
+
+<!-- pre segment: generating reply -->
+<line class="dsh" x1="60" y1="176" x2="190" y2="176"/>
+<text class="s" x="125" y="164" font-size="13" text-anchor="middle">답변 생성 중 · 평가 안 함</text>
+
+<!-- axis -->
+<line class="axis" x1="190" y1="176" x2="736" y2="176"/>
+<line class="dsh" x1="736" y1="176" x2="770" y2="176"/>
+
+<!-- hops (accent) -->
+<path class="al" d="M190,172 Q208,148 224,170" marker-end="url(#aa)"/>
+<text class="a" x="208" y="142" font-size="13" text-anchor="middle" font-weight="600">4초</text>
+<path class="al" d="M226,172 Q262,138 296,170" marker-end="url(#aa)"/>
+<text class="a" x="262" y="132" font-size="13" text-anchor="middle" font-weight="600">8초</text>
+<path class="al" d="M298,172 Q370,116 440,170" marker-end="url(#aa)"/>
+<text class="a" x="370" y="118" font-size="13" text-anchor="middle" font-weight="600">16초</text>
+<path class="al" d="M442,172 Q586,80 728,170" marker-end="url(#aa)"/>
+<text class="a" x="586" y="98" font-size="13" text-anchor="middle" font-weight="600">32초 …</text>
+
+<!-- events -->
+<circle class="ev" cx="60" cy="176" r="6"/>
+<line class="ln" x1="60" y1="184" x2="60" y2="208"/>
+<text class="t" x="40" y="228" font-size="15">사용자 메시지</text>
+<text class="s" x="40" y="248" font-size="13">next = null</text>
+
+<circle class="ev" cx="190" cy="176" r="6"/>
+<line class="ln" x1="190" y1="184" x2="190" y2="208"/>
+<text class="t" x="190" y="228" font-size="15" text-anchor="middle">AI 메시지 저장</text>
+<text class="s" x="190" y="248" font-size="13" text-anchor="middle">delay = 4초</text>
+
+<!-- evaluations -->
+<circle class="dot" cx="226" cy="176" r="5"/>
+<text class="s" x="232" y="200" font-size="13" text-anchor="middle">NO</text>
+<circle class="dot" cx="298" cy="176" r="5"/>
+<text class="s" x="298" y="200" font-size="13" text-anchor="middle">NO</text>
+<circle class="dot" cx="442" cy="176" r="5"/>
+<text class="s" x="442" y="200" font-size="13" text-anchor="middle">NO</text>
+<circle class="dot" cx="730" cy="176" r="5"/>
+<text class="s" x="730" y="200" font-size="13" text-anchor="middle">NO</text>
+
+<!-- notes -->
+<line class="ln" x1="40" y1="276" x2="760" y2="276"/>
+<circle class="dot" cx="48" cy="302" r="5"/>
+<text class="s" x="62" y="307" font-size="13">평가 모델 호출 → NO면 delay ×2. cron은 5초마다 next_evaluation_time ≤ now 인 방만 평가한다.</text>
+<circle class="ev" cx="48" cy="322" r="5"/>
+<text class="t" x="62" y="327" font-size="13">YES면 proactive 메시지를 만들고, 그 메시지가 저장되면 다시 4초부터 시작한다.</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="340" viewBox="0 0 800 340" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .chip{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .b{font-weight:600}
+</style>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sub)"/></marker>
+</defs>
+<rect class="bg" width="800" height="340" rx="16"/>
+
+<!-- timeline axis -->
+<line class="ln" x1="32" y1="46" x2="764" y2="46" marker-end="url(#arr)"/>
+<circle cx="271" cy="46" r="5" style="fill:var(--sub)"/>
+<circle cx="529" cy="46" r="5" style="fill:var(--sub)"/>
+<text class="s" x="271" y="34" font-size="13" text-anchor="middle">로그인</text>
+<text class="s" x="529" y="34" font-size="13" text-anchor="middle">로그아웃 · 계정 변경</text>
+
+<!-- col 1 -->
+<rect class="box" x="32" y="64" width="220" height="250" rx="12"/>
+<text class="t b" x="142" y="94" font-size="15" text-anchor="middle">로그아웃 상태</text>
+<text class="s" x="52" y="130" font-size="13">쿼리</text>
+<rect class="hl" x="52" y="140" width="180" height="34" rx="8"/>
+<text class="a b" x="142" y="162" font-size="15" text-anchor="middle">enabled: false</text>
+<text class="s" x="142" y="194" font-size="13" text-anchor="middle">RLS 대상 호출 0건</text>
+<text class="s" x="52" y="230" font-size="13">캐시</text>
+<rect class="chip" x="52" y="240" width="180" height="34" rx="8"/>
+<text class="t" x="142" y="262" font-size="15" text-anchor="middle">비어 있음</text>
+<text class="s" x="142" y="294" font-size="13" text-anchor="middle">빈 []가 남지 않는다</text>
+
+<!-- col 2 -->
+<rect class="box" x="290" y="64" width="220" height="250" rx="12"/>
+<text class="t b" x="400" y="94" font-size="15" text-anchor="middle">사용자 A</text>
+<text class="s" x="310" y="130" font-size="13">쿼리</text>
+<rect class="chip" x="310" y="140" width="180" height="34" rx="8"/>
+<text class="t" x="400" y="162" font-size="15" text-anchor="middle">enabled: true</text>
+<text class="s" x="400" y="194" font-size="13" text-anchor="middle">A의 피드백 조회</text>
+<text class="s" x="310" y="230" font-size="13">캐시</text>
+<rect class="chip" x="310" y="240" width="180" height="34" rx="8"/>
+<text class="t" x="400" y="262" font-size="15" text-anchor="middle">A의 데이터</text>
+
+<!-- col 3 -->
+<rect class="box" x="548" y="64" width="220" height="250" rx="12"/>
+<text class="t b" x="658" y="94" font-size="15" text-anchor="middle">다음 사용자 B</text>
+<text class="s" x="568" y="130" font-size="13">쿼리</text>
+<rect class="chip" x="568" y="140" width="180" height="34" rx="8"/>
+<text class="t" x="658" y="162" font-size="15" text-anchor="middle">enabled: true</text>
+<text class="s" x="658" y="194" font-size="13" text-anchor="middle">B의 피드백 새로 조회</text>
+<text class="s" x="568" y="230" font-size="13">캐시</text>
+<rect class="hl" x="568" y="240" width="180" height="34" rx="8"/>
+<text class="a b" x="658" y="262" font-size="15" text-anchor="middle">queryClient.clear()</text>
+<text class="s" x="658" y="294" font-size="13" text-anchor="middle">user id가 바뀌면 폐기</text>
+</svg>

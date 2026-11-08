@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="376" viewBox="0 0 800 376" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .lane{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:5 5}
+    .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+    .ah{fill:var(--sub)} .aah{fill:var(--accent)}
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aah" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="376" rx="16"/>
+
+  <!-- 사운드 문서 -->
+  <rect class="box" x="24" y="156" width="148" height="64" rx="10"/>
+  <text class="t" x="98" y="183" font-size="15" text-anchor="middle">사운드 문서</text>
+  <text class="s" x="98" y="204" font-size="13" text-anchor="middle">voices · env · phrase</text>
+
+  <!-- compile -->
+  <rect class="box" x="212" y="156" width="148" height="64" rx="10"/>
+  <text class="t" x="286" y="183" font-size="15" text-anchor="middle">compile</text>
+  <text class="s" x="286" y="204" font-size="13" text-anchor="middle">토큰 · 편의 문법 풀기</text>
+  <line class="ln" x1="172" y1="188" x2="210" y2="188" marker-end="url(#arr)"/>
+
+  <!-- IR -->
+  <rect class="hl" x="400" y="156" width="148" height="64" rx="10"/>
+  <text class="t" x="474" y="183" font-size="15" text-anchor="middle" font-weight="600">IR</text>
+  <text class="s" x="474" y="204" font-size="13" text-anchor="middle">seed PRNG 포함</text>
+  <line class="ln" x1="360" y1="188" x2="398" y2="188" marker-end="url(#arr)"/>
+
+  <!-- 분기 -->
+  <path class="al" d="M548 188 H572"/>
+  <path class="al" d="M572 92 V308"/>
+  <line class="al" x1="572" y1="92" x2="598" y2="92" marker-end="url(#arrA)"/>
+  <line class="al" x1="572" y1="196" x2="598" y2="196" marker-end="url(#arrA)"/>
+  <line class="al" x1="572" y1="308" x2="598" y2="308" marker-end="url(#arrA)"/>
+
+  <!-- WebAudio 어댑터 묶음 -->
+  <rect class="lane" x="588" y="28" width="196" height="216" rx="12"/>
+  <text class="s" x="600" y="48" font-size="13">WebAudio 어댑터</text>
+
+  <rect class="box" x="600" y="60" width="176" height="64" rx="10"/>
+  <text class="t" x="688" y="87" font-size="15" text-anchor="middle">play()</text>
+  <text class="s" x="688" y="108" font-size="13" text-anchor="middle">라이브 노드 그래프</text>
+
+  <rect class="box" x="600" y="164" width="176" height="64" rx="10"/>
+  <text class="t" x="688" y="191" font-size="15" text-anchor="middle">bake → playBuffer()</text>
+  <text class="s" x="688" y="212" font-size="13" text-anchor="middle">자주 울리는 소리</text>
+
+  <rect class="box" x="600" y="276" width="176" height="64" rx="10"/>
+  <text class="t" x="688" y="303" font-size="15" text-anchor="middle">오프라인 WAV</text>
+  <text class="s" x="688" y="324" font-size="13" text-anchor="middle">regress · 측정 lint</text>
+
+  <!-- 메모 -->
+  <text class="s" x="24" y="276" font-size="13">jitter는 트리거마다 엔진이 굴리고, bake는 무시한다.</text>
+  <text class="s" x="24" y="298" font-size="13">그래서 WAV bake는 매번 바이트 단위로 같다.</text>
+</svg>

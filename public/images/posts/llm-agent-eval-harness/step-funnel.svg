@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="372" viewBox="0 0 800 372" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--line);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .sl{stroke:var(--sub);stroke-width:1.5;fill:none}
+  .dash{stroke-dasharray:5 4} .ghost{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 4}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+  text{font-size:15px} .sm{font-size:13px} .ti{font-size:17px;font-weight:700} .b{font-weight:600}
+</style>
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ms"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ma"/></marker>
+</defs>
+<rect class="bg" width="800" height="372" rx="16"/>
+<text x="32" y="46" class="t ti" text-anchor="start">단계별 funnel로 채점한다</text><text x="32" y="70" class="s sm" text-anchor="start">최종 성공률 하나만 보면 어느 단계가 나빠졌는지 알 수 없다</text><text x="176" y="126" class="t" text-anchor="end">도구 선택</text><rect x="196" y="100" width="540" height="40" rx="11" class="box" /><text x="176" y="180" class="t" text-anchor="end">결과물 생성</text><rect x="196" y="154" width="490" height="40" rx="11" class="box" /><text x="176" y="234" class="t" text-anchor="end">저장</text><rect x="196" y="208" width="270" height="40" rx="11" class="box" /><rect x="470" y="208" width="216" height="40" rx="11" class="ghost"/><text x="578" y="233" class="a sm" text-anchor="middle">여기서 빠진 케이스</text><text x="176" y="288" class="t" text-anchor="end">실제 실행</text><rect x="196" y="262" width="240" height="40" rx="11" class="box" /><text x="212" y="125" class="s sm" text-anchor="start">통과한 케이스</text><line x1="196" y1="324" x2="736" y2="324" class="ln" /><text x="196" y="346" class="s sm" text-anchor="start">막대 길이 = 그 단계까지 통과한 케이스</text>
+</svg>

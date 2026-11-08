@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .sep{stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 5}
+  .b{font-weight:600}
+</style>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sub)"/></marker>
+</defs>
+<rect class="bg" width="800" height="300" rx="16"/>
+
+<!-- row labels -->
+<text class="s b" x="32" y="100" font-size="15">수정 전</text>
+<text class="t b" x="32" y="230" font-size="15">수정 후</text>
+<line class="sep" x1="32" y1="150" x2="768" y2="150"/>
+
+<!-- before -->
+<rect class="box" x="112" y="60" width="150" height="70" rx="10"/>
+<text class="s" x="187" y="88" font-size="13" text-anchor="middle">GET</text>
+<text class="t" x="187" y="110" font-size="15" text-anchor="middle">/feedback/abc-123</text>
+<rect class="box" x="296" y="60" width="170" height="70" rx="10"/>
+<text class="t b" x="381" y="88" font-size="15" text-anchor="middle">rewrite</text>
+<text class="s" x="381" y="110" font-size="13" text-anchor="middle">destination: /index.html</text>
+<rect class="box" x="500" y="60" width="180" height="70" rx="10"/>
+<text class="t" x="590" y="88" font-size="15" text-anchor="middle">cleanUrls와 물림</text>
+<text class="s" x="590" y="110" font-size="13" text-anchor="middle">폴백이 성립하지 않음</text>
+<rect class="box" x="714" y="60" width="62" height="70" rx="10"/>
+<text class="t b" x="745" y="101" font-size="17" text-anchor="middle">404</text>
+<line class="ln" x1="262" y1="95" x2="292" y2="95" marker-end="url(#arr)"/>
+<line class="ln" x1="466" y1="95" x2="496" y2="95" marker-end="url(#arr)"/>
+<line class="ln" x1="680" y1="95" x2="710" y2="95" marker-end="url(#arr)"/>
+
+<!-- after -->
+<rect class="box" x="112" y="190" width="150" height="70" rx="10"/>
+<text class="s" x="187" y="218" font-size="13" text-anchor="middle">GET</text>
+<text class="t" x="187" y="240" font-size="15" text-anchor="middle">/feedback/abc-123</text>
+<rect class="hl" x="296" y="190" width="170" height="70" rx="10"/>
+<text class="t b" x="381" y="218" font-size="15" text-anchor="middle">rewrite</text>
+<text class="a b" x="381" y="240" font-size="13" text-anchor="middle">destination: /</text>
+<rect class="box" x="500" y="190" width="180" height="70" rx="10"/>
+<text class="t" x="590" y="218" font-size="15" text-anchor="middle">index.html 응답</text>
+<text class="s" x="590" y="240" font-size="13" text-anchor="middle">expo-router가 라우팅</text>
+<rect class="box" x="714" y="190" width="62" height="70" rx="10"/>
+<text class="t b" x="745" y="231" font-size="17" text-anchor="middle">200</text>
+<line class="ln" x1="262" y1="225" x2="292" y2="225" marker-end="url(#arr)"/>
+<line class="ln" x1="466" y1="225" x2="496" y2="225" marker-end="url(#arr)"/>
+<line class="ln" x1="680" y1="225" x2="710" y2="225" marker-end="url(#arr)"/>
+
+<text class="s" x="112" y="38" font-size="13">파일시스템에 없는 동적 경로 · cleanUrls: true</text>
+</svg>

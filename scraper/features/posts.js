@@ -55,6 +55,7 @@ export async function fetchPosts() {
           date_finished: fm.date_finished ?? '',
           head_count: fm.head_count ?? '',
           role: fm.role ?? '',
+          ...(fm.thumbnail && { thumbnail: fm.thumbnail }),
         }),
       }
     },

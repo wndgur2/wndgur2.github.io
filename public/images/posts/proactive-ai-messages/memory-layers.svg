@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="360" viewBox="0 0 800 360" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .grp{fill:none;stroke:var(--line);stroke-width:1.5}
+  .dash{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 4}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ms" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ma" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<rect class="bg" width="800" height="360" rx="16"/>
+
+<!-- column titles -->
+<text class="t" x="40" y="44" font-size="15" font-weight="600">메시지 (시간순 ↓)</text>
+<text class="t" x="300" y="44" font-size="15" font-weight="600">장기 기억</text>
+<text class="t" x="560" y="44" font-size="15" font-weight="600">프롬프트</text>
+
+<!-- column 1: messages -->
+<rect class="dash" x="40" y="66" width="160" height="14" rx="4"/>
+<rect class="dash" x="40" y="86" width="160" height="14" rx="4"/>
+<rect class="hl" x="40" y="110" width="160" height="28" rx="6"/>
+<text class="a" x="120" y="129" font-size="13" text-anchor="middle" font-weight="600">막 밀려난 사용자 메시지</text>
+<rect class="box" x="40" y="152" width="160" height="14" rx="4"/>
+<rect class="box" x="40" y="170" width="160" height="14" rx="4"/>
+<rect class="box" x="40" y="188" width="160" height="14" rx="4"/>
+<rect class="box" x="40" y="206" width="160" height="14" rx="4"/>
+<rect class="box" x="40" y="224" width="160" height="14" rx="4"/>
+<rect class="box" x="40" y="242" width="160" height="14" rx="4"/>
+<rect class="box" x="40" y="260" width="160" height="14" rx="4"/>
+<rect class="box" x="40" y="278" width="160" height="14" rx="4"/>
+<path class="ln" d="M208,152 h6 v140 h-6"/>
+<text class="s" x="222" y="218" font-size="13">최근</text>
+<text class="s" x="222" y="236" font-size="13">8개</text>
+
+<!-- write paths -->
+<line class="al" x1="200" y1="120" x2="296" y2="108" marker-end="url(#aa)"/>
+<text class="a" x="248" y="104" font-size="13" text-anchor="middle">추출</text>
+<line class="al" x1="200" y1="130" x2="296" y2="236" marker-end="url(#aa)"/>
+<text class="a" x="262" y="160" font-size="13">인덱싱</text>
+
+<!-- column 2: stores -->
+<rect class="box" x="300" y="66" width="190" height="84" rx="12"/>
+<text class="t" x="395" y="92" font-size="15" text-anchor="middle">Canonical</text>
+<text class="s" x="395" y="114" font-size="13" text-anchor="middle">MySQL memories</text>
+<text class="s" x="395" y="134" font-size="13" text-anchor="middle">kind · key · value</text>
+
+<rect class="box" x="300" y="206" width="190" height="84" rx="12"/>
+<text class="t" x="395" y="232" font-size="15" text-anchor="middle">Snippet</text>
+<text class="s" x="395" y="254" font-size="13" text-anchor="middle">Qdrant</text>
+<text class="s" x="395" y="274" font-size="13" text-anchor="middle">원문 chunk + 임베딩</text>
+
+<!-- column 3: prompt -->
+<rect class="grp" x="560" y="60" width="208" height="248" rx="12"/>
+<rect class="box" x="572" y="72" width="184" height="36" rx="8"/>
+<text class="t" x="664" y="95" font-size="13" text-anchor="middle">system + base prompt</text>
+<rect class="box" x="572" y="118" width="184" height="50" rx="8"/>
+<text class="t" x="664" y="139" font-size="13" text-anchor="middle">Known user/project state</text>
+<text class="s" x="664" y="158" font-size="13" text-anchor="middle">최대 20개</text>
+<rect class="box" x="572" y="178" width="184" height="50" rx="8"/>
+<text class="t" x="664" y="199" font-size="13" text-anchor="middle">Older user messages</text>
+<text class="s" x="664" y="218" font-size="13" text-anchor="middle">유사도 top 5 · ≥ 0.4</text>
+<rect class="box" x="572" y="246" width="184" height="50" rx="8"/>
+<text class="t" x="664" y="267" font-size="13" text-anchor="middle">최근 대화 (history)</text>
+<text class="s" x="664" y="286" font-size="13" text-anchor="middle">8개 그대로</text>
+
+<!-- read paths -->
+<line class="ln" x1="490" y1="108" x2="568" y2="140" marker-end="url(#ah)"/>
+<line class="ln" x1="490" y1="248" x2="568" y2="206" marker-end="url(#ah)"/>
+<polyline class="ln" points="214,292 214,330 534,330 534,271 568,271" marker-end="url(#ah)"/>
+</svg>

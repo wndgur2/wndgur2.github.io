@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="344" viewBox="0 0 800 344" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--line);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .sl{stroke:var(--sub);stroke-width:1.5;fill:none}
+  .dash{stroke-dasharray:5 4} .ghost{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 4}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+  text{font-size:15px} .sm{font-size:13px} .ti{font-size:17px;font-weight:700} .b{font-weight:600}
+</style>
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ms"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ma"/></marker>
+</defs>
+<rect class="bg" width="800" height="344" rx="16"/>
+<text x="32" y="46" class="t ti" text-anchor="start">한 턴은 여러 세그먼트로 나뉜다</text><text x="32" y="70" class="s sm" text-anchor="start">모델이 도구를 부를 때마다 구독을 새로 열고 이어서 생성한다</text><line x1="24" y1="106" x2="776" y2="106" class="al" /><line x1="24" y1="98" x2="24" y2="114" class="al" /><line x1="776" y1="98" x2="776" y2="114" class="al" /><rect x="370" y="94" width="60" height="24" class="bg"/><text x="400" y="112" class="a b" text-anchor="middle">한 턴</text><rect x="24" y="130" width="170" height="186" rx="11" class="box" /><text x="109" y="156" class="t b" text-anchor="middle">세그먼트 1</text><rect x="44" y="170" width="130" height="32" rx="9" class="hl"/><text x="109" y="191" class="a sm" text-anchor="middle">구독 열기</text><line x1="109" y1="204" x2="109" y2="217" class="sl" marker-end="url(#ar)"/><rect x="44" y="220" width="130" height="32" rx="9" class="box"/><text x="109" y="241" class="t sm" text-anchor="middle">입력 보내기</text><line x1="109" y1="254" x2="109" y2="267" class="sl" marker-end="url(#ar)"/><rect x="44" y="270" width="130" height="32" rx="9" class="box"/><text x="109" y="291" class="t sm" text-anchor="middle">스트림 받기</text><rect x="264" y="130" width="170" height="186" rx="11" class="box" /><text x="349" y="156" class="t b" text-anchor="middle">세그먼트 2</text><rect x="284" y="170" width="130" height="32" rx="9" class="hl"/><text x="349" y="191" class="a sm" text-anchor="middle">구독 열기</text><line x1="349" y1="204" x2="349" y2="217" class="sl" marker-end="url(#ar)"/><rect x="284" y="220" width="130" height="32" rx="9" class="box"/><text x="349" y="241" class="t sm" text-anchor="middle">입력 보내기</text><line x1="349" y1="254" x2="349" y2="267" class="sl" marker-end="url(#ar)"/><rect x="284" y="270" width="130" height="32" rx="9" class="box"/><text x="349" y="291" class="t sm" text-anchor="middle">스트림 받기</text><rect x="606" y="130" width="170" height="186" rx="11" class="box" /><text x="691" y="156" class="t b" text-anchor="middle">세그먼트 N</text><rect x="626" y="170" width="130" height="32" rx="9" class="hl"/><text x="691" y="191" class="a sm" text-anchor="middle">구독 열기</text><line x1="691" y1="204" x2="691" y2="217" class="sl" marker-end="url(#ar)"/><rect x="626" y="220" width="130" height="32" rx="9" class="box"/><text x="691" y="241" class="t sm" text-anchor="middle">입력 보내기</text><line x1="691" y1="254" x2="691" y2="267" class="sl" marker-end="url(#ar)"/><rect x="626" y="270" width="130" height="32" rx="9" class="box"/><text x="691" y="291" class="t sm" text-anchor="middle">스트림 받기</text><line x1="196" y1="223" x2="262" y2="223" class="sl" marker-end="url(#ar)"/><text x="229" y="212" class="s sm" text-anchor="middle">도구 결과</text><line x1="436" y1="223" x2="604" y2="223" class="sl dash" marker-end="url(#ar)"/><text x="520" y="212" class="s sm" text-anchor="middle">도구 결과 · · ·</text><text x="520" y="246" class="s sm" text-anchor="middle">수십 번 반복될 수 있다</text>
+</svg>

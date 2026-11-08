@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="344" viewBox="0 0 800 344" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--line);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .sl{stroke:var(--sub);stroke-width:1.5;fill:none}
+  .dash{stroke-dasharray:5 4} .ghost{fill:none;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:5 4}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+  text{font-size:15px} .sm{font-size:13px} .ti{font-size:17px;font-weight:700} .b{font-weight:600}
+</style>
+<defs>
+  <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ms"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ma"/></marker>
+</defs>
+<rect class="bg" width="800" height="344" rx="16"/>
+<text x="32" y="46" class="t ti" text-anchor="start">두 시스템에 걸친 순서와 보상</text><text x="32" y="70" class="s sm" text-anchor="start">중간에 실패하면 앞 단계에서 만든 것을 지운다</text><rect x="27" y="96" width="170" height="70" rx="11" class="box" /><text x="112" y="126.5" class="t b" text-anchor="middle">1. 턴 확인</text><text x="112" y="145.5" class="s sm" text-anchor="middle">완료된 세션 턴이 있나</text><rect x="219" y="96" width="170" height="70" rx="11" class="box" /><text x="304" y="126.5" class="t b" text-anchor="middle">2. 메시지 복사</text><text x="304" y="145.5" class="s sm" text-anchor="middle">앱 DB, 한 트랜잭션</text><rect x="411" y="96" width="170" height="70" rx="11" class="box" /><text x="496" y="126.5" class="t b" text-anchor="middle">3. 세션 fork</text><text x="496" y="145.5" class="s sm" text-anchor="middle">세션 기억 복사</text><rect x="603" y="96" width="170" height="70" rx="11" class="box" /><text x="688" y="126.5" class="t b" text-anchor="middle">4. id 기록</text><text x="688" y="145.5" class="s sm" text-anchor="middle">새 대화에 fork 세션 id</text><line x1="199" y1="131" x2="216" y2="131" class="sl" marker-end="url(#ar)"/><line x1="391" y1="131" x2="408" y2="131" class="sl" marker-end="url(#ar)"/><line x1="583" y1="131" x2="600" y2="131" class="sl" marker-end="url(#ar)"/><line x1="112" y1="168" x2="112" y2="233" class="sl" marker-end="url(#ar)"/><text x="122" y="204" class="s sm" text-anchor="start">없으면</text><rect x="27" y="236" width="170" height="80" rx="11" class="box" /><text x="112" y="271.5" class="t b" text-anchor="middle">409</text><text x="112" y="290.5" class="s sm" text-anchor="middle">아무것도 쓰지 않는다</text><line x1="496" y1="168" x2="496" y2="233" class="al" marker-end="url(#aa)"/><text x="506" y="204" class="a sm" text-anchor="start">실패</text><rect x="411" y="236" width="170" height="80" rx="11" class="hl" /><text x="496" y="262" class="t b" text-anchor="middle">2의 대화를 지운다</text><text x="496" y="281" class="s sm" text-anchor="middle">기억 없이 시작하는</text><text x="496" y="300" class="s sm" text-anchor="middle">갈래를 남기지 않는다</text><line x1="688" y1="168" x2="688" y2="233" class="al" marker-end="url(#aa)"/><text x="698" y="204" class="a sm" text-anchor="start">실패</text><rect x="603" y="236" width="170" height="80" rx="11" class="hl" /><text x="688" y="262" class="t b" text-anchor="middle">3의 세션을 지운다</text><text x="688" y="281" class="s sm" text-anchor="middle">목록에 고아 세션이</text><text x="688" y="300" class="s sm" text-anchor="middle">남지 않게</text><path d="M440,234 C440,196 360,208 360,170" class="sl dash" marker-end="url(#ar)"/><path d="M632,234 C632,196 552,208 552,170" class="sl dash" marker-end="url(#ar)"/>
+</svg>

@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="520" viewBox="0 0 800 520" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .grp{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:0}
+  .dash{fill:var(--surface);stroke:var(--line);stroke-width:1.5;stroke-dasharray:5 4}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ms" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ma" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<rect class="bg" width="800" height="520" rx="16"/>
+
+<!-- Browser -->
+<rect class="box" x="250" y="28" width="300" height="56" rx="12"/>
+<text class="t" x="400" y="53" font-size="15" text-anchor="middle" font-weight="600">브라우저 · React SPA</text>
+<text class="s" x="400" y="72" font-size="13" text-anchor="middle">PWA · TanStack Query · Socket.IO client</text>
+
+<!-- Browser -> nginx -->
+<line class="ln" x1="330" y1="84" x2="330" y2="134" marker-end="url(#ah)"/>
+<text class="s" x="318" y="114" font-size="13" text-anchor="end">REST  /api/**</text>
+<line class="al" x1="470" y1="88" x2="470" y2="132" marker-start="url(#aa)" marker-end="url(#aa)"/>
+<text class="a" x="482" y="114" font-size="13">WebSocket  /socket.io/**</text>
+
+<!-- nginx -->
+<rect class="box" x="250" y="136" width="300" height="40" rx="10"/>
+<text class="t" x="400" y="161" font-size="15" text-anchor="middle">nginx</text>
+<line class="ln" x1="400" y1="176" x2="400" y2="226" marker-end="url(#ah)"/>
+
+<!-- NestJS container -->
+<rect class="grp" x="32" y="228" width="736" height="160" rx="12"/>
+<text class="t" x="48" y="254" font-size="15" font-weight="600">NestJS</text>
+
+<rect class="hl" x="48" y="270" width="128" height="100" rx="10"/>
+<text class="t" x="112" y="298" font-size="15" text-anchor="middle" font-weight="600">messages</text>
+<text class="s" x="112" y="322" font-size="13" text-anchor="middle">REST + Gateway</text>
+<text class="s" x="112" y="342" font-size="13" text-anchor="middle">202 · 스트리밍 emit</text>
+
+<rect class="box" x="192" y="270" width="128" height="100" rx="10"/>
+<text class="t" x="256" y="298" font-size="15" text-anchor="middle" font-weight="600">tasks</text>
+<text class="s" x="256" y="322" font-size="13" text-anchor="middle">cron 스케줄러</text>
+<text class="s" x="256" y="342" font-size="13" text-anchor="middle">proactive 평가</text>
+
+<rect class="box" x="336" y="270" width="128" height="100" rx="10"/>
+<text class="t" x="400" y="298" font-size="15" text-anchor="middle" font-weight="600">memory</text>
+<text class="s" x="400" y="322" font-size="13" text-anchor="middle">인덱싱 · 추출</text>
+<text class="s" x="400" y="342" font-size="13" text-anchor="middle">조회</text>
+
+<rect class="box" x="480" y="270" width="128" height="100" rx="10"/>
+<text class="t" x="544" y="298" font-size="15" text-anchor="middle" font-weight="600">inference</text>
+<text class="s" x="544" y="322" font-size="13" text-anchor="middle">port / adapter</text>
+<text class="s" x="544" y="342" font-size="13" text-anchor="middle">Ollama 호출</text>
+
+<rect class="box" x="624" y="270" width="128" height="100" rx="10"/>
+<text class="t" x="688" y="298" font-size="15" text-anchor="middle" font-weight="600">notifications</text>
+<text class="s" x="688" y="322" font-size="13" text-anchor="middle">푸시 알림</text>
+<text class="s" x="688" y="342" font-size="13" text-anchor="middle">(선택)</text>
+
+<!-- module -> store -->
+<line class="ln" x1="112" y1="370" x2="112" y2="434" marker-end="url(#ah)"/>
+<line class="ln" x1="256" y1="370" x2="256" y2="434" marker-end="url(#ah)"/>
+<line class="ln" x1="400" y1="370" x2="400" y2="434" marker-end="url(#ah)"/>
+<line class="ln" x1="544" y1="370" x2="544" y2="434" marker-end="url(#ah)"/>
+<line class="ln" x1="688" y1="370" x2="688" y2="434" marker-end="url(#ah)"/>
+
+<!-- stores -->
+<rect class="box" x="48" y="436" width="272" height="52" rx="10"/>
+<text class="t" x="184" y="460" font-size="15" text-anchor="middle">MySQL 8 · Prisma</text>
+<text class="s" x="184" y="478" font-size="13" text-anchor="middle">채팅방 · 메시지 · memories</text>
+
+<rect class="box" x="336" y="436" width="128" height="52" rx="10"/>
+<text class="t" x="400" y="460" font-size="15" text-anchor="middle">Qdrant</text>
+<text class="s" x="400" y="478" font-size="13" text-anchor="middle">벡터 검색</text>
+
+<rect class="box" x="480" y="436" width="128" height="52" rx="10"/>
+<text class="t" x="544" y="460" font-size="15" text-anchor="middle">Ollama</text>
+<text class="s" x="544" y="478" font-size="13" text-anchor="middle">LLM · 임베딩</text>
+
+<rect class="dash" x="624" y="436" width="128" height="52" rx="10"/>
+<text class="t" x="688" y="460" font-size="15" text-anchor="middle">FCM</text>
+<text class="s" x="688" y="478" font-size="13" text-anchor="middle">Firebase</text>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+  <style>
+    :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+    }
+    .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+    .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+    .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+    .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+    .sep{stroke:var(--line);stroke-width:1}
+    .ah{fill:var(--sub)} .aah{fill:var(--accent)}
+  </style>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="aah" d="M0,0 L10,5 L0,10 z"/></marker>
+  </defs>
+  <rect class="bg" width="800" height="400" rx="16"/>
+
+  <!-- 열 제목 -->
+  <text class="t" x="24" y="46" font-size="17" font-weight="600">문서</text>
+  <text class="s" x="66" y="46" font-size="13">demo.char.dot의 parts</text>
+  <text class="t" x="344" y="46" font-size="17" font-weight="600">토큰 해석</text>
+  <text class="t" x="600" y="46" font-size="17" font-weight="600">SVG</text>
+
+  <!-- 문서 열 -->
+  <rect class="box" x="24" y="64" width="296" height="248" rx="12"/>
+  <text class="s" x="44" y="102" font-size="13">aura</text>
+  <text class="t" x="104" y="102" font-size="15">fill  "$frost@ghost"</text>
+  <line class="sep" x1="40" y1="122" x2="304" y2="122"/>
+  <text class="s" x="44" y="150" font-size="13">body</text>
+  <text class="t" x="104" y="150" font-size="15">fill  "$frost"</text>
+  <text class="t" x="104" y="186" font-size="15">stroke  "$ink", "thin"</text>
+  <line class="sep" x1="40" y1="206" x2="304" y2="206"/>
+  <text class="s" x="44" y="234" font-size="13">shine</text>
+  <text class="t" x="104" y="234" font-size="15">fill  "$bone@soft"</text>
+  <line class="sep" x1="40" y1="254" x2="304" y2="254"/>
+  <text class="s" x="44" y="282" font-size="13">face</text>
+  <text class="t" x="104" y="282" font-size="15">use  "demo.lib.face"</text>
+
+  <!-- 화살표 -->
+  <line class="ln" x1="322" y1="97" x2="342" y2="97" marker-end="url(#arr)"/>
+  <line class="ln" x1="322" y1="145" x2="342" y2="145" marker-end="url(#arr)"/>
+  <line class="ln" x1="322" y1="181" x2="342" y2="181" marker-end="url(#arr)"/>
+  <line class="ln" x1="322" y1="229" x2="342" y2="229" marker-end="url(#arr)"/>
+  <line class="ln" x1="322" y1="277" x2="342" y2="277" marker-end="url(#arr)"/>
+
+  <!-- 해석 열 -->
+  <rect class="box" x="344" y="64" width="216" height="248" rx="12"/>
+  <text class="t" x="364" y="102" font-size="15">rgba(143,208,255,0.15)</text>
+  <line class="sep" x1="360" y1="122" x2="544" y2="122"/>
+  <text class="t" x="364" y="150" font-size="15">#8fd0ff</text>
+  <text class="t" x="364" y="186" font-size="15">#10121a, width 2</text>
+  <line class="sep" x1="360" y1="206" x2="544" y2="206"/>
+  <text class="t" x="364" y="234" font-size="15">rgba(230,225,211,0.35)</text>
+  <line class="sep" x1="360" y1="254" x2="544" y2="254"/>
+  <text class="t" x="364" y="282" font-size="15">파트를 인라인</text>
+
+  <line class="al" x1="562" y1="188" x2="598" y2="188" marker-end="url(#arrA)"/>
+
+  <!-- SVG 결과: 갤러리에 렌더링된 demo.char.dot (idle 첫 프레임) -->
+  <rect class="box" x="600" y="64" width="176" height="248" rx="12"/>
+  <svg x="608" y="108" width="160" height="160" viewBox="-14 -14 28 28">
+    <g style="paint-order:stroke" stroke-linejoin="round" stroke-linecap="round">
+      <circle r="12.5" fill="rgba(143,208,255,0.15)"/>
+      <circle r="10" fill="#8fd0ff" stroke="#10121a" stroke-width="2"/>
+      <g transform="translate(-3.5,-4)"><circle r="2.6" fill="rgba(230,225,211,0.35)"/></g>
+      <g transform="translate(0,1)"><g><g transform="translate(-3.2,-1)"><circle r="1.6" fill="#10121a"/></g><g transform="scale(-1,1)"><g transform="translate(-3.2,-1)"><circle r="1.6" fill="#10121a"/></g></g><g transform="translate(-5.2,2.6)"><circle r="1.5" fill="rgba(214,55,86,0.35)"/></g><g transform="scale(-1,1)"><g transform="translate(-5.2,2.6)"><circle r="1.5" fill="rgba(214,55,86,0.35)"/></g></g></g></g>
+    </g>
+  </svg>
+
+  <!-- 계약 -->
+  <rect class="hl" x="24" y="332" width="752" height="44" rx="10"/>
+  <text class="t" x="400" y="360" font-size="15" text-anchor="middle">같은 에셋 + 같은 토큰 + 같은 seed → 바이트 단위로 같은 SVG</text>
+</svg>

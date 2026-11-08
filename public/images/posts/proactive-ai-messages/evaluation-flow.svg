@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="380" viewBox="0 0 800 380" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .ms{fill:var(--sub)} .ma{fill:var(--accent)}
+</style>
+<defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ms" d="M0,0 L10,5 L0,10 z"/></marker>
+  <marker id="aa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ma" d="M0,0 L10,5 L0,10 z"/></marker>
+</defs>
+<rect class="bg" width="800" height="380" rx="16"/>
+
+<!-- A: cron tick -->
+<rect class="box" x="40" y="36" width="200" height="64" rx="12"/>
+<text class="t" x="140" y="63" font-size="15" text-anchor="middle">cron tick (5초)</text>
+<text class="s" x="140" y="84" font-size="13" text-anchor="middle">평가 시각이 된 방</text>
+<line class="ln" x1="240" y1="68" x2="286" y2="68" marker-end="url(#ah)"/>
+
+<!-- C: cap check -->
+<polygon class="hl" points="290,68 400,26 510,68 400,110"/>
+<text class="t" x="400" y="73" font-size="15" text-anchor="middle">연속 proactive ≥ 3 ?</text>
+
+<!-- G: skip -->
+<line class="al" x1="510" y1="68" x2="576" y2="68" marker-end="url(#aa)"/>
+<text class="a" x="543" y="58" font-size="13" text-anchor="middle">예</text>
+<rect class="box" x="580" y="36" width="180" height="64" rx="12"/>
+<text class="t" x="670" y="63" font-size="15" text-anchor="middle">평가 생략</text>
+<text class="s" x="670" y="84" font-size="13" text-anchor="middle">모델 호출 없이</text>
+<line class="ln" x1="670" y1="100" x2="670" y2="156" marker-end="url(#ah)"/>
+
+<!-- D: evaluation model -->
+<line class="ln" x1="400" y1="110" x2="400" y2="156" marker-end="url(#ah)"/>
+<text class="s" x="412" y="139" font-size="13">아니오</text>
+<rect class="box" x="290" y="160" width="220" height="64" rx="12"/>
+<text class="t" x="400" y="187" font-size="15" text-anchor="middle">평가 모델</text>
+<text class="s" x="400" y="208" font-size="13" text-anchor="middle">{ decision: YES | NO }</text>
+
+<!-- H: backoff -->
+<line class="ln" x1="510" y1="192" x2="576" y2="192" marker-end="url(#ah)"/>
+<text class="s" x="543" y="182" font-size="13" text-anchor="middle">NO · 실패</text>
+<rect class="box" x="580" y="160" width="180" height="64" rx="12"/>
+<text class="t" x="670" y="187" font-size="15" text-anchor="middle">delay ×2</text>
+<text class="s" x="670" y="208" font-size="13" text-anchor="middle">다음 평가를 늦춘다</text>
+
+<!-- E: generate -->
+<line class="ln" x1="400" y1="224" x2="400" y2="280" marker-end="url(#ah)"/>
+<text class="s" x="412" y="257" font-size="13">YES</text>
+<rect class="box" x="290" y="284" width="220" height="64" rx="12"/>
+<text class="t" x="400" y="311" font-size="15" text-anchor="middle">proactive 메시지 생성</text>
+<text class="s" x="400" y="332" font-size="13" text-anchor="middle">window 5개 · temperature 0.4</text>
+
+<!-- F: saved, reset -->
+<line class="ln" x1="290" y1="316" x2="244" y2="316" marker-end="url(#ah)"/>
+<rect class="box" x="40" y="284" width="200" height="64" rx="12"/>
+<text class="t" x="140" y="311" font-size="15" text-anchor="middle">AI 메시지 저장</text>
+<text class="s" x="140" y="332" font-size="13" text-anchor="middle">delay = 4초로 초기화</text>
+<line class="ln" x1="140" y1="284" x2="140" y2="104" marker-end="url(#ah)"/>
+<text class="s" x="152" y="198" font-size="13">4초 뒤 다시 평가</text>
+</svg>

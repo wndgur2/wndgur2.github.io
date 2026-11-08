@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="300" viewBox="0 0 800 300" font-family="-apple-system, 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif">
+<style>
+  :root { --bg:#f7f7f9; --surface:#ffffff; --line:#d3d3db; --text:#24242a; --sub:#6b6b75; --accent:#2e5cf0; --accent-soft:#2e5cf01f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#1d1d23; --surface:#282830; --line:#44444f; --text:#f2f2f5; --sub:#a3a3ad; --accent:#8f7aff; --accent-soft:#8f7aff26; }
+  }
+  .bg{fill:var(--bg)} .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5}
+  .t{fill:var(--text)} .s{fill:var(--sub)} .a{fill:var(--accent)}
+  .ln{stroke:var(--sub);stroke-width:1.5;fill:none} .al{stroke:var(--accent);stroke-width:1.8;fill:none}
+  .b{font-weight:600}
+</style>
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sub)"/></marker>
+  <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--accent)"/></marker>
+</defs>
+<rect class="bg" width="800" height="300" rx="16"/>
+
+<!-- request -->
+<rect class="box" x="32" y="56" width="140" height="80" rx="10"/>
+<text class="t b" x="102" y="88" font-size="15" text-anchor="middle">API 요청</text>
+<text class="s" x="102" y="110" font-size="13" text-anchor="middle">anon / authenticated</text>
+
+<!-- GRANT -->
+<rect class="hl" x="222" y="56" width="170" height="80" rx="10"/>
+<text class="t b" x="307" y="88" font-size="15" text-anchor="middle">① GRANT</text>
+<text class="s" x="307" y="110" font-size="13" text-anchor="middle">테이블에 들어갈 자격</text>
+
+<!-- RLS -->
+<rect class="box" x="442" y="56" width="170" height="80" rx="10"/>
+<text class="t b" x="527" y="88" font-size="15" text-anchor="middle">② RLS</text>
+<text class="s" x="527" y="110" font-size="13" text-anchor="middle">어떤 행을 볼지</text>
+
+<!-- result -->
+<rect class="box" x="662" y="56" width="106" height="80" rx="10"/>
+<text class="t b" x="715" y="88" font-size="15" text-anchor="middle">행 반환</text>
+<text class="s" x="715" y="110" font-size="13" text-anchor="middle">본인 행만</text>
+
+<line class="ln" x1="172" y1="96" x2="218" y2="96" marker-end="url(#arr)"/>
+<line class="ln" x1="392" y1="96" x2="438" y2="96" marker-end="url(#arr)"/>
+<line class="ln" x1="612" y1="96" x2="658" y2="96" marker-end="url(#arr)"/>
+
+<!-- failures -->
+<line class="al" x1="307" y1="136" x2="307" y2="190" marker-end="url(#arrA)"/>
+<text class="a" x="317" y="168" font-size="13">권한 없음</text>
+<rect class="box" x="207" y="194" width="200" height="72" rx="10"/>
+<text class="a b" x="307" y="224" font-size="15" text-anchor="middle">42501 거절</text>
+<text class="s" x="307" y="246" font-size="13" text-anchor="middle">RLS를 평가하기도 전에</text>
+
+<line class="ln" x1="527" y1="136" x2="527" y2="190" marker-end="url(#arr)"/>
+<text class="s" x="537" y="168" font-size="13">정책 불일치</text>
+<rect class="box" x="427" y="194" width="200" height="72" rx="10"/>
+<text class="t b" x="527" y="224" font-size="15" text-anchor="middle">0건 / 위반 차단</text>
+<text class="s" x="527" y="246" font-size="13" text-anchor="middle">남의 행은 안 보인다</text>
+</svg>
