@@ -13,6 +13,7 @@ export default function useProfileImage() {
   const clickCountRef = useRef(0)
   const maxClickCountRef = useRef(Math.random() * 2 + 1)
 
+  // 다음 프로필 이미지를 미리 받아 둔다. 마운트할 때 한 번만 하면 된다.
   useEffect(() => {
     for (let i = 0; i < IMG_AMOUNT; i++) {
       const optimizedImg = new Image()
@@ -20,7 +21,7 @@ export default function useProfileImage() {
       const fallbackImg = new Image()
       fallbackImg.src = `/images/profile/${i}.jpeg`
     }
-  })
+  }, [])
 
   const profileClickHandler = () => {
     if (!profileRef.current) return

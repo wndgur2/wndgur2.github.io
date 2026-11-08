@@ -4,9 +4,6 @@ import { createBrowserRouter } from 'react-router-dom'
 import Spinner from '@/components/common/Spinner'
 
 const DefaultLayout = lazy(() => import('@/layouts/DefaultLayout'))
-const PostDetailLayout = lazy(
-  () => import('@/layouts/PostDetailLayout/PostDetailLayout'),
-)
 const HomePage = lazy(() => import('@/pages/HomePage'))
 const NoPage = lazy(() => import('@/pages/NoPage'))
 const PostDetailPage = lazy(() => import('@/pages/PostDetailPage'))
@@ -55,19 +52,9 @@ export const router = createBrowserRouter([
         path: ROUTES.POST_DETAIL(':id'),
         element: (
           <Suspense fallback={<Spinner phrase='게시글 로딩중...' />}>
-            <PostDetailLayout />
+            <PostDetailPage />
           </Suspense>
         ),
-        children: [
-          {
-            index: true,
-            element: (
-              <Suspense fallback={<Spinner phrase='게시글 로딩중...' />}>
-                <PostDetailPage />
-              </Suspense>
-            ),
-          },
-        ],
       },
       {
         path: '*',
