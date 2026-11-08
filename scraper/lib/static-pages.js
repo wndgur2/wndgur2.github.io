@@ -60,10 +60,13 @@ export function createExcerpt(markdown, maxLength = 160) {
   return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text
 }
 
+const toSiteUrl = path => (path ? `${SITE_URL}${path}` : undefined)
+
 function findFirstImage(markdown) {
   return (
     markdown.match(/!\[[^\]]*\]\((https?:[^)\s]+)/)?.[1] ??
-    markdown.match(/<img[^>]+src=["'](https?:[^"']+)/)?.[1]
+    markdown.match(/<img[^>]+src=["'](https?:[^"']+)/)?.[1] ??
+    toSiteUrl(markdown.match(/<img[^>]+src=["'](\/media\/[^"']+)/)?.[1])
   )
 }
 

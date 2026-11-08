@@ -49,6 +49,12 @@ export async function fetchPosts() {
         tags: tags.sort(),
         date_started: fm.date_started ?? 'No date found.',
         github: htmlUrl,
+        imageBase: {
+          owner,
+          repo,
+          ref: BLOG_DB_REF,
+          dir: path.posix.dirname(file),
+        },
         // dev-log에 직접 쓴 프로젝트 글(category: Project)도 프로젝트 카드 정보를 갖게 한다.
         ...(category === 'project' && {
           description: fm.description ?? '',

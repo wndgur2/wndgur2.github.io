@@ -11,6 +11,15 @@ const post = (id, tags, content = '') => ({
   date_started: '2026.01.01',
 })
 
+describe('postHash', () => {
+  it('prefers the hash of the original content', () => {
+    const post = { title: 't', tags: [], content: '<img src="/media/a.webp">' }
+
+    expect(postHash({ ...post, source_hash: 'original' })).toBe('original')
+    expect(postHash(post)).not.toBe('original')
+  })
+})
+
 describe('conceptKey', () => {
   it('merges spelling variants but keeps C++/C#', () => {
     expect(conceptKey('Event Loop')).toBe(conceptKey('event-loop'))

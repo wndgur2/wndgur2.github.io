@@ -3,6 +3,8 @@ import path from 'node:path'
 
 import { OUT_DIR_META } from './fs.js'
 import { getPostWithId } from './hash.js'
+import { localizeImages } from './images.js'
+import { postHash } from './knowledge-graph.js'
 import { mapWithProgress } from './logger.js'
 
 export async function fetchAndProcess({
@@ -21,7 +23,8 @@ export async function fetchAndProcess({
   const ids = new Set()
   const items = fetchedItems
     .filter(Boolean)
-    .map(getPostWithId)
+    // legacy_id가 원본 본문 기준으로 유지되도록 이미지 변환 전에 해시한다.
+    .map(({ imageBase, ...item }) => ({ ...getPostWithId(item), imageBase }))
     .filter(item => {
       if (ids.has(item.id)) {
         console.warn(`⚠️ Duplicate content id: ${item.id} (${item.title})`)
@@ -32,6 +35,19 @@ export async function fetchAndProcess({
       }
     })
     .sort((a, b) => new Date(b.date_started) - new Date(a.date_started))
+
+  await Promise.all(
+    items.map(async item => {
+      const { imageBase: base } = item
+      delete item.imageBase
+      // 이미지 주소 변경만으로 지식 그래프 캐시가 무효화되지 않게 원본 기준으로 남긴다.
+      item.source_hash = postHash(item)
+      item.content = await localizeImages(item.content, {
+        base,
+        missingImageLink: item.url,
+      })
+    }),
+  )
 
   for (const fn of postProcessors) {
     fn(items)

@@ -77,6 +77,8 @@ export function vocabularyHash(keys) {
 
 /** 본문이 바뀌었을 때만 다시 추출하도록 쓰는 해시 */
 export function postHash(post) {
+  // 스크랩 결과에는 이미지 주소를 바꾸기 전 본문의 해시가 들어 있다.
+  if (post.source_hash) return post.source_hash
   return createHash('sha256')
     .update(JSON.stringify([post.title, post.tags, post.content]))
     .digest('hex')
