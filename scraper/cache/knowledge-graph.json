@@ -1,0 +1,6509 @@
+{
+  "posts": {
+    "ai-issue-autofix-loop": {
+      "hash": "c77caace5d7fc6c7",
+      "title": "AI 코딩 에이전트로 이슈 분류·자동 수정 루프 돌리기",
+      "summary": "AI 코딩 에이전트로 이슈 분류·자동 수정·자동 머지 루프를 운영하며 겪은 실수와 해결책 정리",
+      "concepts": [
+        {
+          "name": "AI Agent",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Issue Triage",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "CI/CD",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Retry",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Polling",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Access Control",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Prompt Injection",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Error Handling",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Preview Environment",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Lint",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Memory Budget",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Data Masking",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "AI Agent",
+          "target": "Issue Triage",
+          "relation": "implements"
+        },
+        {
+          "source": "AI Agent",
+          "target": "CI/CD",
+          "relation": "uses"
+        },
+        {
+          "source": "CI/CD",
+          "target": "Polling",
+          "relation": "uses"
+        },
+        {
+          "source": "CI/CD",
+          "target": "Preview Environment",
+          "relation": "uses"
+        },
+        {
+          "source": "Retry",
+          "target": "Error Handling",
+          "relation": "part_of"
+        },
+        {
+          "source": "Access Control",
+          "target": "Prompt Injection",
+          "relation": "related_to"
+        },
+        {
+          "source": "AI Agent",
+          "target": "Memory Budget",
+          "relation": "related_to"
+        },
+        {
+          "source": "Retry",
+          "target": "Lint",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "babel-esbuild": {
+      "hash": "af583f77786c75b4",
+      "title": "Babel vs ESBuild",
+      "summary": "Babel의 트랜스파일 기능과 Go로 작성된 초고속 번들러 ESBuild의 특징을 비교 정리",
+      "concepts": [
+        {
+          "name": "Babel",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "esbuild",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Transpiler",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Bundler",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Polyfill",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "JSX",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "TypeScript",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Go",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Parallel Processing",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Tree Shaking",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Source Map",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Vite",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Babel",
+          "target": "esbuild",
+          "relation": "compares"
+        },
+        {
+          "source": "Babel",
+          "target": "Transpiler",
+          "relation": "is_a"
+        },
+        {
+          "source": "esbuild",
+          "target": "Bundler",
+          "relation": "is_a"
+        },
+        {
+          "source": "Babel",
+          "target": "Polyfill",
+          "relation": "uses"
+        },
+        {
+          "source": "esbuild",
+          "target": "Go",
+          "relation": "uses"
+        },
+        {
+          "source": "esbuild",
+          "target": "Parallel Processing",
+          "relation": "uses"
+        },
+        {
+          "source": "Vite",
+          "target": "esbuild",
+          "relation": "uses"
+        },
+        {
+          "source": "esbuild",
+          "target": "Tree Shaking",
+          "relation": "implements"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "ble-bonding": {
+      "hash": "887b662d4b066836",
+      "title": "Owl BLE 본딩과 동기화 프로토콜",
+      "summary": "목걸이형 녹음기 Owl의 BLE 동기화 프로토콜과 LESC 본딩·페어링 창 보안 설계를 정리",
+      "concepts": [
+        {
+          "name": "Owl",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Bluetooth Low Energy",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "BLE Bonding",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "GATT",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "LE Secure Connections",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "동기화 프로토콜",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "SMP",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Zephyr",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Android",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Google Bumble",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "CRC32",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Just Works",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Owl",
+          "target": "Bluetooth Low Energy",
+          "relation": "uses"
+        },
+        {
+          "source": "BLE Bonding",
+          "target": "Bluetooth Low Energy",
+          "relation": "part_of"
+        },
+        {
+          "source": "BLE Bonding",
+          "target": "LE Secure Connections",
+          "relation": "uses"
+        },
+        {
+          "source": "동기화 프로토콜",
+          "target": "GATT",
+          "relation": "uses"
+        },
+        {
+          "source": "동기화 프로토콜",
+          "target": "CRC32",
+          "relation": "uses"
+        },
+        {
+          "source": "Owl",
+          "target": "Zephyr",
+          "relation": "uses"
+        },
+        {
+          "source": "Google Bumble",
+          "target": "SMP",
+          "relation": "implements"
+        },
+        {
+          "source": "Just Works",
+          "target": "LE Secure Connections",
+          "relation": "part_of"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "chatty": {
+      "hash": "180fbb32889097f0",
+      "title": "Chatty",
+      "summary": "스케줄러로 AI가 먼저 말을 거는 LLM 채팅 앱 Chatty의 구조와 구현 문제를 정리한 글",
+      "concepts": [
+        {
+          "name": "Chatty",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "NestJS",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Ollama",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Qdrant",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "RAG",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Socket.io",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Streaming",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "MySQL",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Prisma",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "GitHub Actions",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Scheduled Job",
+          "type": "concept",
+          "importance": 2
+        }
+      ],
+      "relations": [
+        {
+          "source": "Chatty",
+          "target": "NestJS",
+          "relation": "uses"
+        },
+        {
+          "source": "Chatty",
+          "target": "Ollama",
+          "relation": "uses"
+        },
+        {
+          "source": "Chatty",
+          "target": "Socket.io",
+          "relation": "uses"
+        },
+        {
+          "source": "RAG",
+          "target": "Qdrant",
+          "relation": "uses"
+        },
+        {
+          "source": "Chatty",
+          "target": "RAG",
+          "relation": "implements"
+        },
+        {
+          "source": "Streaming",
+          "target": "Socket.io",
+          "relation": "uses"
+        },
+        {
+          "source": "Prisma",
+          "target": "MySQL",
+          "relation": "uses"
+        },
+        {
+          "source": "Chatty",
+          "target": "Scheduled Job",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "conversation-branching": {
+      "hash": "147fcea6fec11acd",
+      "title": "채팅 대화를 갈래로 나누기 (fork)",
+      "summary": "LLM 에이전트 채팅에서 앱 기록과 세션 기억을 함께 복사하는 대화 fork 기능 구현기",
+      "concepts": [
+        {
+          "name": "Conversation Fork",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "LLM Agent",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "REST API",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Database Transaction",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Compensating Transaction",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Feature Flag",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "sessionStorage",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Access Control",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "UI Design",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Conversation Fork",
+          "target": "LLM Agent",
+          "relation": "part_of"
+        },
+        {
+          "source": "Conversation Fork",
+          "target": "REST API",
+          "relation": "uses"
+        },
+        {
+          "source": "Conversation Fork",
+          "target": "Database Transaction",
+          "relation": "uses"
+        },
+        {
+          "source": "Conversation Fork",
+          "target": "Compensating Transaction",
+          "relation": "uses"
+        },
+        {
+          "source": "Conversation Fork",
+          "target": "Feature Flag",
+          "relation": "uses"
+        },
+        {
+          "source": "Conversation Fork",
+          "target": "sessionStorage",
+          "relation": "uses"
+        },
+        {
+          "source": "Conversation Fork",
+          "target": "Access Control",
+          "relation": "uses"
+        },
+        {
+          "source": "Compensating Transaction",
+          "target": "Database Transaction",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "deterministic-svg-assets": {
+      "hash": "061b25721d0a5367",
+      "title": "에셋을 데이터로 — 선언형 문서, design token, 결정적 SVG 렌더링",
+      "summary": "PolyGraphics에서 게임 에셋을 선언형 JSON 문서와 design token으로 다루고 결정적 SVG 렌더링으로 회귀 테스트를 가능하게 한 과정",
+      "concepts": [
+        {
+          "name": "PolyGraphics",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Design Token",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Deterministic Rendering",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "SVG",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Visual Regression Testing",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Seeded PRNG",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Lint",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Levenshtein Distance",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Phaser",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Godot",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Intermediate Representation",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "AI Agent",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "PolyGraphics",
+          "target": "Design Token",
+          "relation": "uses"
+        },
+        {
+          "source": "PolyGraphics",
+          "target": "Deterministic Rendering",
+          "relation": "implements"
+        },
+        {
+          "source": "Deterministic Rendering",
+          "target": "Seeded PRNG",
+          "relation": "uses"
+        },
+        {
+          "source": "Deterministic Rendering",
+          "target": "Visual Regression Testing",
+          "relation": "related_to"
+        },
+        {
+          "source": "Lint",
+          "target": "Levenshtein Distance",
+          "relation": "uses"
+        },
+        {
+          "source": "Phaser",
+          "target": "Intermediate Representation",
+          "relation": "uses"
+        },
+        {
+          "source": "Godot",
+          "target": "Intermediate Representation",
+          "relation": "uses"
+        },
+        {
+          "source": "Deterministic Rendering",
+          "target": "SVG",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "event-triggers-and-scheduled-jobs": {
+      "hash": "409436029097dec6",
+      "title": "에이전트를 깨우는 이벤트 트리거와 예약 작업 설계",
+      "summary": "AI 에이전트의 이벤트 트리거·예약 작업 설계와 preview 환경 문제 해결 기록",
+      "concepts": [
+        {
+          "name": "AI Agent",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Event Trigger",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Scheduled Job",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Webhook",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Polling",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "State Machine",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Glob Matching",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "ReDoS",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Preview Environment",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Idempotency",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Rollback",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "TypeScript",
+          "type": "language",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Event Trigger",
+          "target": "AI Agent",
+          "relation": "part_of"
+        },
+        {
+          "source": "Scheduled Job",
+          "target": "AI Agent",
+          "relation": "part_of"
+        },
+        {
+          "source": "Event Trigger",
+          "target": "Webhook",
+          "relation": "uses"
+        },
+        {
+          "source": "Event Trigger",
+          "target": "Polling",
+          "relation": "uses"
+        },
+        {
+          "source": "Event Trigger",
+          "target": "State Machine",
+          "relation": "uses"
+        },
+        {
+          "source": "Glob Matching",
+          "target": "ReDoS",
+          "relation": "related_to"
+        },
+        {
+          "source": "Preview Environment",
+          "target": "Scheduled Job",
+          "relation": "related_to"
+        },
+        {
+          "source": "Webhook",
+          "target": "Polling",
+          "relation": "compares"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "expo-supabase-serverless": {
+      "hash": "a83323f064c583fb",
+      "title": "상시 서버 없이 앱 만들기 — Expo + Supabase + Edge Functions",
+      "summary": "Expo와 Supabase, Edge Functions로 상시 서버 없이 LLM 챗봇 앱을 만든 구성과 트러블슈팅 정리",
+      "concepts": [
+        {
+          "name": "Supabase",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Expo",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "Edge Functions",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Row Level Security",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "PostgreSQL",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Server-Sent Events",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Monorepo",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "LLM Agent",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "EAS Build",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "React Native",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "TanStack Query",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Access Control",
+          "type": "concept",
+          "importance": 2
+        }
+      ],
+      "relations": [
+        {
+          "source": "Supabase",
+          "target": "PostgreSQL",
+          "relation": "uses"
+        },
+        {
+          "source": "Row Level Security",
+          "target": "PostgreSQL",
+          "relation": "part_of"
+        },
+        {
+          "source": "Row Level Security",
+          "target": "Access Control",
+          "relation": "implements"
+        },
+        {
+          "source": "Edge Functions",
+          "target": "Supabase",
+          "relation": "part_of"
+        },
+        {
+          "source": "Edge Functions",
+          "target": "Server-Sent Events",
+          "relation": "uses"
+        },
+        {
+          "source": "Expo",
+          "target": "React Native",
+          "relation": "uses"
+        },
+        {
+          "source": "EAS Build",
+          "target": "Expo",
+          "relation": "part_of"
+        },
+        {
+          "source": "Edge Functions",
+          "target": "LLM Agent",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "firebase": {
+      "hash": "f5b9843cd5417e50",
+      "title": "firebase",
+      "summary": "Firebase의 주요 기능과 특징을 AWS와 비교하여 정리한 글",
+      "concepts": [
+        {
+          "name": "Firebase",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "AWS",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "BaaS",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Firestore",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Cloud Functions",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "AWS Lambda",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Serverless",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "NoSQL",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Cloud Computing",
+          "type": "domain",
+          "importance": 2
+        },
+        {
+          "name": "Firebase Authentication",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Firebase",
+          "target": "AWS",
+          "relation": "compares"
+        },
+        {
+          "source": "Firebase",
+          "target": "BaaS",
+          "relation": "is_a"
+        },
+        {
+          "source": "Firestore",
+          "target": "Firebase",
+          "relation": "part_of"
+        },
+        {
+          "source": "Cloud Functions",
+          "target": "Firebase",
+          "relation": "part_of"
+        },
+        {
+          "source": "AWS Lambda",
+          "target": "AWS",
+          "relation": "part_of"
+        },
+        {
+          "source": "Cloud Functions",
+          "target": "AWS Lambda",
+          "relation": "compares"
+        },
+        {
+          "source": "AWS Lambda",
+          "target": "Serverless",
+          "relation": "implements"
+        },
+        {
+          "source": "Firestore",
+          "target": "NoSQL",
+          "relation": "is_a"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "flatten": {
+      "hash": "1bf5d3369ad3e9e9",
+      "title": "Flatten",
+      "summary": "SWEA Flatten 문제를 자바로 정렬 기반 풀이하고 높이 인덱스 배열(카운팅) 풀이와 비교한 회고",
+      "concepts": [
+        {
+          "name": "Flatten",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 3
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Sorting",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Counting Array",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "BufferedReader",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "StringTokenizer",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Flatten",
+          "target": "SWEA",
+          "relation": "part_of"
+        },
+        {
+          "source": "Flatten",
+          "target": "Java",
+          "relation": "uses"
+        },
+        {
+          "source": "Flatten",
+          "target": "Sorting",
+          "relation": "uses"
+        },
+        {
+          "source": "Counting Array",
+          "target": "Sorting",
+          "relation": "improves"
+        },
+        {
+          "source": "Java",
+          "target": "BufferedReader",
+          "relation": "uses"
+        },
+        {
+          "source": "Java",
+          "target": "StringTokenizer",
+          "relation": "uses"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "javascript": {
+      "hash": "afef49748dd3594e",
+      "title": "Javascript, Under the Hood",
+      "summary": "JIT 컴파일러와 Call Stack, Heap, Web API, Task Queue, Event Loop 등 JS 런타임 동작 정리",
+      "concepts": [
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 3
+        },
+        {
+          "name": "Event Loop",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Call Stack",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Task Queue",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Web API",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "JIT Compiler",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "JavaScript Runtime",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Garbage Collection",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Asynchronous Programming",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Memory Heap",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "JavaScript",
+          "target": "JIT Compiler",
+          "relation": "uses"
+        },
+        {
+          "source": "Event Loop",
+          "target": "JavaScript Runtime",
+          "relation": "part_of"
+        },
+        {
+          "source": "Call Stack",
+          "target": "JavaScript Runtime",
+          "relation": "part_of"
+        },
+        {
+          "source": "Task Queue",
+          "target": "JavaScript Runtime",
+          "relation": "part_of"
+        },
+        {
+          "source": "Event Loop",
+          "target": "Task Queue",
+          "relation": "uses"
+        },
+        {
+          "source": "Event Loop",
+          "target": "Call Stack",
+          "relation": "uses"
+        },
+        {
+          "source": "Web API",
+          "target": "Asynchronous Programming",
+          "relation": "implements"
+        },
+        {
+          "source": "Memory Heap",
+          "target": "Garbage Collection",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "javascript-usage": {
+      "hash": "26acf555f6da3f5f",
+      "title": "Javascript Usage",
+      "summary": "JavaScript의 변수 선언, 원시 타입, 프로토타입, 제너레이터, 바인딩, 문자열 메서드를 정리한 글",
+      "concepts": [
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 3
+        },
+        {
+          "name": "Generator Function",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Binding",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Prototype Chain",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Scope",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Hoisting",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Primitive Type",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "BigInt",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Nullish Coalescing Operator",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Template Literal",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "String Methods",
+          "type": "concept",
+          "importance": 2
+        }
+      ],
+      "relations": [
+        {
+          "source": "Generator Function",
+          "target": "JavaScript",
+          "relation": "part_of"
+        },
+        {
+          "source": "Generator Function",
+          "target": "Binding",
+          "relation": "uses"
+        },
+        {
+          "source": "Binding",
+          "target": "Scope",
+          "relation": "related_to"
+        },
+        {
+          "source": "Prototype Chain",
+          "target": "JavaScript",
+          "relation": "part_of"
+        },
+        {
+          "source": "Hoisting",
+          "target": "Scope",
+          "relation": "related_to"
+        },
+        {
+          "source": "BigInt",
+          "target": "Primitive Type",
+          "relation": "is_a"
+        },
+        {
+          "source": "String Methods",
+          "target": "JavaScript",
+          "relation": "part_of"
+        },
+        {
+          "source": "Nullish Coalescing Operator",
+          "target": "JavaScript",
+          "relation": "part_of"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "js-deque": {
+      "hash": "54909ce96c371a04",
+      "title": "JS로 덱(Double-ended queue) 구현하기",
+      "summary": "JS 배열 shift의 O(N) 문제를 해결하기 위해 이중 연결 리스트로 덱을 구현하는 방법",
+      "concepts": [
+        {
+          "name": "Deque",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Doubly Linked List",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Queue",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "JavaScript Array",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "BFS",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Deque",
+          "target": "Doubly Linked List",
+          "relation": "uses"
+        },
+        {
+          "source": "Deque",
+          "target": "Queue",
+          "relation": "improves"
+        },
+        {
+          "source": "Deque",
+          "target": "JavaScript Array",
+          "relation": "compares"
+        },
+        {
+          "source": "Deque",
+          "target": "JavaScript",
+          "relation": "uses"
+        },
+        {
+          "source": "JavaScript Array",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        },
+        {
+          "source": "BFS",
+          "target": "Deque",
+          "relation": "uses"
+        },
+        {
+          "source": "Coding Test",
+          "target": "Deque",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "js-heap": {
+      "hash": "f84eba294a9e2539",
+      "title": "JS로 힙(heap) 구현하기",
+      "summary": "JavaScript로 우선순위 큐용 힙을 배열 기반으로 구현하고 삽입·삭제 과정을 설명한다",
+      "concepts": [
+        {
+          "name": "Heap",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Priority Queue",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Complete Binary Tree",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Sift Up",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Sift Down",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "JavaScript Array",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Heap",
+          "target": "Complete Binary Tree",
+          "relation": "is_a"
+        },
+        {
+          "source": "Priority Queue",
+          "target": "Heap",
+          "relation": "uses"
+        },
+        {
+          "source": "Sift Up",
+          "target": "Heap",
+          "relation": "part_of"
+        },
+        {
+          "source": "Sift Down",
+          "target": "Heap",
+          "relation": "part_of"
+        },
+        {
+          "source": "Heap",
+          "target": "JavaScript Array",
+          "relation": "uses"
+        },
+        {
+          "source": "Heap",
+          "target": "JavaScript",
+          "relation": "uses"
+        },
+        {
+          "source": "Heap",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        },
+        {
+          "source": "Coding Test",
+          "target": "Priority Queue",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "json-web-token": {
+      "hash": "d235fc085c4be357",
+      "title": "JWT(Json Web Token)",
+      "summary": "JWT의 구조와 발급, 서명 기반 유효성 검사를 통한 인증 흐름을 정리한 글",
+      "concepts": [
+        {
+          "name": "JWT",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Authentication",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Digital Signature",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Secret Key",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Token Validation",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Token Expiration",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "JSON",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Cookie",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "JWT",
+          "target": "Authentication",
+          "relation": "implements"
+        },
+        {
+          "source": "JWT",
+          "target": "Digital Signature",
+          "relation": "uses"
+        },
+        {
+          "source": "Digital Signature",
+          "target": "Secret Key",
+          "relation": "uses"
+        },
+        {
+          "source": "Token Validation",
+          "target": "Digital Signature",
+          "relation": "uses"
+        },
+        {
+          "source": "Token Validation",
+          "target": "Token Expiration",
+          "relation": "uses"
+        },
+        {
+          "source": "JWT",
+          "target": "JSON",
+          "relation": "uses"
+        },
+        {
+          "source": "Token Validation",
+          "target": "Authentication",
+          "relation": "part_of"
+        },
+        {
+          "source": "JWT",
+          "target": "Cookie",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "ladder1": {
+      "hash": "0ccab0216d38812a",
+      "title": "Ladder1",
+      "summary": "SWEA 1210 Ladder1 문제를 Java로 2차원 배열을 이용해 역방향 시뮬레이션으로 구현한 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "2차원 배열",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "StringTokenizer",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "BufferedReader",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Simulation",
+          "type": "algorithm",
+          "importance": 2
+        }
+      ],
+      "relations": [
+        {
+          "source": "구현",
+          "target": "Java",
+          "relation": "uses"
+        },
+        {
+          "source": "Simulation",
+          "target": "2차원 배열",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "Simulation",
+          "relation": "related_to"
+        },
+        {
+          "source": "StringTokenizer",
+          "target": "Java",
+          "relation": "part_of"
+        },
+        {
+          "source": "BufferedReader",
+          "target": "Java",
+          "relation": "part_of"
+        },
+        {
+          "source": "구현",
+          "target": "SWEA",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "llm-agent-eval-harness": {
+      "hash": "9e07d678a50416df",
+      "title": "LLM 에이전트 평가 하니스 만들기",
+      "summary": "LLM 에이전트 품질을 측정하는 블랙박스 평가 하니스의 설계, 채점, 노이즈 처리 경험 정리",
+      "concepts": [
+        {
+          "name": "LLM Agent",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Evaluation Harness",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Regression Testing",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Black-box Testing",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Wilson Score Interval",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Flaky Test",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Retry",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Server-Sent Events",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "YAML",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Streaming",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Scheduled Job",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Concurrency",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Evaluation Harness",
+          "target": "LLM Agent",
+          "relation": "related_to"
+        },
+        {
+          "source": "Evaluation Harness",
+          "target": "Regression Testing",
+          "relation": "implements"
+        },
+        {
+          "source": "Evaluation Harness",
+          "target": "Black-box Testing",
+          "relation": "uses"
+        },
+        {
+          "source": "Evaluation Harness",
+          "target": "Wilson Score Interval",
+          "relation": "uses"
+        },
+        {
+          "source": "Wilson Score Interval",
+          "target": "Flaky Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "Evaluation Harness",
+          "target": "Server-Sent Events",
+          "relation": "uses"
+        },
+        {
+          "source": "Evaluation Harness",
+          "target": "YAML",
+          "relation": "uses"
+        },
+        {
+          "source": "Scheduled Job",
+          "target": "Regression Testing",
+          "relation": "improves"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "long-running-agent-streaming": {
+      "hash": "44e028422c3f4f11",
+      "title": "긴 에이전트 턴을 SSE로 스트리밍하며 겪은 것들",
+      "summary": "LLM 에이전트의 긴 턴을 SSE로 스트리밍하며 겪은 표출 속도, 복구, 취소 분류, 재시도 문제를 정리",
+      "concepts": [
+        {
+          "name": "Server-Sent Events",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "LLM Agent",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Streaming",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Error Handling",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Retry",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "AbortController",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Tool Calling",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Heartbeat",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "State Management",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Idempotency",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "TypeScript",
+          "type": "language",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "LLM Agent",
+          "target": "Server-Sent Events",
+          "relation": "uses"
+        },
+        {
+          "source": "Streaming",
+          "target": "Server-Sent Events",
+          "relation": "uses"
+        },
+        {
+          "source": "LLM Agent",
+          "target": "Tool Calling",
+          "relation": "uses"
+        },
+        {
+          "source": "Error Handling",
+          "target": "AbortController",
+          "relation": "related_to"
+        },
+        {
+          "source": "Retry",
+          "target": "Error Handling",
+          "relation": "part_of"
+        },
+        {
+          "source": "Heartbeat",
+          "target": "Server-Sent Events",
+          "relation": "part_of"
+        },
+        {
+          "source": "Retry",
+          "target": "Idempotency",
+          "relation": "related_to"
+        },
+        {
+          "source": "State Management",
+          "target": "Streaming",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "loop": {
+      "hash": "1409a3aaeb58ba25",
+      "title": "Loop",
+      "summary": "AI 코치와 대화로 피드백을 목표 달성으로 잇는 Expo·Supabase 기반 앱 Loop 프로젝트 소개",
+      "concepts": [
+        {
+          "name": "Expo",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "Supabase",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Supabase Edge Functions",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "LLM Agent",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Row Level Security",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Server-Sent Events",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Monorepo",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "React Native Web",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "TanStack Query",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Vercel",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "PWA",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Design System",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Expo",
+          "target": "Supabase",
+          "relation": "uses"
+        },
+        {
+          "source": "Supabase Edge Functions",
+          "target": "Supabase",
+          "relation": "part_of"
+        },
+        {
+          "source": "Row Level Security",
+          "target": "Supabase",
+          "relation": "part_of"
+        },
+        {
+          "source": "LLM Agent",
+          "target": "Supabase Edge Functions",
+          "relation": "uses"
+        },
+        {
+          "source": "LLM Agent",
+          "target": "Server-Sent Events",
+          "relation": "uses"
+        },
+        {
+          "source": "Expo",
+          "target": "React Native Web",
+          "relation": "uses"
+        },
+        {
+          "source": "Design System",
+          "target": "Monorepo",
+          "relation": "part_of"
+        },
+        {
+          "source": "PWA",
+          "target": "Vercel",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "min-max": {
+      "hash": "b43fe61493a040c9",
+      "title": "min max",
+      "summary": "SWEA 4828번 문제를 Python의 min(), max()로 최대값과 최소값의 차를 구해 푼 풀이",
+      "concepts": [
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "min/max 함수",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "min/max 함수",
+          "target": "Python",
+          "relation": "part_of"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "min/max 함수",
+          "target": "Brute Force",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "n과-m-1": {
+      "hash": "a2f25a258f26c82e",
+      "title": "N과 M (1)",
+      "summary": "백준 N과 M (1) 문제를 C++ 재귀 DFS 백트래킹으로 순열을 생성해 푼 풀이",
+      "concepts": [
+        {
+          "name": "Backtracking",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "DFS",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "순열",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Recursion",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "BFS",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "C++",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Backtracking",
+          "target": "DFS",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "Recursion",
+          "relation": "uses"
+        },
+        {
+          "source": "Backtracking",
+          "target": "순열",
+          "relation": "implements"
+        },
+        {
+          "source": "DFS",
+          "target": "BFS",
+          "relation": "compares"
+        },
+        {
+          "source": "Backtracking",
+          "target": "Brute Force",
+          "relation": "related_to"
+        },
+        {
+          "source": "C++",
+          "target": "DFS",
+          "relation": "implements"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "octopus": {
+      "hash": "fd580566f52946b5",
+      "title": "Find The Octopus",
+      "summary": "WebSocket 기반 멀티플레이어 그림 추리 게임 Find The Octopus의 프론트엔드 구현과 배포를 정리한 글",
+      "concepts": [
+        {
+          "name": "Find The Octopus",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "WebSocket",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Zustand",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "TypeScript",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "react-i18next",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "PWA",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Real-time Synchronization",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Promise.all",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Blue-Green Deployment",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Docker",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "GitHub Actions",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Find The Octopus",
+          "target": "WebSocket",
+          "relation": "uses"
+        },
+        {
+          "source": "Find The Octopus",
+          "target": "React",
+          "relation": "uses"
+        },
+        {
+          "source": "Find The Octopus",
+          "target": "Zustand",
+          "relation": "uses"
+        },
+        {
+          "source": "Find The Octopus",
+          "target": "react-i18next",
+          "relation": "uses"
+        },
+        {
+          "source": "WebSocket",
+          "target": "Real-time Synchronization",
+          "relation": "implements"
+        },
+        {
+          "source": "Find The Octopus",
+          "target": "Promise.all",
+          "relation": "uses"
+        },
+        {
+          "source": "Blue-Green Deployment",
+          "target": "Docker",
+          "relation": "uses"
+        },
+        {
+          "source": "Find The Octopus",
+          "target": "PWA",
+          "relation": "implements"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "on-device-situation-classifier": {
+      "hash": "786ebe49fba3e52e",
+      "title": "온디바이스 상황 분류기 설계",
+      "summary": "Owl 타임라인에 상황 라벨을 붙이는 온디바이스 분류 모델 Laya의 설계 정리",
+      "concepts": [
+        {
+          "name": "On-device ML",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Owl",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Laya",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "Temperature Scaling",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Expected Calibration Error",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "ONNX",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Quantization",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Text Classification",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Fine-tuning",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Viterbi Algorithm",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Macro-F1",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Android",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Laya",
+          "target": "Text Classification",
+          "relation": "implements"
+        },
+        {
+          "source": "Owl",
+          "target": "Laya",
+          "relation": "uses"
+        },
+        {
+          "source": "Temperature Scaling",
+          "target": "Expected Calibration Error",
+          "relation": "improves"
+        },
+        {
+          "source": "Laya",
+          "target": "Temperature Scaling",
+          "relation": "uses"
+        },
+        {
+          "source": "Laya",
+          "target": "ONNX",
+          "relation": "uses"
+        },
+        {
+          "source": "ONNX",
+          "target": "Quantization",
+          "relation": "uses"
+        },
+        {
+          "source": "On-device ML",
+          "target": "Android",
+          "relation": "uses"
+        },
+        {
+          "source": "Laya",
+          "target": "Fine-tuning",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "owl": {
+      "hash": "ba2074678f2604a4",
+      "title": "Owl",
+      "summary": "목걸이형 오프라인 웨어러블 Owl의 펌웨어·BLE 프로토콜·Android 앱 설계와 구현 기록",
+      "concepts": [
+        {
+          "name": "Owl",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Zephyr RTOS",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Bluetooth Low Energy",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Android",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Kotlin",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Opus",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Voice Activity Detection",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "LittleFS",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "On-device STT",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Google Bumble",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "OpenSCAD",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "CompanionDeviceManager",
+          "type": "library",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Owl",
+          "target": "Zephyr RTOS",
+          "relation": "uses"
+        },
+        {
+          "source": "Owl",
+          "target": "Bluetooth Low Energy",
+          "relation": "uses"
+        },
+        {
+          "source": "Owl",
+          "target": "Opus",
+          "relation": "uses"
+        },
+        {
+          "source": "Owl",
+          "target": "Voice Activity Detection",
+          "relation": "uses"
+        },
+        {
+          "source": "Zephyr RTOS",
+          "target": "LittleFS",
+          "relation": "uses"
+        },
+        {
+          "source": "Android",
+          "target": "Kotlin",
+          "relation": "uses"
+        },
+        {
+          "source": "Google Bumble",
+          "target": "Bluetooth Low Energy",
+          "relation": "implements"
+        },
+        {
+          "source": "Android",
+          "target": "CompanionDeviceManager",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "polygraphics": {
+      "hash": "ba59f85ef49b1773",
+      "title": "PolyGraphics",
+      "summary": "게임 비주얼과 사운드를 JSON 문서와 디자인 토큰으로 결정적으로 렌더링하는 PolyGraphics 프로젝트 소개",
+      "concepts": [
+        {
+          "name": "PolyGraphics",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Procedural Asset",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Design Token",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Deterministic Rendering",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "SVG",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Regression Testing",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Phaser",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Godot",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Web Audio API",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Zod",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "TypeScript",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "AI Agent",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "PolyGraphics",
+          "target": "Procedural Asset",
+          "relation": "implements"
+        },
+        {
+          "source": "PolyGraphics",
+          "target": "Design Token",
+          "relation": "uses"
+        },
+        {
+          "source": "PolyGraphics",
+          "target": "Deterministic Rendering",
+          "relation": "implements"
+        },
+        {
+          "source": "Deterministic Rendering",
+          "target": "Regression Testing",
+          "relation": "related_to"
+        },
+        {
+          "source": "PolyGraphics",
+          "target": "SVG",
+          "relation": "uses"
+        },
+        {
+          "source": "PolyGraphics",
+          "target": "Phaser",
+          "relation": "uses"
+        },
+        {
+          "source": "PolyGraphics",
+          "target": "Godot",
+          "relation": "uses"
+        },
+        {
+          "source": "PolyGraphics",
+          "target": "Zod",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "proactive-ai-messages": {
+      "hash": "9123ab654746be47",
+      "title": "먼저 말을 거는 AI와 장기 기억 설계 (Chatty)",
+      "summary": "Chatty에서 AI가 먼저 말을 거는 proactive 메시지 스케줄링과 Qdrant·MySQL 기반 장기 기억 구조를 정리한 글",
+      "concepts": [
+        {
+          "name": "Proactive Messaging",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Long-term Memory",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "RAG",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Qdrant",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Ollama",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Exponential Backoff",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Semantic Chunking",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Embedding",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Structured Output",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "MySQL",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Socket.io",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "NestJS",
+          "type": "library",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Proactive Messaging",
+          "target": "Exponential Backoff",
+          "relation": "uses"
+        },
+        {
+          "source": "Proactive Messaging",
+          "target": "Structured Output",
+          "relation": "uses"
+        },
+        {
+          "source": "Long-term Memory",
+          "target": "RAG",
+          "relation": "uses"
+        },
+        {
+          "source": "RAG",
+          "target": "Qdrant",
+          "relation": "uses"
+        },
+        {
+          "source": "RAG",
+          "target": "Embedding",
+          "relation": "uses"
+        },
+        {
+          "source": "Semantic Chunking",
+          "target": "RAG",
+          "relation": "part_of"
+        },
+        {
+          "source": "Long-term Memory",
+          "target": "MySQL",
+          "relation": "uses"
+        },
+        {
+          "source": "Embedding",
+          "target": "Ollama",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "procedural-sound-design": {
+      "hash": "b07964959ca31b10",
+      "title": "절차적 사운드 디자인 — 사운드 문서, 피치 팔레트, 귀 대신 측정",
+      "summary": "PolyGraphics에 선언형 사운드 문서, 피치 토큰, 결정적 렌더링과 라우드니스 측정 lint를 도입한 과정",
+      "concepts": [
+        {
+          "name": "Procedural Audio",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "PolyGraphics",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Web Audio API",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Design Token",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Loudness",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "K-weighting",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Intermediate Representation",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "PRNG",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Game Audio",
+          "type": "domain",
+          "importance": 2
+        },
+        {
+          "name": "Auditory Masking",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Lint",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Regression Testing",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "PolyGraphics",
+          "target": "Procedural Audio",
+          "relation": "implements"
+        },
+        {
+          "source": "Procedural Audio",
+          "target": "Design Token",
+          "relation": "uses"
+        },
+        {
+          "source": "Procedural Audio",
+          "target": "Intermediate Representation",
+          "relation": "uses"
+        },
+        {
+          "source": "Web Audio API",
+          "target": "Intermediate Representation",
+          "relation": "uses"
+        },
+        {
+          "source": "Loudness",
+          "target": "K-weighting",
+          "relation": "uses"
+        },
+        {
+          "source": "Lint",
+          "target": "Loudness",
+          "relation": "uses"
+        },
+        {
+          "source": "Intermediate Representation",
+          "target": "PRNG",
+          "relation": "uses"
+        },
+        {
+          "source": "Procedural Audio",
+          "target": "Game Audio",
+          "relation": "part_of"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "project-cat-chess": {
+      "hash": "73df8e4660d849ae",
+      "title": "Cat Chess",
+      "summary": "Three.js와 WebSocket 기반 실시간 3D 멀티플레이 오토 배틀러 CatChess 프로젝트 소개",
+      "concepts": [
+        {
+          "name": "CatChess",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Auto Battler",
+          "type": "domain",
+          "importance": 2
+        },
+        {
+          "name": "Three.js",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "WebSocket",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Express",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Node.js",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "MongoDB",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Mongoose",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Pug",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Google OAuth",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Fly.io",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "GitHub Actions",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "CatChess",
+          "target": "Auto Battler",
+          "relation": "is_a"
+        },
+        {
+          "source": "CatChess",
+          "target": "Three.js",
+          "relation": "uses"
+        },
+        {
+          "source": "CatChess",
+          "target": "WebSocket",
+          "relation": "uses"
+        },
+        {
+          "source": "CatChess",
+          "target": "Express",
+          "relation": "uses"
+        },
+        {
+          "source": "Express",
+          "target": "Node.js",
+          "relation": "uses"
+        },
+        {
+          "source": "Mongoose",
+          "target": "MongoDB",
+          "relation": "uses"
+        },
+        {
+          "source": "Express",
+          "target": "Pug",
+          "relation": "uses"
+        },
+        {
+          "source": "GitHub Actions",
+          "target": "Fly.io",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "project-cheese": {
+      "hash": "2275563548f2fabc",
+      "title": "Cheese",
+      "summary": "모바일 웹 기반 야외 포토 부스 서비스 '치즈한장' 프로젝트의 구성과 설계 자료 소개",
+      "concepts": [
+        {
+          "name": "Next.js",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Spring",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "FastAPI",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "MySQL",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Redis",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "TensorFlow",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "WebRTC",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "REST API",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "ERD",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "포토 부스 서비스",
+          "type": "domain",
+          "importance": 3
+        }
+      ],
+      "relations": [
+        {
+          "source": "포토 부스 서비스",
+          "target": "Next.js",
+          "relation": "uses"
+        },
+        {
+          "source": "포토 부스 서비스",
+          "target": "Spring",
+          "relation": "uses"
+        },
+        {
+          "source": "포토 부스 서비스",
+          "target": "WebRTC",
+          "relation": "uses"
+        },
+        {
+          "source": "포토 부스 서비스",
+          "target": "TensorFlow",
+          "relation": "uses"
+        },
+        {
+          "source": "Spring",
+          "target": "MySQL",
+          "relation": "uses"
+        },
+        {
+          "source": "Spring",
+          "target": "Redis",
+          "relation": "uses"
+        },
+        {
+          "source": "Spring",
+          "target": "REST API",
+          "relation": "implements"
+        },
+        {
+          "source": "ERD",
+          "target": "MySQL",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "project-memento": {
+      "hash": "630d09ff19de5859",
+      "title": "Memento",
+      "summary": "아카이빙 중심 소셜 네트워크 서비스 Memento의 프론트엔드 기술스택과 디렉토리 구조 소개",
+      "concepts": [
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "TypeScript",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Zustand",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "TanStack Query",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Vite",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "PWA",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Storybook",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Vitest",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Emotion",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Docker",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "State Management",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "React",
+          "target": "TypeScript",
+          "relation": "uses"
+        },
+        {
+          "source": "Zustand",
+          "target": "State Management",
+          "relation": "implements"
+        },
+        {
+          "source": "TanStack Query",
+          "target": "React",
+          "relation": "related_to"
+        },
+        {
+          "source": "Vite",
+          "target": "React",
+          "relation": "related_to"
+        },
+        {
+          "source": "Storybook",
+          "target": "React",
+          "relation": "related_to"
+        },
+        {
+          "source": "Emotion",
+          "target": "React",
+          "relation": "related_to"
+        },
+        {
+          "source": "Vitest",
+          "target": "Vite",
+          "relation": "uses"
+        },
+        {
+          "source": "Zustand",
+          "target": "React",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "project-memohub": {
+      "hash": "0f885e9453b71ff9",
+      "title": "MemoHub",
+      "summary": "Next.js와 Socket.io, MongoDB로 만든 URL 기반 실시간 공유 메모 보드 프로젝트 소개",
+      "concepts": [
+        {
+          "name": "Next.js",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "Socket.io",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "MongoDB",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "App Router",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Real-time Synchronization",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Vercel",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "API Routes",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Next.js",
+          "target": "React",
+          "relation": "uses"
+        },
+        {
+          "source": "App Router",
+          "target": "Next.js",
+          "relation": "part_of"
+        },
+        {
+          "source": "Socket.io",
+          "target": "Real-time Synchronization",
+          "relation": "implements"
+        },
+        {
+          "source": "API Routes",
+          "target": "Next.js",
+          "relation": "part_of"
+        },
+        {
+          "source": "API Routes",
+          "target": "MongoDB",
+          "relation": "uses"
+        },
+        {
+          "source": "Next.js",
+          "target": "Vercel",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "project-reptopia": {
+      "hash": "cdec006f6ebdf5aa",
+      "title": "Reptopia",
+      "summary": "Canvas로 파충류 그래픽과 물리 엔진을 구현한 파충류 사육 시뮬레이터 Reptopia 프로젝트 소개",
+      "concepts": [
+        {
+          "name": "Reptopia",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Canvas API",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "Physics Engine",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Procedural Animation",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "UI Design",
+          "type": "domain",
+          "importance": 1
+        },
+        {
+          "name": "Netlify",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Reptopia",
+          "target": "Canvas API",
+          "relation": "uses"
+        },
+        {
+          "source": "Reptopia",
+          "target": "Physics Engine",
+          "relation": "implements"
+        },
+        {
+          "source": "Reptopia",
+          "target": "Procedural Animation",
+          "relation": "implements"
+        },
+        {
+          "source": "Reptopia",
+          "target": "Netlify",
+          "relation": "uses"
+        },
+        {
+          "source": "Reptopia",
+          "target": "UI Design",
+          "relation": "related_to"
+        },
+        {
+          "source": "Procedural Animation",
+          "target": "Physics Engine",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "project-wndgur2-github-io": {
+      "hash": "96fee1d7239aa8db",
+      "title": "이중혁 블로그",
+      "summary": "GitHub API와 Actions로 정적 JSON 콘텐츠를 생성하는 React 기반 개인 블로그 프로젝트 소개",
+      "concepts": [
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "GitHub API",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "GitHub Actions",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "GitHub Pages",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "TypeScript",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Vite",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Zustand",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "TanStack Query",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "SEO",
+          "type": "domain",
+          "importance": 2
+        },
+        {
+          "name": "Static Site Generation",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Vercel",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "CI/CD",
+          "type": "concept",
+          "importance": 2
+        }
+      ],
+      "relations": [
+        {
+          "source": "GitHub Actions",
+          "target": "CI/CD",
+          "relation": "implements"
+        },
+        {
+          "source": "GitHub Actions",
+          "target": "GitHub API",
+          "relation": "uses"
+        },
+        {
+          "source": "React",
+          "target": "Zustand",
+          "relation": "uses"
+        },
+        {
+          "source": "React",
+          "target": "TanStack Query",
+          "relation": "uses"
+        },
+        {
+          "source": "Static Site Generation",
+          "target": "SEO",
+          "relation": "improves"
+        },
+        {
+          "source": "GitHub Pages",
+          "target": "Vercel",
+          "relation": "compares"
+        },
+        {
+          "source": "React",
+          "target": "Vite",
+          "relation": "uses"
+        },
+        {
+          "source": "React",
+          "target": "TypeScript",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "react": {
+      "hash": "a3905a330c55539b",
+      "title": "React",
+      "summary": "React Hook(useState, useReducer, useRef, useMemo, useCallback)과 상태 관리 개념을 정리한 글",
+      "concepts": [
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "React Hooks",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "useReducer",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "useState",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "useMemo",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "useEffect",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "useCallback",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "useRef",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Binary Search",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Memoization",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Context API",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Redux",
+          "type": "library",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "React Hooks",
+          "target": "React",
+          "relation": "part_of"
+        },
+        {
+          "source": "useReducer",
+          "target": "React Hooks",
+          "relation": "is_a"
+        },
+        {
+          "source": "useReducer",
+          "target": "Binary Search",
+          "relation": "uses"
+        },
+        {
+          "source": "useMemo",
+          "target": "useEffect",
+          "relation": "compares"
+        },
+        {
+          "source": "useMemo",
+          "target": "Memoization",
+          "relation": "implements"
+        },
+        {
+          "source": "useCallback",
+          "target": "Memoization",
+          "relation": "uses"
+        },
+        {
+          "source": "useReducer",
+          "target": "useState",
+          "relation": "compares"
+        },
+        {
+          "source": "Context API",
+          "target": "Redux",
+          "relation": "compares"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "react-js-recap": {
+      "hash": "5d187d9f65c03931",
+      "title": "실용 React, JS 메모",
+      "summary": "React.dev를 정독하며 key, 배칭, 이벤트 전파, useReducer, useMemo, Effect 남용 등 실용 팁과 JS 호이스팅을 정리",
+      "concepts": [
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "React Key",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Batching",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Event Propagation",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "useReducer",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Context API",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "useMemo",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "useEffect",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Hoisting",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "State Management",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Memoization",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "useReducer",
+          "target": "React",
+          "relation": "part_of"
+        },
+        {
+          "source": "useMemo",
+          "target": "React",
+          "relation": "part_of"
+        },
+        {
+          "source": "useEffect",
+          "target": "React",
+          "relation": "part_of"
+        },
+        {
+          "source": "useMemo",
+          "target": "Memoization",
+          "relation": "implements"
+        },
+        {
+          "source": "useReducer",
+          "target": "Context API",
+          "relation": "related_to"
+        },
+        {
+          "source": "useReducer",
+          "target": "State Management",
+          "relation": "uses"
+        },
+        {
+          "source": "Hoisting",
+          "target": "JavaScript",
+          "relation": "part_of"
+        },
+        {
+          "source": "React",
+          "target": "JavaScript",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "recoil": {
+      "hash": "2ab387b5f9a5e682",
+      "title": "Recoil",
+      "summary": "React 상태 관리 라이브러리 Recoil의 Atom·Selector 개념과 Redux·useContext 비교",
+      "concepts": [
+        {
+          "name": "Recoil",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "State Management",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Atom",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Selector",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Redux",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Context API",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Derived State",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Prop Drilling",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Recoil",
+          "target": "State Management",
+          "relation": "implements"
+        },
+        {
+          "source": "Recoil",
+          "target": "React",
+          "relation": "related_to"
+        },
+        {
+          "source": "Atom",
+          "target": "Recoil",
+          "relation": "part_of"
+        },
+        {
+          "source": "Selector",
+          "target": "Recoil",
+          "relation": "part_of"
+        },
+        {
+          "source": "Selector",
+          "target": "Derived State",
+          "relation": "implements"
+        },
+        {
+          "source": "Recoil",
+          "target": "Redux",
+          "relation": "compares"
+        },
+        {
+          "source": "Recoil",
+          "target": "Context API",
+          "relation": "compares"
+        },
+        {
+          "source": "Context API",
+          "target": "Prop Drilling",
+          "relation": "improves"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "socketio-llm-streaming": {
+      "hash": "28915d423c0545e0",
+      "title": "NestJS + React에서 Socket.IO로 LLM 응답 스트리밍하기",
+      "summary": "NestJS 게이트웨이와 React 훅으로 Ollama LLM 응답을 Socket.IO로 스트리밍하는 구조 정리",
+      "concepts": [
+        {
+          "name": "Socket.io",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "NestJS",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "Streaming",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Ollama",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "CORS",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "nginx",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "TanStack Query",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "WebSocket",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Vite",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "LLM",
+          "type": "concept",
+          "importance": 2
+        }
+      ],
+      "relations": [
+        {
+          "source": "NestJS",
+          "target": "Socket.io",
+          "relation": "uses"
+        },
+        {
+          "source": "React",
+          "target": "Socket.io",
+          "relation": "uses"
+        },
+        {
+          "source": "Socket.io",
+          "target": "WebSocket",
+          "relation": "uses"
+        },
+        {
+          "source": "Streaming",
+          "target": "Socket.io",
+          "relation": "uses"
+        },
+        {
+          "source": "Ollama",
+          "target": "LLM",
+          "relation": "related_to"
+        },
+        {
+          "source": "nginx",
+          "target": "WebSocket",
+          "relation": "related_to"
+        },
+        {
+          "source": "React",
+          "target": "TanStack Query",
+          "relation": "uses"
+        },
+        {
+          "source": "NestJS",
+          "target": "CORS",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "ssr-csr": {
+      "hash": "f6ca9a613a3a7cc9",
+      "title": "SSR",
+      "summary": "SSR과 CSR의 개념 차이와 각각의 장단점, 혼용 가능성을 정리한 글",
+      "concepts": [
+        {
+          "name": "Server-side Rendering",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Client-side Rendering",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "SEO",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Single Page Application",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Client-side Routing",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "React",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "DOM",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Server-side Rendering",
+          "target": "Client-side Rendering",
+          "relation": "compares"
+        },
+        {
+          "source": "Server-side Rendering",
+          "target": "SEO",
+          "relation": "improves"
+        },
+        {
+          "source": "Single Page Application",
+          "target": "Client-side Rendering",
+          "relation": "uses"
+        },
+        {
+          "source": "Single Page Application",
+          "target": "Client-side Routing",
+          "relation": "uses"
+        },
+        {
+          "source": "React",
+          "target": "Client-side Rendering",
+          "relation": "uses"
+        },
+        {
+          "source": "Client-side Rendering",
+          "target": "DOM",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "vercel-spa-fallback": {
+      "hash": "05248d50f8bbff15",
+      "title": "Vercel에 Expo 웹 배포하며 밟은 문제들",
+      "summary": "Expo 앱을 react-native-web으로 Vercel에 배포하며 겪은 라우팅·PWA·폰트·캐시 문제와 해결",
+      "concepts": [
+        {
+          "name": "Expo",
+          "type": "library",
+          "importance": 3
+        },
+        {
+          "name": "Vercel",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "React Native Web",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "PWA",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Service Worker",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "TanStack Query",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "Supabase",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Row Level Security",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Web Font Optimization",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Client-side Routing",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Expo Router",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "HTTP Caching",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Expo",
+          "target": "React Native Web",
+          "relation": "uses"
+        },
+        {
+          "source": "Expo",
+          "target": "Vercel",
+          "relation": "uses"
+        },
+        {
+          "source": "PWA",
+          "target": "Service Worker",
+          "relation": "uses"
+        },
+        {
+          "source": "Expo Router",
+          "target": "Client-side Routing",
+          "relation": "implements"
+        },
+        {
+          "source": "Supabase",
+          "target": "Row Level Security",
+          "relation": "uses"
+        },
+        {
+          "source": "TanStack Query",
+          "target": "Supabase",
+          "relation": "related_to"
+        },
+        {
+          "source": "Service Worker",
+          "target": "HTTP Caching",
+          "relation": "related_to"
+        },
+        {
+          "source": "Expo Router",
+          "target": "Expo",
+          "relation": "part_of"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "view": {
+      "hash": "3801c9b46750c2e9",
+      "title": "View",
+      "summary": "SWEA 1206 View 문제를 5개 빌딩 높이 비교 구현으로 O(N)에 푼 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Sliding Window",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "구현",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "Sliding Window",
+          "relation": "uses"
+        },
+        {
+          "source": "SWEA",
+          "target": "구현",
+          "relation": "related_to"
+        },
+        {
+          "source": "Sliding Window",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        },
+        {
+          "source": "구현",
+          "target": "Brute Force",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "web": {
+      "hash": "5f94c904fc0fc97e",
+      "title": "Web",
+      "summary": "주소 입력부터 DNS 조회, 서버 요청, DOM·CSSOM 생성까지 웹 동작 기본 흐름 정리",
+      "concepts": [
+        {
+          "name": "Client-Server Model",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "DNS",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Browser Rendering",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "DOM",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "CSSOM",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "HTML",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "CSS",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "IP Address",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "DNS",
+          "target": "IP Address",
+          "relation": "uses"
+        },
+        {
+          "source": "Client-Server Model",
+          "target": "DNS",
+          "relation": "uses"
+        },
+        {
+          "source": "Browser Rendering",
+          "target": "DOM",
+          "relation": "uses"
+        },
+        {
+          "source": "Browser Rendering",
+          "target": "CSSOM",
+          "relation": "uses"
+        },
+        {
+          "source": "DOM",
+          "target": "HTML",
+          "relation": "related_to"
+        },
+        {
+          "source": "CSSOM",
+          "target": "CSS",
+          "relation": "related_to"
+        },
+        {
+          "source": "Browser Rendering",
+          "target": "JavaScript",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "web-performance": {
+      "hash": "b00d653b68476aa9",
+      "title": "Lighthouse Performance 개선",
+      "summary": "Lighthouse로 블로그 성능을 측정하고 LCP·TBT·CLS를 개선한 과정 정리",
+      "concepts": [
+        {
+          "name": "Lighthouse",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Web Performance",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Largest Contentful Paint",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Cumulative Layout Shift",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Total Blocking Time",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "First Contentful Paint",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "WebP",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Render-blocking Resources",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Google Fonts",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "HTTP Caching",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Reflow",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Service Worker",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Lighthouse",
+          "target": "Web Performance",
+          "relation": "related_to"
+        },
+        {
+          "source": "Largest Contentful Paint",
+          "target": "Web Performance",
+          "relation": "part_of"
+        },
+        {
+          "source": "Cumulative Layout Shift",
+          "target": "Web Performance",
+          "relation": "part_of"
+        },
+        {
+          "source": "Total Blocking Time",
+          "target": "Web Performance",
+          "relation": "part_of"
+        },
+        {
+          "source": "WebP",
+          "target": "Largest Contentful Paint",
+          "relation": "improves"
+        },
+        {
+          "source": "Google Fonts",
+          "target": "Render-blocking Resources",
+          "relation": "related_to"
+        },
+        {
+          "source": "Cumulative Layout Shift",
+          "target": "Reflow",
+          "relation": "related_to"
+        },
+        {
+          "source": "Service Worker",
+          "target": "HTTP Caching",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "webpack-vite": {
+      "hash": "fa5768956b1749c5",
+      "title": "Webpack_Vite",
+      "summary": "웹 번들러 Webpack과 Vite, 트랜스파일러 Babel과 Esbuild의 특징과 차이를 비교 정리",
+      "concepts": [
+        {
+          "name": "Webpack",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Vite",
+          "type": "tool",
+          "importance": 3
+        },
+        {
+          "name": "Module Bundler",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Babel",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "esbuild",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Transpiler",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "ES Modules",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Hot Module Replacement",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Create React App",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "CRACO",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Dependency Graph",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Rollup",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Webpack",
+          "target": "Module Bundler",
+          "relation": "is_a"
+        },
+        {
+          "source": "Vite",
+          "target": "Module Bundler",
+          "relation": "is_a"
+        },
+        {
+          "source": "Vite",
+          "target": "Webpack",
+          "relation": "compares"
+        },
+        {
+          "source": "Vite",
+          "target": "esbuild",
+          "relation": "uses"
+        },
+        {
+          "source": "Vite",
+          "target": "ES Modules",
+          "relation": "uses"
+        },
+        {
+          "source": "Webpack",
+          "target": "Babel",
+          "relation": "uses"
+        },
+        {
+          "source": "esbuild",
+          "target": "Babel",
+          "relation": "compares"
+        },
+        {
+          "source": "Babel",
+          "target": "Transpiler",
+          "relation": "is_a"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "가장-긴-증가하는-부분-수열-5": {
+      "hash": "b156099f5758a22a",
+      "title": "가장 긴 증가하는 부분 수열 5",
+      "summary": "백준 14003 LIS 문제를 이진탐색과 인덱스 배열 역추적으로 풀고 주의할 반례를 정리한 글",
+      "concepts": [
+        {
+          "name": "Longest Increasing Subsequence",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Binary Search",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Dynamic Programming",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Backtracking Reconstruction",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Deque",
+          "type": "algorithm",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Longest Increasing Subsequence",
+          "target": "Binary Search",
+          "relation": "uses"
+        },
+        {
+          "source": "Longest Increasing Subsequence",
+          "target": "Dynamic Programming",
+          "relation": "uses"
+        },
+        {
+          "source": "Longest Increasing Subsequence",
+          "target": "Backtracking Reconstruction",
+          "relation": "uses"
+        },
+        {
+          "source": "Java",
+          "target": "Longest Increasing Subsequence",
+          "relation": "implements"
+        },
+        {
+          "source": "Backtracking Reconstruction",
+          "target": "Deque",
+          "relation": "uses"
+        },
+        {
+          "source": "Binary Search",
+          "target": "Time Complexity",
+          "relation": "improves"
+        },
+        {
+          "source": "백준",
+          "target": "Coding Test",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "공통-조상": {
+      "hash": "a7c84e81089bc8d0",
+      "title": "공통 조상",
+      "summary": "SWEA 1248 공통조상 문제를 딕셔너리 트리와 set, DFS로 푸는 풀이",
+      "concepts": [
+        {
+          "name": "Lowest Common Ancestor",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Binary Tree",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "DFS",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Hash Set",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Hash Map",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Subtree",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Lowest Common Ancestor",
+          "target": "Binary Tree",
+          "relation": "related_to"
+        },
+        {
+          "source": "Lowest Common Ancestor",
+          "target": "Hash Set",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "Subtree",
+          "relation": "related_to"
+        },
+        {
+          "source": "Binary Tree",
+          "target": "Hash Map",
+          "relation": "uses"
+        },
+        {
+          "source": "Lowest Common Ancestor",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "Lowest Common Ancestor",
+          "target": "SWEA",
+          "relation": "part_of"
+        },
+        {
+          "source": "Hash Set",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "공평한-분배2": {
+      "hash": "17fc59a4ad553681",
+      "title": "공평한 분배2",
+      "summary": "SWEA 공평한 분배2 문제를 정렬 후 K 간격 차이의 최솟값으로 푸는 풀이",
+      "concepts": [
+        {
+          "name": "Sorting",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Sliding Window",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Sliding Window",
+          "target": "Sorting",
+          "relation": "uses"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "Python",
+          "target": "Sorting",
+          "relation": "implements"
+        },
+        {
+          "source": "Sorting",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "구간합": {
+      "hash": "fb36ee1274805878",
+      "title": "구간합",
+      "summary": "SWEA 4835 구간합 문제를 파이썬으로 풀고 슬라이딩 윈도우 최적화를 언급한 풀이",
+      "concepts": [
+        {
+          "name": "구간합",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Sliding Window",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "구간합",
+          "target": "SWEA",
+          "relation": "part_of"
+        },
+        {
+          "source": "구간합",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "구간합",
+          "target": "Brute Force",
+          "relation": "uses"
+        },
+        {
+          "source": "Sliding Window",
+          "target": "Brute Force",
+          "relation": "improves"
+        },
+        {
+          "source": "Sliding Window",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "도둑질": {
+      "hash": "6a2ce2e9db29eae5",
+      "title": "도둑질",
+      "summary": "프로그래머스 도둑질 문제를 원형 배열 DP와 공간 최적화로 JavaScript로 푼 풀이",
+      "concepts": [
+        {
+          "name": "Dynamic Programming",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 2
+        },
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Space Optimization",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Circular Array",
+          "type": "concept",
+          "importance": 2
+        }
+      ],
+      "relations": [
+        {
+          "source": "Coding Test",
+          "target": "Dynamic Programming",
+          "relation": "uses"
+        },
+        {
+          "source": "Space Optimization",
+          "target": "Dynamic Programming",
+          "relation": "improves"
+        },
+        {
+          "source": "Dynamic Programming",
+          "target": "Circular Array",
+          "relation": "related_to"
+        },
+        {
+          "source": "Dynamic Programming",
+          "target": "JavaScript",
+          "relation": "uses"
+        },
+        {
+          "source": "Dynamic Programming",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "동전-0": {
+      "hash": "c78fffe4eb42d298",
+      "title": "동전 0",
+      "summary": "백준 11047 동전 0 문제를 Java와 그리디 알고리즘으로 푼 풀이",
+      "concepts": [
+        {
+          "name": "Greedy Algorithm",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Coin Change Problem",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "BufferedReader",
+          "type": "library",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Coin Change Problem",
+          "target": "Greedy Algorithm",
+          "relation": "uses"
+        },
+        {
+          "source": "Coin Change Problem",
+          "target": "Java",
+          "relation": "uses"
+        },
+        {
+          "source": "Coin Change Problem",
+          "target": "Coding Test",
+          "relation": "part_of"
+        },
+        {
+          "source": "Coin Change Problem",
+          "target": "백준",
+          "relation": "part_of"
+        },
+        {
+          "source": "BufferedReader",
+          "target": "Java",
+          "relation": "part_of"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "두개의-숫자열": {
+      "hash": "8e3024c4d8dfba88",
+      "title": "두개의 숫자열",
+      "summary": "SWEA 1959 두 개의 숫자열 문제를 슬라이딩하며 곱의 합 최댓값을 구하는 파이썬 구현 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "구현",
+          "target": "Brute Force",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "등산로-조성": {
+      "hash": "4d0b35da1d777cfe",
+      "title": "등산로 조성",
+      "summary": "SWEA 1949 등산로 조성 문제를 DFS와 완전탐색으로 푼 풀이",
+      "concepts": [
+        {
+          "name": "DFS",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "2차원 배열",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Backtracking",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Recursion",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "DFS",
+          "target": "2차원 배열",
+          "relation": "uses"
+        },
+        {
+          "source": "Brute Force",
+          "target": "DFS",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "Recursion",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "Backtracking",
+          "relation": "related_to"
+        },
+        {
+          "source": "Brute Force",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        },
+        {
+          "source": "Python",
+          "target": "DFS",
+          "relation": "implements"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "레이저-통신": {
+      "hash": "3a2b2f1fe0da226c",
+      "title": "레이저 통신",
+      "summary": "백준 6087 레이저 통신 문제를 DFS로 각 칸의 최소 거울 수를 갱신하며 C++로 푼 풀이",
+      "concepts": [
+        {
+          "name": "DFS",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "C++",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Shortest Path",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "2차원 배열",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Recursion",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "DFS",
+          "target": "Shortest Path",
+          "relation": "implements"
+        },
+        {
+          "source": "DFS",
+          "target": "Recursion",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "2차원 배열",
+          "relation": "uses"
+        },
+        {
+          "source": "C++",
+          "target": "DFS",
+          "relation": "implements"
+        },
+        {
+          "source": "백준",
+          "target": "Shortest Path",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "마법사-상어와-블리자드": {
+      "hash": "a52235f5cb78749f",
+      "title": "마법사 상어와 블리자드",
+      "summary": "백준 21611 마법사 상어와 블리자드를 달팽이 배열을 1차원으로 펴서 C++로 구현한 풀이",
+      "concepts": [
+        {
+          "name": "구현",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Simulation",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "C++",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "2차원 배열",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "달팽이 배열",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Flatten",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Simulation",
+          "target": "구현",
+          "relation": "part_of"
+        },
+        {
+          "source": "달팽이 배열",
+          "target": "2차원 배열",
+          "relation": "is_a"
+        },
+        {
+          "source": "Flatten",
+          "target": "달팽이 배열",
+          "relation": "uses"
+        },
+        {
+          "source": "Simulation",
+          "target": "C++",
+          "relation": "uses"
+        },
+        {
+          "source": "Simulation",
+          "target": "Flatten",
+          "relation": "uses"
+        },
+        {
+          "source": "백준",
+          "target": "Coding Test",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "방울마술": {
+      "hash": "39297bb2d4b1aed0",
+      "title": "방울마술",
+      "summary": "SWEA 방울마술 문제를 확률 이동 시뮬레이션으로 O(k)에 푼 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Simulation",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "확률",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Simulation",
+          "target": "확률",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "Simulation",
+          "relation": "uses"
+        },
+        {
+          "source": "Python",
+          "target": "구현",
+          "relation": "implements"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "Simulation",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "보급로": {
+      "hash": "c5fa9cda1d4c9b67",
+      "title": "보급로",
+      "summary": "SWEA 1249 보급로 문제를 반복문 DFS와 메모이제이션, BFS로 최소 비용 경로를 구한 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "BFS",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "DFS",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Memoization",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Recursion",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Stack",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "2차원 배열",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "BFS",
+          "target": "DFS",
+          "relation": "compares"
+        },
+        {
+          "source": "DFS",
+          "target": "Stack",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "Memoization",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "Recursion",
+          "relation": "related_to"
+        },
+        {
+          "source": "BFS",
+          "target": "2차원 배열",
+          "relation": "uses"
+        },
+        {
+          "source": "Memoization",
+          "target": "Time Complexity",
+          "relation": "improves"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "삼성시의-버스-노선": {
+      "hash": "6cdc8d9555b9e613",
+      "title": "삼성시의 버스 노선",
+      "summary": "SWEA 삼성시의 버스 노선 문제를 차분 배열과 누적합으로 파이썬 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "차분 배열",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "구간합",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Stack",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "차분 배열",
+          "target": "구간합",
+          "relation": "uses"
+        },
+        {
+          "source": "SWEA",
+          "target": "구현",
+          "relation": "related_to"
+        },
+        {
+          "source": "Python",
+          "target": "차분 배열",
+          "relation": "implements"
+        },
+        {
+          "source": "차분 배열",
+          "target": "Time Complexity",
+          "relation": "improves"
+        },
+        {
+          "source": "차분 배열",
+          "target": "Stack",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "상자-정렬하기": {
+      "hash": "6482dfd41a3c7c38",
+      "title": "상자 정렬하기",
+      "summary": "빈칸 하나를 이용해 상자를 옮겨 정렬하는 백준 20936 문제를 O(N^2)로 푼 풀이",
+      "concepts": [
+        {
+          "name": "Sorting",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Simulation",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Baekjoon",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Python",
+          "target": "Sorting",
+          "relation": "implements"
+        },
+        {
+          "source": "Sorting",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        },
+        {
+          "source": "Sorting",
+          "target": "Simulation",
+          "relation": "uses"
+        },
+        {
+          "source": "Simulation",
+          "target": "구현",
+          "relation": "related_to"
+        },
+        {
+          "source": "Baekjoon",
+          "target": "Coding Test",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "소수-구하기": {
+      "hash": "9c2dbb4cdbc34d1a",
+      "title": "소수 구하기",
+      "summary": "백준 1929 소수 구하기 문제를 에라토스테네스의 체로 Java에서 푸는 풀이",
+      "concepts": [
+        {
+          "name": "Sieve of Eratosthenes",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "소수 판별",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        },
+        {
+          "name": "BufferedReader",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "소수 판별",
+          "relation": "implements"
+        },
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "Java",
+          "relation": "uses"
+        },
+        {
+          "source": "백준",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "BufferedReader",
+          "target": "Java",
+          "relation": "part_of"
+        },
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "소수의-연속합": {
+      "hash": "83209221d6374d7c",
+      "title": "소수의 연속합",
+      "summary": "에라토스테네스의 체로 소수를 구하고 투 포인터로 연속 소수 합의 경우의 수를 세는 백준 문제 풀이",
+      "concepts": [
+        {
+          "name": "Sieve of Eratosthenes",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Two Pointers",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Prime Number",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "Prime Number",
+          "relation": "related_to"
+        },
+        {
+          "source": "Two Pointers",
+          "target": "Sieve of Eratosthenes",
+          "relation": "uses"
+        },
+        {
+          "source": "Two Pointers",
+          "target": "Time Complexity",
+          "relation": "improves"
+        },
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        },
+        {
+          "source": "Java",
+          "target": "Two Pointers",
+          "relation": "implements"
+        },
+        {
+          "source": "백준",
+          "target": "Coding Test",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "수-나누기-게임": {
+      "hash": "81bceeab4ffec528",
+      "title": "수 나누기 게임",
+      "summary": "에라토스테네스의 체 방식으로 배수를 순회해 수 나누기 게임(BOJ 27172) 점수를 Java로 계산한다",
+      "concepts": [
+        {
+          "name": "Sieve of Eratosthenes",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Baekjoon",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Harmonic Series",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        },
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "Brute Force",
+          "relation": "improves"
+        },
+        {
+          "source": "Time Complexity",
+          "target": "Harmonic Series",
+          "relation": "uses"
+        },
+        {
+          "source": "Baekjoon",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "Java",
+          "target": "Sieve of Eratosthenes",
+          "relation": "implements"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "수영대회-결승전": {
+      "hash": "73030857f498a84e",
+      "title": "수영대회 결승전",
+      "summary": "SWEA 수영대회 결승전 문제를 BFS 완전탐색으로 풀며 소용돌이 대기로 인한 시간초과를 해결한 기록",
+      "concepts": [
+        {
+          "name": "BFS",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Queue",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        },
+        {
+          "name": "BufferedReader",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "2차원 배열",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "BFS",
+          "target": "Queue",
+          "relation": "uses"
+        },
+        {
+          "source": "BFS",
+          "target": "Brute Force",
+          "relation": "is_a"
+        },
+        {
+          "source": "BFS",
+          "target": "Java",
+          "relation": "implements"
+        },
+        {
+          "source": "BFS",
+          "target": "2차원 배열",
+          "relation": "uses"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "Java",
+          "target": "BufferedReader",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "수영장": {
+      "hash": "210b49d04ada4ea9",
+      "title": "수영장",
+      "summary": "SWEA 1952 수영장 문제를 월별 최소 비용 DP로 O(n)에 푸는 파이썬 풀이",
+      "concepts": [
+        {
+          "name": "Dynamic Programming",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Python",
+          "target": "Dynamic Programming",
+          "relation": "implements"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "Dynamic Programming",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "숫자배열회전": {
+      "hash": "978819a84e5f379f",
+      "title": "숫자배열회전",
+      "summary": "SWEA 1961 숫자배열회전 문제를 파이썬으로 2차원 배열을 90·180·270도 회전해 구현한 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "2차원 배열",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "행렬 회전",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "행렬 회전",
+          "target": "2차원 배열",
+          "relation": "uses"
+        },
+        {
+          "source": "행렬 회전",
+          "target": "구현",
+          "relation": "is_a"
+        },
+        {
+          "source": "행렬 회전",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "구현",
+          "target": "Coding Test",
+          "relation": "part_of"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "숫자카드": {
+      "hash": "59105339f1a42cca",
+      "title": "숫자카드",
+      "summary": "SWEA 4834 숫자카드 문제를 파이썬으로 카드 숫자 빈도를 세어 최다 숫자와 장수를 구한 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Counting",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Counting",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "SWEA",
+          "relation": "related_to"
+        },
+        {
+          "source": "Counting",
+          "target": "Brute Force",
+          "relation": "related_to"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "암호코드-스캔": {
+      "hash": "0ab617be15c646b2",
+      "title": "암호코드 스캔",
+      "summary": "SWEA 1242 암호코드 스캔 문제를 16진수→2진수 변환, 비율 해싱, set 중복 제거로 푼 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Hash Map",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "중복 제거",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "문자열 처리",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "진법 변환",
+          "type": "concept",
+          "importance": 2
+        }
+      ],
+      "relations": [
+        {
+          "source": "구현",
+          "target": "Hash Map",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "문자열 처리",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "진법 변환",
+          "relation": "uses"
+        },
+        {
+          "source": "중복 제거",
+          "target": "Time Complexity",
+          "relation": "improves"
+        },
+        {
+          "source": "구현",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "SWEA",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "에라토스테네스의체": {
+      "hash": "52a3a7167d679626",
+      "title": "에라토스테네스의체",
+      "summary": "백준 2960번을 에라토스테네스의 체로 풀어 K번째로 지워지는 수를 Java로 구하는 풀이",
+      "concepts": [
+        {
+          "name": "Sieve of Eratosthenes",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "소수",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "BufferedReader",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "소수",
+          "relation": "related_to"
+        },
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "Java",
+          "relation": "uses"
+        },
+        {
+          "source": "BufferedReader",
+          "target": "Java",
+          "relation": "part_of"
+        },
+        {
+          "source": "백준",
+          "target": "Coding Test",
+          "relation": "related_to"
+        },
+        {
+          "source": "Sieve of Eratosthenes",
+          "target": "백준",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "전기버스": {
+      "hash": "49152bc0f59822e7",
+      "title": "전기버스",
+      "summary": "SWEA 4831 전기버스 문제를 그리디 방식으로 충전 횟수를 최소화해 파이썬으로 구현한 풀이",
+      "concepts": [
+        {
+          "name": "Greedy Algorithm",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        },
+        {
+          "name": "Simulation",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Greedy Algorithm",
+          "target": "Python",
+          "relation": "related_to"
+        },
+        {
+          "source": "SWEA",
+          "target": "Coding Test",
+          "relation": "part_of"
+        },
+        {
+          "source": "구현",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "Simulation",
+          "target": "구현",
+          "relation": "related_to"
+        },
+        {
+          "source": "Greedy Algorithm",
+          "target": "SWEA",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "주사위-고르기": {
+      "hash": "a807552697febe05",
+      "title": "주사위 고르기",
+      "summary": "프로그래머스 '주사위 고르기' 문제를 조합 탐색과 합계 빈도 Map으로 중복을 제거해 푼 풀이",
+      "concepts": [
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 2
+        },
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Combination",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Recursion",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Hash Map",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "중복 제거",
+          "type": "concept",
+          "importance": 3
+        }
+      ],
+      "relations": [
+        {
+          "source": "Combination",
+          "target": "Recursion",
+          "relation": "uses"
+        },
+        {
+          "source": "Brute Force",
+          "target": "Combination",
+          "relation": "uses"
+        },
+        {
+          "source": "중복 제거",
+          "target": "Hash Map",
+          "relation": "uses"
+        },
+        {
+          "source": "중복 제거",
+          "target": "Brute Force",
+          "relation": "improves"
+        },
+        {
+          "source": "중복 제거",
+          "target": "Time Complexity",
+          "relation": "improves"
+        },
+        {
+          "source": "Combination",
+          "target": "Coding Test",
+          "relation": "part_of"
+        },
+        {
+          "source": "Brute Force",
+          "target": "JavaScript",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "최대-상금": {
+      "hash": "b3205240050774c9",
+      "title": "최대 상금",
+      "summary": "SWEA 1244 최대 상금 문제를 DFS 백트래킹과 depth별 set 중복 제거로 푸는 풀이",
+      "concepts": [
+        {
+          "name": "DFS",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Backtracking",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "중복 제거",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Combination",
+          "type": "concept",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 1
+        },
+        {
+          "name": "Recursion",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Backtracking",
+          "target": "DFS",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "중복 제거",
+          "relation": "uses"
+        },
+        {
+          "source": "중복 제거",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "Recursion",
+          "relation": "uses"
+        },
+        {
+          "source": "중복 제거",
+          "target": "Time Complexity",
+          "relation": "improves"
+        },
+        {
+          "source": "DFS",
+          "target": "Combination",
+          "relation": "related_to"
+        },
+        {
+          "source": "Backtracking",
+          "target": "Brute Force",
+          "relation": "improves"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "최적-경로": {
+      "hash": "76ef199e714f4f26",
+      "title": "최적 경로",
+      "summary": "SWEA 1247 최적 경로 문제를 DFS 기반 순열 완전탐색으로 푼 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "DFS",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "순열",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "BFS",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Stack",
+          "type": "algorithm",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Brute Force",
+          "target": "순열",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "순열",
+          "relation": "implements"
+        },
+        {
+          "source": "DFS",
+          "target": "BFS",
+          "relation": "compares"
+        },
+        {
+          "source": "DFS",
+          "target": "Stack",
+          "relation": "uses"
+        },
+        {
+          "source": "Brute Force",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        },
+        {
+          "source": "Brute Force",
+          "target": "DFS",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "카운트-디운": {
+      "hash": "a8e801f772133dfa",
+      "title": "카운트 다운",
+      "summary": "프로그래머스 '카운트 다운' 다트 문제를 BFS 시도 후 DP로 최소 다트 수와 싱글/불 최대 횟수를 구한 풀이",
+      "concepts": [
+        {
+          "name": "Dynamic Programming",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 2
+        },
+        {
+          "name": "BFS",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "JavaScript",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Programmers",
+          "type": "tool",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Dynamic Programming",
+          "target": "BFS",
+          "relation": "compares"
+        },
+        {
+          "source": "Coding Test",
+          "target": "Dynamic Programming",
+          "relation": "uses"
+        },
+        {
+          "source": "Dynamic Programming",
+          "target": "JavaScript",
+          "relation": "uses"
+        },
+        {
+          "source": "Coding Test",
+          "target": "Programmers",
+          "relation": "uses"
+        },
+        {
+          "source": "BFS",
+          "target": "Time Complexity",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "탑": {
+      "hash": "3a046369ba2fda64",
+      "title": "탑",
+      "summary": "백준 탑 문제를 Java 스택(단조 스택)으로 왼쪽의 더 높은 탑을 찾아 O(N)에 푸는 풀이",
+      "concepts": [
+        {
+          "name": "Stack",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Monotonic Stack",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "백준",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "BufferedReader",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Time Complexity",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "Coding Test",
+          "type": "domain",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "Monotonic Stack",
+          "target": "Stack",
+          "relation": "is_a"
+        },
+        {
+          "source": "Java",
+          "target": "Stack",
+          "relation": "implements"
+        },
+        {
+          "source": "Java",
+          "target": "BufferedReader",
+          "relation": "uses"
+        },
+        {
+          "source": "Monotonic Stack",
+          "target": "Time Complexity",
+          "relation": "improves"
+        },
+        {
+          "source": "백준",
+          "target": "Coding Test",
+          "relation": "related_to"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "파리퇴치": {
+      "hash": "b89e2f6850c3ddd8",
+      "title": "파리퇴치",
+      "summary": "SWEA 12712 파리퇴치 문제를 2차원 배열 완전탐색으로 Python 구현한 풀이",
+      "concepts": [
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 2
+        },
+        {
+          "name": "구현",
+          "type": "concept",
+          "importance": 3
+        },
+        {
+          "name": "2차원 배열",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Brute Force",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Python",
+          "type": "language",
+          "importance": 1
+        },
+        {
+          "name": "Simulation",
+          "type": "concept",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "구현",
+          "target": "2차원 배열",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "Brute Force",
+          "relation": "uses"
+        },
+        {
+          "source": "구현",
+          "target": "Python",
+          "relation": "uses"
+        },
+        {
+          "source": "SWEA",
+          "target": "구현",
+          "relation": "related_to"
+        },
+        {
+          "source": "Simulation",
+          "target": "2차원 배열",
+          "relation": "uses"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    },
+    "파핑파핑-지뢰찾기": {
+      "hash": "759748a6e1c51686",
+      "title": "파핑파핑 지뢰찾기",
+      "summary": "SWEA 파핑파핑 지뢰찾기를 Java로 구현하며 DFS 영역 채우기와 BufferedWriter를 사용한 풀이",
+      "concepts": [
+        {
+          "name": "지뢰찾기",
+          "type": "domain",
+          "importance": 3
+        },
+        {
+          "name": "Java",
+          "type": "language",
+          "importance": 2
+        },
+        {
+          "name": "DFS",
+          "type": "algorithm",
+          "importance": 2
+        },
+        {
+          "name": "Flood Fill",
+          "type": "algorithm",
+          "importance": 3
+        },
+        {
+          "name": "BufferedWriter",
+          "type": "library",
+          "importance": 2
+        },
+        {
+          "name": "BufferedReader",
+          "type": "library",
+          "importance": 1
+        },
+        {
+          "name": "Recursion",
+          "type": "concept",
+          "importance": 1
+        },
+        {
+          "name": "SWEA",
+          "type": "tool",
+          "importance": 1
+        }
+      ],
+      "relations": [
+        {
+          "source": "지뢰찾기",
+          "target": "Flood Fill",
+          "relation": "uses"
+        },
+        {
+          "source": "Flood Fill",
+          "target": "DFS",
+          "relation": "uses"
+        },
+        {
+          "source": "DFS",
+          "target": "Recursion",
+          "relation": "uses"
+        },
+        {
+          "source": "지뢰찾기",
+          "target": "Java",
+          "relation": "uses"
+        },
+        {
+          "source": "BufferedWriter",
+          "target": "Java",
+          "relation": "part_of"
+        },
+        {
+          "source": "BufferedReader",
+          "target": "Java",
+          "relation": "part_of"
+        },
+        {
+          "source": "BufferedWriter",
+          "target": "BufferedReader",
+          "relation": "related_to"
+        },
+        {
+          "source": "지뢰찾기",
+          "target": "SWEA",
+          "relation": "part_of"
+        }
+      ],
+      "model": "claude-opus-5-5"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+.kg-preview-card {
+  margin: 1.2em 0.6em 0;
+  padding: 0.5em;
+  display: flex;
+  align-items: stretch;
+  gap: 0.5em;
+
+  color: var(--content-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  background-color: var(--fg-color);
+  transition:
+    box-shadow 0.2s,
+    scale 0.2s;
+}
+
+.kg-preview-card:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.kg-preview-card:hover .kg-preview-info h2 {
+  color: var(--action-color);
+}
+
+.kg-preview-thumb {
+  flex: 3;
+  min-width: 0;
+  height: 18em;
+  border-radius: var(--radius);
+  background-color: var(--dimmed-bg-color);
+}
+
+.kg-preview-links path {
+  fill: none;
+  stroke: var(--minor-color);
+  stroke-width: 0.8;
+  opacity: 0.35;
+  transition: opacity 0.3s;
+}
+
+.kg-preview-links path.relation {
+  stroke: var(--accent-color);
+  stroke-dasharray: 3 3;
+}
+
+.kg-preview-card:hover .kg-preview-links path {
+  opacity: 0.6;
+}
+
+.kg-preview-thumb circle.concept {
+  fill: var(--minor-color);
+  fill-opacity: 0.35;
+  stroke: var(--minor-color);
+  stroke-width: 1.2;
+}
+
+.kg-preview-thumb circle.post {
+  fill: var(--accent-color);
+}
+
+.kg-preview-info {
+  flex: 2;
+  min-width: 0;
+  padding: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.8em;
+}
+
+.kg-preview-info h2 {
+  transition: color 0.2s;
+}
+
+.kg-preview-info p {
+  line-height: 1.6;
+}
+
+.kg-preview-concepts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em 0.8em;
+  font-size: 0.9em;
+}
+
+@media screen and (max-width: 768px) {
+  .kg-preview-card {
+    flex-direction: column;
+  }
+
+  .kg-preview-thumb {
+    flex: none;
+    height: 14em;
+  }
+}

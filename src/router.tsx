@@ -8,6 +8,7 @@ const PostDetailLayout = lazy(
   () => import('@/layouts/PostDetailLayout/PostDetailLayout'),
 )
 const HomePage = lazy(() => import('@/pages/HomePage'))
+const KnowledgeGraphPage = lazy(() => import('@/pages/KnowledgeGraphPage'))
 const NoPage = lazy(() => import('@/pages/NoPage'))
 const PostDetailPage = lazy(() => import('@/pages/PostDetailPage'))
 const SearchResultPage = lazy(() => import('@/pages/SearchResultPage'))
@@ -16,6 +17,7 @@ export const ROUTES = {
   HOME: '/',
   SEARCH: (searchKey: string) => `/search/${searchKey}`,
   POST_DETAIL: (id: string) => `/post/${id}`,
+  GRAPH: '/graph',
 }
 
 export const router = createBrowserRouter([
@@ -68,6 +70,14 @@ export const router = createBrowserRouter([
             ),
           },
         ],
+      },
+      {
+        path: ROUTES.GRAPH,
+        element: (
+          <Suspense fallback={<Spinner phrase='그래프 로딩중...' />}>
+            <KnowledgeGraphPage />
+          </Suspense>
+        ),
       },
       {
         path: '*',
